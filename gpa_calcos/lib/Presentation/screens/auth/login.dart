@@ -31,10 +31,11 @@ class LogIn extends StatelessWidget {
               Color(0xFF5E8D9B),
             ],
             begin: Alignment.topCenter,
-            //end: Alignment.bottomCenter,
+            end: Alignment.bottomCenter,
           ),
         ),
         child: Scaffold(
+          backgroundColor: Colors.transparent,
           body: Center(
             child: Container(
               height: 536.r,
