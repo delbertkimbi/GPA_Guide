@@ -37,81 +37,84 @@ class LogIn extends StatelessWidget {
         child: Scaffold(
           backgroundColor: Colors.transparent,
           body: Center(
-            child: Container(
-              height: 536.r,
-              width: 285.r,
-              padding: EdgeInsets.symmetric(horizontal: 31.w),
-              margin: EdgeInsets.symmetric(horizontal: 44.w, vertical: 123.h),
-              decoration: BoxDecoration(
-                color: mainColor,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 85.h,
-                  ),
-                  Text(
-                    text1.header1Text,
-                    style: text1.header1,
-                  ),
-                  Text(
-                    'Sign in with',
-                    style: text1.header2,
-                  ),
-                  SizedBox(
-                    height: 8.h,
-                  ),
-                  MainButton(
-                    imagePath: 'assets/google.png',
-                    textSize: 18,
-                    text: "Google",
-                    color: Colors.white,
-                    fontWeight: FontWeight.normal,
-                  ),
-                  Text(
-                    'OR',
-                    style: text1.header2,
-                  ),
-                  CustomTextField(text: 'email', controller: emailController),
-                  SizedBox(
-                    height: 8.h,
-                  ),
-                  CustomTextField(
-                      text: 'password', controller: passwordController),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  RegisterButton(
-                    textSize: 20,
-                    text: 'LogIn',
-                    color: mainColors.color1,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        "Don't have an account?  ",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 13.sp,
+            child: SingleChildScrollView(
+              child: Container(
+                height: 536.r,
+                width: 285.r,
+                padding: EdgeInsets.symmetric(horizontal: 31.w),
+                margin: EdgeInsets.symmetric(horizontal: 44.w, vertical: 123.h),
+                decoration: BoxDecoration(
+                  color: mainColor,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 100.h,
+                    ),
+                    Text(
+                      text1.header1Text,
+                      style: text1.header1,
+                    ),
+                    Text(
+                      'Sign in with',
+                      style: text1.header2,
+                    ),
+                    SizedBox(
+                      height: 8.h,
+                    ),
+                    MainButton(
+                      imagePath: 'assets/google.png',
+                      textSize: 18,
+                      text: "Google",
+                      color: Colors.white,
+                      fontWeight: FontWeight.normal,
+                    ),
+                    Text(
+                      'OR',
+                      style: text1.header2,
+                    ),
+                    CustomTextField(text: 'email', controller: emailController),
+                    SizedBox(
+                      height: 8.h,
+                    ),
+                    CustomTextField(
+                        text: 'password', controller: passwordController),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    RegisterButton(
+                      textSize: 20,
+                      text: 'LogIn',
+                      color: mainColors.color1,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    SizedBox(
+                      height: 5.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Don't have an account?  ",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 13.sp,
+                          ),
                         ),
-                      ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Text('Sign up',
-                            style: TextStyle(
-                              color: mainColors.color1,
-                              fontWeight: FontWeight.normal,
-                              fontSize: 13.sp,
-                            )),
-                      ),
-                    ],
-                  )
-                ],
+                        GestureDetector(
+                          onTap: () {},
+                          child: Text('Sign up',
+                              style: TextStyle(
+                                color: mainColors.color1,
+                                fontWeight: FontWeight.normal,
+                                fontSize: 13.sp,
+                              )),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),
