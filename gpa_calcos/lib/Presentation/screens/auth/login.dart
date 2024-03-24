@@ -22,6 +22,8 @@ class LogIn extends StatelessWidget {
     Color mainColor = const Color(0xff3D7282);
     return SafeArea(
       child: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
@@ -29,7 +31,7 @@ class LogIn extends StatelessWidget {
               Color(0xFF5E8D9B),
             ],
             begin: Alignment.topCenter,
-            //  end: Alignment.bottomCenter,
+            //end: Alignment.bottomCenter,
           ),
         ),
         child: Scaffold(

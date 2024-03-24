@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gpa_calcos/Presentation/Custom/files/gradient.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -12,11 +11,19 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
-    MainGradient gradient = MainGradient();
     Color blueblack = const Color(0xFF010048);
     return SafeArea(
       child: Container(
-        decoration: gradient.gradient(),
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0xFF949798),
+              Color(0xFF5E8D9B),
+            ],
+            begin: Alignment.topCenter,
+            //  end: Alignment.bottomCenter,
+          ),
+        ),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           body: Center(
