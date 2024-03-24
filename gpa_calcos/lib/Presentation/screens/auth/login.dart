@@ -18,7 +18,7 @@ class LogIn extends StatelessWidget {
     MainColors mainColors = MainColors();
 
     CustomTextStyles text1 = CustomTextStyles();
-
+    // Use dependency injection to calll colors.color
     Color mainColor = const Color(0xff3D7282);
     return SafeArea(
       child: Container(
