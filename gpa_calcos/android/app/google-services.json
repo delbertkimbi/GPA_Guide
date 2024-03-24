@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "977355559764",
+    "project_id": "gpa-calcos",
+    "storage_bucket": "gpa-calcos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977355559764:android:8ae4f61bb2f36c28d1eec1",
+        "android_client_info": {
+          "package_name": "com.example.gpa_calcos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "977355559764-m0sj7mbm3s0h5se0pm0ke4p4urrhe6n3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-hVqJrYv2Uj3FAZAQSw1Uq4mDxbrmKEs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "977355559764-m0sj7mbm3s0h5se0pm0ke4p4urrhe6n3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "977355559764-4sqoc4ancuutk0l87bulm4b4r5u2gbnf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.gpaCalculator"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977355559764:android:12776b13733a6b7ad1eec1",
+        "android_client_info": {
+          "package_name": "com.example.gpa_calculator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "977355559764-m0sj7mbm3s0h5se0pm0ke4p4urrhe6n3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-hVqJrYv2Uj3FAZAQSw1Uq4mDxbrmKEs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "977355559764-m0sj7mbm3s0h5se0pm0ke4p4urrhe6n3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "977355559764-4sqoc4ancuutk0l87bulm4b4r5u2gbnf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.gpaCalculator"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
