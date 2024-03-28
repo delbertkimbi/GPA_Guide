@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/text.dart';
 
+@RoutePage()
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -30,7 +32,7 @@ class _HomePageState extends State<HomePage> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
-        ),
+        ), 
         child: Scaffold(
           key: _scaffoldKey, // Assign GlobalKey
           drawer: Drawer(
@@ -53,8 +55,7 @@ class _HomePageState extends State<HomePage> {
                 _scaffoldKey.currentState?.openDrawer(); // Use GlobalKey
               },
             ),
-            // ... other AppBar properties
-
+          
             backgroundColor: Colors.transparent,
             elevation: 0,
             centerTitle: true,

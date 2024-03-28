@@ -1,6 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
 
+@RoutePage()
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
 
@@ -8,7 +11,26 @@ class LandingPage extends StatefulWidget {
   State<LandingPage> createState() => _LandingPageState();
 }
 
+
 class _LandingPageState extends State<LandingPage> {
+   @override
+  void initState() {
+    Future.delayed(
+      const Duration(seconds: 3),
+      () {
+        context.router.replace(const LogIn( )); 
+        //AutoRouter.of(context).push( Log);
+        // Navigator.pushAndRemoveUntil(
+        //     context,
+        //     MaterialPageRoute(
+        //       builder: (context) => const LogIn(),
+        //     ),
+        //     (route) => false);
+
+      },
+    );
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     Color blueblack = const Color(0xFF010048);

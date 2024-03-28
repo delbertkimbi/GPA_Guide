@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,7 +8,8 @@ import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/register_button.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/text.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/textfield.dart';
-
+import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
+@RoutePage()
 class SignUp extends StatelessWidget {
   const SignUp({super.key});
 
@@ -103,11 +105,17 @@ class SignUp extends StatelessWidget {
                     SizedBox(
                       height: 20.h,
                     ),
-                    RegisterButton(
-                      textSize: 20,
-                      text: 'SignUp',
-                      color: mainColors.color1,
-                      fontWeight: FontWeight.bold,
+                    GestureDetector(
+                      onTap: (){
+                         context.router.replace(const HomePage( )); 
+                        
+                      },
+                      child: RegisterButton(
+                        textSize: 20,
+                        text: 'SignUp',
+                        color: mainColors.color1,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     SizedBox(
                       height: 5.h,
@@ -123,7 +131,9 @@ class SignUp extends StatelessWidget {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                             AutoRouter.of(context).push(const LogIn());
+                          },
                           child: Text('Sign In',
                               style: TextStyle(
                                 color: mainColors.color1,
