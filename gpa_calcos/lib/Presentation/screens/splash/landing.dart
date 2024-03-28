@@ -16,7 +16,7 @@ class _LandingPageState extends State<LandingPage> {
    @override
   void initState() {
     Future.delayed(
-      const Duration(seconds: 3),
+      const Duration(seconds: 5),
       () {
         context.router.replace(const LogIn( )); 
         //AutoRouter.of(context).push( Log);

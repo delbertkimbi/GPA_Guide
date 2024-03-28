@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/text.dart';
+import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -32,7 +33,7 @@ class _HomePageState extends State<HomePage> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
-        ), 
+        ),
         child: Scaffold(
           key: _scaffoldKey, // Assign GlobalKey
           drawer: Drawer(
@@ -55,7 +56,6 @@ class _HomePageState extends State<HomePage> {
                 _scaffoldKey.currentState?.openDrawer(); // Use GlobalKey
               },
             ),
-          
             backgroundColor: Colors.transparent,
             elevation: 0,
             centerTitle: true,
@@ -93,22 +93,27 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: 15.h,
                 ),
-                Container(
-                  height: 62.h,
-                  width: 298.h,
-                  margin: EdgeInsets.symmetric(horizontal: 33.r),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: const Color(0xff5E808A),
-                    borderRadius: BorderRadius.circular(20.r),
-                  ),
-                  child: Text(
-                    'Grading System',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 30.sp,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white,
+                GestureDetector(
+                  onTap: () {
+                    AutoRouter.of(context).push(const GradingSystem());
+                  },
+                  child: Container(
+                    height: 62.h,
+                    width: 298.h,
+                    margin: EdgeInsets.symmetric(horizontal: 33.r),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: const Color(0xff5E808A),
+                      borderRadius: BorderRadius.circular(20.r),
+                    ),
+                    child: Text(
+                      'Grading System',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 30.sp,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
