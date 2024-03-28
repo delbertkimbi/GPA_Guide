@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gpa_calcos/Presentation/Custom/Widgets/push_pop.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
 
@@ -43,14 +44,9 @@ class _GradingSystemState extends State<GradingSystem> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          leading: IconButton(
-              onPressed: () {
-                AutoRouter.of(context).push(const HomePage());
-              },
-              icon: const Icon(
-                Icons.arrow_back_ios,
-                color: Colors.white,
-              )),
+          leading: const PushOrPop(
+            screenName: HomePage(),
+          ),
           backgroundColor: mainColors.color2,
           title: Text(
             'Grading System',
