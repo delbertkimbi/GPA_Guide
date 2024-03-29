@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/list_tile.dart';
-import 'package:gpa_calcos/Presentation/screens/home.dart';
 
 class CustomDrawer extends StatelessWidget {
   final String userName;

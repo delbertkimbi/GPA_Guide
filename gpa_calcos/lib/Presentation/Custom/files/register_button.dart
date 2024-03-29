@@ -7,7 +7,7 @@ class RegisterButton extends StatelessWidget {
   final String text;
   late Color color;
   FontWeight fontWeight;
-  final int textSize;
+  final double textSize;
 
   RegisterButton({
     super.key,

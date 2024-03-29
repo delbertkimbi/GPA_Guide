@@ -92,8 +92,9 @@ class _HomePageState extends State<HomePage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    AutoRouter.of(context)
-                        .push(ResultPage(ccv: 44, cwgp: 4, gpa: 4));
+                    AutoRouter.of(context).push(
+                      const GetSubjectInfo()
+                    );
                   },
                   child: customBox(text: 'GPA  '),
                 ),
@@ -106,14 +107,6 @@ class _HomePageState extends State<HomePage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    // showDialog(
-                    //     context: context,
-                    //     builder: (context) => AlertDialog(
-                    //           content: Column(
-                    //             mainAxisSize: MainAxisSize.min,
-                    //             children: [],
-                    //           ),
-                    //         ));
                     AutoRouter.of(context).push(const GradingSystem());
                   },
                   child: Container(
