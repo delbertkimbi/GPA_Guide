@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
-import 'package:gpa_calcos/Presentation/Custom/files/gradient.dart';
 
 @RoutePage()
 class ResultPage extends StatefulWidget {
@@ -23,13 +22,14 @@ class ResultPage extends StatefulWidget {
 class _ResultPageState extends State<ResultPage> {
   @override
   Widget build(BuildContext context) {
-    MainGradient mainGradient = MainGradient();
     MainColors mainColors = MainColors();
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Container(
-          decoration: mainGradient.gradient(),
+          decoration: BoxDecoration(
+            color: mainColors.color3,
+          ),
           child: Center(
             child: Container(
               height: 400.h,
@@ -51,7 +51,7 @@ class _ResultPageState extends State<ResultPage> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 40.sp,
-                        color: Colors.white,
+                        color: mainColors.color1,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -63,8 +63,8 @@ class _ResultPageState extends State<ResultPage> {
                     'CWGP: ${widget.cwgp.toStringAsFixed(2)}',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 17.sp,
-                      color: Colors.white,
+                      fontSize: 20.sp,
+                      color: mainColors.color1,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -75,7 +75,7 @@ class _ResultPageState extends State<ResultPage> {
                     'CCV: ${widget.ccv.toStringAsFixed(2)}',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 17.sp,
+                      fontSize: 20.sp,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),

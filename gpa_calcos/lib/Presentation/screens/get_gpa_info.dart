@@ -1,11 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/register_button.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/textfield.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
+import 'package:gpa_calcos/Presentation/Routes/headers.dart';
 
 @RoutePage()
 class GetSubjectInfo extends StatelessWidget {
@@ -20,90 +20,100 @@ class GetSubjectInfo extends StatelessWidget {
     MainColors mainColors = MainColors();
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              'Add your courses for the semester and comcinely get your gpa calculated for you.',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 20.sp,
-                fontWeight: FontWeight.w600,
-                color: mainColors.color1,
+        child: Padding(
+          padding: EdgeInsets.all(10.r),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                'Add your courses for the semester and comcinely get your gpa calculated for you.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.w600,
+                  color: mainColors.color1,
+                ),
               ),
-            ),
-            Column(
-              children: [
-                SizedBox(
-                  width: 10.w,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    counter++;
-                    showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                              content: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  CustomTextField(
-                                    text: 'Subject Name',
-                                    controller: subjectNameController,
-                                  ),
-                                  CustomTextField(
-                                      text: 'Grade',
-                                      controller: gradeController),
-                                  CustomTextField(
-                                      text: 'Credit Value',
-                                      controller: creditValueNameController),
-                                  SizedBox(
-                                    height: 10.h,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: RegisterButton(
-                                      textSize: 25.r,
-                                      text: 'Submit',
-                                      color: mainColors.color1,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ));
-                  },
-                  child: RegisterButton(
-                    textSize: 25.r,
-                    text: 'Add',
-                    color: mainColors.color1,
-                    fontWeight: FontWeight.w500,
+              Column(
+                children: [
+                  SizedBox(
+                    height: 10.w,
                   ),
-                ),
-                SizedBox(
-                  child: counter > 0
-                      ? Container()
-                      : GestureDetector(
-                          onTap: () {
-                            AutoRouter.of(context).push(
-                              ResultPage(ccv: 44, cwgp: 4, gpa: 4),
-                            );
-                          },
-                          child: RegisterButton(
-                            textSize: 25.r,
-                            text: 'Submit',
-                            color: mainColors.color1,
-                            fontWeight: FontWeight.w500,
+                  const Headers(),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      counter++;
+                      showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                                content: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    CustomTextField(
+                                      text: 'Subject Name',
+                                      controller: subjectNameController,
+                                    ),
+                                    CustomTextField(
+                                        text: 'Grade',
+                                        controller: gradeController),
+                                    CustomTextField(
+                                        text: 'Credit Value',
+                                        controller: creditValueNameController),
+                                    SizedBox(
+                                      height: 10.h,
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: RegisterButton(
+                                        textSize: 20.r,
+                                        text: 'Submit',
+                                        color: mainColors.color1,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ));
+                    },
+                    child: RegisterButton(
+                      textSize: 25.r,
+                      text: 'Add',
+                      color: mainColors.color1,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  SizedBox(
+                    child: counter >= 1
+                        ? Container()
+                        : GestureDetector(
+                            onTap: () {
+                              AutoRouter.of(context).push(
+                                ResultPage(ccv: 44, cwgp: 4, gpa: 4),
+                              );
+                            },
+                            child: RegisterButton(
+                              textSize: 20.r,
+                              text: 'Submit',
+                              color: mainColors.color1,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
-                        ),
-                ),
-              ],
-            )
-          ],
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
