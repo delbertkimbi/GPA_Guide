@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gpa_calcos/Presentation/Custom/Widgets/drawer.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/text.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
@@ -36,13 +37,17 @@ class _HomePageState extends State<HomePage> {
         ),
         child: Scaffold(
           key: _scaffoldKey, // Assign GlobalKey
-          drawer: Drawer(
-            child: ListView(
-              padding: EdgeInsets.zero,
-              children: const [
-                // ... drawer content (e.g., ListTile widgets)
-              ],
-            ),
+          // drawer: Drawer(
+          //   child: ListView(
+          //     padding: EdgeInsets.zero,
+          //     children: const [
+          //       // ... drawer content (e.g., ListTile widgets)
+          //     ],
+          //   ),
+          // ),
+          drawer: const CustomDrawer(
+            userName: 'Delbert Kimbi',
+            userEmail: 'delbertdrums@gmail.com',
           ),
           appBar: AppBar(
             toolbarHeight: 50.h,
@@ -85,7 +90,13 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: 15.h,
                 ),
-                customBox(text: 'GPA  '),
+                GestureDetector(
+                  onTap: () {
+                    AutoRouter.of(context)
+                        .push(ResultPage(ccv: 44, cwgp: 4, gpa: 4));
+                  },
+                  child: customBox(text: 'GPA  '),
+                ),
                 SizedBox(
                   height: 15.h,
                 ),
@@ -95,6 +106,14 @@ class _HomePageState extends State<HomePage> {
                 ),
                 GestureDetector(
                   onTap: () {
+                    // showDialog(
+                    //     context: context,
+                    //     builder: (context) => AlertDialog(
+                    //           content: Column(
+                    //             mainAxisSize: MainAxisSize.min,
+                    //             children: [],
+                    //           ),
+                    //         ));
                     AutoRouter.of(context).push(const GradingSystem());
                   },
                   child: Container(
