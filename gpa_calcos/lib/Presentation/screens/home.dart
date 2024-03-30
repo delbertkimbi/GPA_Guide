@@ -92,9 +92,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    AutoRouter.of(context).push(
-                      const GetSubjectInfo()
-                    );
+                    AutoRouter.of(context).push(const GetSubjectInfo());
                   },
                   child: customBox(text: 'GPA  '),
                 ),

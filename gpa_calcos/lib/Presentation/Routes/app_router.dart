@@ -13,5 +13,6 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: GradingSystem.page),
         AutoRoute(page: ResultPage.page),
         AutoRoute(page: GetSubjectInfo.page),
+        AutoRoute(page: GetSubjectInfo2.page),
       ];
 }

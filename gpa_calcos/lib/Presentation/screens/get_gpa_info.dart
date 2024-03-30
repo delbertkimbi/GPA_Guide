@@ -19,6 +19,7 @@ class GetSubjectInfo extends StatelessWidget {
     int counter = 0;
     MainColors mainColors = MainColors();
     return Scaffold(
+      //backgroundColor: mainColors.color3,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(10.r),
