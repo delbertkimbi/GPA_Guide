@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gpa_calcos/Bussiness/calculation/gpa_cubit/gpa_cubit.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/register_button.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/textfield.dart';
@@ -48,41 +50,12 @@ class GetSubjectInfo extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       counter++;
-                      showDialog(
-                          context: context,
-                          builder: (context) => AlertDialog(
-                                content: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    CustomTextField(
-                                      text: 'Subject Name',
-                                      controller: subjectNameController,
-                                    ),
-                                    CustomTextField(
-                                        text: 'Grade',
-                                        controller: gradeController),
-                                    CustomTextField(
-                                        text: 'Credit Value',
-                                        controller: creditValueNameController),
-                                    SizedBox(
-                                      height: 10.h,
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: RegisterButton(
-                                        textSize: 20.r,
-                                        text: 'Submit',
-                                        color: mainColors.color1,
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ));
+                      customShowDialog(
+                          context,
+                          subjectNameController,
+                          gradeController,
+                          creditValueNameController,
+                          mainColors);
                     },
                     child: RegisterButton(
                       textSize: 25.r,
@@ -95,12 +68,14 @@ class GetSubjectInfo extends StatelessWidget {
                     height: 10.h,
                   ),
                   SizedBox(
-                    child: counter >= 1
+                    child: counter <= 0
                         ? Container()
                         : GestureDetector(
                             onTap: () {
+                              double val = BlocProvider.of<GpaCubit>(context)
+                                  .calculateGPA();
                               AutoRouter.of(context).push(
-                                ResultPage(ccv: 44, cwgp: 4, gpa: 4),
+                                ResultPage(ccv: 44, cwgp: 4, gpa: val),
                               );
                             },
                             child: RegisterButton(
@@ -118,5 +93,49 @@ class GetSubjectInfo extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<dynamic> customShowDialog(
+      BuildContext context,
+      TextEditingController subjectNameController,
+      TextEditingController gradeController,
+      TextEditingController creditValueNameController,
+      MainColors mainColors) {
+    return showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              content: Expanded(
+                child: Column(
+                 mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CustomTextField(
+                      text: 'Subject Name',
+                      controller: subjectNameController,
+                    ),
+                    CustomTextField(text: 'Grade', controller: gradeController),
+                    CustomTextField(
+                        text: 'Credit Value',
+                        controller: creditValueNameController),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pop();
+                        BlocProvider.of<GpaCubit>(context).addSubject();
+                      },
+                      child: RegisterButton(
+                        textSize: 20.r,
+                        text: 'Submit',
+                        color: mainColors.color1,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ));
   }
 }
