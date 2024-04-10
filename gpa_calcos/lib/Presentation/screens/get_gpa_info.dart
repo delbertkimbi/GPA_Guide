@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Bussiness/calculation/gpa_cubit/gpa_cubit.dart';
+import 'package:gpa_calcos/Data/models/subjects.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/register_button.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/textfield.dart';
@@ -37,6 +38,27 @@ class GetSubjectInfo extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                   color: mainColors.color1,
                 ),
+              ),
+              BlocBuilder<GpaCubit, List<Subject>>(
+                builder: (context, subjects) {
+                  return ListView.builder(
+                    itemCount: subjects.length,
+                    itemBuilder: (context, index) {
+                      final subject = subjects[index];
+                      return Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 5.w,
+                          vertical: 10.h,
+                        ),
+                        child: Card(
+                          child: ListTile(
+                            title: Text(subject.name),
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
               ),
               Column(
                 children: [
@@ -106,7 +128,7 @@ class GetSubjectInfo extends StatelessWidget {
         builder: (context) => AlertDialog(
               content: Expanded(
                 child: Column(
-                 mainAxisSize: MainAxisSize.min,
+                  mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -124,7 +146,11 @@ class GetSubjectInfo extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).pop();
-                        BlocProvider.of<GpaCubit>(context).addSubject();
+                        BlocProvider.of<GpaCubit>(context).addSubject(
+                            subjectNameController.text.trim(),
+                            gradeController.text.trim(),
+                            double.parse(
+                                creditValueNameController.text.trim()));
                       },
                       child: RegisterButton(
                         textSize: 20.r,

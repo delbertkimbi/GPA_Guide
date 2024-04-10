@@ -1,44 +1,16 @@
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gpa_calcos/Data/models/subjects.dart';
 
 part 'gpa_state.dart';
 
-class GpaCubit extends Cubit<GpaState> {
-  GpaCubit() : super(GpaInitial());
-  void getSubjects(List<Subject> subjects) {}
-  void displaySubjecrs() {
-    emit(GpaInitial());
-  }
-
-  List<Subject> subjects = [];
-
-  TextEditingController subjectNameController = TextEditingController();
-  TextEditingController gradeController = TextEditingController();
-  TextEditingController creditValueController = TextEditingController();
-
-  void refresh() {
-    emit(GpaLoading());
-    emit(GpaLoaded(subjects: calculateGPA()));
-  }
-
-  String? validate() {
-    if (subjectNameController.text.isEmpty) {
-      return 'Enter subject name';
-    } else if (gradeController.text.isEmpty) {
-      return 'Enter subject grade';
-    } else if (creditValueController.text.isEmpty) {
-      return 'Enter subject credit value';
-    } else {
-      return null;
-    }
-  }
+class GpaCubit extends Cubit<List<Subject>> {
+  GpaCubit() : super([]);
 
   double calculateGPA() {
     double totalCredits = 0;
     double totalGradePoints = 0;
 
-    for (var subject in subjects) {
+    for (var subject in state) {
       totalCredits += subject.creditValue;
       totalGradePoints +=
           _calculateGradePoints(subject.grade) * subject.creditValue;
@@ -72,26 +44,14 @@ class GpaCubit extends Cubit<GpaState> {
     }
   }
 
-  addSubject() {
-    emit(GpaLoading());
-    try {
-      String? error = validate();
-      if (error != null) {
-        emit(GpaError(message: error));
-      } else {
-        Subject subject = Subject(
-            name: subjectNameController.text,
-            grade: gradeController.text,
-            creditValue: double.tryParse(creditValueController.text) ?? 0);
-        subjects.add(subject);
-        subjectNameController.clear();
-        creditValueController.clear();
-        gradeController.clear();
-        emit(GpaLoaded(subjects: calculateGPA()));
-      }
-    } catch (e, s) {
-      debugPrintStack(stackTrace: s);
-      emit(GpaError(message: e.toString()));
-    }
+  addSubject(String name, String grade, double creditValue) {
+    final subject = Subject(
+      name: name,
+      grade: grade,
+      creditValue: creditValue,
+    );
+    state.add(subject);
+    emit([...state]);
+    calculateGPA();
   }
 }
