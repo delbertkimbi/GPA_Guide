@@ -8,7 +8,6 @@ import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/register_button.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/textfield.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
-import 'package:gpa_calcos/Presentation/Routes/headers.dart';
 
 @RoutePage()
 class GetSubjectInfo extends StatelessWidget {
@@ -24,7 +23,6 @@ class GetSubjectInfo extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
-           
             customShowDialog(context, subjectNameController, gradeController,
                 creditValueNameController, mainColors);
           },
@@ -47,7 +45,6 @@ class GetSubjectInfo extends StatelessWidget {
               ),
               SizedBox(
                 height: 20.w,
-                child: const Headers(),
               ),
 
               BlocBuilder<GpaCubit, List<Subject>>(
@@ -58,7 +55,7 @@ class GetSubjectInfo extends StatelessWidget {
                       final subject = subjects[index];
                       if (subjects.isEmpty) {
                         return const Center(
-                          child: Text("No sunject informationn added yet"),
+                          child: Text("No subjects informationn added yet"),
                         );
                       }
                       return Padding(
