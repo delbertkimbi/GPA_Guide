@@ -19,12 +19,12 @@ class GetSubjectInfo extends StatelessWidget {
     TextEditingController subjectNameController = TextEditingController();
     TextEditingController gradeController = TextEditingController();
     TextEditingController creditValueNameController = TextEditingController();
-    int counter = 0;
+
     MainColors mainColors = MainColors();
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
-            counter++;
+           
             customShowDialog(context, subjectNameController, gradeController,
                 creditValueNameController, mainColors);
           },
