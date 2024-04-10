@@ -5,7 +5,7 @@ part 'gpa_state.dart';
 
 class GpaCubit extends Cubit<List<Subject>> {
   GpaCubit() : super([]);
-
+  
   double calculateGPA() {
     double totalCredits = 0;
     double totalGradePoints = 0;

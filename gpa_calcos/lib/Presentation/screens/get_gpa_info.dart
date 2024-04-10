@@ -22,7 +22,13 @@ class GetSubjectInfo extends StatelessWidget {
     int counter = 0;
     MainColors mainColors = MainColors();
     return Scaffold(
-      //backgroundColor: mainColors.color3,
+      floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            counter++;
+            customShowDialog(context, subjectNameController, gradeController,
+                creditValueNameController, mainColors);
+          },
+          label: const Text("Add Subject")),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(10.r),
@@ -40,15 +46,21 @@ class GetSubjectInfo extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 10.w,
+                height: 20.w,
+                child: const Headers(),
               ),
-              const Headers(),
+
               BlocBuilder<GpaCubit, List<Subject>>(
                 builder: (context, subjects) {
                   return ListView.builder(
                     itemCount: subjects.length,
                     itemBuilder: (context, index) {
                       final subject = subjects[index];
+                      if (subjects.isEmpty) {
+                        return const Center(
+                          child: Text("No sunject informationn added yet"),
+                        );
+                      }
                       return Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: 5.w,
@@ -64,51 +76,50 @@ class GetSubjectInfo extends StatelessWidget {
                   );
                 },
               ),
-              Column(
-                children: [
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      counter++;
-                      customShowDialog(
-                          context,
-                          subjectNameController,
-                          gradeController,
-                          creditValueNameController,
-                          mainColors);
-                    },
-                    child: RegisterButton(
-                      textSize: 25.r,
-                      text: 'Add',
-                      color: mainColors.color1,
-                      fontWeight: FontWeight.w500,
+              SizedBox(
+                height: 10.h,
+              ),
+              // GestureDetector(
+              //   onTap: () {
+              //     counter++;
+              //     customShowDialog(
+              //         context,
+              //         subjectNameController,
+              //         gradeController,
+              //         creditValueNameController,
+              //         mainColors);
+              //   },
+              //   child: RegisterButton(
+              //     textSize: 25.r,
+              //     text: 'Add',
+              //     color: mainColors.color1,
+              //     fontWeight: FontWeight.w500,
+              //   ),
+              // ),
+              SizedBox(
+                height: 10.h,
+              ),
+              BlocBuilder<GpaCubit, List<Subject>>(
+                builder: (context, subjects) {
+                  return Visibility(
+                    visible: subjects.isNotEmpty,
+                    child: GestureDetector(
+                      onTap: () {
+                        double val =
+                            BlocProvider.of<GpaCubit>(context).calculateGPA();
+                        AutoRouter.of(context).push(
+                          ResultPage(ccv: 44, cwgp: 4, gpa: val),
+                        );
+                      },
+                      child: RegisterButton(
+                        textSize: 20.r,
+                        text: 'Submit',
+                        color: mainColors.color1,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  SizedBox(
-                    child: counter <= 0
-                        ? Container()
-                        : GestureDetector(
-                            onTap: () {
-                              double val = BlocProvider.of<GpaCubit>(context)
-                                  .calculateGPA();
-                              AutoRouter.of(context).push(
-                                ResultPage(ccv: 44, cwgp: 4, gpa: val),
-                              );
-                            },
-                            child: RegisterButton(
-                              textSize: 20.r,
-                              text: 'Submit',
-                              color: mainColors.color1,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                  ),
-                ],
+                  );
+                },
               )
             ],
           ),
