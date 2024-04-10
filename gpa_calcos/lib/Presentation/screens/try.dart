@@ -4,6 +4,7 @@ class GetSubjectInfo2 extends StatefulWidget {
   const GetSubjectInfo2({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _GetSubjectInfoState2 createState() => _GetSubjectInfoState2();
 }
 

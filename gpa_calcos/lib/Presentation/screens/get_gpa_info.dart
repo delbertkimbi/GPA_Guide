@@ -39,6 +39,10 @@ class GetSubjectInfo extends StatelessWidget {
                   color: mainColors.color1,
                 ),
               ),
+              SizedBox(
+                height: 10.w,
+              ),
+              const Headers(),
               BlocBuilder<GpaCubit, List<Subject>>(
                 builder: (context, subjects) {
                   return ListView.builder(
@@ -62,10 +66,6 @@ class GetSubjectInfo extends StatelessWidget {
               ),
               Column(
                 children: [
-                  SizedBox(
-                    height: 10.w,
-                  ),
-                  const Headers(),
                   SizedBox(
                     height: 10.h,
                   ),
