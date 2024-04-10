@@ -8,12 +8,7 @@ final class GpaLoading extends GpaState {}
 
 final class GpaLoaded extends GpaState {
   final double subjects;
-
   GpaLoaded({required this.subjects});
-
-
-  
-
 }
 
 final class GpaError extends GpaState {

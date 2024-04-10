@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         AppRouter appRouter = AppRouter();
         return BlocProvider(
+          lazy: false,
           create: (context) => GpaCubit(),
           child: MaterialApp.router(
             routerConfig: appRouter.config(),

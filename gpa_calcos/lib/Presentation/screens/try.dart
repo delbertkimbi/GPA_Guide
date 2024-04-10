@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class GetSubjectInfo2 extends StatefulWidget {
-  const GetSubjectInfo2({Key? key}) : super(key: key);
+  const GetSubjectInfo2({super.key});
 
   @override
   _GetSubjectInfoState2 createState() => _GetSubjectInfoState2();
@@ -18,28 +18,28 @@ class _GetSubjectInfoState2 extends State<GetSubjectInfo2> {
     final result = await showDialog<SubjectInfo>(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Enter Subject Information'),
+        title: const Text('Enter Subject Information'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
               controller: subjectNameController,
-              decoration: InputDecoration(labelText: 'Subject Name'),
+              decoration: const InputDecoration(labelText: 'Subject Name'),
             ),
             TextField(
               controller: gradeController,
-              decoration: InputDecoration(labelText: 'Grade'),
+              decoration: const InputDecoration(labelText: 'Grade'),
             ),
             TextField(
               controller: creditValueController,
-              decoration: InputDecoration(labelText: 'Credit Value'),
+              decoration: const InputDecoration(labelText: 'Credit Value'),
             ),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Cancel'),
+            child: const Text('Cancel'),
           ),
           TextButton(
             onPressed: () {
@@ -67,7 +67,7 @@ class _GetSubjectInfoState2 extends State<GetSubjectInfo2> {
                 Navigator.pop(context, newSubjectInfo);
               }
             },
-            child: Text('Submit'),
+            child: const Text('Submit'),
           ),
         ],
       ),
@@ -82,15 +82,15 @@ class _GetSubjectInfoState2 extends State<GetSubjectInfo2> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Subject Information'),
+        title: const Text('Subject Information'),
       ),
       body: Column(
         children: [
           ElevatedButton(
             onPressed: _addSubjectInfo,
-            child: Text('Add'),
+            child: const Text('Add'),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Expanded(
             child: ListView.builder(
               itemCount: subjectInfoList.length,
