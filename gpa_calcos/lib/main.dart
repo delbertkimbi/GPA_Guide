@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gpa_calcos/Bussiness/calculation/gpa_cubit/gpa_cubit.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.dart';
-
 import 'package:gpa_calcos/firebase_options.dart';
 
 void main() async {

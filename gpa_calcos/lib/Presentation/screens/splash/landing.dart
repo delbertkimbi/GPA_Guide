@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,26 +13,28 @@ class LandingPage extends StatefulWidget {
   State<LandingPage> createState() => _LandingPageState();
 }
 
-
 class _LandingPageState extends State<LandingPage> {
-   @override
+  @override
   void initState() {
-    Future.delayed(
-      const Duration(seconds: 2),
-      () {
-        context.router.replace(const LogIn( )); 
-        //AutoRouter.of(context).push( Log);
-        // Navigator.pushAndRemoveUntil(
-        //     context,
-        //     MaterialPageRoute(
-        //       builder: (context) => const LogIn(),
-        //     ),
-        //     (route) => false);
+    Timer(const Duration(seconds: 2), () {
+      context.router.replace(const LogIn());
+    });
+    // Future.delayed(
+    //   const Duration(seconds: 3),
+    //   () {
 
-      },
-    );
+    //AutoRouter.of(context).push( Log);
+    // Navigator.pushAndRemoveUntil(
+    //     context,
+    //     MaterialPageRoute(
+    //       builder: (context) => const LogIn(),
+    //     ),
+    //     (route) => false);
+    //   },
+    // );
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     Color blueblack = const Color(0xFF010048);
@@ -47,81 +51,83 @@ class _LandingPageState extends State<LandingPage> {
       ),
       child: Scaffold(
           backgroundColor: Colors.transparent,
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Stack(
-                alignment: Alignment.centerRight,
-                children: [
-                  Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.fromLTRB(70.h, 0, 0, 0),
-                        width: 500.w,
-                        height: 627.h,
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage('assets/land.png'),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 400.h,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+          body: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Stack(
+                  alignment: Alignment.centerRight,
+                  children: [
+                    Column(
                       children: [
-                        RichText(
-                          textAlign: TextAlign.center,
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: 'Welcome to \n',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  letterSpacing: 10.0.sp,
-                                  fontSize: 40.sp,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              TextSpan(
-                                text: 'GPA Calcos',
-                                style: TextStyle(
-                                  color: blueblack,
-                                  fontSize: 40.sp,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
                         Container(
-                          alignment: Alignment.center,
-                          padding: EdgeInsets.symmetric(horizontal: 24.r),
-                          child: Center(
-                            child: Text(
-                              'We help you calculate your \nGPA with no stress',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.sp,
-                                fontWeight: FontWeight.w500,
-                              ),
+                          margin: EdgeInsets.fromLTRB(70.h, 0, 0, 0),
+                          width: 500.w,
+                          height: 627.h,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('assets/land.png'),
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ),
                       ],
                     ),
-                  ),
-                ],
-              ),
-            ],
+                    SizedBox(
+                      height: 400.h,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          RichText(
+                            textAlign: TextAlign.center,
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: 'Welcome to \n',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    letterSpacing: 10.0.sp,
+                                    fontSize: 40.sp,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: 'GPA Calcos',
+                                  style: TextStyle(
+                                    color: blueblack,
+                                    fontSize: 40.sp,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Container(
+                            alignment: Alignment.center,
+                            padding: EdgeInsets.symmetric(horizontal: 24.r),
+                            child: Center(
+                              child: Text(
+                                'We help you calculate your \nGPA with no stress',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           )),
     ));
   }

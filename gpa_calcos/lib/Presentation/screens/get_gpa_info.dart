@@ -46,14 +46,15 @@ class GetSubjectInfo extends StatelessWidget {
               SizedBox(
                 height: 20.w,
               ),
-
               BlocBuilder<GpaCubit, List<Subject>>(
                 builder: (context, subjects) {
                   return ListView.builder(
+                    shrinkWrap: true,
                     itemCount: subjects.length,
                     itemBuilder: (context, index) {
                       final subject = subjects[index];
                       if (subjects.isEmpty) {
+                        debugPrint("Hello  1");
                         return const Center(
                           child: Text("No subjects informationn added yet"),
                         );
@@ -78,13 +79,13 @@ class GetSubjectInfo extends StatelessWidget {
               ),
               // GestureDetector(
               //   onTap: () {
-              //     counter++;
               //     customShowDialog(
-              //         context,
-              //         subjectNameController,
-              //         gradeController,
-              //         creditValueNameController,
-              //         mainColors);
+              //       context,
+              //       subjectNameController,
+              //       gradeController,
+              //       creditValueNameController,
+              //       mainColors,
+              //     );
               //   },
               //   child: RegisterButton(
               //     textSize: 25.r,
@@ -132,44 +133,41 @@ class GetSubjectInfo extends StatelessWidget {
       TextEditingController creditValueNameController,
       MainColors mainColors) {
     return showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-              content: Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CustomTextField(
-                      text: 'Subject Name',
-                      controller: subjectNameController,
-                    ),
-                    CustomTextField(text: 'Grade', controller: gradeController),
-                    CustomTextField(
-                        text: 'Credit Value',
-                        controller: creditValueNameController),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                        BlocProvider.of<GpaCubit>(context).addSubject(
-                            subjectNameController.text.trim(),
-                            gradeController.text.trim(),
-                            double.parse(
-                                creditValueNameController.text.trim()));
-                      },
-                      child: RegisterButton(
-                        textSize: 20.r,
-                        text: 'Submit',
-                        color: mainColors.color1,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    )
-                  ],
-                ),
+      context: context,
+      builder: (context) => AlertDialog(
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            CustomTextField(
+              text: 'Subject Name',
+              controller: subjectNameController,
+            ),
+            CustomTextField(text: 'Grade', controller: gradeController),
+            CustomTextField(
+                text: 'Credit Value', controller: creditValueNameController),
+            SizedBox(
+              height: 10.h,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).pop();
+                BlocProvider.of<GpaCubit>(context).addSubject(
+                    subjectNameController.text.trim(),
+                    gradeController.text.trim(),
+                    double.parse(creditValueNameController.text.trim()));
+              },
+              child: RegisterButton(
+                textSize: 20.r,
+                text: 'Submit',
+                color: mainColors.color1,
+                fontWeight: FontWeight.w400,
               ),
-            ));
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
