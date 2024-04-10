@@ -19,19 +19,7 @@ class _LandingPageState extends State<LandingPage> {
     Timer(const Duration(seconds: 2), () {
       context.router.replace(const LogIn());
     });
-    // Future.delayed(
-    //   const Duration(seconds: 3),
-    //   () {
 
-    //AutoRouter.of(context).push( Log);
-    // Navigator.pushAndRemoveUntil(
-    //     context,
-    //     MaterialPageRoute(
-    //       builder: (context) => const LogIn(),
-    //     ),
-    //     (route) => false);
-    //   },
-    // );
     super.initState();
   }
 

@@ -18,15 +18,21 @@ class GetSubjectInfo extends StatelessWidget {
     TextEditingController subjectNameController = TextEditingController();
     TextEditingController gradeController = TextEditingController();
     TextEditingController creditValueNameController = TextEditingController();
-
     MainColors mainColors = MainColors();
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
+          backgroundColor: mainColors.color1,
           onPressed: () {
             customShowDialog(context, subjectNameController, gradeController,
                 creditValueNameController, mainColors);
           },
-          label: const Text("Add Subject")),
+          label: const Text(
+            "Add Subject",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+            ),
+          )),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(10.r),
@@ -34,8 +40,11 @@ class GetSubjectInfo extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SizedBox(
+                height: 30.w,
+              ),
               Text(
-                'Add your courses for the semester and comcinely get your gpa calculated for you.',
+                'Add your courses for the semester and get your gpa calculated for you.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20.sp,
@@ -54,19 +63,49 @@ class GetSubjectInfo extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final subject = subjects[index];
                       if (subjects.isEmpty) {
-                        debugPrint("Hello  1");
-                        return const Center(
-                          child: Text("No subjects informationn added yet"),
+                        return Center(
+                          child: Text(
+                            "No subjects informationn added yet",
+                            style: TextStyle(
+                              color: mainColors.color1,
+                            ),
+                          ),
                         );
                       }
                       return Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: 5.w,
-                          vertical: 10.h,
+                          vertical: 2.h,
                         ),
                         child: Card(
+                          color: mainColors.color2,
                           child: ListTile(
-                            title: Text(subject.name),
+                            title: Text(
+                              subject.name,
+                              style: const TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                            subtitle: Text(
+                              subject.grade,
+                              style: const TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                            trailing: IconButton(
+                              icon: const Icon(
+                                Icons.delete,
+                                color: Colors.white,
+                              ),
+                              onPressed: () {
+                                BlocProvider.of<GpaCubit>(context)
+                                    .deleteSubject(
+                                  int.parse(
+                                    subject.toString(),
+                                  ),
+                                );
+                              },
+                            ),
                           ),
                         ),
                       );
@@ -77,23 +116,6 @@ class GetSubjectInfo extends StatelessWidget {
               SizedBox(
                 height: 10.h,
               ),
-              // GestureDetector(
-              //   onTap: () {
-              //     customShowDialog(
-              //       context,
-              //       subjectNameController,
-              //       gradeController,
-              //       creditValueNameController,
-              //       mainColors,
-              //     );
-              //   },
-              //   child: RegisterButton(
-              //     textSize: 25.r,
-              //     text: 'Add',
-              //     color: mainColors.color1,
-              //     fontWeight: FontWeight.w500,
-              //   ),
-              // ),
               SizedBox(
                 height: 10.h,
               ),
@@ -112,7 +134,7 @@ class GetSubjectInfo extends StatelessWidget {
                       child: RegisterButton(
                         textSize: 20.r,
                         text: 'Submit',
-                        color: mainColors.color1,
+                        color: mainColors.color2,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -127,36 +149,53 @@ class GetSubjectInfo extends StatelessWidget {
   }
 
   Future<dynamic> customShowDialog(
-      BuildContext context,
-      TextEditingController subjectNameController,
-      TextEditingController gradeController,
-      TextEditingController creditValueNameController,
-      MainColors mainColors) {
+    BuildContext context,
+    TextEditingController subjectNameController,
+    TextEditingController gradeController,
+    TextEditingController creditValueNameController,
+    MainColors mainColors,
+  ) {
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
+        backgroundColor: mainColors.color2,
         content: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(
+              height: 15.h,
+            ),
             CustomTextField(
               text: 'Subject Name',
               controller: subjectNameController,
             ),
+            SizedBox(
+              height: 10.h,
+            ),
             CustomTextField(text: 'Grade', controller: gradeController),
+            SizedBox(
+              height: 10.h,
+            ),
             CustomTextField(
                 text: 'Credit Value', controller: creditValueNameController),
             SizedBox(
-              height: 10.h,
+              height: 15.h,
             ),
             GestureDetector(
               onTap: () {
                 Navigator.of(context).pop();
+
+//                 context.router.pop();
                 BlocProvider.of<GpaCubit>(context).addSubject(
                     subjectNameController.text.trim(),
                     gradeController.text.trim(),
                     double.parse(creditValueNameController.text.trim()));
+                // Clear the text fields after adding the subject
+                subjectNameController.clear();
+                gradeController.clear();
+                creditValueNameController.clear();
               },
               child: RegisterButton(
                 textSize: 20.r,
@@ -164,7 +203,10 @@ class GetSubjectInfo extends StatelessWidget {
                 color: mainColors.color1,
                 fontWeight: FontWeight.w400,
               ),
-            )
+            ),
+            SizedBox(
+              height: 15.h,
+            ),
           ],
         ),
       ),

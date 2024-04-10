@@ -5,7 +5,7 @@ part 'gpa_state.dart';
 
 class GpaCubit extends Cubit<List<Subject>> {
   GpaCubit() : super([]);
-    addSubject(String name, String grade, double creditValue) {
+  addSubject(String name, String grade, double creditValue) {
     final subject = Subject(
       name: name,
       grade: grade,
@@ -15,6 +15,13 @@ class GpaCubit extends Cubit<List<Subject>> {
     emit([...state]);
     calculateGPA();
   }
+
+  void deleteSubject(int index) {
+    // emit([...state.sublist(0, index), ...state.sublist(index + 1)]);
+    final newState = List<Subject>.from(state)..removeAt(index);
+    emit(newState);
+  }
+
   double calculateGPA() {
     double totalCredits = 0;
     double totalGradePoints = 0;
@@ -52,6 +59,4 @@ class GpaCubit extends Cubit<List<Subject>> {
         return 0.0;
     }
   }
-
-
 }
