@@ -10,9 +10,14 @@ import 'package:gpa_calcos/Presentation/Custom/files/textfield.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
 
 @RoutePage()
-class GetSubjectInfo extends StatelessWidget {
+class GetSubjectInfo extends StatefulWidget {
   const GetSubjectInfo({super.key});
 
+  @override
+  State<GetSubjectInfo> createState() => _GetSubjectInfoState();
+}
+
+class _GetSubjectInfoState extends State<GetSubjectInfo> {
   @override
   Widget build(BuildContext context) {
     TextEditingController subjectNameController = TextEditingController();
@@ -80,6 +85,7 @@ class GetSubjectInfo extends StatelessWidget {
                         child: Card(
                           color: mainColors.color2,
                           child: ListTile(
+                            hoverColor: mainColors.color1,
                             title: Text(
                               subject.name,
                               style: const TextStyle(
@@ -89,6 +95,7 @@ class GetSubjectInfo extends StatelessWidget {
                             subtitle: Text(
                               subject.grade,
                               style: const TextStyle(
+                                fontSize: 18,
                                 color: Colors.white,
                               ),
                             ),
@@ -98,12 +105,9 @@ class GetSubjectInfo extends StatelessWidget {
                                 color: Colors.white,
                               ),
                               onPressed: () {
-                                BlocProvider.of<GpaCubit>(context)
-                                    .deleteSubject(
-                                  int.parse(
-                                    subject.toString(),
-                                  ),
-                                );
+                                setState(() {
+                                  subjects.remove(subject);
+                                });
                               },
                             ),
                           ),
@@ -125,10 +129,10 @@ class GetSubjectInfo extends StatelessWidget {
                     visible: subjects.isNotEmpty,
                     child: GestureDetector(
                       onTap: () {
-                        double val =
+                        List<double> val =
                             BlocProvider.of<GpaCubit>(context).calculateGPA();
                         AutoRouter.of(context).push(
-                          ResultPage(ccv: 44, cwgp: 4, gpa: val),
+                          ResultPage(ccv: val[2], cwgp: val[1], gpa: val[0]),
                         );
                       },
                       child: RegisterButton(

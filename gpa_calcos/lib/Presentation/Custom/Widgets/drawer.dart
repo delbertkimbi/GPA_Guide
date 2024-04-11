@@ -43,75 +43,76 @@ class CustomDrawer extends StatelessWidget {
           Expanded(
               child: ListView(
             children: [
-              const CustomListTile(
+              CustomListTile(
                   title: "Home",
                   icon: Icon(
-                    Icons.add,
-                    color: Colors.black45,
-                    size: 30,
+                    Icons.home,
+                    color: mainColors.color1,
+                    size: 30.r,
                   )),
-              const CustomListTile(
+              CustomListTile(
                   title: "Calculate Gpa",
                   icon: Icon(
-                    Icons.add,
-                    color: Colors.black45,
-                    size: 30,
+                    Icons.calculate,
+                    color: mainColors.color1,
+                    size: 30.r,
                   )),
-              const CustomListTile(
+              CustomListTile(
                   title: "Calculate Cgpa",
                   icon: Icon(
-                    Icons.add,
-                    color: Colors.black45,
-                    size: 30,
+                    Icons.calculate_outlined,
+                    color: mainColors.color1,
+                    size: 30.r,
                   )),
-              const Divider(
-                height: 50,
+              Divider(
+                height: 50.r,
                 color: Colors.black,
               ),
-              const CustomListTile(
+              CustomListTile(
                 title: "Get Help",
                 icon: Icon(
-                  Icons.add,
-                  color: Colors.black45,
-                  size: 30,
+                  Icons.help,
+                  color: mainColors.color1,
+                  size: 30.r,
                 ),
               ),
-              const CustomListTile(
+              CustomListTile(
                 title: "Learning Resources",
                 icon: Icon(
-                  Icons.add,
-                  color: Colors.black45,
-                  size: 30,
+                  Icons.search_rounded,
+                  color: mainColors.color1,
+                  size: 30.h,
                 ),
               ),
-              const Divider(
-                height: 20,
+              Divider(
+                height: 50.r,
+                color: Colors.black,
               ),
-              const CustomListTile(
+              CustomListTile(
                 title: "Settings",
                 icon: Icon(
-                  Icons.add,
-                  color: Colors.black45,
-                  size: 30,
+                  Icons.settings,
+                  color: mainColors.color1,
+                  size: 30.r,
                 ),
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  const Text(
+                  Text(
                     "LogOut",
                     style: TextStyle(
-                      color: Colors.black,
+                      color: mainColors.color1,
                       fontWeight: FontWeight.bold,
-                      fontSize: 20,
+                      fontSize: 20.r,
                     ),
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.logout,
-                      color: Colors.black45,
+                      color: mainColors.color1,
                       size: 50,
                     ),
                   )
