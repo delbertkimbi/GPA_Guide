@@ -51,7 +51,7 @@ class _ResultPageState extends State<ResultPage> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 40.sp,
-                        color: mainColors.color1,
+                        color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -64,7 +64,7 @@ class _ResultPageState extends State<ResultPage> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 20.sp,
-                      color: mainColors.color1,
+                      color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
