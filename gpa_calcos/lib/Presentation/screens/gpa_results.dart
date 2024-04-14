@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
-import 'package:gpa_calcos/Presentation/Custom/files/gradient.dart';
 
 @RoutePage()
 class ResultPage extends StatefulWidget {
@@ -24,7 +23,7 @@ class _ResultPageState extends State<ResultPage> {
   @override
   Widget build(BuildContext context) {
     MainColors mainColors = MainColors();
-    MainGradient mainGradient = MainGradient();
+
     return SafeArea(
       child: Container(
         width: MediaQuery.of(context).size.width,

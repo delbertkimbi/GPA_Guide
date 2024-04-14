@@ -9,6 +9,7 @@ import 'package:gpa_calcos/Presentation/Custom/files/register_button.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/text.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/textfield.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
+
 @RoutePage()
 class LogIn extends StatelessWidget {
   const LogIn({super.key});
@@ -86,9 +87,8 @@ class LogIn extends StatelessWidget {
                       height: 20.h,
                     ),
                     GestureDetector(
-                      onTap: (){
-                       
-                          context.router.replace(const HomePage( )); 
+                      onTap: () {
+                        context.router.replace(const HomePage());
                       },
                       child: RegisterButton(
                         textSize: 20,
@@ -112,7 +112,7 @@ class LogIn extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                              AutoRouter.of(context).push(const SignUp());
+                            AutoRouter.of(context).push(const SignUp());
                           },
                           child: Text('Sign up',
                               style: TextStyle(
