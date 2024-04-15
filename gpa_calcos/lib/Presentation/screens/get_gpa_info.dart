@@ -32,7 +32,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                 creditValueNameController, mainColors);
           },
           label: const Text(
-            "Add Subject",
+            "Add Course",
             style: TextStyle(
               color: Colors.white,
               fontSize: 16,
