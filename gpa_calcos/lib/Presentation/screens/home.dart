@@ -1,10 +1,14 @@
+import 'dart:ui';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/Widgets/drawer.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/text.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
+import 'package:gpa_calcos/Presentation/screens/get_cgpa_info.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -37,14 +41,7 @@ class _HomePageState extends State<HomePage> {
         ),
         child: Scaffold(
           key: _scaffoldKey, // Assign GlobalKey
-          // drawer: Drawer(
-          //   child: ListView(
-          //     padding: EdgeInsets.zero,
-          //     children: const [
-          //       // ... drawer content (e.g., ListTile widgets)
-          //     ],
-          //   ),
-          // ),
+
           drawer: const CustomDrawer(
             userName: 'Delbert Kimbi',
             userEmail: 'delbertdrums@gmail.com',
@@ -99,7 +96,16 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: 15.h,
                 ),
-                customBox(text: 'CGPA'),
+                GestureDetector(
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const CgpaInfo();
+                      },
+                    ),
+                  ),
+                  child: customBox(text: 'CGPA'),
+                ),
                 SizedBox(
                   height: 15.h,
                 ),

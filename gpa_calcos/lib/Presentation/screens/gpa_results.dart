@@ -40,6 +40,21 @@ class _ResultPageState extends State<ResultPage> {
         ),
         //decoration: mainGradient.gradient(),
         child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: mainColors.color2,
+            leading: IconButton(
+                onPressed: () => Navigator.of(context).pop(),
+                icon: const Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  color: Colors.white,
+                )),
+            title: const Text(
+              'GPA Result',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+          ),
           backgroundColor: Colors.transparent,
           body: Container(
             decoration: BoxDecoration(
@@ -98,13 +113,22 @@ class _ResultPageState extends State<ResultPage> {
                     SizedBox(
                       height: 9.r,
                     ),
-                    Text(
-                      'GPA :${widget.gpa.toStringAsFixed(2)}',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 25.sp,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                    Container(
+                      height: 60.h,
+                      width: 150.h,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: mainColors.color1,
+                      ),
+                      alignment: Alignment.center,
+                      child: Text(
+                        'GPA :${widget.gpa.toStringAsFixed(2)}',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 25.sp,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ],

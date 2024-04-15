@@ -20,6 +20,7 @@ class CustomTextField extends StatelessWidget {
         height: 38.h,
         width: 222.h,
         child: TextField(
+          textAlign: TextAlign.center,
           controller: controller,
           decoration: InputDecoration(
             border: OutlineInputBorder(

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/list_tile.dart';
+import 'package:gpa_calcos/Presentation/screens/get_cgpa_info.dart';
+import 'package:gpa_calcos/Presentation/screens/get_gpa_info.dart';
 
 class CustomDrawer extends StatelessWidget {
   final String userName;
@@ -43,33 +46,44 @@ class CustomDrawer extends StatelessWidget {
           Expanded(
               child: ListView(
             children: [
-              CustomListTile(
-                  title: "Home",
-                  icon: Icon(
-                    Icons.home,
-                    color: mainColors.color1,
-                    size: 30.r,
-                  )),
-              CustomListTile(
-                  title: "Calculate Gpa",
-                  icon: Icon(
-                    Icons.calculate,
-                    color: mainColors.color1,
-                    size: 30.r,
-                  )),
-              CustomListTile(
-                  title: "Calculate Cgpa",
-                  icon: Icon(
-                    Icons.calculate_outlined,
-                    color: mainColors.color1,
-                    size: 30.r,
-                  )),
+              GestureDetector(
+                onTap: () => Navigator.of(context).pop(),
+                child: CustomListTile(
+                    title: "Home",
+                    icon: Icon(
+                      Icons.home,
+                      color: mainColors.color1,
+                      size: 30.r,
+                    )),
+              ),
+              GestureDetector(
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const GetSubjectInfo())),
+                child: CustomListTile(
+                    title: "Calculate Gpa",
+                    icon: Icon(
+                      Icons.calculate,
+                      color: mainColors.color1,
+                      size: 30.r,
+                    )),
+              ),
+              GestureDetector(
+                onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const CgpaInfo())),
+                child: CustomListTile(
+                    title: "Calculate Cgpa",
+                    icon: Icon(
+                      Icons.calculate_outlined,
+                      color: mainColors.color1,
+                      size: 30.r,
+                    )),
+              ),
               Divider(
                 height: 50.r,
                 color: Colors.black,
               ),
               CustomListTile(
-                title: "Get Help",
+                title: "Get Help(AI)",
                 icon: Icon(
                   Icons.help,
                   color: mainColors.color1,
@@ -77,7 +91,7 @@ class CustomDrawer extends StatelessWidget {
                 ),
               ),
               CustomListTile(
-                title: "Learning Resources",
+                title: "Learning Resources \n(Get better grades)",
                 icon: Icon(
                   Icons.search_rounded,
                   color: mainColors.color1,

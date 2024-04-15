@@ -8,6 +8,7 @@ import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/register_button.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/textfield.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
+import 'package:gpa_calcos/Presentation/screens/home.dart';
 
 @RoutePage()
 class GetSubjectInfo extends StatefulWidget {
@@ -38,6 +39,15 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
               fontSize: 16,
             ),
           )),
+      appBar: AppBar(
+        // backgroundColor: mainColors.color2,
+        leading: IconButton(
+            onPressed: () => Navigator.of(context).pop(),
+            icon: Icon(
+              Icons.arrow_back_ios_new_rounded,
+              color: mainColors.color1,
+            )),
+      ),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(10.r),
@@ -46,7 +56,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                height: 30.w,
+                height: 15.w,
               ),
               Text(
                 'Add your courses for the semester and get your gpa calculated for you.',
