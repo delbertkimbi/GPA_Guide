@@ -103,7 +103,26 @@ class _CgpaInfoState extends State<CgpaInfo> {
                     ),
                   ),
                 ),
-                generateTextFields(size: numberOfSemesters),
+                Builder(builder: (context) {
+                  for (int i = 0; i < numberOfSemesters; i++) {
+                    _gpaControllers.add(TextEditingController());
+                  }
+                  return ListView.builder(
+                    itemCount: numberOfSemesters,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return Column(children: [
+                        CustomTextField(
+                          text: ' Gpa for Semester ${index + 1}',
+                          controller: _gpaControllers[index],
+                        ),
+                        SizedBox(
+                          height: 7.h,
+                        ),
+                      ]);
+                    },
+                  );
+                }),
                 SizedBox(
                   height: 7.h,
                 ),

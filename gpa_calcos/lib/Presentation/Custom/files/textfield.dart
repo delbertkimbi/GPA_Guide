@@ -19,9 +19,11 @@ class CustomTextField extends StatelessWidget {
       child: SizedBox(
         height: 38.h,
         width: 222.h,
+        
         child: TextField(
           textAlign: TextAlign.center,
           controller: controller,
+          keyboardType: TextInputType.number,
           decoration: InputDecoration(
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20.h),
