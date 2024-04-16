@@ -30,7 +30,7 @@ class _ChatAIState extends State<ChatAI> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          "Gemini Chat",
+          "Calcos Gemini Chat",
         ),
       ),
       body: _buildUI(),
