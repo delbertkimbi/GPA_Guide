@@ -10,7 +10,7 @@ import 'package:gpa_calcos/Presentation/Routes/app_router.dart';
 import 'package:gpa_calcos/firebase_options.dart';
 
 void main() async {
-    Gemini.init(apiKey: GEMINI_API_KEY);
+  Gemini.init(apiKey: GEMINI_API_KEY);
   runApp(const MyApp());
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(

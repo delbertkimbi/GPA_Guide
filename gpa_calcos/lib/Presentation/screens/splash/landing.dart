@@ -1,3 +1,4 @@
+import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -14,21 +15,21 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-  // @override
-  // void initState() {
-  //   Timer(const Duration(seconds: 2), () {
-  //     context.router.replace(const LogIn());
-  //   });
+  @override
+  void initState() {
+    Timer(const Duration(seconds: 2), () {
+      context.router.replace(const LogIn());
+    });
 
-  //   super.initState();
-  // }
+    super.initState();
+  }
 
-  // @override
-  // void dispose() {
-  //   context.router.replace(const LogIn());
-  // Cancel any timers before the widget is disposed of
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    context.router.replace(const LogIn());
+    //Cancel any timers before the widget is disposed of
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -121,16 +122,6 @@ class _LandingPageState extends State<LandingPage> {
                     ),
                   ],
                 ),
-                TextButton(
-                    onPressed: () => context.router.replace(const LogIn()),
-                    child: Text(
-                      "Start...",
-                      style: TextStyle(
-                        color: mainColors.color1,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ))
               ],
             ),
           )),
