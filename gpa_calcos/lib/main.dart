@@ -11,7 +11,9 @@ import 'package:gpa_calcos/firebase_options.dart';
 
 void main() async {
   Gemini.init(apiKey: GEMINI_API_KEY);
-  runApp(const MyApp());
+  runApp(MultiBlocProvider(providers: [
+    BlocProvider(create: (context) => GpaCubit()),
+  ], child:  MyApp()));
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -19,7 +21,9 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+   MyApp({super.key});
+  final   AppRouter appRouter = AppRouter();
+
 
   @override
   Widget build(BuildContext context) {
@@ -29,22 +33,17 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        AppRouter appRouter = AppRouter();
-        return BlocProvider(
-          lazy: false,
-          create: (context) => GpaCubit(),
-          child: MaterialApp.router(
-            routerConfig: appRouter.config(),
-            debugShowCheckedModeBanner: false,
-            title: 'Flutter Demo',
-            theme: ThemeData(
-              textTheme: GoogleFonts.oswaldTextTheme(textTheme).copyWith(
-                bodyMedium: GoogleFonts.lato(textStyle: textTheme.bodyMedium),
-              ),
-              colorScheme:
-                  ColorScheme.fromSeed(seedColor: const Color(0xFF5E8D9B)),
-              useMaterial3: true,
+        return MaterialApp.router(
+          routerConfig: appRouter.config(),
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            textTheme: GoogleFonts.oswaldTextTheme(textTheme).copyWith(
+              bodyMedium: GoogleFonts.lato(textStyle: textTheme.bodyMedium),
             ),
+            colorScheme:
+                ColorScheme.fromSeed(seedColor: const Color(0xFF5E8D9B)),
+            useMaterial3: true,
           ),
         );
       },

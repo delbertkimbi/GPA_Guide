@@ -18,7 +18,7 @@ class CustomTextField extends StatelessWidget {
       child: SizedBox(
         height: 38.h,
         width: 222.h,
-        child: TextField(
+        child: TextFormField(
           enabled: true,
           textAlign: TextAlign.center,
           controller: controller,

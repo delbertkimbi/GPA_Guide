@@ -14,9 +14,10 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
+  late Timer _timer;
   @override
   void initState() {
-    Timer(const Duration(seconds: 2), () {
+    _timer = Timer(const Duration(seconds: 2), () {
       context.router.replace(const LogIn());
     });
 
@@ -25,8 +26,10 @@ class _LandingPageState extends State<LandingPage> {
 
   @override
   void dispose() {
-    context.router.replace(const LogIn());
+    // context.router.replace(const LogIn());
+
     //Cancel any timers before the widget is disposed of
+    _timer.cancel();
     super.dispose();
   }
 
