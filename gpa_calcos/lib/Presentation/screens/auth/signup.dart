@@ -18,7 +18,7 @@ class SignUp extends StatelessWidget {
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
     TextEditingController userNameController = TextEditingController();
-    MainColors mainColors = MainColors();
+  
 
     CustomTextStyles text1 = CustomTextStyles();
     // Use dependency injection to calll colors.color
@@ -113,7 +113,7 @@ class SignUp extends StatelessWidget {
                       child: RegisterButton(
                         textSize: 20,
                         text: 'SignUp',
-                        color: mainColors.color1,
+                        color: MainColors.color1,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -136,7 +136,7 @@ class SignUp extends StatelessWidget {
                           },
                           child: Text('Sign In',
                               style: TextStyle(
-                                color: mainColors.color1,
+                                color: MainColors.color1,
                                 fontWeight: FontWeight.normal,
                                 fontSize: 13.sp,
                               )),

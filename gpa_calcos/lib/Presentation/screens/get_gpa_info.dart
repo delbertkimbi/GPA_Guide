@@ -27,7 +27,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
     MainColors mainColors = MainColors();
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
-          backgroundColor: mainColors.color1,
+          backgroundColor: MainColors.color1,
           onPressed: () {
             customShowDialog(context, subjectNameController, gradeController,
                 creditValueNameController, mainColors);
@@ -45,7 +45,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
             onPressed: () => Navigator.of(context).pop(),
             icon: Icon(
               Icons.arrow_back_ios_new_rounded,
-              color: mainColors.color1,
+              color: MainColors.color1,
             )),
       ),
       body: SafeArea(
@@ -64,7 +64,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                 style: TextStyle(
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w600,
-                  color: mainColors.color1,
+                  color: MainColors.color1,
                 ),
               ),
               SizedBox(
@@ -82,7 +82,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                           child: Text(
                             "No subjects informationn added yet",
                             style: TextStyle(
-                              color: mainColors.color1,
+                              color: MainColors.color1,
                             ),
                           ),
                         );
@@ -93,9 +93,9 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                           vertical: 2.h,
                         ),
                         child: Card(
-                          color: mainColors.color2,
+                          color: MainColors.color2,
                           child: ListTile(
-                            hoverColor: mainColors.color1,
+                            hoverColor: MainColors.color1,
                             title: Text(
                               subject.name,
                               style: const TextStyle(
@@ -148,7 +148,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                       child: RegisterButton(
                         textSize: 20.r,
                         text: 'Submit',
-                        color: mainColors.color2,
+                        color: MainColors.color2,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -172,7 +172,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        backgroundColor: mainColors.color2,
+        backgroundColor: MainColors.color2,
         content: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -214,7 +214,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
               child: RegisterButton(
                 textSize: 20.r,
                 text: 'Submit',
-                color: mainColors.color1,
+                color: MainColors.color1,
                 fontWeight: FontWeight.w400,
               ),
             ),

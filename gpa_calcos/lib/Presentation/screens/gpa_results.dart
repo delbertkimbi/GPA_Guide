@@ -22,7 +22,7 @@ class ResultPage extends StatefulWidget {
 class _ResultPageState extends State<ResultPage> {
   @override
   Widget build(BuildContext context) {
-    MainColors mainColors = MainColors();
+  
 
     return SafeArea(
       child: Container(
@@ -41,7 +41,7 @@ class _ResultPageState extends State<ResultPage> {
         //decoration: mainGradient.gradient(),
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: mainColors.color2,
+            backgroundColor: MainColors.color2,
             leading: IconButton(
                 onPressed: () => Navigator.of(context).pop(),
                 icon: const Icon(
@@ -58,7 +58,7 @@ class _ResultPageState extends State<ResultPage> {
           backgroundColor: Colors.transparent,
           body: Container(
             decoration: BoxDecoration(
-              color: mainColors.color3,
+              color: MainColors.color3,
             ),
             child: Center(
               child: Container(
@@ -68,7 +68,7 @@ class _ResultPageState extends State<ResultPage> {
                   horizontal: 30.r,
                 ),
                 decoration: BoxDecoration(
-                  color: mainColors.color2,
+                  color: MainColors.color2,
                   borderRadius: BorderRadius.circular(30.r),
                 ),
                 child: Column(
@@ -118,7 +118,7 @@ class _ResultPageState extends State<ResultPage> {
                       width: 150.h,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: mainColors.color1,
+                        color: MainColors.color1,
                       ),
                       alignment: Alignment.center,
                       child: Text(

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gpa_calcos/Presentation/screens/home.dart';
+import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
+
 
 class CgpaReultsPage extends StatefulWidget {
   final double cgpa;
@@ -19,7 +20,7 @@ class _CgpaReultsPageState extends State<CgpaReultsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: mainColors.color2,
+        backgroundColor: MainColors.color2,
         leading: IconButton(
             onPressed: () => Navigator.of(context).pop(),
             icon: const Icon(
@@ -38,7 +39,7 @@ class _CgpaReultsPageState extends State<CgpaReultsPage> {
           height: 300.h,
           width: 300.w,
           decoration: BoxDecoration(
-            color: mainColors.color2,
+            color: MainColors.color2,
             borderRadius: BorderRadius.circular(10.h),
           ),
           child: Column(
@@ -57,7 +58,7 @@ class _CgpaReultsPageState extends State<CgpaReultsPage> {
                 width: 100.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: mainColors.color1,
+                  color: MainColors.color1,
                 ),
                 alignment: Alignment.center,
                 child: Text(

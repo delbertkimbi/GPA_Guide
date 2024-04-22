@@ -57,7 +57,7 @@ abstract class $AppRouter extends _i9.RootStackRouter {
     LogIn.name: (routeData) {
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i6.LogIn(),
+        child:  _i6.LogIn(),
       );
     },
     ResultPage.name: (routeData) {

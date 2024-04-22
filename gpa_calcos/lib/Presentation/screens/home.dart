@@ -16,7 +16,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-MainColors mainColors = MainColors();
+
 
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -170,7 +170,7 @@ class _HomePageState extends State<HomePage> {
           Text(
             text,
             style: TextStyle(
-              color: mainColors.color2,
+              color: MainColors.color2,
               fontSize: 30,
               fontWeight: FontWeight.w600,
             ),
@@ -182,7 +182,7 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(
               Icons.arrow_forward_ios,
               size: 35.r,
-              color: mainColors.color2,
+              color: MainColors.color2,
             ),
             onPressed: () {},
           ),

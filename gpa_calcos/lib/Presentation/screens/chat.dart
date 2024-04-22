@@ -3,8 +3,7 @@ import 'dart:typed_data';
 import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
-
-import 'package:gpa_calcos/Presentation/screens/home.dart';
+import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ChatAI extends StatefulWidget {
@@ -34,13 +33,14 @@ class _ChatAIState extends State<ChatAI> {
             onPressed: () => Navigator.of(context).pop(),
             icon: Icon(
               Icons.arrow_back_ios_new_rounded,
-              color: mainColors.color1,
+              color: MainColors.color1
+              ,
             )),
         centerTitle: true,
         title: Text(
           "Calcos Gemini Chat",
           style: TextStyle(
-            color: mainColors.color1,
+            color: MainColors.color1,
           ),
         ),
       ),

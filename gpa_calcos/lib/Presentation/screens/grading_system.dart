@@ -39,7 +39,7 @@ class _GradingSystemState extends State<GradingSystem> {
 
   @override
   Widget build(BuildContext context) {
-    MainColors mainColors = MainColors();
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -47,7 +47,7 @@ class _GradingSystemState extends State<GradingSystem> {
           leading: const PushOrPop(
             screenName: HomePage(),
           ),
-          backgroundColor: mainColors.color2,
+          backgroundColor: MainColors.color2,
           title: Text(
             'Grading System',
             textAlign: TextAlign.center,
@@ -63,13 +63,13 @@ class _GradingSystemState extends State<GradingSystem> {
                 padding: EdgeInsets.fromLTRB(20.r, 30.r, 20.r, 20.r),
                 child: Table(
                   border: TableBorder.all(
-                    color: mainColors.color2,
+                    color: MainColors.color2,
                   ),
                   defaultVerticalAlignment: TableCellVerticalAlignment.middle,
                   children: [
                     TableRow(
                       decoration: BoxDecoration(
-                        color: mainColors.color2,
+                        color: MainColors.color2,
                         borderRadius: BorderRadius.circular(10.r),
                       ),
                       children: [
@@ -154,7 +154,7 @@ class _GradingSystemState extends State<GradingSystem> {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20.sp,
-                      color: mainColors.color1,
+                      color: MainColors.color1,
                     ),
                     children: [
                       const TextSpan(
@@ -180,7 +180,7 @@ class _GradingSystemState extends State<GradingSystem> {
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     elevation: 0,
-                    backgroundColor: mainColors.color2,
+                    backgroundColor: MainColors.color2,
                   ),
                   child: Text(
                     "Customize contents",

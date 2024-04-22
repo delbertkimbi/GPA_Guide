@@ -14,7 +14,6 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MainColors mainColors = MainColors();
     return Center(
       child: SizedBox(
         height: 38.h,
@@ -27,7 +26,7 @@ class CustomTextField extends StatelessWidget {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20.h),
               borderSide: BorderSide(
-                color: mainColors.color1,
+                color: MainColors.color1,
               ),
             ),
             fillColor: Colors.white,
@@ -35,7 +34,7 @@ class CustomTextField extends StatelessWidget {
             contentPadding: EdgeInsets.fromLTRB(20.w, 10.h, 20.w, 10.h),
             hintText: text,
             hintStyle: TextStyle(
-              color: mainColors.hintTextColor,
+              color: MainColors.hintTextColor,
             ),
           ),
         ),

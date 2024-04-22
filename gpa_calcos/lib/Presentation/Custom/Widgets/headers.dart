@@ -7,7 +7,7 @@ class Headers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MainColors mainColors = MainColors();
+  
     TextStyle tableText1 = TextStyle(
       color: Colors.white,
       fontSize: 20.sp,
@@ -17,13 +17,13 @@ class Headers extends StatelessWidget {
     return SizedBox(
         child: Table(
             border: TableBorder.all(
-              color: mainColors.color2,
+              color: MainColors.color2,
             ),
             defaultVerticalAlignment: TableCellVerticalAlignment.middle,
             children: [
           TableRow(
             decoration: BoxDecoration(
-              color: mainColors.color1,
+              color: MainColors.color1,
               borderRadius: BorderRadius.circular(10.r),
             ),
             children: [

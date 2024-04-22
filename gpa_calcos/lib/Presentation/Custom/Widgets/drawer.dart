@@ -19,19 +19,18 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MainColors mainColors = MainColors();
     return Drawer(
       child: Column(
         children: [
           UserAccountsDrawerHeader(
             decoration: BoxDecoration(
-              color: mainColors.color2,
+              color: MainColors.color2,
             ),
             accountName: Text(userName),
             accountEmail: Text(userEmail),
             currentAccountPicture: CircleAvatar(
               radius: 10,
-              backgroundColor: mainColors.color1,
+              backgroundColor: MainColors.color1,
               child: ClipOval(
                 child: Text(
                   userName[0],
@@ -53,7 +52,7 @@ class CustomDrawer extends StatelessWidget {
                     title: "Home",
                     icon: Icon(
                       Icons.home,
-                      color: mainColors.color1,
+                      color: MainColors.color1,
                       size: 30.r,
                     )),
               ),
@@ -64,7 +63,7 @@ class CustomDrawer extends StatelessWidget {
                     title: "Calculate Gpa",
                     icon: Icon(
                       Icons.calculate,
-                      color: mainColors.color1,
+                      color: MainColors.color1,
                       size: 30.r,
                     )),
               ),
@@ -75,7 +74,7 @@ class CustomDrawer extends StatelessWidget {
                     title: "Calculate Cgpa",
                     icon: Icon(
                       Icons.calculate_outlined,
-                      color: mainColors.color1,
+                      color: MainColors.color1,
                       size: 30.r,
                     )),
               ),
@@ -90,7 +89,7 @@ class CustomDrawer extends StatelessWidget {
                   title: "Get Help(AI)",
                   icon: Icon(
                     Icons.help,
-                    color: mainColors.color1,
+                    color: MainColors.color1,
                     size: 30.r,
                   ),
                 ),
@@ -99,7 +98,7 @@ class CustomDrawer extends StatelessWidget {
                 title: "Learning Resources \n(Get better grades)",
                 icon: Icon(
                   Icons.search_rounded,
-                  color: mainColors.color1,
+                  color: MainColors.color1,
                   size: 30.h,
                 ),
               ),
@@ -111,7 +110,7 @@ class CustomDrawer extends StatelessWidget {
                 title: "Settings",
                 icon: Icon(
                   Icons.settings,
-                  color: mainColors.color1,
+                  color: MainColors.color1,
                   size: 30.r,
                 ),
               ),
@@ -122,7 +121,7 @@ class CustomDrawer extends StatelessWidget {
                   Text(
                     "LogOut",
                     style: TextStyle(
-                      color: mainColors.color1,
+                      color: MainColors.color1,
                       fontWeight: FontWeight.bold,
                       fontSize: 20.r,
                     ),
@@ -131,7 +130,7 @@ class CustomDrawer extends StatelessWidget {
                     onPressed: () {},
                     icon: Icon(
                       Icons.logout,
-                      color: mainColors.color1,
+                      color: MainColors.color1,
                       size: 50,
                     ),
                   )

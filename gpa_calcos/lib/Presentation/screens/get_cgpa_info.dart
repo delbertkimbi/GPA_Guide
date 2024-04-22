@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 
 import 'package:gpa_calcos/Presentation/Custom/files/register_button.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/textfield.dart';
 import 'package:gpa_calcos/Presentation/screens/cgpa_results.dart';
-import 'package:gpa_calcos/Presentation/screens/home.dart';
 
 // Assuming ResultPage exists
 @RoutePage()
@@ -139,7 +139,7 @@ class _CgpaInfoState extends State<CgpaInfo> {
                     child: RegisterButton(
                       textSize: 20,
                       text: 'Submit',
-                      color: mainColors.color1,
+                      color: MainColors.color1,
                       fontWeight: FontWeight.w400,
                     )),
               ],

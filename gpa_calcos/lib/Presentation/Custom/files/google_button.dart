@@ -21,7 +21,6 @@ class MainButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MainColors mainColors = MainColors();
     return Container(
       height: 35.h,
       width: 222.h,
@@ -37,7 +36,7 @@ class MainButton extends StatelessWidget {
             Text(
               text,
               style: TextStyle(
-                color: mainColors.color1,
+                color: MainColors.color1,
                 fontSize: textSize.sp,
                 fontWeight: fontWeight,
               ),

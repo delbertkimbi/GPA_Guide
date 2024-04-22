@@ -12,14 +12,12 @@ import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
 
 @RoutePage()
 class LogIn extends StatelessWidget {
-  const LogIn({super.key});
+  LogIn({super.key});
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    MainColors mainColors = MainColors();
-
     CustomTextStyles text1 = CustomTextStyles();
     // Use dependency injection to calll colors.color
     Color mainColor = const Color(0xff3D7282);
@@ -93,7 +91,7 @@ class LogIn extends StatelessWidget {
                       child: RegisterButton(
                         textSize: 20,
                         text: 'LogIn',
-                        color: mainColors.color1,
+                        color: MainColors.color1,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -116,7 +114,7 @@ class LogIn extends StatelessWidget {
                           },
                           child: Text('Sign up',
                               style: TextStyle(
-                                color: mainColors.color1,
+                                color: MainColors.color1,
                                 fontWeight: FontWeight.normal,
                                 fontSize: 13.sp,
                               )),
