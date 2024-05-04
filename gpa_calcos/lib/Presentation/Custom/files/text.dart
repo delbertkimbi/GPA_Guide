@@ -7,12 +7,10 @@ class CustomTextStyles {
     fontWeight: FontWeight.bold,
     fontSize: 30.sp,
     color: const Color(0xff010048),
-    fontFamily: 'Poppins',
   );
   TextStyle header2 = TextStyle(
     fontWeight: FontWeight.w500,
     fontSize: 20.sp,
     color: const Color(0xff010048),
-    fontFamily: 'Poppins',
   );
 }

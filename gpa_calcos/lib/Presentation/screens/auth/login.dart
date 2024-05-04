@@ -67,7 +67,7 @@ class LogIn extends StatelessWidget {
                     MainButton(
                       imagePath: 'assets/google.png',
                       textSize: 18,
-                      text: "Google",
+                      text: "  Google",
                       color: Colors.white,
                       fontWeight: FontWeight.normal,
                     ),
@@ -89,8 +89,8 @@ class LogIn extends StatelessWidget {
                         context.router.replace(const HomePage());
                       },
                       child: RegisterButton(
-                        textSize: 20,
-                        text: 'LogIn',
+                        textSize: 20.sp,
+                        text: 'Log In',
                         color: MainColors.color1,
                         fontWeight: FontWeight.bold,
                       ),

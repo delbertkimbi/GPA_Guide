@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/Widgets/drawer.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
@@ -15,8 +14,6 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
-
-
 
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -39,13 +36,12 @@ class _HomePageState extends State<HomePage> {
         ),
         child: Scaffold(
           key: _scaffoldKey, // Assign GlobalKey
-
           drawer: const CustomDrawer(
             userName: 'Delbert Kimbi',
             userEmail: 'delbertdrums@gmail.com',
           ),
           appBar: AppBar(
-            toolbarHeight: 50.h,
+            toolbarHeight: 80.h,
             leading: IconButton(
               icon: Icon(
                 Icons.menu,
@@ -71,28 +67,28 @@ class _HomePageState extends State<HomePage> {
               // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 10.h,
+                  height: 25.h,
                 ),
-                const Text(
-                  'Let\'s help you \ncalculate your',
+                Text(
+                  'Let\'s help you calculate your',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 30,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
                 SizedBox(
-                  height: 15.h,
+                  height: 25.h,
                 ),
                 GestureDetector(
                   onTap: () {
                     AutoRouter.of(context).push(const GetSubjectInfo());
                   },
-                  child: customBox(text: 'GPA  '),
+                  child: customBox(text: 'GPA  ', page: const GetSubjectInfo()),
                 ),
                 SizedBox(
-                  height: 15.h,
+                  height: 25.h,
                 ),
                 GestureDetector(
                   onTap: () => Navigator.of(context).push(
@@ -102,10 +98,10 @@ class _HomePageState extends State<HomePage> {
                       },
                     ),
                   ),
-                  child: customBox(text: 'CGPA'),
+                  child: customBox(text: 'CGPA', page: const CgpaInfo()),
                 ),
                 SizedBox(
-                  height: 15.h,
+                  height: 25.h,
                 ),
                 GestureDetector(
                   onTap: () {
@@ -131,9 +127,10 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+                SizedBox(height: 50.h,),
                 Container(
                   height: 354.h,
-                  width: 400.h,
+                 // width: 400.h,
                   alignment: Alignment.center,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
@@ -150,7 +147,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Container customBox({required String text}) {
+  Container customBox({required String text, required final page}) {
     return Container(
       height: 62.h,
       width: 298.h,
@@ -184,7 +181,7 @@ class _HomePageState extends State<HomePage> {
               size: 35.r,
               color: MainColors.color2,
             ),
-            onPressed: () {},
+            onPressed: () => AutoRouter.of(context).push(page),
           ),
         ],
       ),

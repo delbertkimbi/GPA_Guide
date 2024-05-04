@@ -78,7 +78,7 @@ class SignUp extends StatelessWidget {
                       style: text1.header2,
                     ),
                     CustomTextField(
-                      text: 'user_name',
+                      text: 'user name',
                       controller: userNameController,
                     ),
                     SizedBox(
@@ -99,7 +99,7 @@ class SignUp extends StatelessWidget {
                       height: 8.h,
                     ),
                     CustomTextField(
-                      text: 'confirm_password',
+                      text: 'confirm password',
                       controller: passwordController,
                     ),
                     SizedBox(

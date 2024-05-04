@@ -26,7 +26,7 @@ class MainButton extends StatelessWidget {
       width: 222.h,
       decoration: BoxDecoration(
         color: color,
-        borderRadius: const BorderRadius.all(Radius.circular(20)),
+        borderRadius: BorderRadius.all(Radius.circular(14.r)),
       ),
       child: Center(
         child: Row(

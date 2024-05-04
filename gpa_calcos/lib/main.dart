@@ -13,7 +13,7 @@ void main() async {
   Gemini.init(apiKey: GEMINI_API_KEY);
   runApp(MultiBlocProvider(providers: [
     BlocProvider(create: (context) => GpaCubit()),
-  ], child:  MyApp()));
+  ], child: MyApp()));
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -21,9 +21,8 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-   MyApp({super.key});
-  final   AppRouter appRouter = AppRouter();
-
+  MyApp({super.key});
+  final AppRouter appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +37,8 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: ThemeData(
-            textTheme: GoogleFonts.oswaldTextTheme(textTheme).copyWith(
-              bodyMedium: GoogleFonts.lato(textStyle: textTheme.bodyMedium),
+            textTheme: GoogleFonts.poppinsTextTheme(textTheme).copyWith(
+              bodyMedium: GoogleFonts.poppins(textStyle: textTheme.bodyMedium),
             ),
             colorScheme:
                 ColorScheme.fromSeed(seedColor: const Color(0xFF5E8D9B)),

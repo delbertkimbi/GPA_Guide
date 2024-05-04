@@ -24,7 +24,7 @@ class CustomTextField extends StatelessWidget {
           controller: controller,
           decoration: InputDecoration(
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20.h),
+              borderRadius: BorderRadius.circular(14.h),
               borderSide: BorderSide(
                 color: MainColors.color1,
               ),
@@ -35,6 +35,8 @@ class CustomTextField extends StatelessWidget {
             hintText: text,
             hintStyle: TextStyle(
               color: MainColors.hintTextColor,
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w300,
             ),
           ),
         ),

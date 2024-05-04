@@ -113,7 +113,7 @@ class _CgpaInfoState extends State<CgpaInfo> {
                     itemBuilder: (context, index) {
                       return Column(children: [
                         CustomTextField(
-                          text: ' Gpa for Semester ${index + 1}',
+                          text: ' gpa for Semester ${index + 1}',
                           controller: _gpaControllers[index],
                         ),
                         SizedBox(
@@ -128,14 +128,30 @@ class _CgpaInfoState extends State<CgpaInfo> {
                 ),
                 GestureDetector(
                     onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => CgpaReultsPage(
-                            cgpa: _calCulateCgpa(),
+                      if (_calCulateCgpa().isFinite) {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => CgpaReultsPage(
+                              cgpa: _calCulateCgpa(),
+                            ),
                           ),
-                        ),
-                      );
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              "Please fill in all the fields",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        );
+                      }
                     },
+
                     child: RegisterButton(
                       textSize: 20,
                       text: 'Submit',

@@ -113,8 +113,8 @@ class _LandingPageState extends State<LandingPage> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 20.sp,
-                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w400,
                                 ),
                               ),
                             ),
