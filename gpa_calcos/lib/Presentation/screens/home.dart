@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
             userEmail: 'delbertdrums@gmail.com',
           ),
           appBar: AppBar(
-            toolbarHeight: 80.h,
+            toolbarHeight: 90.h,
             leading: IconButton(
               icon: Icon(
                 Icons.menu,
@@ -63,24 +63,11 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Colors.transparent,
           body: Center(
             child: ListView(
-              // mainAxisAlignment: MainAxisAlignment.start,
-              // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 25.h,
+                  height: 30.h,
                 ),
-                Text(
-                  'Let\'s help you calculate your',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                SizedBox(
-                  height: 25.h,
-                ),
+             
                 GestureDetector(
                   onTap: () {
                     AutoRouter.of(context).push(const GetSubjectInfo());
@@ -88,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                   child: customBox(text: 'GPA  ', page: const GetSubjectInfo()),
                 ),
                 SizedBox(
-                  height: 25.h,
+                  height: 20.h,
                 ),
                 GestureDetector(
                   onTap: () => Navigator.of(context).push(
@@ -101,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                   child: customBox(text: 'CGPA', page: const CgpaInfo()),
                 ),
                 SizedBox(
-                  height: 25.h,
+                  height: 20.h,
                 ),
                 GestureDetector(
                   onTap: () {
@@ -127,10 +114,12 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 50.h,),
+                SizedBox(
+                  height: 10.h,
+                ),
                 Container(
-                  height: 354.h,
-                 // width: 400.h,
+                  height: 420.r,
+                  //width: 400.r,
                   alignment: Alignment.center,
                   decoration: const BoxDecoration(
                     image: DecorationImage(

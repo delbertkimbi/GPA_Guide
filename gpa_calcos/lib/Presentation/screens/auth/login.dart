@@ -46,7 +46,7 @@ class LogIn extends StatelessWidget {
                 margin: EdgeInsets.symmetric(horizontal: 44.w, vertical: 123.h),
                 decoration: BoxDecoration(
                   color: mainColor,
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(20.r),
                 ),
                 child: Column(
                   children: [

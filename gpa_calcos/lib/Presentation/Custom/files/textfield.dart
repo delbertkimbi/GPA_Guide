@@ -34,7 +34,7 @@ class CustomTextField extends StatelessWidget {
             contentPadding: EdgeInsets.fromLTRB(20.w, 10.h, 20.w, 10.h),
             hintText: text,
             hintStyle: TextStyle(
-              color: MainColors.hintTextColor,
+              color: MainColors.color1,
               fontSize: 16.sp,
               fontWeight: FontWeight.w300,
             ),

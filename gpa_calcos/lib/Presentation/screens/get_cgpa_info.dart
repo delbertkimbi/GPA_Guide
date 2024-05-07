@@ -50,33 +50,43 @@ class _CgpaInfoState extends State<CgpaInfo> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () => Navigator.of(context).pop(),
+            icon: Icon(
+              Icons.arrow_back_ios_new_rounded,
+              color: MainColors.color1,
+              size: 25.h,
+            ),
+          ),
+          centerTitle: true,
+          title: Text(
+            'Calculate CGPA',
+            style: TextStyle(
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w500,
+                color: MainColors.color1),
+          ),
+        ),
         body: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: EdgeInsets.all(10.0.r),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Text(
-                    "Enter the number of subjects you registered",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                SizedBox(
+                  height: 20.h,
                 ),
                 TextField(
                   decoration: InputDecoration(
-                      label: const Text(
-                        "number of Semesters",
+                      label: Text(
+                        "Number of Semesters",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 18,
+                          fontSize: 18.sp,
                         ),
                       ),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(10.r),
                       )),
                   controller: subjectNumberController,
                   keyboardType: TextInputType.number,
@@ -95,12 +105,12 @@ class _CgpaInfoState extends State<CgpaInfo> {
                 Padding(
                   padding: EdgeInsets.all(16.0.h),
                   child: Text(
-                    "Fill in the spaces with the correct GPAs",
+                    "Fill in the spaces with the correct GPA's",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.normal,
+                        color: MainColors.color1),
                   ),
                 ),
                 Builder(builder: (context) {
@@ -151,7 +161,6 @@ class _CgpaInfoState extends State<CgpaInfo> {
                         );
                       }
                     },
-
                     child: RegisterButton(
                       textSize: 20,
                       text: 'Submit',

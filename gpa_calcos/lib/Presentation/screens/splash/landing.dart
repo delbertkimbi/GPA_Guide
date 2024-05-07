@@ -53,76 +53,78 @@ class _LandingPageState extends State<LandingPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Stack(
-                  alignment: Alignment.centerRight,
-                  children: [
-                    Column(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.fromLTRB(70.h, 0, 0, 0),
-                          width: 500.w,
-                          height: 627.h,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('assets/land.png'),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 400.h,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                Center(
+                  child: Stack(
+                    alignment: Alignment.centerRight,
+                    children: [
+                      Column(
                         children: [
-                          RichText(
-                            textAlign: TextAlign.center,
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: 'Welcome to \n',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    letterSpacing: 10.0.sp,
-                                    fontSize: 40.sp,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: 'GPA Calcos',
-                                  style: TextStyle(
-                                    color: blueblack,
-                                    fontSize: 40.sp,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10.h,
-                          ),
                           Container(
-                            alignment: Alignment.center,
-                            padding: EdgeInsets.symmetric(horizontal: 24.r),
-                            child: Center(
-                              child: Text(
-                                'We help you calculate your \nGPA with no stress',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w400,
-                                ),
+                            margin: EdgeInsets.fromLTRB(70.h, 0, 0, 0),
+                            width: 500.w,
+                            height: 627.h,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('assets/land.png'),
+                                fit: BoxFit.cover,
                               ),
                             ),
                           ),
                         ],
                       ),
-                    ),
-                  ],
+                      SizedBox(
+                        height: 400.h,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            RichText(
+                              textAlign: TextAlign.center,
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: 'Welcome to \n',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      letterSpacing: 10.0.sp,
+                                      fontSize: 40.sp,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: 'GPA Calcos',
+                                    style: TextStyle(
+                                      color: blueblack,
+                                      fontSize: 40.sp,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10.h,
+                            ),
+                            Container(
+                              alignment: Alignment.center,
+                              padding: EdgeInsets.symmetric(horizontal: 24.r),
+                              child: Center(
+                                child: Text(
+                                  'We help you calculate your \nGPA with no stress',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
