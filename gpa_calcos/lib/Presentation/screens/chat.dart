@@ -31,17 +31,15 @@ class _ChatAIState extends State<ChatAI> {
       appBar: AppBar(
         leading: IconButton(
             onPressed: () => Navigator.of(context).pop(),
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios_new_rounded,
-              color: MainColors.color1
-              ,
+              color: Colors.white,
             )),
         centerTitle: true,
-        title: Text(
+        elevation: 0,
+        title: const Text(
           "Calcos Gemini Chat",
-          style: TextStyle(
-            color: MainColors.color1,
-          ),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
         ),
       ),
       body: _buildUI(),

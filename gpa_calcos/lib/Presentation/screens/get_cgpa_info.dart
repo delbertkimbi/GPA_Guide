@@ -51,6 +51,7 @@ class _CgpaInfoState extends State<CgpaInfo> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.white,
           leading: IconButton(
             onPressed: () => Navigator.of(context).pop(),
             icon: Icon(
@@ -60,16 +61,17 @@ class _CgpaInfoState extends State<CgpaInfo> {
             ),
           ),
           centerTitle: true,
+          elevation: 0,
           title: Text(
             'Calculate CGPA',
             style: TextStyle(
                 fontSize: 20.sp,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w600,
                 color: MainColors.color1),
           ),
         ),
         body: Padding(
-          padding: EdgeInsets.all(10.0.r),
+          padding: EdgeInsets.all(15.0.r),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -81,9 +83,9 @@ class _CgpaInfoState extends State<CgpaInfo> {
                       label: Text(
                         "Number of Semesters",
                         style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18.sp,
-                        ),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 20.sp,
+                            color: MainColors.color1),
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.r),
@@ -102,71 +104,81 @@ class _CgpaInfoState extends State<CgpaInfo> {
                     });
                   },
                 ),
-                Padding(
-                  padding: EdgeInsets.all(16.0.h),
-                  child: Text(
-                    "Fill in the spaces with the correct GPA's",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.normal,
-                        color: MainColors.color1),
-                  ),
-                ),
-                Builder(builder: (context) {
-                  for (int i = 0; i < numberOfSemesters; i++) {
-                    _gpaControllers.add(TextEditingController());
-                  }
-                  return ListView.builder(
-                    itemCount: numberOfSemesters,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      return Column(children: [
-                        CustomTextField(
-                          text: ' gpa for Semester ${index + 1}',
-                          controller: _gpaControllers[index],
-                        ),
-                        SizedBox(
-                          height: 7.h,
-                        ),
-                      ]);
-                    },
-                  );
-                }),
                 SizedBox(
-                  height: 7.h,
+                  height: 5.h,
                 ),
-                GestureDetector(
-                    onTap: () {
-                      if (_calCulateCgpa().isFinite) {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => CgpaReultsPage(
-                              cgpa: _calCulateCgpa(),
-                            ),
+                numberOfSemesters > 0
+                    ? Text(
+                        "Fill in the spaces with the corresponding  GPA's of the $numberOfSemesters semesters.",
+                        // textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.normal,
+                            color: MainColors.color1),
+                      )
+                    : const Text(""),
+                SizedBox(
+                  height: 10.h,
+                ),
+                SingleChildScrollView(
+                  child: Builder(builder: (context) {
+                    for (int i = 0; i < numberOfSemesters; i++) {
+                      _gpaControllers.add(TextEditingController());
+                    }
+                    return ListView.builder(
+                      itemCount: numberOfSemesters,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return Column(children: [
+                          CustomTextField(
+                            // text: ' gpa for Semester ${index + 1}',
+                            text: '0.00',
+                            controller: _gpaControllers[index],
                           ),
-                        );
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              "Please fill in all the fields",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 20.sp,
-                                fontWeight: FontWeight.bold,
+                          SizedBox(
+                            height: 7.h,
+                          ),
+                        ]);
+                      },
+                    );
+                  }),
+                ),
+                SizedBox(
+                  height: 5.h,
+                ),
+                if (numberOfSemesters > 0 && _gpaControllers != 0)
+                  GestureDetector(
+                      onTap: () {
+                        if (_calCulateCgpa().isFinite) {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => CgpaReultsPage(
+                                cgpa: _calCulateCgpa(),
                               ),
                             ),
-                          ),
-                        );
-                      }
-                    },
-                    child: RegisterButton(
-                      textSize: 20,
-                      text: 'Submit',
-                      color: MainColors.color1,
-                      fontWeight: FontWeight.w400,
-                    )),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                "Fill the input values.",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 15.sp,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                            ),
+                          );
+                        }
+                      },
+                      child: RegisterButton(
+                        textSize: 20,
+                        text: 'Submit',
+                        color: MainColors.color1,
+                        fontWeight: FontWeight.w400,
+                      )),
               ],
             ),
           ),

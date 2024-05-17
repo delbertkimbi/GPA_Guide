@@ -5,7 +5,7 @@ class CustomTextStyles {
   String header1Text = 'GPA Calcos';
   TextStyle header1 = TextStyle(
     fontWeight: FontWeight.bold,
-    fontSize: 30.sp,
+    fontSize: 35.sp,
     color: const Color(0xff010048),
   );
   TextStyle header2 = TextStyle(

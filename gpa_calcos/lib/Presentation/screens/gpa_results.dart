@@ -22,24 +22,23 @@ class ResultPage extends StatefulWidget {
 class _ResultPageState extends State<ResultPage> {
   @override
   Widget build(BuildContext context) {
-  
-
-    return SafeArea(
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFF949798),
-              Color(0xFF5E8D9B),
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color(0xFF949798),
+            Color(0xFF5E8D9B),
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
         ),
-        //decoration: mainGradient.gradient(),
+      ),
+      //decoration: mainGradient.gradient(),
+      child: SafeArea(
         child: Scaffold(
+          backgroundColor: Colors.white,
           appBar: AppBar(
             backgroundColor: MainColors.color2,
             leading: IconButton(
@@ -48,17 +47,19 @@ class _ResultPageState extends State<ResultPage> {
                   Icons.arrow_back_ios_new_rounded,
                   color: Colors.white,
                 )),
+            centerTitle: true,
+            elevation: 0,
             title: const Text(
               'GPA Result',
               style: TextStyle(
                 color: Colors.white,
+                fontWeight: FontWeight.w600,
               ),
             ),
           ),
-          backgroundColor: Colors.transparent,
           body: Container(
-            decoration: BoxDecoration(
-              color: MainColors.color3,
+            decoration: const BoxDecoration(
+              color: Colors.white,
             ),
             child: Center(
               child: Container(
@@ -80,7 +81,7 @@ class _ResultPageState extends State<ResultPage> {
                         'Results!!!',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: 40.sp,
+                          fontSize: 35.sp,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
@@ -95,7 +96,7 @@ class _ResultPageState extends State<ResultPage> {
                       style: TextStyle(
                         fontSize: 20.sp,
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     SizedBox(
@@ -107,28 +108,19 @@ class _ResultPageState extends State<ResultPage> {
                       style: TextStyle(
                         fontSize: 20.sp,
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     SizedBox(
                       height: 9.r,
                     ),
-                    Container(
-                      height: 60.h,
-                      width: 150.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: MainColors.color1,
-                      ),
-                      alignment: Alignment.center,
-                      child: Text(
-                        'GPA :${widget.gpa.toStringAsFixed(2)}',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 25.sp,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    Text(
+                      'GPA :${widget.gpa.toStringAsFixed(2)}',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 25.sp,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],

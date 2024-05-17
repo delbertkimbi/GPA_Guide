@@ -34,101 +34,103 @@ class _HomePageState extends State<HomePage> {
             end: Alignment.bottomCenter,
           ),
         ),
-        child: Scaffold(
-          key: _scaffoldKey, // Assign GlobalKey
-          drawer: const CustomDrawer(
-            userName: 'Delbert Kimbi',
-            userEmail: 'delbertdrums@gmail.com',
-          ),
-          appBar: AppBar(
-            toolbarHeight: 90.h,
-            leading: IconButton(
-              icon: Icon(
-                Icons.menu,
-                size: 35.r,
+        child: SafeArea(
+          child: Scaffold(
+            key: _scaffoldKey, // Assign GlobalKey
+            drawer: const CustomDrawer(
+              userName: 'GPA Calcos',
+              userEmail: 'GPA calculations made easy, with AI.',
+            ),
+            appBar: AppBar(
+              toolbarHeight: 80.h,
+              leading: IconButton(
+                icon: Icon(
+                  Icons.menu,
+                  size: 35.r,
+                ),
+                color: Colors.white,
+                onPressed: () {
+                  _scaffoldKey.currentState?.openDrawer(); // Use GlobalKey
+                },
               ),
-              color: Colors.white,
-              onPressed: () {
-                _scaffoldKey.currentState?.openDrawer(); // Use GlobalKey
-              },
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              centerTitle: true,
+              title: Text(
+                'GPA Calcos',
+                style: custom.header1,
+              ),
             ),
             backgroundColor: Colors.transparent,
-            elevation: 0,
-            centerTitle: true,
-            title: Text(
-              'GPA Calcos',
-              style: custom.header1,
-            ),
-          ),
-          backgroundColor: Colors.transparent,
-          body: Center(
-            child: ListView(
-              children: [
-                SizedBox(
-                  height: 30.h,
-                ),
-             
-                GestureDetector(
-                  onTap: () {
-                    AutoRouter.of(context).push(const GetSubjectInfo());
-                  },
-                  child: customBox(text: 'GPA  ', page: const GetSubjectInfo()),
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                GestureDetector(
-                  onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return const CgpaInfo();
-                      },
-                    ),
+            body: Center(
+              child: ListView(
+                children: [
+                  SizedBox(
+                    height: 30.h,
                   ),
-                  child: customBox(text: 'CGPA', page: const CgpaInfo()),
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    AutoRouter.of(context).push(const GradingSystem());
-                  },
-                  child: Container(
-                    height: 62.h,
-                    width: 298.h,
-                    margin: EdgeInsets.symmetric(horizontal: 33.r),
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: const Color(0xff5E808A),
-                      borderRadius: BorderRadius.circular(20.r),
+                  GestureDetector(
+                    onTap: () {
+                      AutoRouter.of(context).push(const GetSubjectInfo());
+                    },
+                    child:
+                        customBox(text: 'GPA  ', page: const GetSubjectInfo()),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  GestureDetector(
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const CgpaInfo();
+                        },
+                      ),
                     ),
-                    child: Text(
-                      'Grading System',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 30.sp,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
+                    child: customBox(text: 'CGPA', page: const CgpaInfo()),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      AutoRouter.of(context).push(const GradingSystem());
+                    },
+                    child: Container(
+                      height: 62.h,
+                      width: 298.h,
+                      margin: EdgeInsets.symmetric(horizontal: 33.r),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: const Color(0xff5E808A),
+                        borderRadius: BorderRadius.circular(20.r),
+                      ),
+                      child: Text(
+                        'Grading System',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 30.sp,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                Container(
-                  height: 420.r,
-                  //width: 400.r,
-                  alignment: Alignment.center,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/home.png'),
-                      fit: BoxFit.cover,
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  Container(
+                    height: 420.r,
+                    //width: 400.r,
+                    alignment: Alignment.center,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/home.png'),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

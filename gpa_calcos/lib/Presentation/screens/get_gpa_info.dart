@@ -9,7 +9,6 @@ import 'package:gpa_calcos/Presentation/Custom/files/register_button.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/textfield.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
 
-
 @RoutePage()
 class GetSubjectInfo extends StatefulWidget {
   const GetSubjectInfo({super.key});
@@ -25,137 +24,152 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
     TextEditingController gradeController = TextEditingController();
     TextEditingController creditValueNameController = TextEditingController();
     MainColors mainColors = MainColors();
-    return Scaffold(
-      floatingActionButton: FloatingActionButton.extended(
-          backgroundColor: MainColors.color1,
-          onPressed: () {
-            customShowDialog(context, subjectNameController, gradeController,
-                creditValueNameController, mainColors);
-          },
-          label: const Text(
-            "Add Course",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-            ),
-          )),
-      appBar: AppBar(
-        // backgroundColor: mainColors.color2,
-        leading: IconButton(
-            onPressed: () => Navigator.of(context).pop(),
-            icon: Icon(
-              Icons.arrow_back_ios_new_rounded,
-              color: MainColors.color1,
+    return SafeArea(
+      child: Scaffold(
+        floatingActionButton: FloatingActionButton.extended(
+            backgroundColor: MainColors.color1,
+            onPressed: () {
+              customShowDialog(context, subjectNameController, gradeController,
+                  creditValueNameController, mainColors);
+            },
+            label: const Text(
+              "Add Course",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+              ),
             )),
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.all(10.r),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 15.w,
-              ),
-              Text(
-                'Add your courses for the semester and get your gpa calculated for you.',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w600,
-                  color: MainColors.color1,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          centerTitle: true,
+          title: Text(
+            'Calculate GPA',
+            style: TextStyle(
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w600,
+                color: MainColors.color1),
+          ),
+          leading: IconButton(
+              onPressed: () => Navigator.of(context).pop(),
+              icon: Icon(
+                Icons.arrow_back_ios_new_rounded,
+                color: MainColors.color1,
+              )),
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(10.r),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 15.w,
                 ),
-              ),
-              SizedBox(
-                height: 20.w,
-              ),
-              BlocBuilder<GpaCubit, List<Subject>>(
-                builder: (context, subjects) {
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: subjects.length,
-                    itemBuilder: (context, index) {
-                      final subject = subjects[index];
-                      if (subjects.isEmpty) {
-                        return Center(
-                          child: Text(
-                            "No subjects informationn added yet",
-                            style: TextStyle(
-                              color: MainColors.color1,
+                if (creditValueNameController != null)
+                  Text(
+                    'Add your courses for the semester and get your gpa calculated for you.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w500,
+                      color: MainColors.color1,
+                    ),
+                  ),
+                SizedBox(
+                  height: 20.w,
+                ),
+                BlocBuilder<GpaCubit, List<Subject>>(
+                  builder: (context, subjects) {
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: subjects.length,
+                      itemBuilder: (context, index) {
+                        final subject = subjects[index];
+                        if (subjects.isEmpty) {
+                          return Center(
+                            child: Text(
+                              "No subjects information added yet",
+                              style: TextStyle(
+                                color: MainColors.color1,
+                              ),
+                            ),
+                          );
+                        }
+                        return Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 5.w,
+                            vertical: 2.h,
+                          ),
+                          child: Card(
+                            color: MainColors.color2,
+                            child: ListTile(
+                              hoverColor: MainColors.color1,
+                              title: Text(
+                                subject.name,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              subtitle: Text(
+                                subject.grade,
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              trailing: IconButton(
+                                icon: const Icon(
+                                  Icons.delete,
+                                  color: Colors.white,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    subjects.remove(subject);
+                                  });
+                                },
+                              ),
                             ),
                           ),
-                        );
-                      }
-                      return Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 5.w,
-                          vertical: 2.h,
-                        ),
-                        child: Card(
-                          color: MainColors.color2,
-                          child: ListTile(
-                            hoverColor: MainColors.color1,
-                            title: Text(
-                              subject.name,
-                              style: const TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                            subtitle: Text(
-                              subject.grade,
-                              style: const TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                              ),
-                            ),
-                            trailing: IconButton(
-                              icon: const Icon(
-                                Icons.delete,
-                                color: Colors.white,
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  subjects.remove(subject);
-                                });
-                              },
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  );
-                },
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              BlocBuilder<GpaCubit, List<Subject>>(
-                builder: (context, subjects) {
-                  return Visibility(
-                    visible: subjects.isNotEmpty,
-                    child: GestureDetector(
-                      onTap: () {
-                        List<double> val =
-                            BlocProvider.of<GpaCubit>(context).calculateGPA();
-                        AutoRouter.of(context).push(
-                          ResultPage(ccv: val[2], cwgp: val[1], gpa: val[0]),
                         );
                       },
-                      child: RegisterButton(
-                        textSize: 20.r,
-                        text: 'Submit',
-                        color: MainColors.color2,
-                        fontWeight: FontWeight.w500,
+                    );
+                  },
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                BlocBuilder<GpaCubit, List<Subject>>(
+                  builder: (context, subjects) {
+                    return Visibility(
+                      visible: subjects.isNotEmpty,
+                      child: GestureDetector(
+                        onTap: () {
+                          List<double> val =
+                              BlocProvider.of<GpaCubit>(context).calculateGPA();
+                          AutoRouter.of(context).push(
+                            ResultPage(ccv: val[2], cwgp: val[1], gpa: val[0]),
+                          );
+                        },
+                        child: RegisterButton(
+                          textSize: 20.r,
+                          text: 'Submit',
+                          color: MainColors.color2,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
-                    ),
-                  );
-                },
-              )
-            ],
+                    );
+                  },
+                ),
+                SizedBox(
+                  height: 70.h,
+                ),
+              ],
+            ),
           ),
         ),
       ),

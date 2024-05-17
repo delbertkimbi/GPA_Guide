@@ -35,14 +35,14 @@ class MyApp extends StatelessWidget {
         return MaterialApp.router(
           routerConfig: appRouter.config(),
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
+          title: 'GPA Calcos',
           theme: ThemeData(
             textTheme: GoogleFonts.poppinsTextTheme(textTheme).copyWith(
               bodyMedium: GoogleFonts.poppins(textStyle: textTheme.bodyMedium),
             ),
             colorScheme:
                 ColorScheme.fromSeed(seedColor: const Color(0xFF5E8D9B)),
-            useMaterial3: true,
+            useMaterial3: false,
           ),
         );
       },

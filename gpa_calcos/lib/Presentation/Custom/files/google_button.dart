@@ -40,7 +40,7 @@ class MainButton extends StatelessWidget {
                 fontSize: textSize.sp,
                 fontWeight: fontWeight,
               ),
-            ),
+            ), 
             SizedBox(
               width: 10.w,
             ),

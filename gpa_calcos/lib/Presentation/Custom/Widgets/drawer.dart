@@ -4,8 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/list_tile.dart';
 import 'package:gpa_calcos/Presentation/screens/chat.dart';
+import 'package:gpa_calcos/Presentation/screens/customized.dart';
 import 'package:gpa_calcos/Presentation/screens/get_cgpa_info.dart';
 import 'package:gpa_calcos/Presentation/screens/get_gpa_info.dart';
+import 'package:gpa_calcos/Presentation/screens/learning_resources.dart';
 
 class CustomDrawer extends StatelessWidget {
   final String userName;
@@ -94,25 +96,35 @@ class CustomDrawer extends StatelessWidget {
                   ),
                 ),
               ),
-              CustomListTile(
-                title: "Learning Resources \n(Get better grades)",
-                icon: Icon(
-                  Icons.search_rounded,
-                  color: MainColors.color1,
-                  size: 30.h,
+              GestureDetector(
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const Learningpage(),
+                )),
+                child: CustomListTile(
+                  title: "Learning Resources \n(Get better grades)",
+                  icon: Icon(
+                    Icons.search_rounded,
+                    color: MainColors.color1,
+                    size: 30.h,
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const CustomizedPage(),
+                )),
+                child: CustomListTile(
+                  title: "Did you Know?",
+                  icon: Icon(
+                    Icons.branding_watermark,
+                    color: MainColors.color1,
+                    size: 30.r,
+                  ),
                 ),
               ),
               Divider(
                 height: 50.r,
                 color: Colors.black,
-              ),
-              CustomListTile(
-                title: "Settings",
-                icon: Icon(
-                  Icons.settings,
-                  color: MainColors.color1,
-                  size: 30.r,
-                ),
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,

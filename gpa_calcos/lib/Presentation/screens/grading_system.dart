@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/Widgets/push_pop.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
+import 'package:gpa_calcos/Presentation/screens/customized.dart';
 
 @RoutePage()
 class GradingSystem extends StatefulWidget {
@@ -16,13 +17,13 @@ class GradingSystem extends StatefulWidget {
 class _GradingSystemState extends State<GradingSystem> {
   TextStyle tableText1 = TextStyle(
     color: Colors.white,
-    fontSize: 20.sp,
-    fontWeight: FontWeight.bold,
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w500,
   );
   TextStyle tableText2 = TextStyle(
-    color: Colors.black,
+    color: MainColors.color1,
     fontSize: 15.sp,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.w300,
   );
   List<String> grades = ["A", "B+", "B", "C+", "C", "D+", "D", "F"];
   List<String> scoreRange = [
@@ -39,7 +40,6 @@ class _GradingSystemState extends State<GradingSystem> {
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -108,8 +108,7 @@ class _GradingSystemState extends State<GradingSystem> {
                       return TableRow(
                         children: [
                           TableCell(
-                            verticalAlignment:
-                                TableCellVerticalAlignment.middle,
+                            verticalAlignment: TableCellVerticalAlignment.middle,
                             child: Padding(
                               padding: EdgeInsets.all(8.r),
                               child: Text(
@@ -119,8 +118,7 @@ class _GradingSystemState extends State<GradingSystem> {
                             ),
                           ),
                           TableCell(
-                            verticalAlignment:
-                                TableCellVerticalAlignment.middle,
+                            verticalAlignment: TableCellVerticalAlignment.middle,
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
@@ -130,8 +128,7 @@ class _GradingSystemState extends State<GradingSystem> {
                             ),
                           ),
                           TableCell(
-                            verticalAlignment:
-                                TableCellVerticalAlignment.middle,
+                            verticalAlignment: TableCellVerticalAlignment.middle,
                             child: Padding(
                               padding: EdgeInsets.all(8.r),
                               child: Text(
@@ -150,7 +147,7 @@ class _GradingSystemState extends State<GradingSystem> {
                 padding: EdgeInsets.fromLTRB(20.r, 3.r, 20.r, 0.r),
                 child: RichText(
                   text: TextSpan(
-                    text: "NB",
+                    text: "N.B",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20.sp,
@@ -174,21 +171,20 @@ class _GradingSystemState extends State<GradingSystem> {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 0.h, horizontal: 30.w),
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    backgroundColor: MainColors.color2,
-                  ),
-                  child: Text(
-                    "Customize contents",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.sp,
-                    ),
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const CustomizedPage(),
+                )),
+                style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  backgroundColor: MainColors.color2,
+                ),
+                child: Text(
+                  "Customize contents",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 20.sp,
                   ),
                 ),
               )
