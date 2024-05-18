@@ -120,29 +120,27 @@ class _CgpaInfoState extends State<CgpaInfo> {
                 SizedBox(
                   height: 10.h,
                 ),
-                SingleChildScrollView(
-                  child: Builder(builder: (context) {
-                    for (int i = 0; i < numberOfSemesters; i++) {
-                      _gpaControllers.add(TextEditingController());
-                    }
-                    return ListView.builder(
-                      itemCount: numberOfSemesters,
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        return Column(children: [
-                          CustomTextField(
-                            // text: ' gpa for Semester ${index + 1}',
-                            text: '0.00',
-                            controller: _gpaControllers[index],
-                          ),
-                          SizedBox(
-                            height: 7.h,
-                          ),
-                        ]);
-                      },
-                    );
-                  }),
-                ),
+                Builder(builder: (context) {
+                  for (int i = 0; i < numberOfSemesters; i++) {
+                    _gpaControllers.add(TextEditingController());
+                  }
+                  return ListView.builder(
+                    itemCount: numberOfSemesters,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return Column(children: [
+                        CustomTextField(
+                          // text: ' gpa for Semester ${index + 1}',
+                          text: '0.00',
+                          controller: _gpaControllers[index],
+                        ),
+                        SizedBox(
+                          height: 7.h,
+                        ),
+                      ]);
+                    },
+                  );
+                }),
                 SizedBox(
                   height: 5.h,
                 ),

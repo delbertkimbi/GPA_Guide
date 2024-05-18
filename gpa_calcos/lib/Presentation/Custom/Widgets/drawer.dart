@@ -31,17 +31,18 @@ class CustomDrawer extends StatelessWidget {
             accountName: Text(userName),
             accountEmail: Text(userEmail),
             currentAccountPicture: CircleAvatar(
-              radius: 10,
-              backgroundColor: MainColors.color1,
+              radius: 2.h,
+              backgroundColor: Colors.white,
               child: ClipOval(
-                child: Text(
-                  userName[0],
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30.r,
-                  ),
-                ),
+                // child: Text(
+                //   userName[0],
+                //   style: TextStyle(
+                //     color: Colors.white,
+                //     fontWeight: FontWeight.bold,
+                //     fontSize: 30.r,
+                //   ),
+                // ),
+                child: Image.asset('assets/icon.png'),
               ),
             ),
           ),

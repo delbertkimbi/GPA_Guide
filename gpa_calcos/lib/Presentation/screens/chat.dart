@@ -3,7 +3,6 @@ import 'dart:typed_data';
 import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
-import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ChatAI extends StatefulWidget {
