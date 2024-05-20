@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 
+
 import 'app_router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Screen, Route')
@@ -13,6 +14,6 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: GradingSystem.page),
         AutoRoute(page: ResultPage.page),
         AutoRoute(page: GetSubjectInfo.page),
-        AutoRoute(page: GetSubjectInfo2.page),
+        AutoRoute(page:  CgpaInfo.page),
       ];
 }

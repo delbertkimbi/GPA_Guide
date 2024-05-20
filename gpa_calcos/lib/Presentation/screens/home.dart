@@ -5,7 +5,7 @@ import 'package:gpa_calcos/Presentation/Custom/Widgets/drawer.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/text.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
-import 'package:gpa_calcos/Presentation/screens/get_cgpa_info.dart';
+
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
             key: _scaffoldKey, // Assign GlobalKey
             drawer: const CustomDrawer(
               userName: 'GPA Calcos',
-              userEmail: 'GPA calculations made easy, with AI.',
+              userEmail: 'Calculations made easy, with AI.',
             ),
             appBar: AppBar(
               toolbarHeight: 80.h,
@@ -58,7 +58,12 @@ class _HomePageState extends State<HomePage> {
               centerTitle: true,
               title: Text(
                 'GPA Calcos',
-                style: custom.header1,
+                //style: custom.header1,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 35.r,
+                ),
               ),
             ),
             backgroundColor: Colors.transparent,
@@ -79,13 +84,8 @@ class _HomePageState extends State<HomePage> {
                     height: 20.h,
                   ),
                   GestureDetector(
-                    onTap: () => Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return const CgpaInfo();
-                        },
-                      ),
-                    ),
+                    onTap: () => 
+                       AutoRouter.of(context).push(const CgpaInfo()),
                     child: customBox(text: 'CGPA', page: const CgpaInfo()),
                   ),
                   SizedBox(

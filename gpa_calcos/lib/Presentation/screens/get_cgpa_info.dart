@@ -48,6 +48,7 @@ class _CgpaInfoState extends State<CgpaInfo> {
 
   @override
   Widget build(BuildContext context) {
+    bool x = false;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -109,7 +110,7 @@ class _CgpaInfoState extends State<CgpaInfo> {
                 ),
                 numberOfSemesters > 0
                     ? Text(
-                        "Fill in the spaces with the corresponding  GPA's of the $numberOfSemesters semesters.",
+                        "Fill in the spaces with the corresponding  GPA's of the $numberOfSemesters semesters. (e.g 3.45)",
                         // textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 15.sp,
@@ -128,11 +129,58 @@ class _CgpaInfoState extends State<CgpaInfo> {
                     itemCount: numberOfSemesters,
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
+                      bool tryOUt = false;
                       return Column(children: [
                         CustomTextField(
-                          // text: ' gpa for Semester ${index + 1}',
                           text: '0.00',
                           controller: _gpaControllers[index],
+                          hasError: tryOUt,
+                          onChaged: (value) {
+                            double gpa;
+                            int i = 0;
+                            try {
+                              gpa = double.parse(value);
+                              tryOUt = gpa < 0.0 || gpa > 4.0;
+                              if (gpa < 0.0 || gpa > 4.0) {
+                                // Show error message (e.g., using SnackBar)
+                                setState(() {
+                                  x = true;
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        "GPA must be between 0.0 and 4.0",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 15.sp,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                      ),
+                                      backgroundColor: Colors.red,
+                                    ),
+                                  );
+                                });
+                              }
+                            } on FormatException catch (e) {
+                              setState(() {
+                                x = true;
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      "Invalid GPA input for semester ${i + 2}",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: 15.sp,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                    ),
+                                    backgroundColor: Colors.pink,
+                                  ),
+                                );
+                              });
+                            }
+                          },
                         ),
                         SizedBox(
                           height: 7.h,
@@ -144,39 +192,51 @@ class _CgpaInfoState extends State<CgpaInfo> {
                 SizedBox(
                   height: 5.h,
                 ),
-                if (numberOfSemesters > 0 && _gpaControllers != 0)
+                if (numberOfSemesters > 0)
                   GestureDetector(
-                      onTap: () {
-                        if (_calCulateCgpa().isFinite) {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => CgpaReultsPage(
-                                cgpa: _calCulateCgpa(),
-                              ),
-                            ),
-                          );
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                "Fill the input values.",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 15.sp,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                              ),
-                            ),
-                          );
+                    onTap: () {
+                      bool hasEmptyFields = false;
+                      for (var controller in _gpaControllers) {
+                        if (controller.text.isEmpty) {
+                          hasEmptyFields = true;
+                          break; // Exit loop after finding an empty field
                         }
-                      },
-                      child: RegisterButton(
-                        textSize: 20,
-                        text: 'Submit',
-                        color: MainColors.color1,
-                        fontWeight: FontWeight.w400,
-                      )),
+                      }
+
+                      if (!hasEmptyFields && _calCulateCgpa().isFinite) {
+                        // All fields filled and valid GPA, navigate
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => CgpaReultsPage(
+                              cgpa: _calCulateCgpa(),
+                            ),
+                          ),
+                        );
+                      } else if (hasEmptyFields) {
+                        // Show message for empty fields
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              "Please fill in all GPA fields.",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 15.sp,
+                                color: Colors.white,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                            backgroundColor: Colors.orange,
+                          ),
+                        );
+                      }
+                    },
+                    child: RegisterButton(
+                      textSize: 20,
+                      text: 'Submit',
+                      color: MainColors.color1,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
               ],
             ),
           ),
@@ -195,6 +255,38 @@ class _CgpaInfoState extends State<CgpaInfo> {
       itemBuilder: (context, index) {
         return Column(children: [
           CustomTextField(
+            hasError: false,
+            onChaged: (value) {
+              (value) {
+                double gpa;
+                int i = 0;
+                try {
+                  gpa = double.parse(value);
+                  if (gpa < 0.0 || gpa > 4.0) {
+                    // Show error message (e.g., using SnackBar)
+                    setState(() {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            "GPA must be between 0.0 and 4.0",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 15.sp,
+                              color: Colors.white,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                          backgroundColor: Colors.red,
+                        ),
+                      );
+                    });
+                  }
+                } on FormatException catch (e) {
+                  // Handle invalid input (e.g., not a number)
+                  debugPrint("Invalid GPA input for semester ${i + 1}: $e");
+                }
+              };
+            },
             text: ' Gpa for Semester ${index + 1}',
             controller: _gpaControllers[index],
           ),

@@ -58,9 +58,11 @@ class _GradingSystemState extends State<GradingSystem> {
         ),
         body: SingleChildScrollView(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.fromLTRB(20.r, 30.r, 20.r, 20.r),
+                padding: EdgeInsets.fromLTRB(20.r, 30.r, 20.r, 0.r),
                 child: Table(
                   border: TableBorder.all(
                     color: MainColors.color2,
@@ -108,7 +110,8 @@ class _GradingSystemState extends State<GradingSystem> {
                       return TableRow(
                         children: [
                           TableCell(
-                            verticalAlignment: TableCellVerticalAlignment.middle,
+                            verticalAlignment:
+                                TableCellVerticalAlignment.middle,
                             child: Padding(
                               padding: EdgeInsets.all(8.r),
                               child: Text(
@@ -118,7 +121,8 @@ class _GradingSystemState extends State<GradingSystem> {
                             ),
                           ),
                           TableCell(
-                            verticalAlignment: TableCellVerticalAlignment.middle,
+                            verticalAlignment:
+                                TableCellVerticalAlignment.middle,
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
@@ -128,7 +132,8 @@ class _GradingSystemState extends State<GradingSystem> {
                             ),
                           ),
                           TableCell(
-                            verticalAlignment: TableCellVerticalAlignment.middle,
+                            verticalAlignment:
+                                TableCellVerticalAlignment.middle,
                             child: Padding(
                               padding: EdgeInsets.all(8.r),
                               child: Text(
@@ -144,10 +149,10 @@ class _GradingSystemState extends State<GradingSystem> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.fromLTRB(20.r, 3.r, 20.r, 0.r),
+                padding: EdgeInsets.fromLTRB(20.r, 0.r, 0.r, 0.r),
                 child: RichText(
                   text: TextSpan(
-                    text: "N.B",
+                    text: "",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20.sp,
@@ -171,20 +176,23 @@ class _GradingSystemState extends State<GradingSystem> {
                   ),
                 ),
               ),
-              ElevatedButton(
-                onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const CustomizedPage(),
-                )),
-                style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  backgroundColor: MainColors.color2,
-                ),
-                child: Text(
-                  "Customize contents",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 20.sp,
+              Padding(
+                padding: EdgeInsets.fromLTRB(80.r, 0.r, 0.r, 0.r),
+                child: ElevatedButton(
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const CustomizedPage(),
+                  )),
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    backgroundColor: MainColors.color2,
+                  ),
+                  child: Text(
+                    "Customize contents",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18.sp,
+                    ),
                   ),
                 ),
               )

@@ -78,6 +78,8 @@ class SignUp extends StatelessWidget {
                       style: text1.header2,
                     ),
                     CustomTextField(
+                      hasError: false,
+                       onChaged: (value) {},
                       text: 'user name',
                       controller: userNameController,
                     ),
@@ -85,6 +87,8 @@ class SignUp extends StatelessWidget {
                       height: 8.h,
                     ),
                     CustomTextField(
+                      hasError: false,
+                       onChaged: (value) {},
                       text: 'email',
                       controller: emailController,
                     ),
@@ -92,6 +96,8 @@ class SignUp extends StatelessWidget {
                       height: 8.h,
                     ),
                     CustomTextField(
+                           hasError: false,
+                       onChaged: (value) {},
                       text: 'password',
                       controller: passwordController,
                     ),
@@ -99,6 +105,8 @@ class SignUp extends StatelessWidget {
                       height: 8.h,
                     ),
                     CustomTextField(
+                           hasError: false,
+                       onChaged: (value) {},
                       text: 'confirm password',
                       controller: passwordController,
                     ),
@@ -132,7 +140,7 @@ class SignUp extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                             AutoRouter.of(context).push(const LogIn());
+                             AutoRouter.of(context).push( LogIn());
                           },
                           child: Text('Sign In',
                               style: TextStyle(

@@ -37,12 +37,12 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'GPA Calcos',
           theme: ThemeData(
-            textTheme: GoogleFonts.poppinsTextTheme(textTheme).copyWith(
+            textTheme: GoogleFonts.robotoTextTheme(textTheme).copyWith(
               bodyMedium: GoogleFonts.poppins(textStyle: textTheme.bodyMedium),
             ),
             colorScheme:
                 ColorScheme.fromSeed(seedColor: const Color(0xFF5E8D9B)),
-            useMaterial3: false,
+            useMaterial3: true,
           ),
         );
       },

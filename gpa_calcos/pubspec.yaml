@@ -30,7 +30,7 @@ dev_dependencies:
   flutter_launcher_icons: ^0.13.1
 
 flutter_icons:  # Correct typos and indentation
-    image_path: "assets/icon.png"  # Replace with the actual path to your icon
+    image_path: "try.png"  # Replace with the actual path to your icon
     android: true    
 flutter:
   uses-material-design: true

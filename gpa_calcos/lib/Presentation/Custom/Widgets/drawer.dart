@@ -31,18 +31,37 @@ class CustomDrawer extends StatelessWidget {
             accountName: Text(userName),
             accountEmail: Text(userEmail),
             currentAccountPicture: CircleAvatar(
-              radius: 2.h,
+              radius: 5.h,
               backgroundColor: Colors.white,
-              child: ClipOval(
-                // child: Text(
-                //   userName[0],
-                //   style: TextStyle(
-                //     color: Colors.white,
-                //     fontWeight: FontWeight.bold,
-                //     fontSize: 30.r,
-                //   ),
-                // ),
-                child: Image.asset('assets/icon.png'),
+              child: GestureDetector(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => Dialog(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0.r),
+                      ),
+                      child: Container(
+                        height: 200.h,
+                        width: 150.w,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15.r),
+                          image: const DecorationImage(
+                            image: AssetImage('assets/logo2.jpg'),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                child: CircleAvatar(
+                  radius: 34.h,
+                  backgroundColor: Colors.white,
+                  child: ClipOval(
+                    child: Image.asset('assets/try.png'),
+                  ),
+                ),
               ),
             ),
           ),
@@ -91,7 +110,7 @@ class CustomDrawer extends StatelessWidget {
                 child: CustomListTile(
                   title: "Get Help(AI)",
                   icon: Icon(
-                    Icons.help,
+                    Icons.route,
                     color: MainColors.color1,
                     size: 30.r,
                   ),
@@ -117,7 +136,7 @@ class CustomDrawer extends StatelessWidget {
                 child: CustomListTile(
                   title: "Did you Know?",
                   icon: Icon(
-                    Icons.branding_watermark,
+                    Icons.help,
                     color: MainColors.color1,
                     size: 30.r,
                   ),
@@ -127,28 +146,19 @@ class CustomDrawer extends StatelessWidget {
                 height: 50.r,
                 color: Colors.black,
               ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    "LogOut",
-                    style: TextStyle(
-                      color: MainColors.color1,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.r,
-                    ),
+              GestureDetector(
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const CustomizedPage(),
+                )),
+                child: CustomListTile(
+                  title: "About App",
+                  icon: Icon(
+                    Icons.adb_rounded,
+                    color: MainColors.color1,
+                    size: 30.r,
                   ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.logout,
-                      color: MainColors.color1,
-                      size: 50,
-                    ),
-                  )
-                ],
-              )
+                ),
+              ),
             ],
           )),
         ],

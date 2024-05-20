@@ -5,12 +5,17 @@ import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 
 class CustomTextField extends StatelessWidget {
   final String text;
+  final Function(String) onChaged;
   final TextEditingController controller;
-  const CustomTextField({
-    super.key,
+  bool hasError = false;
+
+  CustomTextField({
+    Key? key,
     required this.text,
+    required this.onChaged,
     required this.controller,
-  });
+    required this.hasError,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +27,17 @@ class CustomTextField extends StatelessWidget {
           enabled: true,
           textAlign: TextAlign.center,
           controller: controller,
+          onChanged: (value) {
+            onChaged(value);
+          },
           decoration: InputDecoration(
+            errorText: hasError ? "Invalid Input" : null,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14.h),
               borderSide: BorderSide(
-                color: MainColors.color1,
+                color: hasError
+                    ? Colors.red
+                    : MainColors.color1, // Change border color based on error
               ),
             ),
             fillColor: Colors.white,

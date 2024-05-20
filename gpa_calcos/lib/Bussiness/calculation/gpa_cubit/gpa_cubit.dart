@@ -55,8 +55,10 @@ class GpaCubit extends Cubit<List<Subject>> {
         return 1.0;
       case 'D':
         return 1.0;
-      default:
+      case 'F':
         return 0.0;
+      default:
+        return -1;
     }
   }
 }

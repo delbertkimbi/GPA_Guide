@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
+import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ChatAI extends StatefulWidget {
@@ -20,9 +21,8 @@ class _ChatAIState extends State<ChatAI> {
   ChatUser currentUser = ChatUser(id: "0", firstName: "User");
   ChatUser geminiUser = ChatUser(
     id: "1",
-    firstName: "Gemini",
-    profileImage:
-        "https://seeklogo.com/images/G/google-gemini-logo-A5787B2669-seeklogo.com.png",
+    firstName: "Calcos",
+    profileImage: "assets/try.png",
   );
   @override
   Widget build(BuildContext context) {
@@ -35,6 +35,7 @@ class _ChatAIState extends State<ChatAI> {
               color: Colors.white,
             )),
         centerTitle: true,
+        backgroundColor: MainColors.color2,
         elevation: 0,
         title: const Text(
           "Calcos Gemini Chat",

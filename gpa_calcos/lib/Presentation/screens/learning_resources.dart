@@ -1,7 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
-
+@RoutePage()
 class Learningpage extends StatelessWidget {
   const Learningpage({super.key});
 

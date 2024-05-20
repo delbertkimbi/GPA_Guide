@@ -17,7 +17,7 @@ class _LandingPageState extends State<LandingPage> {
   late Timer _timer;
   @override
   void initState() {
-    _timer = Timer(const Duration(seconds:5), () {
+    _timer = Timer(const Duration(seconds: 5), () {
       context.router.replace(const HomePage());
     });
 
@@ -41,8 +41,12 @@ class _LandingPageState extends State<LandingPage> {
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Color(0xFF949798),
+           
+            
+     
             Color(0xFF5E8D9B),
+              Color(0xFF949798),
+            Color(0xFF3D7282),
           ],
           begin: Alignment.topCenter,
         ),

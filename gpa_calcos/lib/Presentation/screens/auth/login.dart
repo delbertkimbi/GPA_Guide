@@ -75,12 +75,19 @@ class LogIn extends StatelessWidget {
                       'OR',
                       style: text1.header2,
                     ),
-                    CustomTextField(text: 'email', controller: emailController),
+                    CustomTextField(
+                           hasError: false,
+                        onChaged: (value) {},
+                        text: 'email',
+                        controller: emailController),
                     SizedBox(
                       height: 8.h,
                     ),
                     CustomTextField(
-                        text: 'password', controller: passwordController),
+                           hasError: false,
+                        onChaged: (value) {},
+                        text: 'password',
+                        controller: passwordController),
                     SizedBox(
                       height: 20.h,
                     ),

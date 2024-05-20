@@ -105,6 +105,28 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                           child: Card(
                             color: MainColors.color2,
                             child: ListTile(
+                              onTap: () {
+                                final subject =
+                                    BlocProvider.of<GpaCubit>(context)
+                                        .state[index];
+                                // Pre-fill data for editing
+                                TextEditingController subjectNameController =
+                                    TextEditingController(text: subject.name);
+                                TextEditingController gradeController =
+                                    TextEditingController(text: subject.grade);
+                                TextEditingController
+                                    creditValueNameController =
+                                    TextEditingController(
+                                        text: subject.creditValue.toString());
+
+                                customShowDialog(
+                                  context,
+                                  subjectNameController,
+                                  gradeController,
+                                  creditValueNameController,
+                                  mainColors,
+                                );
+                              },
                               hoverColor: MainColors.color1,
                               title: Text(
                                 subject.name,
@@ -149,11 +171,36 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                       visible: subjects.isNotEmpty,
                       child: GestureDetector(
                         onTap: () {
-                          List<double> val =
+                          // Calculate GPA
+                          List<double> gpaValues =
                               BlocProvider.of<GpaCubit>(context).calculateGPA();
-                          AutoRouter.of(context).push(
-                            ResultPage(ccv: val[2], cwgp: val[1], gpa: val[0]),
-                          );
+                          double gpa =
+                              gpaValues[0]; // Access the calculated GPA
+
+                          // Validate GPA range (0 to 4)
+                          if (gpa >= 0 && gpa <= 4) {
+                            AutoRouter.of(context).push(
+                              ResultPage(
+                                  ccv: gpaValues[2],
+                                  cwgp: gpaValues[1],
+                                  gpa: gpa),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  "Calculated GPA is outside the valid range (0 - 4). Croscheck your inputs",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 15.sp,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                ),
+                                backgroundColor: Colors.red,
+                              ),
+                            );
+                          }
                         },
                         child: RegisterButton(
                           textSize: 20.r,
@@ -183,6 +230,8 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
     TextEditingController creditValueNameController,
     MainColors mainColors,
   ) {
+    bool creditValueError = false;
+    bool gradeError = false; //
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -196,39 +245,141 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
               height: 15.h,
             ),
             CustomTextField(
+              hasError: false,
+              onChaged: (value) {},
               text: 'Subject Name',
               controller: subjectNameController,
             ),
             SizedBox(
               height: 10.h,
             ),
-            CustomTextField(text: 'Grade', controller: gradeController),
+            CustomTextField(
+              hasError: gradeError, // Use error flag for visual indication
+              onChaged: (value) {
+                // Implement grade validation logic here
+                // You can use a regular expression or a predefined list of valid grades
+                value = gradeController.text.toUpperCase();
+                if (isValidGrade(value)) {
+                  gradeError = false;
+                } else {
+                  gradeError = true;
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        "Invalid grade format",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 15.sp,
+                          color: Colors.white,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                }
+              },
+              text: 'Grade',
+              controller: gradeController,
+            ),
             SizedBox(
               height: 10.h,
             ),
             CustomTextField(
-                text: 'Credit Value', controller: creditValueNameController),
+              hasError:
+                  creditValueError, // Use error flag for visual indication
+              onChaged: (value) {
+                try {
+                  double.parse(value);
+                  creditValueError = false; // Reset error flag on valid input
+                } on FormatException catch (e) {
+                  creditValueError = true;
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        "Invalid credit value",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 15.sp,
+                          color: Colors.white,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                }
+              },
+              text: 'Credit Value',
+              controller: creditValueNameController,
+            ),
             SizedBox(
               height: 15.h,
             ),
             GestureDetector(
               onTap: () {
-                Navigator.of(context).pop();
-
-//                 context.router.pop();
-                BlocProvider.of<GpaCubit>(context).addSubject(
-                    subjectNameController.text.trim(),
-                    gradeController.text.trim(),
-                    double.parse(creditValueNameController.text.trim()));
-                // Clear the text fields after adding the subject
-                subjectNameController.clear();
-                gradeController.clear();
-                creditValueNameController.clear();
+                String subjectName = subjectNameController.text.trim();
+                String grade = gradeController.text.trim();
+                String creditValueString =
+                    creditValueNameController.text.trim();
+                // Check for empty fields before validation
+                if (subjectName.isEmpty ||
+                    grade.isEmpty ||
+                    creditValueString.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        "Please fill in all fields (Subject Name, Grade, Credit Value).",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 15.sp,
+                          color: Colors.white,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                  return; // Exit the tap handler if any field is empty
+                }
+                if (!creditValueError && !gradeError) {
+                  // Check for both credit value and grade error
+                  Navigator.of(context).pop();
+                  BlocProvider.of<GpaCubit>(context).addSubject(
+                      subjectNameController.text.trim(),
+                      gradeController.text.trim().toUpperCase(),
+                      double.parse(creditValueNameController.text.trim()));
+                  // Clear text fields after successful addition
+                  subjectNameController.clear();
+                  gradeController.clear();
+                  creditValueNameController.clear();
+                } else {
+                  // Show message if there's an error
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        creditValueError
+                            ? "Invalid credit value"
+                            : "Invalid grade format",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 15.sp,
+                          color: Colors.white,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                }
               },
               child: RegisterButton(
                 textSize: 20.r,
-                text: 'Submit',
-                color: MainColors.color1,
+                text: 'Add',
+                color: creditValueError || gradeError
+                    ? Colors.grey
+                    : MainColors
+                        .color1, // Disable button or change color on error
                 fontWeight: FontWeight.w400,
               ),
             ),
@@ -239,5 +390,12 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
         ),
       ),
     );
+  }
+
+  List<String> grades = ["A", "B+", "B", "C+", "C", "D+", "D", "F"];
+
+  bool isValidGrade(String grade) {
+    grade = grade.toUpperCase();
+    return grades.contains(grade) || grades.contains(grade.toLowerCase());
   }
 }
