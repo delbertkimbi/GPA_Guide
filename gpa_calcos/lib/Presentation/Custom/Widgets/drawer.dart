@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/list_tile.dart';
+import 'package:gpa_calcos/Presentation/screens/about.dart';
 import 'package:gpa_calcos/Presentation/screens/chat.dart';
 import 'package:gpa_calcos/Presentation/screens/customized.dart';
 import 'package:gpa_calcos/Presentation/screens/get_cgpa_info.dart';
@@ -148,7 +149,7 @@ class CustomDrawer extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const CustomizedPage(),
+                  builder: (context) => AboutPage(),
                 )),
                 child: CustomListTile(
                   title: "About App",

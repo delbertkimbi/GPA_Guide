@@ -41,11 +41,7 @@ class _LandingPageState extends State<LandingPage> {
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [
-           
-            
-     
-            Color(0xFF5E8D9B),
-              Color(0xFF949798),
+            Color(0xFF949798),
             Color(0xFF3D7282),
           ],
           begin: Alignment.topCenter,
