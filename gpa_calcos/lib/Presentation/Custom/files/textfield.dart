@@ -7,15 +7,15 @@ class CustomTextField extends StatelessWidget {
   final String text;
   final Function(String) onChaged;
   final TextEditingController controller;
-  bool hasError = false;
+  final bool hasError;
 
-  CustomTextField({
-    Key? key,
+  const CustomTextField({
+    super.key,
     required this.text,
     required this.onChaged,
     required this.controller,
     required this.hasError,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

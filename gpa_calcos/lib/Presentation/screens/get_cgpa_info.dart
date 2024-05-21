@@ -49,7 +49,6 @@ class _CgpaInfoState extends State<CgpaInfo> {
 
   @override
   Widget build(BuildContext context) {
-    bool x = false;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -167,7 +166,7 @@ class _CgpaInfoState extends State<CgpaInfo> {
                                   );
                                 });
                               }
-                            } on FormatException catch (e) {
+                            } on FormatException {
                               setState(() {
                                 _hasEmptyFields = true;
                                 ScaffoldMessenger.of(context).showSnackBar(

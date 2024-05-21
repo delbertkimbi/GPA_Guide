@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/Widgets/drawer.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
-import 'package:gpa_calcos/Presentation/Custom/files/text.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
-
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -19,7 +17,6 @@ class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    CustomTextStyles custom = CustomTextStyles();
     return SingleChildScrollView(
       child: Container(
         width: MediaQuery.of(context).size.width,
@@ -84,8 +81,7 @@ class _HomePageState extends State<HomePage> {
                     height: 20.h,
                   ),
                   GestureDetector(
-                    onTap: () => 
-                       AutoRouter.of(context).push(const CgpaInfo()),
+                    onTap: () => AutoRouter.of(context).push(const CgpaInfo()),
                     child: customBox(text: 'CGPA', page: const CgpaInfo()),
                   ),
                   SizedBox(
