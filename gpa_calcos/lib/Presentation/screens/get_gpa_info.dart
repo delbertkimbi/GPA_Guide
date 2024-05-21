@@ -294,7 +294,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                 try {
                   double.parse(value);
                   creditValueError = false; // Reset error flag on valid input
-                } on FormatException catch (e) {
+                } on FormatException {
                   creditValueError = true;
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
