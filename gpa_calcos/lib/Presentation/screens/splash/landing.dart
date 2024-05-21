@@ -17,7 +17,7 @@ class _LandingPageState extends State<LandingPage> {
   late Timer _timer;
   @override
   void initState() {
-    _timer = Timer(const Duration(seconds: 5), () {
+    _timer = Timer(const Duration(seconds: 3), () {
       context.router.replace(const HomePage());
     });
 

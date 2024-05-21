@@ -87,7 +87,7 @@ class _CgpaReultsPageState extends State<CgpaReultsPage> {
       );
     } else if (widget.cgpa < 2.0 && widget.cgpa >= 0.0) {
       return Text(
-        "Opps. You'll need to get a higher cgpa(>2.0) to graduate",
+        "Opps. You'll need to get a higher cgpa(>2.0). Keep Thriving",
         style: _textStyle,
         textAlign: TextAlign.center,
       );

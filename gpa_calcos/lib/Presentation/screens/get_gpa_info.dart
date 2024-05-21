@@ -67,7 +67,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                 SizedBox(
                   height: 15.w,
                 ),
-                if (creditValueNameController != null)
+                if (creditValueNameController.text.isEmpty)
                   Text(
                     'Add your courses for the semester and get your gpa calculated for you.',
                     textAlign: TextAlign.center,
@@ -188,6 +188,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
+                                duration: const Duration(seconds: 1),
                                 content: Text(
                                   "Calculated GPA is outside the valid range (0 - 4). Croscheck your inputs",
                                   textAlign: TextAlign.center,
@@ -265,6 +266,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                   gradeError = true;
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
+                      duration: const Duration(seconds: 1),
                       content: Text(
                         "Invalid grade format",
                         textAlign: TextAlign.center,
@@ -296,6 +298,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                   creditValueError = true;
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
+                      duration: const Duration(seconds: 1),
                       content: Text(
                         "Invalid credit value",
                         textAlign: TextAlign.center,
@@ -328,6 +331,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                     creditValueString.isEmpty) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
+                      duration: const Duration(seconds: 1),
                       content: Text(
                         "Please fill in all fields (Subject Name, Grade, Credit Value).",
                         textAlign: TextAlign.center,
@@ -357,6 +361,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                   // Show message if there's an error
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
+                      duration: const Duration(seconds: 1),
                       content: Text(
                         creditValueError
                             ? "Invalid credit value"

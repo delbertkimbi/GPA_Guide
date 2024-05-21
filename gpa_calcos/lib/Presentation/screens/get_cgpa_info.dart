@@ -21,6 +21,7 @@ class CgpaInfo extends StatefulWidget {
 class _CgpaInfoState extends State<CgpaInfo> {
   final subjectNumberController =
       TextEditingController(text: "0"); // Set initial value
+  bool _hasEmptyFields = false;
 
   @override
   void dispose() {
@@ -138,15 +139,20 @@ class _CgpaInfoState extends State<CgpaInfo> {
                           onChaged: (value) {
                             double gpa;
                             int i = 0;
+                            setState(() {
+                              _hasEmptyFields =
+                                  false; // Reset error state on valid input
+                            });
                             try {
                               gpa = double.parse(value);
                               tryOUt = gpa < 0.0 || gpa > 4.0;
                               if (gpa < 0.0 || gpa > 4.0) {
                                 // Show error message (e.g., using SnackBar)
                                 setState(() {
-                                  x = true;
+                                  _hasEmptyFields = true;
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
+                                      duration: const Duration(seconds: 1),
                                       content: Text(
                                         "GPA must be between 0.0 and 4.0",
                                         textAlign: TextAlign.center,
@@ -163,9 +169,10 @@ class _CgpaInfoState extends State<CgpaInfo> {
                               }
                             } on FormatException catch (e) {
                               setState(() {
-                                x = true;
+                                _hasEmptyFields = true;
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
+                                    duration: const Duration(seconds: 1),
                                     content: Text(
                                       "Invalid GPA input for semester ${i + 2}",
                                       textAlign: TextAlign.center,
@@ -195,15 +202,7 @@ class _CgpaInfoState extends State<CgpaInfo> {
                 if (numberOfSemesters > 0)
                   GestureDetector(
                     onTap: () {
-                      bool hasEmptyFields = false;
-                      for (var controller in _gpaControllers) {
-                        if (controller.text.isEmpty) {
-                          hasEmptyFields = true;
-                          break; // Exit loop after finding an empty field
-                        }
-                      }
-
-                      if (!hasEmptyFields && _calCulateCgpa().isFinite) {
+                      if (!_hasEmptyFields && _calCulateCgpa().isFinite) {
                         // All fields filled and valid GPA, navigate
                         Navigator.of(context).push(
                           MaterialPageRoute(
@@ -212,12 +211,13 @@ class _CgpaInfoState extends State<CgpaInfo> {
                             ),
                           ),
                         );
-                      } else if (hasEmptyFields) {
+                      } else if (_hasEmptyFields) {
                         // Show message for empty fields
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
+                            duration: const Duration(seconds: 1),
                             content: Text(
-                              "Please fill in all GPA fields.",
+                              "Please fill in all GPA fields. With Correct GPAs",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 15.sp,
@@ -267,6 +267,7 @@ class _CgpaInfoState extends State<CgpaInfo> {
                     setState(() {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
+                          duration: const Duration(seconds: 1),
                           content: Text(
                             "GPA must be between 0.0 and 4.0",
                             textAlign: TextAlign.center,

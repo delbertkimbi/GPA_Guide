@@ -38,7 +38,7 @@ class _ChatAIState extends State<ChatAI> {
         backgroundColor: MainColors.color2,
         elevation: 0,
         title: const Text(
-          "Calcos Gemini Chat",
+          "Calcos Chat",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
         ),
       ),

@@ -135,7 +135,7 @@ class _AboutPageState extends State<AboutPage> {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 800),
       curve: Curves.easeInOut,
-      height: 100.h,
+      height: 110.h,
       width: double.infinity,
       margin: EdgeInsets.all(0.r),
       padding: EdgeInsets.all(20.r),
