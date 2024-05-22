@@ -17,8 +17,8 @@ class _IconLandingPageState extends State<IconLandingPage> {
   late Timer _timer;
   @override
   void initState() {
-    _timer = Timer(const Duration(seconds: 3), () {
-      context.router.replace(const LandingPage());
+    _timer = Timer(const Duration(seconds: 4), () {
+      context.router.replace(const HomePage());
     });
 
     super.initState();

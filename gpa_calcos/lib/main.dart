@@ -7,13 +7,11 @@ import 'package:gpa_calcos/Bussiness/calculation/gpa_cubit/gpa_cubit.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/key.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.dart';
 
-
 void main() async {
   Gemini.init(apiKey: GEMINI_API_KEY);
   runApp(MultiBlocProvider(providers: [
     BlocProvider(create: (context) => GpaCubit()),
   ], child: MyApp()));
-
 }
 
 class MyApp extends StatelessWidget {
@@ -36,8 +34,7 @@ class MyApp extends StatelessWidget {
             textTheme: GoogleFonts.robotoTextTheme(textTheme).copyWith(
               bodyMedium: GoogleFonts.poppins(textStyle: textTheme.bodyMedium),
             ),
-            colorScheme:
-                ColorScheme.fromSeed(seedColor: const Color(0xFF5E8D9B)),
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
             useMaterial3: true,
           ),
         );
