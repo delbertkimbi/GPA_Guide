@@ -13,6 +13,18 @@ class PlannerLandingPage extends StatefulWidget {
 }
 
 class _PlannerLandingPageState extends State<PlannerLandingPage> {
+  void onMenuItemSelected(int item) {
+    // Handle menu item selection based on the value
+    switch (item) {
+      case 1:
+        // Navigate to edit screen
+        break;
+      case 2:
+        // Share functionality
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,6 +39,38 @@ class _PlannerLandingPageState extends State<PlannerLandingPage> {
               fontWeight: FontWeight.w600,
               color: Colors.white),
         ),
+        actions: [
+          PopupMenuButton<int>(
+            color: Colors.white,
+            onSelected: (item) => onMenuItemSelected(item),
+            icon: const Icon(
+              Icons.more_vert,
+              color: Colors.white,
+            ),
+            itemBuilder: (context) => [
+              PopupMenuItem<int>(
+                value: 1,
+                child: Text(
+                  'Start Plan',
+                  style: TextStyle(
+                    fontSize: 15.sp,
+                    color: MainColors.color1,
+                  ),
+                ),
+              ),
+              PopupMenuItem<int>(
+                value: 2,
+                child: Text(
+                  'About',
+                  style: TextStyle(
+                    fontSize: 15.sp,
+                    color: MainColors.color1,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
         leading: IconButton(
           onPressed: () => Navigator.of(context).pop(),
           icon: const Icon(

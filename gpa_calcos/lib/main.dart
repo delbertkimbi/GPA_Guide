@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +9,8 @@ import 'package:gpa_calcos/Presentation/Custom/files/key.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   Gemini.init(apiKey: GEMINI_API_KEY);
   runApp(MultiBlocProvider(providers: [
     BlocProvider(create: (context) => GpaCubit()),

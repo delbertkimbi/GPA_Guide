@@ -14,7 +14,6 @@ import 'package:gpa_calcos/Presentation/screens/auth/login.dart' as _i8;
 import 'package:gpa_calcos/Presentation/screens/auth/signup.dart' as _i11;
 import 'package:gpa_calcos/Presentation/screens/get_cgpa_info.dart' as _i1;
 import 'package:gpa_calcos/Presentation/screens/get_gpa_info.dart' as _i2;
-import 'package:gpa_calcos/Presentation/screens/gpa_planner.dart' as _i9;
 import 'package:gpa_calcos/Presentation/screens/gpa_results.dart' as _i10;
 import 'package:gpa_calcos/Presentation/screens/grading_system.dart' as _i3;
 import 'package:gpa_calcos/Presentation/screens/home.dart' as _i4;
@@ -22,6 +21,7 @@ import 'package:gpa_calcos/Presentation/screens/learning_resources.dart' as _i7;
 import 'package:gpa_calcos/Presentation/screens/splash/icon_landing.dart'
     as _i5;
 import 'package:gpa_calcos/Presentation/screens/splash/landing.dart' as _i6;
+import 'package:gpa_calcos/Presentation/screens/study_planner.dart' as _i9;
 
 abstract class $AppRouter extends _i12.RootStackRouter {
   $AppRouter({super.navigatorKey});

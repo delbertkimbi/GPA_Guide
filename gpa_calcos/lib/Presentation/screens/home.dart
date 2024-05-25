@@ -63,6 +63,15 @@ class _HomePageState extends State<HomePage> {
         ),
         appBar: AppBar(
           toolbarHeight: 80.h,
+          // actions: [
+          //   Image.asset(
+          //     'assets/bg1.png',
+          //     height: 40.r,
+          //   ),
+          //   SizedBox(
+          //     width: 10.w,
+          //   ),
+          // ],
           leading: IconButton(
             icon: Icon(
               Icons.menu,
