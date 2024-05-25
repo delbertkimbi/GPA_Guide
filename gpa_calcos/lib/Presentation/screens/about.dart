@@ -87,7 +87,7 @@ class _AboutPageState extends State<AboutPage> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15.r),
                   image: const DecorationImage(
-                    image: AssetImage('assets/try.png'),
+                    image: AssetImage('assets/bg1.png'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -156,7 +156,7 @@ class _AboutPageState extends State<AboutPage> {
         text,
         style: TextStyle(
           color: MainColors
-              .color2, // Or adjust text color based on container color
+              .color1, // Or adjust text color based on container color
           fontSize: 16.sp,
           fontWeight: FontWeight.w500,
         ),

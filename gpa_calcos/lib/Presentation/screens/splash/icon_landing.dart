@@ -40,12 +40,12 @@ class _IconLandingPageState extends State<IconLandingPage> {
           backgroundColor: Colors.white,
           body: Center(
             child: Container(
-              height: 250.h,
+              height: 300.h,
               width: 300.w,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15.r),
                 image: const DecorationImage(
-                  image: AssetImage('assets/logo2.jpg'),
+                  image: AssetImage('assets/GPA Calcos.png'),
                   fit: BoxFit.cover,
                 ),
               ),

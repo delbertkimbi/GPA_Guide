@@ -29,8 +29,22 @@ class CustomDrawer extends StatelessWidget {
             decoration: BoxDecoration(
               color: MainColors.color2,
             ),
-            accountName: Text(userName),
-            accountEmail: Text(userEmail),
+            accountName: Text(
+              userName,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            accountEmail: Text(
+              userEmail,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 15.sp,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
             currentAccountPicture: CircleAvatar(
               radius: 5.h,
               backgroundColor: Colors.white,
@@ -43,12 +57,12 @@ class CustomDrawer extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20.0.r),
                       ),
                       child: Container(
-                        height: 200.h,
-                        width: 150.w,
+                        height: 300.h,
+                        width: 300.w,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15.r),
+                          borderRadius: BorderRadius.circular(10.r),
                           image: const DecorationImage(
-                            image: AssetImage('assets/logo2.jpg'),
+                            image: AssetImage('assets/GPA Calcos.png'),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -60,7 +74,7 @@ class CustomDrawer extends StatelessWidget {
                   radius: 34.h,
                   backgroundColor: Colors.white,
                   child: ClipOval(
-                    child: Image.asset('assets/try.png'),
+                    child: Image.asset('assets/bg1.png'),
                   ),
                 ),
               ),

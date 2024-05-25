@@ -15,16 +15,6 @@ class GradingSystem extends StatefulWidget {
 }
 
 class _GradingSystemState extends State<GradingSystem> {
-  TextStyle tableText1 = TextStyle(
-    color: Colors.white,
-    fontSize: 18.sp,
-    fontWeight: FontWeight.w500,
-  );
-  TextStyle tableText2 = TextStyle(
-    color: MainColors.color1,
-    fontSize: 15.sp,
-    fontWeight: FontWeight.w300,
-  );
   List<String> grades = ["A", "B+", "B", "C+", "C", "D+", "D", "F"];
   List<String> scoreRange = [
     "80-100",
@@ -40,56 +30,105 @@ class _GradingSystemState extends State<GradingSystem> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          leading: const PushOrPop(
-            screenName: HomePage(),
-          ),
-          backgroundColor: MainColors.color2,
-          title: Text(
-            'Grading System',
-            textAlign: TextAlign.center,
-            style: tableText1,
-          ),
-          centerTitle: true,
-          elevation: 0,
+    TextStyle tableText1 = TextStyle(
+      color: Colors.white,
+      fontSize: 20.sp,
+      fontWeight: FontWeight.w500,
+    );
+    TextStyle tableText2 = TextStyle(
+      color: MainColors.color1,
+      fontSize: 15.sp,
+      fontWeight: FontWeight.w400,
+    );
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        leading: const PushOrPop(
+          screenName: HomePage(),
         ),
-        body: SingleChildScrollView(
+        backgroundColor: MainColors.color2,
+        title: Text(
+          'Grading System',
+          textAlign: TextAlign.center,
+          style: tableText1,
+        ),
+        centerTitle: true,
+        elevation: 0,
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.all(5.r),
+          margin: EdgeInsets.all(10.r),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(20.r, 30.r, 20.r, 0.r),
-                child: Table(
-                  border: TableBorder.all(
-                    color: MainColors.color2,
-                  ),
-                  defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                  children: [
-                    TableRow(
-                      decoration: BoxDecoration(
-                        color: MainColors.color2,
-                        borderRadius: BorderRadius.circular(10.r),
+              SizedBox(
+                height: 30.r,
+              ),
+              Table(
+                border: TableBorder.all(
+                  color: MainColors.color2,
+                ),
+                defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                children: [
+                  TableRow(
+                    decoration: BoxDecoration(
+                      color: MainColors.color2,
+                      borderRadius: BorderRadius.circular(10.r),
+                    ),
+                    children: [
+                      TableCell(
+                        verticalAlignment: TableCellVerticalAlignment.middle,
+                        child: Padding(
+                          padding: EdgeInsets.all(8.r),
+                          child: Text("Score/100", style: tableText1),
+                        ),
                       ),
+                      TableCell(
+                        verticalAlignment: TableCellVerticalAlignment.middle,
+                        child: Padding(
+                          padding: EdgeInsets.all(8.r),
+                          child: Text(
+                            "Grade",
+                            textAlign: TextAlign.center,
+                            style: tableText1,
+                          ),
+                        ),
+                      ),
+                      TableCell(
+                        verticalAlignment: TableCellVerticalAlignment.middle,
+                        child: Padding(
+                          padding: EdgeInsets.all(8.r),
+                          child: Text(
+                            "Grade point/4",
+                            textAlign: TextAlign.center,
+                            style: tableText1,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  ...List.generate(8, (index) {
+                    return TableRow(
                       children: [
                         TableCell(
                           verticalAlignment: TableCellVerticalAlignment.middle,
                           child: Padding(
                             padding: EdgeInsets.all(8.r),
-                            child: Text("Score/100", style: tableText1),
+                            child: Text(
+                              scoreRange[index],
+                              style: tableText2,
+                            ),
                           ),
                         ),
                         TableCell(
                           verticalAlignment: TableCellVerticalAlignment.middle,
                           child: Padding(
-                            padding: EdgeInsets.all(8.r),
+                            padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              "Grade",
-                              textAlign: TextAlign.center,
-                              style: tableText1,
+                              grades[index],
+                              style: tableText2,
                             ),
                           ),
                         ),
@@ -98,101 +137,40 @@ class _GradingSystemState extends State<GradingSystem> {
                           child: Padding(
                             padding: EdgeInsets.all(8.r),
                             child: Text(
-                              "Grade point/4",
-                              textAlign: TextAlign.center,
-                              style: tableText1,
+                              "${gradePoints[index]}",
+                              style: tableText2,
                             ),
                           ),
                         ),
                       ],
-                    ),
-                    ...List.generate(8, (index) {
-                      return TableRow(
-                        children: [
-                          TableCell(
-                            verticalAlignment:
-                                TableCellVerticalAlignment.middle,
-                            child: Padding(
-                              padding: EdgeInsets.all(8.r),
-                              child: Text(
-                                scoreRange[index],
-                                style: tableText2,
-                              ),
-                            ),
-                          ),
-                          TableCell(
-                            verticalAlignment:
-                                TableCellVerticalAlignment.middle,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                grades[index],
-                                style: tableText2,
-                              ),
-                            ),
-                          ),
-                          TableCell(
-                            verticalAlignment:
-                                TableCellVerticalAlignment.middle,
-                            child: Padding(
-                              padding: EdgeInsets.all(8.r),
-                              child: Text(
-                                "${gradePoints[index]}",
-                                style: tableText2,
-                              ),
-                            ),
-                          ),
-                        ],
-                      );
-                    }),
-                  ],
-                ),
+                    );
+                  }),
+                ],
               ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(20.r, 0.r, 0.r, 0.r),
-                child: RichText(
-                  text: TextSpan(
-                    text: "",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.sp,
-                      color: MainColors.color1,
-                    ),
-                    children: [
-                      const TextSpan(
-                        text: "\n",
-                      ),
-                      TextSpan(
-                        text:
-                            "The grade system is based on  University of Buea(Cameroon) approach to grading students.\n",
-                        style: tableText2,
-                      ),
-                      TextSpan(
-                        text:
-                            "If it does not suit your school, you can always edit by clicking on the button below.\n\n",
-                        style: tableText2,
-                      ),
-                    ],
-                  ),
-                ),
+              SizedBox(
+                height: 10.h,
               ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(80.r, 0.r, 0.r, 0.r),
-                child: ElevatedButton(
-                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const CustomizedPage(),
-                  )),
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    backgroundColor: MainColors.color2,
-                  ),
-                  child: Text(
-                    "Customize contents",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 18.sp,
-                    ),
+              Text(
+                "This gradind system is based on  University of Buea Cameroon approach to grading students. If it does not suit your school, Click on the button below to view other grading systems systems.",
+                style: tableText2,
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const CustomizedPage(),
+                )),
+                style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  backgroundColor: MainColors.color2,
+                ),
+                child: Text(
+                  "Other systems",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18.sp,
                   ),
                 ),
               )

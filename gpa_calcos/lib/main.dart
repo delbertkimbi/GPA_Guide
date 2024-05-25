@@ -31,10 +31,12 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'GPA Calcos',
           theme: ThemeData(
-            textTheme: GoogleFonts.robotoTextTheme(textTheme).copyWith(
-              bodyMedium: GoogleFonts.poppins(textStyle: textTheme.bodyMedium),
+            textTheme: GoogleFonts.baloo2TextTheme(textTheme).copyWith(
+              bodyMedium: GoogleFonts.baloo2(textStyle: textTheme.bodyMedium),
             ),
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: const Color(0xffDDDDFF),
+            ),
             useMaterial3: true,
           ),
         );

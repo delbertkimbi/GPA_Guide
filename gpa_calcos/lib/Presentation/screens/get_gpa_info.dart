@@ -236,7 +236,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        backgroundColor: MainColors.color2,
+        backgroundColor: Color(0xffF1EFFA),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
