@@ -7,7 +7,7 @@ import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 class StringSlider extends StatefulWidget {
   final List<String> strings;
 
-  const StringSlider({Key? key, required this.strings}) : super(key: key);
+  const StringSlider({super.key, required this.strings});
 
   @override
   State<StringSlider> createState() => _StringSliderState();

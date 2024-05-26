@@ -79,7 +79,7 @@ class _PlannerLandingPageState extends State<PlannerLandingPage> {
           ),
         ),
       ),
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         child: Container(
           padding: EdgeInsets.all(20.r),

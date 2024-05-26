@@ -24,200 +24,210 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
     TextEditingController gradeController = TextEditingController();
     TextEditingController creditValueNameController = TextEditingController();
     MainColors mainColors = MainColors();
-    return SafeArea(
-      child: Scaffold(
-        floatingActionButton: FloatingActionButton.extended(
-            backgroundColor: MainColors.color1,
-            onPressed: () {
-              customShowDialog(context, subjectNameController, gradeController,
-                  creditValueNameController, mainColors);
-            },
-            label: const Text(
-              "Add Course",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-              ),
-            )),
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          centerTitle: true,
-          title: Text(
-            'Calculate GPA',
+    return Scaffold(
+      backgroundColor: MainColors.color4,
+      floatingActionButton: FloatingActionButton.extended(
+          backgroundColor: MainColors.color2,
+          onPressed: () {
+            customShowDialog(context, subjectNameController, gradeController,
+                creditValueNameController, mainColors);
+          },
+          label: Text(
+            "Add Course",
             style: TextStyle(
-                fontSize: 20.sp,
-                fontWeight: FontWeight.w600,
-                color: MainColors.color1),
-          ),
-          leading: IconButton(
-              onPressed: () => Navigator.of(context).pop(),
-              icon: Icon(
-                Icons.arrow_back_ios_new_rounded,
-                color: MainColors.color1,
-              )),
+              color: MainColors.color4,
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w400,
+            ),
+          )),
+      appBar: AppBar(
+        backgroundColor: MainColors.color2,
+        elevation: 0,
+        centerTitle: true,
+        title: Text(
+          'Calculate GPA',
+          style: TextStyle(
+              fontSize: 20.sp,
+              fontWeight: FontWeight.w600,
+              color: MainColors.color4),
         ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(10.r),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 15.w,
-                ),
-                if (creditValueNameController.text.isEmpty)
-                  Text(
-                    'Add your courses for the semester and get your gpa calculated for you.',
-                    textAlign: TextAlign.center,
+        leading: IconButton(
+            onPressed: () => Navigator.of(context).pop(),
+            icon: Icon(
+              Icons.arrow_back_ios_new_rounded,
+              color: MainColors.color4,
+            )),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(10.r),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 15.w,
+              ),
+              if (creditValueNameController.text.isEmpty)
+                Padding(
+                  padding: EdgeInsets.fromLTRB(15.r, 0, 5.r, 0),
+                  child: Text(
+                    'Add your courses for the semester and get your gpa calculated for you with no stress.',
+                    // textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.w500,
+                      fontSize: 15.sp,
+                      fontWeight: FontWeight.w600,
                       color: MainColors.color1,
                     ),
                   ),
-                SizedBox(
-                  height: 20.w,
                 ),
-                BlocBuilder<GpaCubit, List<Subject>>(
-                  builder: (context, subjects) {
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: subjects.length,
-                      itemBuilder: (context, index) {
-                        final subject = subjects[index];
-                        if (subjects.isEmpty) {
-                          return Center(
-                            child: Text(
-                              "No subjects information added yet",
-                              style: TextStyle(
-                                color: MainColors.color1,
+              SizedBox(
+                height: 10.h,
+              ),
+              BlocBuilder<GpaCubit, List<Subject>>(
+                builder: (context, subjects) {
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: subjects.length,
+                    itemBuilder: (context, index) {
+                      final subject = subjects[index];
+
+                      return Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 5.w,
+                          vertical: 2.h,
+                        ),
+                        margin: EdgeInsets.symmetric(
+                            horizontal: 10.w, vertical: 5.h),
+                        alignment: Alignment.center,
+                        height: 60.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.r),
+                          color: Colors.white,
+                        ),
+                        child: ListTile(
+                          onTap: () {
+                            final subject =
+                                BlocProvider.of<GpaCubit>(context).state[index];
+                            // Pre-fill data for editing
+                            TextEditingController subjectNameController =
+                                TextEditingController(text: subject.name);
+                            TextEditingController gradeController =
+                                TextEditingController(text: subject.grade);
+                            TextEditingController creditValueNameController =
+                                TextEditingController(
+                                    text: subject.creditValue.toString());
+
+                            customShowDialog(
+                              context,
+                              subjectNameController,
+                              gradeController,
+                              creditValueNameController,
+                              mainColors,
+                            );
+                          },
+                          hoverColor: MainColors.color2,
+                          title: Row(
+                            children: [
+                              SizedBox(
+                                width: 12.h,
                               ),
+                              Text(
+                                subject.name,
+                                style: TextStyle(
+                                  color: MainColors.color1,
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+                          subtitle: Row(
+                            children: [
+                              SizedBox(
+                                width: 12.h,
+                              ),
+                              Text(
+                                subject.grade,
+                                style: TextStyle(
+                                  fontSize: 16.sp,
+                                  color: MainColors.color1,
+                                ),
+                              ),
+                            ],
+                          ),
+                          trailing: IconButton(
+                            icon: Icon(
+                              Icons.delete,
+                              color: Colors.red,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                subjects.remove(subject);
+                              });
+                            },
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+              SizedBox(
+                height: 15.h,
+              ),
+
+              BlocBuilder<GpaCubit, List<Subject>>(
+                builder: (context, subjects) {
+                  return Visibility(
+                    visible: subjects.isNotEmpty,
+                    child: GestureDetector(
+                      onTap: () {
+                        // Calculate GPA
+                        List<double> gpaValues =
+                            BlocProvider.of<GpaCubit>(context).calculateGPA();
+                        double gpa = gpaValues[0]; // Access the calculated GPA
+
+                        // Validate GPA range (0 to 4)
+                        if (gpa >= 0 && gpa <= 4) {
+                          AutoRouter.of(context).push(
+                            ResultPage(
+                                ccv: gpaValues[2],
+                                cwgp: gpaValues[1],
+                                gpa: gpa),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              duration: const Duration(seconds: 1),
+                              content: Text(
+                                "Calculated GPA is outside the valid range (0 - 4). Croscheck your inputs",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 15.sp,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                              backgroundColor: Colors.red,
                             ),
                           );
                         }
-                        return Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 5.w,
-                            vertical: 2.h,
-                          ),
-                          child: Card(
-                            color: MainColors.color2,
-                            child: ListTile(
-                              onTap: () {
-                                final subject =
-                                    BlocProvider.of<GpaCubit>(context)
-                                        .state[index];
-                                // Pre-fill data for editing
-                                TextEditingController subjectNameController =
-                                    TextEditingController(text: subject.name);
-                                TextEditingController gradeController =
-                                    TextEditingController(text: subject.grade);
-                                TextEditingController
-                                    creditValueNameController =
-                                    TextEditingController(
-                                        text: subject.creditValue.toString());
-
-                                customShowDialog(
-                                  context,
-                                  subjectNameController,
-                                  gradeController,
-                                  creditValueNameController,
-                                  mainColors,
-                                );
-                              },
-                              hoverColor: MainColors.color1,
-                              title: Text(
-                                subject.name,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                ),
-                              ),
-                              subtitle: Text(
-                                subject.grade,
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              trailing: IconButton(
-                                icon: const Icon(
-                                  Icons.delete,
-                                  color: Colors.white,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    subjects.remove(subject);
-                                  });
-                                },
-                              ),
-                            ),
-                          ),
-                        );
                       },
-                    );
-                  },
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                BlocBuilder<GpaCubit, List<Subject>>(
-                  builder: (context, subjects) {
-                    return Visibility(
-                      visible: subjects.isNotEmpty,
-                      child: GestureDetector(
-                        onTap: () {
-                          // Calculate GPA
-                          List<double> gpaValues =
-                              BlocProvider.of<GpaCubit>(context).calculateGPA();
-                          double gpa =
-                              gpaValues[0]; // Access the calculated GPA
-
-                          // Validate GPA range (0 to 4)
-                          if (gpa >= 0 && gpa <= 4) {
-                            AutoRouter.of(context).push(
-                              ResultPage(
-                                  ccv: gpaValues[2],
-                                  cwgp: gpaValues[1],
-                                  gpa: gpa),
-                            );
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                duration: const Duration(seconds: 1),
-                                content: Text(
-                                  "Calculated GPA is outside the valid range (0 - 4). Croscheck your inputs",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 15.sp,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                ),
-                                backgroundColor: Colors.red,
-                              ),
-                            );
-                          }
-                        },
-                        child: RegisterButton(
-                          textSize: 20.r,
-                          text: 'Submit',
-                          color: MainColors.color2,
-                          fontWeight: FontWeight.w500,
-                        ),
+                      child: RegisterButton(
+                        textSize: 20.r,
+                        text: 'Submit',
+                        color: MainColors.color1,
+                        fontWeight: FontWeight.w500,
                       ),
-                    );
-                  },
-                ),
-                SizedBox(
-                  height: 70.h,
-                ),
-              ],
-            ),
+                    ),
+                  );
+                },
+              ),
+              // SizedBox(
+              //   height: 70.h,
+              // ),
+            ],
           ),
         ),
       ),
@@ -236,7 +246,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        backgroundColor: Color(0xffF1EFFA),
+        backgroundColor: MainColors.color2,
         content: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -252,40 +262,44 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
               controller: subjectNameController,
             ),
             SizedBox(
-              height: 10.h,
+              height: 5.h,
             ),
-            CustomTextField(
-              hasError: gradeError, // Use error flag for visual indication
-              onChaged: (value) {
-                // Implement grade validation logic here
-                // You can use a regular expression or a predefined list of valid grades
-                value = gradeController.text.toUpperCase();
-                if (isValidGrade(value)) {
-                  gradeError = false;
-                } else {
-                  gradeError = true;
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      duration: const Duration(seconds: 1),
-                      content: Text(
-                        "Invalid grade format",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 15.sp,
-                          color: Colors.white,
-                          fontWeight: FontWeight.normal,
+            Row(
+              children: [
+                CustomTextField(
+                  hasError: gradeError, // Use error flag for visual indication
+                  onChaged: (value) {
+                    // Implement grade validation logic here
+                    // You can use a regular expression or a predefined list of valid grades
+                    value = gradeController.text.toUpperCase();
+                    if (isValidGrade(value)) {
+                      gradeError = false;
+                    } else {
+                      gradeError = true;
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          duration: const Duration(seconds: 1),
+                          content: Text(
+                            "Invalid grade format",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 15.sp,
+                              color: Colors.white,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                          backgroundColor: Colors.red,
                         ),
-                      ),
-                      backgroundColor: Colors.red,
-                    ),
-                  );
-                }
-              },
-              text: 'Grade',
-              controller: gradeController,
+                      );
+                    }
+                  },
+                  text: 'Grade',
+                  controller: gradeController,
+                ),
+              ],
             ),
             SizedBox(
-              height: 10.h,
+              height: 5.h,
             ),
             CustomTextField(
               hasError:
@@ -379,13 +393,13 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                 }
               },
               child: RegisterButton(
-                textSize: 20.r,
+                textSize: 18.r,
                 text: 'Add',
                 color: creditValueError || gradeError
                     ? Colors.grey
                     : MainColors
                         .color1, // Disable button or change color on error
-                fontWeight: FontWeight.w400,
+                fontWeight: FontWeight.w500,
               ),
             ),
             SizedBox(

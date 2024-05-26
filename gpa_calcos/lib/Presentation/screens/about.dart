@@ -6,7 +6,7 @@ import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/slider.dart';
 
 class AboutPage extends StatefulWidget {
-  AboutPage({super.key});
+  const AboutPage({super.key});
 
   @override
   State<AboutPage> createState() => _AboutPageState();
@@ -164,15 +164,6 @@ class _AboutPageState extends State<AboutPage> {
     );
   }
 
-  Widget _buildFeatureTile(String feature) {
-    return ListTile(
-      leading: Icon(Icons.check, color: MainColors.color1),
-      title: Text(
-        feature,
-        style: TextStyle(color: MainColors.color1),
-      ),
-    );
-  }
 
   void _nextSlide() {
     setState(() {

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 
 class RegisterButton extends StatelessWidget {
   final String text;
@@ -30,7 +31,7 @@ class RegisterButton extends StatelessWidget {
         child: Text(
           text,
           style: TextStyle(
-            color: Colors.white,
+            color: MainColors.color4,
             fontSize: textSize.sp,
             fontWeight: fontWeight,
           ),

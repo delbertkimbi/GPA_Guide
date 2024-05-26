@@ -7,7 +7,8 @@ import 'package:gpa_calcos/Presentation/screens/about.dart';
 import 'package:gpa_calcos/Presentation/screens/chat.dart';
 import 'package:gpa_calcos/Presentation/screens/customized.dart';
 import 'package:gpa_calcos/Presentation/screens/get_cgpa_info.dart';
-import 'package:gpa_calcos/Presentation/screens/get_gpa_info.dart';
+
+import 'package:gpa_calcos/Presentation/screens/gpa2.dart';
 import 'package:gpa_calcos/Presentation/screens/learning_resources.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -95,7 +96,7 @@ class CustomDrawer extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const GetSubjectInfo())),
+                    builder: (context) => const GpaCalculate())),
                 child: CustomListTile(
                     title: "Calculate Gpa",
                     icon: Icon(
@@ -163,7 +164,7 @@ class CustomDrawer extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => AboutPage(),
+                  builder: (context) => const AboutPage(),
                 )),
                 child: CustomListTile(
                   title: "About App",

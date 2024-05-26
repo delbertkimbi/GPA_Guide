@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 
 class OptionBox extends StatelessWidget {
   final String optiontext;

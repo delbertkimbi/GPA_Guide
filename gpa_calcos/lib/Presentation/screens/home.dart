@@ -27,13 +27,9 @@ class _HomePageState extends State<HomePage> {
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            //   Color(0xff9191F5),
-            // Colors.white,
-
             Color(0xffF1EFFA),
             Color(0xffF1EFFA),
             Color(0xffF1EFFA),
-
             Color(0xff9191F5),
           ],
           begin: Alignment.topCenter,
@@ -62,16 +58,6 @@ class _HomePageState extends State<HomePage> {
               icon: const Icon(Icons.chat)),
         ),
         appBar: AppBar(
-          toolbarHeight: 80.h,
-          // actions: [
-          //   Image.asset(
-          //     'assets/bg1.png',
-          //     height: 40.r,
-          //   ),
-          //   SizedBox(
-          //     width: 10.w,
-          //   ),
-          // ],
           leading: IconButton(
             icon: Icon(
               Icons.menu,
@@ -90,123 +76,118 @@ class _HomePageState extends State<HomePage> {
             style: TextStyle(
               color: MainColors.color1,
               fontWeight: FontWeight.bold,
-              fontSize: 30.r,
+              fontSize: 30.sp,
             ),
           ),
         ),
         backgroundColor: Colors.transparent,
-        body: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 10.h,
-                ),
-                Container(
-                  padding: EdgeInsets.all(8.r),
-                  margin: EdgeInsets.symmetric(horizontal: 20.r),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          customBox(
-                            color: Colors.white,
-                            icon: Icons.calculate,
-                            text: 'GPA  ',
-                            page: const GetSubjectInfo(),
-                          ),
-                          SizedBox(
-                            width: 30.h,
-                          ),
-                          customBox(
-                            color: Colors.black,
-                            icon: Icons.calculate_rounded,
-                            text: 'CGPA',
-                            page: const CgpaInfo(),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 30.h,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          customBox(
-                            color: const Color(0xffE15555),
-                            icon: Icons.drive_file_rename_outline_rounded,
-                            text: 'Study planner',
-                            page: const PlannerLandingPage(),
-                          ),
-                          SizedBox(
-                            width: 30.h,
-                          ),
-                          customBox(
-                            color: Colors.yellow,
-                            icon: Icons.grade_rounded,
-                            text: 'Grading System',
-                            page: const GradingSystem(),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 390.r,
-                  width: 400.r,
-                  child: CarouselSlider(
-                    items: [
-                      // Define each image item here
-                      Image.asset(
-                        'assets/bob2.png',
-                        fit: BoxFit.cover,
-                      ),
-                      Image.asset(
-                        'assets/bob1.png',
-                        fit: BoxFit.cover,
-                      ),
-
-                      Image.asset(
-                        'assets/bob3.png',
-                        fit: BoxFit.cover,
-                      ),
-                      Image.asset(
-                        'assets/bob4.png',
-                        fit: BoxFit.cover,
-                      ),
-                      Image.asset(
-                        'assets/bob5.png',
-                        fit: BoxFit.cover,
-                      ),
-                      Image.asset(
-                        'assets/bob6.png',
-                        fit: BoxFit.cover,
-                      ),
-
-                      // Add more image assets as needed
-                    ],
-                    options: CarouselOptions(
-                      height: 390.r,
-                      aspectRatio: 16 / 9, // Adjust aspect ratio if needed
-                      viewportFraction:
-                          1.5, // Adjust visible portion of each slide
-                      enableInfiniteScroll:
-                          true, // Enable looping through images
-                      autoPlay: true, // Set to true for automatic sliding
-                      autoPlayInterval: const Duration(seconds: 5),
+        body: Center(
+          child: ListView(
+            children: [
+              SizedBox(
+                height: 0.h,
+              ),
+              Container(
+                padding: EdgeInsets.all(8.r),
+                margin: EdgeInsets.symmetric(horizontal: 20.r),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        customBox(
+                          color: Colors.white,
+                          icon: Icons.calculate,
+                          text: 'GPA  ',
+                          page: const GetSubjectInfo(),
+                        ),
+                        SizedBox(
+                          width: 30.h,
+                        ),
+                        customBox(
+                          color: Colors.black,
+                          icon: Icons.calculate_rounded,
+                          text: 'CGPA',
+                          page: const CgpaInfo(),
+                        ),
+                      ],
                     ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        customBox(
+                          color: const Color(0xffE15555),
+                          icon: Icons.drive_file_rename_outline_rounded,
+                          text: 'Study planner',
+                          page: const PlannerLandingPage(),
+                        ),
+                        SizedBox(
+                          width: 30.h,
+                        ),
+                        customBox(
+                          color: Colors.yellow,
+                          icon: Icons.grade_rounded,
+                          text: 'Grading System',
+                          page: const GradingSystem(),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 390.r,
+                width: 400.r,
+                child: CarouselSlider(
+                  items: [
+                    // Define each image item here
+                    Image.asset(
+                      'assets/bob2.png',
+                      fit: BoxFit.cover,
+                    ),
+                    Image.asset(
+                      'assets/bob1.png',
+                      fit: BoxFit.cover,
+                    ),
+
+                    Image.asset(
+                      'assets/bob3.png',
+                      fit: BoxFit.cover,
+                    ),
+                    Image.asset(
+                      'assets/bob4.png',
+                      fit: BoxFit.cover,
+                    ),
+                    Image.asset(
+                      'assets/bob5.png',
+                      fit: BoxFit.cover,
+                    ),
+                    Image.asset(
+                      'assets/bob6.png',
+                      fit: BoxFit.cover,
+                    ),
+
+                    // Add more image assets as needed
+                  ],
+                  options: CarouselOptions(
+                    height: 390.r,
+                    aspectRatio: 16 / 9, // Adjust aspect ratio if needed
+                    viewportFraction:
+                        1.5, // Adjust visible portion of each slide
+                    enableInfiniteScroll: true, // Enable looping through images
+                    autoPlay: true, // Set to true for automatic sliding
+                    autoPlayInterval: const Duration(seconds: 5),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
@@ -226,16 +207,16 @@ class _HomePageState extends State<HomePage> {
         height: 130.h,
         width: 130.h,
         alignment: Alignment.center,
-        padding: EdgeInsets.all(14.r),
+        padding: EdgeInsets.all(10.r),
         decoration: BoxDecoration(
           color: const Color(0xff9191F5),
           borderRadius: BorderRadius.circular(20.r),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.3),
+              color: Colors.black.withOpacity(0.3.r),
               offset: const Offset(0, 10),
-              blurRadius: 10.0,
-              spreadRadius: 0.0,
+              blurRadius: 10.0.r,
+              spreadRadius: 0.0.r,
             ),
           ],
         ),
@@ -244,7 +225,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             Icon(
               icon,
-              size: 40.r,
+              size: 35.r,
               color: color,
             ),
             SizedBox(
