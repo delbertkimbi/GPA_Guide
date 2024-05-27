@@ -74,26 +74,30 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                     return Visibility(
                       visible: subjects
                           .isEmpty, // Check if the list of subjects is empty
-                      child: Padding(
-                        padding: EdgeInsets.fromLTRB(15.r, 0, 5.r, 0),
-                        child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Image.asset('assets/wonder.png'),
-                              Text(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 100.h,
+                          ),
+                          Image.asset('assets/gpa.png'),
+                          Center(
+                            child: Padding(
+                              padding:
+                                  EdgeInsets.fromLTRB(30.h, 5.r, 20.r, 2.r),
+                              child: Text(
                                 'Add your courses for the semester and get your gpa calculated for you with no stress.',
-                                textAlign: TextAlign.center,
+                                //textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 15.sp,
-                                  fontWeight: FontWeight.w600,
-                                  color: MainColors.color1,
+                                  fontWeight: FontWeight.w500,
+                                  color: const Color(0xff415DDB),
                                 ),
                               ),
-                            ],
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     );
                   },

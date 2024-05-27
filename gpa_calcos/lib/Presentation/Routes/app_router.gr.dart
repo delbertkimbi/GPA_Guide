@@ -21,7 +21,7 @@ import 'package:gpa_calcos/Presentation/screens/learning_resources.dart' as _i7;
 import 'package:gpa_calcos/Presentation/screens/splash/icon_landing.dart'
     as _i5;
 import 'package:gpa_calcos/Presentation/screens/splash/landing.dart' as _i6;
-import 'package:gpa_calcos/Presentation/screens/study_planner.dart' as _i9;
+import 'package:gpa_calcos/study_planner.dart' as _i9;
 
 abstract class $AppRouter extends _i12.RootStackRouter {
   $AppRouter({super.navigatorKey});

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
+import 'package:screenshot/screenshot.dart';
+import 'package:share_plus/share_plus.dart';
 
 class CgpaReultsPage extends StatefulWidget {
   final double cgpa;
@@ -34,40 +36,85 @@ class _CgpaReultsPageState extends State<CgpaReultsPage> {
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
           ),
         ),
-        body: Center(
-          child: Container(
-            height: 300.h,
-            width: 300.w,
-            decoration: BoxDecoration(
-              color: MainColors.color2,
-              borderRadius: BorderRadius.circular(10.h),
+        body: Column(
+          children: [
+            Screenshot(
+              controller: _screenshotController,
+              child: Container(
+                height: 300.h,
+                width: 300.w,
+                margin: EdgeInsets.symmetric(
+                  vertical: 40.r,
+                  horizontal: 30.r,
+                ),
+                decoration: BoxDecoration(
+                    color: MainColors.color2,
+                    borderRadius: BorderRadius.circular(30.r),
+                    boxShadow: [
+                      BoxShadow(
+                        // color: Colors.black.withOpacity(0.3.r),
+                        color: const Color(0xff9191F5),
+                        offset: const Offset(4.0, 4.0),
+                        blurRadius: 25.0.r,
+                        spreadRadius: 1.0.r,
+                      ),
+                      BoxShadow(
+                        // color: Colors.black.withOpacity(0.3.r),
+                        color: MainColors.color4,
+                        offset: const Offset(-4.0, -4.0),
+                        blurRadius: 5.0.r,
+                        spreadRadius: 1.0.r,
+                      ),
+                    ]),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Center(
+                      child: Text(
+                        'Your Results',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 30.sp,
+                          color: MainColors.color1,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      "CGPA: ${widget.cgpa.toStringAsFixed(2)}",
+                      style: TextStyle(
+                        fontSize: 25.h,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(0.0),
+                      child: _cgpaStatus()!,
+                    ),
+                  ],
+                ),
+              ),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Your CGPA is',
-                  style: TextStyle(
-                    fontSize: 24.0.sp,
-                    color: Colors.white,
-                  ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10.r, 0, 10.r, 0),
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () => _takeScreenShot,
+                      child: shareSave(text: 'Share', icon: Icons.share),
+                    ),
+                    SizedBox(
+                      width: 20.r,
+                    ),
+                    shareSave(text: 'Save', icon: Icons.save),
+                  ],
                 ),
-                // SizedBox(height: 20.0.h),
-                Text(
-                  widget.cgpa.toStringAsFixed(2),
-                  style: TextStyle(
-                    fontSize: 32.h,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: _cgpaStatus()!,
-                ),
-              ],
-            ),
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );
@@ -93,5 +140,73 @@ class _CgpaReultsPageState extends State<CgpaReultsPage> {
       );
     }
     return null;
+  }
+
+  Container shareSave({required String text, required IconData icon}) {
+    return Container(
+      width: 120.w,
+      height: 50.h,
+      alignment: Alignment.center,
+      padding: EdgeInsets.all(15.r),
+      decoration: BoxDecoration(
+          color: MainColors.color1,
+          borderRadius: BorderRadius.circular(30.r),
+          boxShadow: [
+            BoxShadow(
+              // color: Colors.black.withOpacity(0.3.r),
+              color: Colors.grey.shade500,
+              offset: const Offset(4.0, 4.0),
+              blurRadius: 25.0.r,
+              spreadRadius: 1.0.r,
+            ),
+            BoxShadow(
+              // color: Colors.black.withOpacity(0.3.r),
+              color: MainColors.color4,
+              offset: const Offset(-4.0, -4.0),
+              blurRadius: 5.0.r,
+              spreadRadius: 1.0.r,
+            ),
+          ]),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            text,
+            style: TextStyle(
+              color: MainColors.color4,
+              fontSize: 18.sp,
+            ),
+          ),
+          SizedBox(
+            width: 10.r,
+          ),
+          Icon(
+            icon,
+            color: MainColors.color4,
+            size: 20.r,
+          )
+        ],
+      ),
+    );
+  }
+
+  final ScreenshotController _screenshotController = ScreenshotController();
+  void _takeScreenShot() async {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Capturing screenshot...'),
+        duration: Duration(milliseconds: 200), // Adjust duration as needed
+      ),
+    );
+
+    await Future.delayed(const Duration(milliseconds: 200)); // Wait for 200ms
+    dynamic image;
+    final imageFile = await _screenshotController.capture();
+    setState(() {
+      image = imageFile;
+    });
+    Share.shareXFiles([XFile(image.toString())],
+        text: 'My GPA calculated by GPA Calcos');
   }
 }

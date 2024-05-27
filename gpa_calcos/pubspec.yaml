@@ -23,6 +23,8 @@ dependencies:
   dash_chat_2: ^0.0.20
   screenshot: ^3.0.0
   share_plus: ^9.0.0
+  firebase_core: ^2.31.1
+  firebase_auth: ^4.19.6
 dev_dependencies: 
   auto_route_generator: ^7.3.2
   flutter_test:

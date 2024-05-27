@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         key: _scaffoldKey, // Assign GlobalKey
         drawer: const CustomDrawer(
-          userName: 'GPA Calcos',
+          userName: 'GPA Guide',
           userEmail: 'Calculations made easy, with AI.',
         ),
         floatingActionButton: FloatingActionButton(
@@ -58,10 +58,33 @@ class _HomePageState extends State<HomePage> {
               icon: const Icon(Icons.chat)),
         ),
         appBar: AppBar(
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.notification_add,
+                color: MainColors.color1,
+              ),
+            ),
+            CircleAvatar(
+              backgroundColor: Colors.white,
+              radius: 14.r,
+              child: Text(
+                'D',
+                style: TextStyle(
+                  fontSize: 18.sp,
+                  color: MainColors.color1,
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 10.h,
+            ),
+          ],
           leading: IconButton(
             icon: Icon(
               Icons.menu,
-              size: 35.r,
+              size: 25.r,
             ),
             color: MainColors.color1,
             onPressed: () {
@@ -72,11 +95,11 @@ class _HomePageState extends State<HomePage> {
           elevation: 5,
           centerTitle: true,
           title: Text(
-            'GPA Calcos',
+            'GPA Guide',
             style: TextStyle(
               color: MainColors.color1,
               fontWeight: FontWeight.bold,
-              fontSize: 35.sp,
+              fontSize: 25.sp,
             ),
           ),
         ),
@@ -142,11 +165,11 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
+              // SizedBox(
+              //   height: 10.h,
+              // ),
               SizedBox(
-                height: 10.h,
-              ),
-              SizedBox(
-                height: 390.r,
+                height: 350.r,
                 width: 400.r,
                 child: CarouselSlider(
                   items: [
@@ -180,7 +203,7 @@ class _HomePageState extends State<HomePage> {
                     // Add more image assets as needed
                   ],
                   options: CarouselOptions(
-                    height: 390.r,
+                    height: 330.r,
                     aspectRatio: 16 / 9, // Adjust aspect ratio if needed
                     viewportFraction:
                         1.5, // Adjust visible portion of each slide
@@ -237,7 +260,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             Icon(
               icon,
-              size: 35.r,
+              size: 30.r,
               color: color,
             ),
             SizedBox(
@@ -248,7 +271,7 @@ class _HomePageState extends State<HomePage> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 18.sp,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w500,
                 color: Colors.white,
               ),
             ),

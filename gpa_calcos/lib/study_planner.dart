@@ -80,58 +80,59 @@ class _PlannerLandingPageState extends State<PlannerLandingPage> {
           ),
         ),
       ),
-      body: SizedBox(
-        width: double.infinity,
-        child: Container(
-          padding: EdgeInsets.all(20.r),
-          margin: EdgeInsets.all(20.r),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(
-                height: 30.h,
+      body: ListView(
+        children: [
+          SizedBox(
+            width: double.infinity,
+            child: Container(
+              padding: EdgeInsets.all(20.r),
+              margin: EdgeInsets.all(20.r),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  const OptionBox(
+                    index: '1',
+                    optiontext: 'Daily plan',
+                    optionICon: Icons.leaderboard_sharp,
+                    iconColor: Colors.yellow,
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  const OptionBox(
+                    index: '2',
+                    optiontext: 'Weekly plan',
+                    optionICon: Icons.leaderboard_sharp,
+                    iconColor: Colors.yellow,
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  const OptionBox(
+                    index: '3',
+                    optiontext: 'Monthly plan',
+                    optionICon: Icons.leaderboard_sharp,
+                    iconColor: Colors.white,
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  const OptionBox(
+                    index: '4',
+                    optiontext: 'Semester plan',
+                    optionICon: Icons.leaderboard_sharp,
+                    iconColor: Colors.red,
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Image.asset('assets/plan1.png'),
+                ],
               ),
-              const OptionBox(
-                index: '1',
-                optiontext: 'Daily plan',
-                optionICon: Icons.leaderboard_sharp,
-                iconColor: Colors.yellow,
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              const OptionBox(
-                index: '2',
-                optiontext: 'Weekly plan',
-                optionICon: Icons.leaderboard_sharp,
-                iconColor: Colors.yellow,
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              const OptionBox(
-                index: '3',
-                optiontext: 'Monthly plan',
-                optionICon: Icons.leaderboard_sharp,
-                iconColor: Colors.white,
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              const OptionBox(
-                index: '4',
-                optiontext: 'Semester plan',
-                optionICon: Icons.leaderboard_sharp,
-                iconColor: Colors.red,
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              Image.asset('assets/plan1.png'),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

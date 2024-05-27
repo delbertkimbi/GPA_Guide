@@ -39,7 +39,7 @@ class _StringSliderState extends State<StringSlider> {
         child: AnimatedContainer(
           duration: const Duration(seconds: 2),
           curve: Curves.easeInOut,
-          height: 170.h,
+          height: 160.h,
           width: double.infinity,
           margin: EdgeInsets.all(0.r),
           padding: EdgeInsets.all(20.r),
@@ -61,8 +61,8 @@ class _StringSliderState extends State<StringSlider> {
             style: TextStyle(
               color:
                   Colors.white, // Or adjust text color based on container color
-              fontSize: 18.sp,
-              fontWeight: FontWeight.w500,
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w400,
             ),
           ),
         ),

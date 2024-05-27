@@ -64,8 +64,7 @@ class _CgpaInfoState extends State<CgpaInfo> {
     ),
   ];
 
-  final subjectNumberController =
-      TextEditingController(text: "0"); // Set initial value
+  final subjectNumberController = TextEditingController(); 
   bool _hasEmptyFields = false;
 
   @override

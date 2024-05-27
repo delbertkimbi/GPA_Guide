@@ -206,8 +206,7 @@ class _ResultPageState extends State<ResultPage> {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Capturing screenshot...'),
-        duration:
-            const Duration(milliseconds: 200), // Adjust duration as needed
+        duration: Duration(milliseconds: 200), // Adjust duration as needed
       ),
     );
 

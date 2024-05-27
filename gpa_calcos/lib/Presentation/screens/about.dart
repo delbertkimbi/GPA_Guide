@@ -20,7 +20,7 @@ class _AboutPageState extends State<AboutPage> {
     'Stay Organized: Track courses, assignments, and deadlines.', // (3 seconds)
   ];
   final List<String> appDescriptionList2 = [
-    'GPA Calcos empowers students to excel academically by providing a comprehensive suite of tools for managing and improving their grades.',
+    'GPA Guide empowers students to excel academically by providing a comprehensive suite of tools for managing and improving their grades.',
     'Supports various grading scales: Customize grading system to suit your own school',
     'Calculate with ease: Calculate your GPA, CGPA, and individual course grades quickly and accurately. Our intuitive interface makes data entry and viewing results a breeze.',
     'Go beyond calculations: GPA Calcos is more than just a calculator. We offer a range of learning tools to help you solidify concepts and master your coursework.',
@@ -59,7 +59,7 @@ class _AboutPageState extends State<AboutPage> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          'About GPA Calcos',
+          'About GPA Guide',
           style: TextStyle(
               fontSize: 20.sp,
               fontWeight: FontWeight.w600,
@@ -79,28 +79,13 @@ class _AboutPageState extends State<AboutPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // App Icon/Logo (replace with your app icon)
-            Center(
-              child: Container(
-                height: 160.h,
-                width: 150.w,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.r),
-                  image: const DecorationImage(
-                    image: AssetImage('assets/bg1.png'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
-
             SizedBox(
               height: 20.h,
             ),
             // App Description
             StringSlider(strings: appDescriptionList2),
             SizedBox(
-              height: 20.h,
+              height: 30.h,
             ),
             descriptContianer(appDescriptionList[0]),
             SizedBox(
@@ -135,7 +120,7 @@ class _AboutPageState extends State<AboutPage> {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 800),
       curve: Curves.easeInOut,
-      height: 110.h,
+      height: 90.h,
       width: double.infinity,
       margin: EdgeInsets.all(0.r),
       padding: EdgeInsets.all(20.r),
@@ -157,13 +142,12 @@ class _AboutPageState extends State<AboutPage> {
         style: TextStyle(
           color: MainColors
               .color1, // Or adjust text color based on container color
-          fontSize: 16.sp,
-          fontWeight: FontWeight.w500,
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w400,
         ),
       ),
     );
   }
-
 
   void _nextSlide() {
     setState(() {

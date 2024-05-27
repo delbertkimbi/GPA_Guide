@@ -32,12 +32,12 @@ class _GradingSystemState extends State<GradingSystem> {
   Widget build(BuildContext context) {
     TextStyle tableText1 = TextStyle(
       color: MainColors.color4,
-      fontSize: 18.sp,
+      fontSize: 16.sp,
       fontWeight: FontWeight.w500,
     );
     TextStyle tableText2 = TextStyle(
       color: MainColors.color1,
-      fontSize: 15.sp,
+      fontSize: 14.sp,
       fontWeight: FontWeight.w400,
     );
     return Scaffold(
@@ -174,7 +174,7 @@ class _GradingSystemState extends State<GradingSystem> {
                   style: TextStyle(
                     color: MainColors.color4,
                     fontWeight: FontWeight.w500,
-                    fontSize: 18.sp,
+                    fontSize: 16.sp,
                   ),
                 ),
               )
