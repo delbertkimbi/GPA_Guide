@@ -37,7 +37,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
             style: TextStyle(
               color: MainColors.color4,
               fontSize: 16.sp,
-              fontWeight: FontWeight.w400,
+              fontWeight: FontWeight.w500,
             ),
           )),
       appBar: AppBar(
@@ -45,7 +45,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          'Calculate GPA',
+          'Grade Point Average',
           style: TextStyle(
               fontSize: 20.sp,
               fontWeight: FontWeight.w600,
@@ -69,18 +69,36 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                 height: 15.w,
               ),
               if (creditValueNameController.text.isEmpty)
-                Padding(
-                  padding: EdgeInsets.fromLTRB(15.r, 0, 5.r, 0),
-                  child: Text(
-                    'Add your courses for the semester and get your gpa calculated for you with no stress.',
-                    // textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.w600,
-                      color: MainColors.color1,
-                    ),
-                  ),
+                BlocBuilder<GpaCubit, List<Subject>>(
+                  builder: (context, subjects) {
+                    return Visibility(
+                      visible: subjects
+                          .isEmpty, // Check if the list of subjects is empty
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(15.r, 0, 5.r, 0),
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Image.asset('assets/wonder.png'),
+                              Text(
+                                'Add your courses for the semester and get your gpa calculated for you with no stress.',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 15.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: MainColors.color1,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 ),
+
               SizedBox(
                 height: 10.h,
               ),
@@ -95,7 +113,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                       return Container(
                         padding: EdgeInsets.symmetric(
                           horizontal: 5.w,
-                          vertical: 2.h,
+                          vertical: 0.h,
                         ),
                         margin: EdgeInsets.symmetric(
                             horizontal: 10.w, vertical: 5.h),
@@ -157,7 +175,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                             ],
                           ),
                           trailing: IconButton(
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.delete,
                               color: Colors.red,
                             ),
@@ -216,7 +234,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                       },
                       child: RegisterButton(
                         textSize: 20.r,
-                        text: 'Submit',
+                        text: 'Calculate',
                         color: MainColors.color1,
                         fontWeight: FontWeight.w500,
                       ),
@@ -393,13 +411,13 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                 }
               },
               child: RegisterButton(
-                textSize: 18.r,
+                textSize: 18.sp,
                 text: 'Add',
                 color: creditValueError || gradeError
                     ? Colors.grey
                     : MainColors
                         .color1, // Disable button or change color on error
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w600,
               ),
             ),
             SizedBox(

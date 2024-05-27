@@ -68,15 +68,15 @@ class _HomePageState extends State<HomePage> {
               _scaffoldKey.currentState?.openDrawer(); // Use GlobalKey
             },
           ),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
+          backgroundColor: MainColors.color4,
+          elevation: 5,
           centerTitle: true,
           title: Text(
             'GPA Calcos',
             style: TextStyle(
               color: MainColors.color1,
               fontWeight: FontWeight.bold,
-              fontSize: 30.sp,
+              fontSize: 35.sp,
             ),
           ),
         ),
@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage> {
           child: ListView(
             children: [
               SizedBox(
-                height: 0.h,
+                height: 20.h,
               ),
               Container(
                 padding: EdgeInsets.all(8.r),
@@ -108,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                           width: 30.h,
                         ),
                         customBox(
-                          color: Colors.black,
+                          color: MainColors.color1,
                           icon: Icons.calculate_rounded,
                           text: 'CGPA',
                           page: const CgpaInfo(),
@@ -141,6 +141,9 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
+              ),
+              SizedBox(
+                height: 10.h,
               ),
               SizedBox(
                 height: 390.r,
@@ -210,13 +213,22 @@ class _HomePageState extends State<HomePage> {
         padding: EdgeInsets.all(10.r),
         decoration: BoxDecoration(
           color: const Color(0xff9191F5),
-          borderRadius: BorderRadius.circular(20.r),
+          // color: Colors.grey[300],
+          borderRadius: BorderRadius.circular(15.r),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.3.r),
-              offset: const Offset(0, 10),
-              blurRadius: 10.0.r,
-              spreadRadius: 0.0.r,
+              // color: Colors.black.withOpacity(0.3.r),
+              color: const Color(0xff9191F5),
+              offset: const Offset(4.0, 4.0),
+              blurRadius: 25.0.r,
+              spreadRadius: 1.0.r,
+            ),
+            BoxShadow(
+              // color: Colors.black.withOpacity(0.3.r),
+              color: MainColors.color4,
+              offset: const Offset(-4.0, -4.0),
+              blurRadius: 5.0.r,
+              spreadRadius: 1.0.r,
             ),
           ],
         ),

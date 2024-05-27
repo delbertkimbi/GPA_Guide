@@ -21,6 +21,8 @@ dependencies:
   google_mlkit_image_labeling: ^0.10.0
   image_picker: ^1.0.8
   dash_chat_2: ^0.0.20
+  screenshot: ^3.0.0
+  share_plus: ^9.0.0
 dev_dependencies: 
   auto_route_generator: ^7.3.2
   flutter_test:

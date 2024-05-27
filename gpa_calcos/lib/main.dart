@@ -9,6 +9,7 @@ import 'package:gpa_calcos/Presentation/Custom/files/key.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.dart';
 
 void main() async {
+  // Avoid screen from rotating when devide is slanted
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   Gemini.init(apiKey: GEMINI_API_KEY);

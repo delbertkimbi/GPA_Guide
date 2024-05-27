@@ -5,11 +5,13 @@ class OptionBox extends StatelessWidget {
   final String optiontext;
   final IconData optionICon;
   final Color iconColor;
+  final String index;
   const OptionBox({
     super.key,
     required this.optiontext,
     required this.optionICon,
     required this.iconColor,
+    required this.index,
   });
 
   @override
@@ -17,7 +19,7 @@ class OptionBox extends StatelessWidget {
     return Container(
       height: 55.h,
       width: 300.w,
-      padding: EdgeInsets.all(14.r),
+      alignment: Alignment.centerLeft,
       decoration: BoxDecoration(
         color: const Color(0xff9191F5),
         borderRadius: BorderRadius.circular(20.r),
@@ -30,11 +32,8 @@ class OptionBox extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
+      child: ListTile(
+          title: Text(
             optiontext,
             style: TextStyle(
               color: Colors.white,
@@ -42,15 +41,13 @@ class OptionBox extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           ),
-          SizedBox(
-            width: 60.w,
+          leading: CircleAvatar(
+            child: Text(index),
           ),
-          Icon(
+          trailing: Icon(
             optionICon,
             color: iconColor,
-          )
-        ],
-      ),
+          )),
     );
   }
 }

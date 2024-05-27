@@ -48,7 +48,7 @@ class CustomDrawer extends StatelessWidget {
             ),
             currentAccountPicture: CircleAvatar(
               radius: 5.h,
-              backgroundColor: Colors.white,
+              backgroundColor: MainColors.color4,
               child: GestureDetector(
                 onTap: () {
                   showDialog(
@@ -61,6 +61,7 @@ class CustomDrawer extends StatelessWidget {
                         height: 300.h,
                         width: 300.w,
                         decoration: BoxDecoration(
+                          color: MainColors.color4,
                           borderRadius: BorderRadius.circular(10.r),
                           image: const DecorationImage(
                             image: AssetImage('assets/GPA Calcos.png'),
@@ -82,100 +83,103 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           Expanded(
-              child: ListView(
-            children: [
-              GestureDetector(
-                onTap: () => Navigator.of(context).pop(),
-                child: CustomListTile(
-                    title: "Home",
+              child: Container(
+            color: MainColors.color4,
+            child: ListView(
+              children: [
+                GestureDetector(
+                  onTap: () => Navigator.of(context).pop(),
+                  child: CustomListTile(
+                      title: "Home",
+                      icon: Icon(
+                        Icons.home,
+                        color: MainColors.color2,
+                        size: 30.r,
+                      )),
+                ),
+                GestureDetector(
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const GpaCalculate())),
+                  child: CustomListTile(
+                      title: "Calculate Gpa",
+                      icon: Icon(
+                        Icons.calculate,
+                        color: MainColors.color2,
+                        size: 30.r,
+                      )),
+                ),
+                GestureDetector(
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const CgpaInfo())),
+                  child: CustomListTile(
+                      title: "Calculate Cgpa",
+                      icon: Icon(
+                        Icons.calculate_outlined,
+                        color: MainColors.color2,
+                        size: 30.r,
+                      )),
+                ),
+                Divider(
+                  height: 50.r,
+                  color: Colors.black,
+                ),
+                GestureDetector(
+                  onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const ChatAI())),
+                  child: CustomListTile(
+                    title: "Chat with Others/AI",
                     icon: Icon(
-                      Icons.home,
-                      color: MainColors.color1,
+                      Icons.route,
+                      color: MainColors.color2,
                       size: 30.r,
-                    )),
-              ),
-              GestureDetector(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const GpaCalculate())),
-                child: CustomListTile(
-                    title: "Calculate Gpa",
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const Learningpage(),
+                  )),
+                  child: CustomListTile(
+                    title: "Learning Resources",
                     icon: Icon(
-                      Icons.calculate,
-                      color: MainColors.color1,
-                      size: 30.r,
-                    )),
-              ),
-              GestureDetector(
-                onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const CgpaInfo())),
-                child: CustomListTile(
-                    title: "Calculate Cgpa",
+                      Icons.search_rounded,
+                      color: MainColors.color2,
+                      size: 30.h,
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const CustomizedPage(),
+                  )),
+                  child: CustomListTile(
+                    title: "Did you Know?",
                     icon: Icon(
-                      Icons.calculate_outlined,
-                      color: MainColors.color1,
+                      Icons.help,
+                      color: MainColors.color2,
                       size: 30.r,
-                    )),
-              ),
-              Divider(
-                height: 50.r,
-                color: Colors.black,
-              ),
-              GestureDetector(
-                onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const ChatAI())),
-                child: CustomListTile(
-                  title: "Get Help(AI)",
-                  icon: Icon(
-                    Icons.route,
-                    color: MainColors.color1,
-                    size: 30.r,
+                    ),
                   ),
                 ),
-              ),
-              GestureDetector(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const Learningpage(),
-                )),
-                child: CustomListTile(
-                  title: "Learning Resources \n(Get better grades)",
-                  icon: Icon(
-                    Icons.search_rounded,
-                    color: MainColors.color1,
-                    size: 30.h,
+                Divider(
+                  height: 50.r,
+                  color: Colors.black,
+                ),
+                GestureDetector(
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const AboutPage(),
+                  )),
+                  child: CustomListTile(
+                    title: "About App",
+                    icon: Icon(
+                      Icons.adb_rounded,
+                      color: MainColors.color2,
+                      size: 30.r,
+                    ),
                   ),
                 ),
-              ),
-              GestureDetector(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const CustomizedPage(),
-                )),
-                child: CustomListTile(
-                  title: "Did you Know?",
-                  icon: Icon(
-                    Icons.help,
-                    color: MainColors.color1,
-                    size: 30.r,
-                  ),
-                ),
-              ),
-              Divider(
-                height: 50.r,
-                color: Colors.black,
-              ),
-              GestureDetector(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const AboutPage(),
-                )),
-                child: CustomListTile(
-                  title: "About App",
-                  icon: Icon(
-                    Icons.adb_rounded,
-                    color: MainColors.color1,
-                    size: 30.r,
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           )),
         ],
       ),

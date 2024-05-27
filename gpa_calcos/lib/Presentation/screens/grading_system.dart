@@ -31,8 +31,8 @@ class _GradingSystemState extends State<GradingSystem> {
   @override
   Widget build(BuildContext context) {
     TextStyle tableText1 = TextStyle(
-      color: Colors.white,
-      fontSize: 20.sp,
+      color: MainColors.color4,
+      fontSize: 18.sp,
       fontWeight: FontWeight.w500,
     );
     TextStyle tableText2 = TextStyle(
@@ -41,7 +41,7 @@ class _GradingSystemState extends State<GradingSystem> {
       fontWeight: FontWeight.w400,
     );
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: MainColors.color4,
       appBar: AppBar(
         leading: const PushOrPop(
           screenName: HomePage(),
@@ -50,7 +50,11 @@ class _GradingSystemState extends State<GradingSystem> {
         title: Text(
           'Grading System',
           textAlign: TextAlign.center,
-          style: tableText1,
+          style: TextStyle(
+            color: MainColors.color4,
+            fontWeight: FontWeight.w600,
+            fontSize: 20.sp,
+          ),
         ),
         centerTitle: true,
         elevation: 0,
@@ -64,7 +68,7 @@ class _GradingSystemState extends State<GradingSystem> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                height: 30.r,
+                height: 20.r,
               ),
               Table(
                 border: TableBorder.all(
@@ -168,7 +172,7 @@ class _GradingSystemState extends State<GradingSystem> {
                 child: Text(
                   "Other systems",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: MainColors.color4,
                     fontWeight: FontWeight.w500,
                     fontSize: 18.sp,
                   ),

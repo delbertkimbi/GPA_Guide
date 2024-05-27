@@ -28,6 +28,7 @@ class _PlannerLandingPageState extends State<PlannerLandingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: MainColors.color4,
       appBar: AppBar(
         backgroundColor: MainColors.color2,
         elevation: 0,
@@ -92,6 +93,7 @@ class _PlannerLandingPageState extends State<PlannerLandingPage> {
                 height: 30.h,
               ),
               const OptionBox(
+                index: '1',
                 optiontext: 'Daily plan',
                 optionICon: Icons.leaderboard_sharp,
                 iconColor: Colors.yellow,
@@ -100,6 +102,7 @@ class _PlannerLandingPageState extends State<PlannerLandingPage> {
                 height: 20.h,
               ),
               const OptionBox(
+                index: '2',
                 optiontext: 'Weekly plan',
                 optionICon: Icons.leaderboard_sharp,
                 iconColor: Colors.yellow,
@@ -108,6 +111,7 @@ class _PlannerLandingPageState extends State<PlannerLandingPage> {
                 height: 20.h,
               ),
               const OptionBox(
+                index: '3',
                 optiontext: 'Monthly plan',
                 optionICon: Icons.leaderboard_sharp,
                 iconColor: Colors.white,
@@ -116,6 +120,7 @@ class _PlannerLandingPageState extends State<PlannerLandingPage> {
                 height: 20.h,
               ),
               const OptionBox(
+                index: '4',
                 optiontext: 'Semester plan',
                 optionICon: Icons.leaderboard_sharp,
                 iconColor: Colors.red,

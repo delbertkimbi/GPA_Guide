@@ -19,6 +19,51 @@ class CgpaInfo extends StatefulWidget {
 }
 
 class _CgpaInfoState extends State<CgpaInfo> {
+  int dropdownValue = 1; // Initial selected value
+
+  List<DropdownMenuItem<int>> items = [
+    const DropdownMenuItem(
+      value: 1,
+      child: Text("1"),
+    ),
+    const DropdownMenuItem(
+      value: 2,
+      child: Text("2"),
+    ),
+    const DropdownMenuItem(
+      value: 3,
+      child: Text("3"),
+    ),
+    const DropdownMenuItem(
+      value: 4,
+      child: Text("4"),
+    ),
+    const DropdownMenuItem(
+      value: 5,
+      child: Text("5"),
+    ),
+    const DropdownMenuItem(
+      value: 6,
+      child: Text("6"),
+    ),
+    const DropdownMenuItem(
+      value: 7,
+      child: Text('7'),
+    ),
+    const DropdownMenuItem(
+      value: 8,
+      child: Text("8"),
+    ),
+    const DropdownMenuItem(
+      value: 9,
+      child: Text("9"),
+    ),
+    const DropdownMenuItem(
+      value: 10,
+      child: Text("10"),
+    ),
+  ];
+
   final subjectNumberController =
       TextEditingController(text: "0"); // Set initial value
   bool _hasEmptyFields = false;
@@ -64,7 +109,7 @@ class _CgpaInfoState extends State<CgpaInfo> {
         centerTitle: true,
         elevation: 0,
         title: Text(
-          'Calculate CGPA',
+          'Cumulative GPA',
           style: TextStyle(
             fontSize: 20.sp,
             fontWeight: FontWeight.w600,
@@ -98,11 +143,10 @@ class _CgpaInfoState extends State<CgpaInfo> {
                 style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 15.sp,
-                    color: MainColors.color1),
+                    color: MainColors.color2),
               ),
               Container(
-                height: 50.h,
-                width: 300.w,
+                height: 45.h,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10.h)),
@@ -113,9 +157,10 @@ class _CgpaInfoState extends State<CgpaInfo> {
                     fontSize: 15.sp,
                     color: MainColors.color1,
                   ),
-                  textAlign: TextAlign.center,
+
                   decoration: InputDecoration(
-                    hintText: '8',
+                    hintText: 'value',
+                    border: InputBorder.none,
                     hintStyle: TextStyle(
                       fontSize: 15.sp,
                       color: MainColors.color3,
@@ -137,21 +182,21 @@ class _CgpaInfoState extends State<CgpaInfo> {
                 ),
               ),
               SizedBox(
-                height: 5.h,
+                height: 10.h,
               ),
               numberOfSemesters > 0
                   ? Text(
                       "Fill in the correct GPAs.",
                       // textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: 15.sp,
+                          fontSize: 16.sp,
                           fontWeight: FontWeight.normal,
-                          color: MainColors.color1),
+                          color: MainColors.color2),
                     )
                   : const Text(""),
-              SizedBox(
-                height: 10.h,
-              ),
+              // SizedBox(
+              //   height: 10.h,
+              // ),
               Builder(builder: (context) {
                 for (int i = 0; i < numberOfSemesters; i++) {
                   _gpaControllers.add(TextEditingController());
@@ -160,9 +205,9 @@ class _CgpaInfoState extends State<CgpaInfo> {
                   itemCount: numberOfSemesters,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
-                    bool tryOUt = false;
                     return Column(children: [
                       Container(
+                        height: 45.h,
                         margin: EdgeInsets.fromLTRB(0.w, 0, 20.w, 3.h),
                         padding: EdgeInsets.fromLTRB(20.h, 10.h, 10.h, 10.h),
                         decoration: BoxDecoration(
@@ -173,20 +218,20 @@ class _CgpaInfoState extends State<CgpaInfo> {
                             Text(
                               'Semester ${index + 1}',
                               style: TextStyle(
-                                fontSize: 18.sp,
-                                color: MainColors.color3,
-                                fontWeight: FontWeight.w400,
+                                fontSize: 15.sp,
+                                color: MainColors.color1,
+                                fontWeight: FontWeight.normal,
                               ),
                             ),
                             SizedBox(width: 10.w),
-                            Container(
+                            SizedBox(
                               height: 35.h,
                               width: 100.w,
                               child: TextField(
                                 keyboardType: TextInputType.number,
                                 style: TextStyle(
                                   fontSize: 15.sp,
-                                  color: MainColors.color3,
+                                  color: MainColors.color1,
                                 ),
                                 textAlign: TextAlign.center,
                                 decoration: InputDecoration(
@@ -195,10 +240,10 @@ class _CgpaInfoState extends State<CgpaInfo> {
                                     fontSize: 15.sp,
                                     color: MainColors.color3,
                                   ),
+                                  border: InputBorder.none,
                                 ),
                                 controller: _gpaControllers[index],
                                 onChanged: (value) {
-                                  onChaged:
                                   (value) {
                                     double gpa;
                                     int i = 0;
@@ -208,7 +253,6 @@ class _CgpaInfoState extends State<CgpaInfo> {
                                     });
                                     try {
                                       gpa = double.parse(value);
-                                      tryOUt = gpa < 0.0 || gpa > 4.0;
                                       if (gpa < 0.0 || gpa > 4.0) {
                                         // Show error message (e.g., using SnackBar)
                                         setState(() {
@@ -365,7 +409,7 @@ class _CgpaInfoState extends State<CgpaInfo> {
                       textSize: 20,
                       text: 'Calculate',
                       color: MainColors.color2,
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
