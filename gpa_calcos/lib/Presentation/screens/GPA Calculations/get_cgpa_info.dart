@@ -7,7 +7,7 @@ import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 
 import 'package:gpa_calcos/Presentation/Custom/files/register_button.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/textfield.dart';
-import 'package:gpa_calcos/Presentation/screens/cgpa_results.dart';
+import 'package:gpa_calcos/Presentation/screens/GPA%20Calculations/cgpa_results.dart';
 
 // Assuming ResultPage exists
 @RoutePage()
@@ -64,7 +64,7 @@ class _CgpaInfoState extends State<CgpaInfo> {
     ),
   ];
 
-  final subjectNumberController = TextEditingController(); 
+  final subjectNumberController = TextEditingController();
   bool _hasEmptyFields = false;
 
   @override
@@ -429,7 +429,6 @@ class _CgpaInfoState extends State<CgpaInfo> {
       itemBuilder: (context, index) {
         return Column(children: [
           CustomTextField(
-            hasError: false,
             onChaged: (value) {
               (value) {
                 double gpa;

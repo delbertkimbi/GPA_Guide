@@ -1,26 +1,22 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/list_tile.dart';
+import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
+
 import 'package:gpa_calcos/Presentation/screens/about.dart';
+import 'package:gpa_calcos/Presentation/screens/auth/auth_services.dart';
+
 import 'package:gpa_calcos/Presentation/screens/chat.dart';
 import 'package:gpa_calcos/Presentation/screens/customized.dart';
-import 'package:gpa_calcos/Presentation/screens/get_cgpa_info.dart';
-
-import 'package:gpa_calcos/Presentation/screens/gpa2.dart';
-import 'package:gpa_calcos/Presentation/screens/learning_resources.dart';
 
 class CustomDrawer extends StatelessWidget {
-  final String userName;
-  final String userEmail;
-
-  const CustomDrawer({
+  CustomDrawer({
     super.key,
-    required this.userName,
-    required this.userEmail,
   });
-
+  final _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -31,7 +27,7 @@ class CustomDrawer extends StatelessWidget {
               color: MainColors.color2,
             ),
             accountName: Text(
-              userName,
+              'name',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.sp,
@@ -39,7 +35,7 @@ class CustomDrawer extends StatelessWidget {
               ),
             ),
             accountEmail: Text(
-              userEmail,
+              'email',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 15.sp,
@@ -98,10 +94,10 @@ class CustomDrawer extends StatelessWidget {
                       )),
                 ),
                 GestureDetector(
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const GpaCalculate())),
+                  onTap: () => AutoRouter.of(context)
+                      .push(const GpaCalculationsLanding()),
                   child: CustomListTile(
-                      title: "Calculate Gpa",
+                      title: "GPA Calculations",
                       icon: Icon(
                         Icons.calculate,
                         color: MainColors.color2,
@@ -109,10 +105,9 @@ class CustomDrawer extends StatelessWidget {
                       )),
                 ),
                 GestureDetector(
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const CgpaInfo())),
+                  onTap: () => AutoRouter.of(context).push(const GpaGoals()),
                   child: CustomListTile(
-                      title: "Calculate Cgpa",
+                      title: "GPA Goals",
                       icon: Icon(
                         Icons.calculate_outlined,
                         color: MainColors.color2,
@@ -135,19 +130,19 @@ class CustomDrawer extends StatelessWidget {
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const Learningpage(),
-                  )),
-                  child: CustomListTile(
-                    title: "Learning Resources",
-                    icon: Icon(
-                      Icons.search_rounded,
-                      color: MainColors.color2,
-                      size: 30.h,
-                    ),
-                  ),
-                ),
+                // GestureDetector(
+                //   onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                //     builder: (context) => Learningpage(),
+                //   )),
+                //   child: CustomListTile(
+                //     title: "Learning Resources",
+                //     icon: Icon(
+                //       Icons.search_rounded,
+                //       color: MainColors.color2,
+                //       size: 30.h,
+                //     ),
+                //   ),
+                // ),
                 GestureDetector(
                   onTap: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const CustomizedPage(),
@@ -178,6 +173,34 @@ class CustomDrawer extends StatelessWidget {
                     ),
                   ),
                 ),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 20.w,
+                    ),
+                    Text(
+                      'SignOut',
+                      style: TextStyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w400,
+                        color: MainColors.color2,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 30.w,
+                    ),
+                    IconButton(
+                        onPressed: () async {
+                          await _auth.signOut();
+                          context.router.replace(const LogIn());
+                        },
+                        icon: Icon(
+                          Icons.logout,
+                          color: MainColors.color2,
+                          size: 30.r,
+                        )),
+                  ],
+                )
               ],
             ),
           )),

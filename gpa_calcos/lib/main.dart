@@ -6,6 +6,7 @@ import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gpa_calcos/Bussiness/calculation/gpa_cubit/gpa_cubit.dart';
+import 'package:gpa_calcos/Bussiness/user_cubit/user_cubit.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/key.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.dart';
 import 'package:gpa_calcos/firebase_options.dart';
@@ -20,6 +21,7 @@ void main() async {
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   Gemini.init(apiKey: GEMINI_API_KEY);
   runApp(MultiBlocProvider(providers: [
+    BlocProvider<UserCubit>(create: (context) => UserCubit()),
     BlocProvider(create: (context) => GpaCubit()),
   ], child: MyApp()));
 }

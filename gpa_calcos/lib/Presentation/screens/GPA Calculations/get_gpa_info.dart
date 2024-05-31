@@ -117,77 +117,78 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                       return Container(
                         padding: EdgeInsets.symmetric(
                           horizontal: 5.w,
-                          vertical: 0.h,
                         ),
                         margin: EdgeInsets.symmetric(
                             horizontal: 10.w, vertical: 5.h),
                         alignment: Alignment.center,
-                        height: 60.h,
+                        height: 65.h,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.r),
                           color: Colors.white,
                         ),
-                        child: ListTile(
-                          onTap: () {
-                            final subject =
-                                BlocProvider.of<GpaCubit>(context).state[index];
-                            // Pre-fill data for editing
-                            TextEditingController subjectNameController =
-                                TextEditingController(text: subject.name);
-                            TextEditingController gradeController =
-                                TextEditingController(text: subject.grade);
-                            TextEditingController creditValueNameController =
-                                TextEditingController(
-                                    text: subject.creditValue.toString());
+                        child: Center(
+                          child: ListTile(
+                            onTap: () {
+                              final subject = BlocProvider.of<GpaCubit>(context)
+                                  .state[index];
+                              // Pre-fill data for editing
+                              TextEditingController subjectNameController =
+                                  TextEditingController(text: subject.name);
+                              TextEditingController gradeController =
+                                  TextEditingController(text: subject.grade);
+                              TextEditingController creditValueNameController =
+                                  TextEditingController(
+                                      text: subject.creditValue.toString());
 
-                            customShowDialog(
-                              context,
-                              subjectNameController,
-                              gradeController,
-                              creditValueNameController,
-                              mainColors,
-                            );
-                          },
-                          hoverColor: MainColors.color2,
-                          title: Row(
-                            children: [
-                              SizedBox(
-                                width: 12.h,
-                              ),
-                              Text(
-                                subject.name,
-                                style: TextStyle(
-                                  color: MainColors.color1,
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ],
-                          ),
-                          subtitle: Row(
-                            children: [
-                              SizedBox(
-                                width: 12.h,
-                              ),
-                              Text(
-                                subject.grade,
-                                style: TextStyle(
-                                  fontSize: 16.sp,
-                                  color: MainColors.color1,
-                                ),
-                              ),
-                            ],
-                          ),
-                          trailing: IconButton(
-                            icon: const Icon(
-                              Icons.delete,
-                              color: Colors.red,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                subjects.remove(subject);
-                              });
+                              customShowDialog(
+                                context,
+                                subjectNameController,
+                                gradeController,
+                                creditValueNameController,
+                                mainColors,
+                              );
                             },
+                            hoverColor: MainColors.color2,
+                            title: Row(
+                              children: [
+                                SizedBox(
+                                  width: 12.h,
+                                ),
+                                Text(
+                                  subject.name,
+                                  style: TextStyle(
+                                    color: MainColors.color1,
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            subtitle: Row(
+                              children: [
+                                SizedBox(
+                                  width: 12.h,
+                                ),
+                                Text(
+                                  subject.grade,
+                                  style: TextStyle(
+                                    fontSize: 16.sp,
+                                    color: MainColors.color1,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            trailing: IconButton(
+                              icon: const Icon(
+                                Icons.delete,
+                                color: Colors.red,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  subjects.remove(subject);
+                                });
+                              },
+                            ),
                           ),
                         ),
                       );
@@ -278,7 +279,6 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
               height: 15.h,
             ),
             CustomTextField(
-              hasError: false,
               onChaged: (value) {},
               text: 'Subject Name',
               controller: subjectNameController,
@@ -286,46 +286,39 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
             SizedBox(
               height: 5.h,
             ),
-            Row(
-              children: [
-                CustomTextField(
-                  hasError: gradeError, // Use error flag for visual indication
-                  onChaged: (value) {
-                    // Implement grade validation logic here
-                    // You can use a regular expression or a predefined list of valid grades
-                    value = gradeController.text.toUpperCase();
-                    if (isValidGrade(value)) {
-                      gradeError = false;
-                    } else {
-                      gradeError = true;
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          duration: const Duration(seconds: 1),
-                          content: Text(
-                            "Invalid grade format",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 15.sp,
-                              color: Colors.white,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          ),
-                          backgroundColor: Colors.red,
+            CustomTextField(
+              onChaged: (value) {
+                // Implement grade validation logic here
+                // You can use a regular expression or a predefined list of valid grades
+                value = gradeController.text.toUpperCase();
+                if (isValidGrade(value)) {
+                  gradeError = false;
+                } else {
+                  gradeError = true;
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      duration: const Duration(seconds: 1),
+                      content: Text(
+                        "Invalid grade format",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 15.sp,
+                          color: Colors.white,
+                          fontWeight: FontWeight.normal,
                         ),
-                      );
-                    }
-                  },
-                  text: 'Grade',
-                  controller: gradeController,
-                ),
-              ],
+                      ),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                }
+              },
+              text: 'Grade',
+              controller: gradeController,
             ),
             SizedBox(
               height: 5.h,
             ),
             CustomTextField(
-              hasError:
-                  creditValueError, // Use error flag for visual indication
               onChaged: (value) {
                 try {
                   double.parse(value);

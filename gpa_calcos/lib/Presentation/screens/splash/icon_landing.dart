@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
@@ -18,7 +19,14 @@ class _IconLandingPageState extends State<IconLandingPage> {
   @override
   void initState() {
     _timer = Timer(const Duration(seconds: 4), () {
-      context.router.replace(const HomePage());
+      FirebaseAuth.instance.authStateChanges().listen((User? user) {
+        if (user != null) {
+          context.router
+              .replace(const HomePage()); // Navigate to HomePage if logged in
+        } else {
+          context.router.replace(LogIn()); // Navigate to LogIn if logged out
+        }
+      });
     });
 
     super.initState();
@@ -40,8 +48,8 @@ class _IconLandingPageState extends State<IconLandingPage> {
           backgroundColor: Colors.white,
           body: Center(
             child: Container(
-              height: 300.h,
-              width: 300.w,
+              height: 200.h,
+              width: 200.w,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15.r),
                 image: const DecorationImage(

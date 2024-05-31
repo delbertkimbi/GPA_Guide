@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/Widgets/drawer.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
@@ -39,10 +38,7 @@ class _HomePageState extends State<HomePage> {
       ),
       child: Scaffold(
         key: _scaffoldKey, // Assign GlobalKey
-        drawer: const CustomDrawer(
-          userName: 'GPA Guide',
-          userEmail: 'Calculations made easy, with AI.',
-        ),
+        drawer: CustomDrawer(),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
