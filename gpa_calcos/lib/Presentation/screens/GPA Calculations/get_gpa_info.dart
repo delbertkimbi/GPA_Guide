@@ -488,7 +488,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                         gradeController, creditValueNameController, mainColors);
                   },
                   child: SizedBox(
-                    width: 100.w,
+                    width: 90.w,
                     child: RegisterButton(
                       textSize: 18.sp,
                       text: 'Add',
@@ -506,7 +506,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                 GestureDetector(
                   onTap: () => Navigator.of(context).pop(),
                   child: SizedBox(
-                    width: 100.w,
+                    width: 90.w,
                     child: RegisterButton(
                       textSize: 18.sp,
                       text: 'close',

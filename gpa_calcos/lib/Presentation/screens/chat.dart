@@ -23,7 +23,7 @@ class _ChatAIState extends State<ChatAI> {
   ChatUser currentUser = ChatUser(id: "0", firstName: "User");
   ChatUser geminiUser = ChatUser(
     id: "1",
-    firstName: "Calcos",
+    firstName: "Guide",
     profileImage: "assets/try.png",
   );
   @override
@@ -41,7 +41,7 @@ class _ChatAIState extends State<ChatAI> {
         backgroundColor: MainColors.color2,
         elevation: 0,
         title: Text(
-          "Calcos AI",
+          "Guide AI",
           style: TextStyle(
               color: MainColors.color4,
               fontWeight: FontWeight.w600,

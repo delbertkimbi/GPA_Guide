@@ -56,7 +56,8 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () =>
+                  AutoRouter.of(context).push(const NotifactionsPage()),
               icon: Icon(
                 Icons.notification_add,
                 color: MainColors.color1,

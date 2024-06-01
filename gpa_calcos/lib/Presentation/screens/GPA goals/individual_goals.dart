@@ -22,7 +22,7 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
         child: ListView(
           children: [
             Container(
-              padding: EdgeInsets.all(10.r),
+              padding: EdgeInsets.symmetric(horizontal: 30.r),
               height: 50.h,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -51,7 +51,7 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
               height: 15.h,
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
+              padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 5.h),
               height: 100.h,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -77,14 +77,14 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
                     height: 100.h,
                     child: CircularPercentIndicator(
                       radius: 35.h,
-                      lineWidth: 3.h,
+                      lineWidth: 4.h,
                       percent: 0.8,
                       progressColor: MainColors.color1,
                       center: SizedBox(
                         height: 70.h,
                         child: CircularPercentIndicator(
                           radius: 24.h,
-                          lineWidth: 3.h,
+                          lineWidth: 4.h,
                           percent: 0.8,
                           progressColor: Colors.red,
                         ),
@@ -99,7 +99,7 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
             ),
             ListView.builder(
               shrinkWrap: true,
-              itemCount: 2,
+              itemCount: 3,
               itemBuilder: (context, index) {
                 return Column(
                   children: [
@@ -146,8 +146,8 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
                                       Text(
                                         grades[index],
                                         style: TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 15.sp,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 18.sp,
                                           color: MainColors.color1,
                                         ),
                                       ),
@@ -205,22 +205,22 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
         Text(
           text,
           style: TextStyle(
-            color: MainColors.color2,
-            fontSize: 16.sp,
-          ),
+              color: MainColors.color2,
+              fontSize: 18.sp,
+              fontWeight: FontWeight.w400),
         ),
       ],
     );
   }
 
   final TextStyle _semester1Style = TextStyle(
-    fontWeight: FontWeight.w400,
-    fontSize: 15.sp,
+    fontWeight: FontWeight.w500,
+    fontSize: 18.sp,
     color: MainColors.color1,
   );
   final TextStyle _semester2Style = TextStyle(
-    fontWeight: FontWeight.w400,
-    fontSize: 15.sp,
+    fontWeight: FontWeight.w500,
+    fontSize: 18.sp,
     color: Colors.red,
   );
   Column _columnText(
