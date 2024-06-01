@@ -129,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                         customBox(
                           color: Colors.white,
                           icon: Icons.calculate_rounded,
-                          text: 'GPA Calculations',
+                          text: 'GPA \nCalculations',
                           page: const GpaCalculationsLanding(),
                         ),
                       ],
@@ -144,7 +144,7 @@ class _HomePageState extends State<HomePage> {
                         customBox(
                           color: MainColors.color1,
                           icon: Icons.menu_book_sharp,
-                          text: 'Study planner',
+                          text: 'Study \nplanner',
                           page: const PlannerLandingPage(),
                         ),
                         SizedBox(
@@ -153,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                         customBox(
                           color: Colors.yellow,
                           icon: Icons.grade_rounded,
-                          text: 'Grading System',
+                          text: 'Grading \nSystem',
                           page: const GradingSystem(),
                         ),
                       ],
@@ -267,7 +267,7 @@ class _HomePageState extends State<HomePage> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 17.sp,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w500,
                 color: Colors.white,
               ),
             ),

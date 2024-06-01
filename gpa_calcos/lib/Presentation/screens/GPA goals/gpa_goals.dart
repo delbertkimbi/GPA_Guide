@@ -14,25 +14,70 @@ class GpaGoals extends StatefulWidget {
 }
 
 class _GpaGoalsState extends State<GpaGoals> {
+  void onMenuItemSelected(int item) {
+    // Handle menu item selection based on the value
+    switch (item) {
+      case 1:
+        // Navigate to edit screen
+        break;
+      case 2:
+        // Share functionality
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-            onPressed: () => Navigator.of(context).pop(),
-            icon: Icon(
-              Icons.arrow_back_ios_new_rounded,
-              color: MainColors.color4,
-            )),
-        centerTitle: true,
         backgroundColor: MainColors.color2,
         elevation: 0,
+        centerTitle: true,
         title: Text(
-          "GPA Goals",
+          'Study Plan',
           style: TextStyle(
-              color: MainColors.color4,
+              fontSize: 22.sp,
               fontWeight: FontWeight.w600,
-              fontSize: 20.sp),
+              color: Colors.white),
+        ),
+        actions: [
+          PopupMenuButton<int>(
+            color: Colors.white,
+            onSelected: (item) => onMenuItemSelected(item),
+            icon: const Icon(
+              Icons.more_vert,
+              color: Colors.white,
+            ),
+            itemBuilder: (context) => [
+              PopupMenuItem<int>(
+                value: 1,
+                child: Text(
+                  'Start Plan',
+                  style: TextStyle(
+                    fontSize: 15.sp,
+                    color: MainColors.color1,
+                  ),
+                ),
+              ),
+              PopupMenuItem<int>(
+                value: 2,
+                child: Text(
+                  'About',
+                  style: TextStyle(
+                    fontSize: 15.sp,
+                    color: MainColors.color1,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+        leading: IconButton(
+          onPressed: () => Navigator.of(context).pop(),
+          icon: const Icon(
+            Icons.arrow_back_ios_new_rounded,
+            color: Colors.white,
+          ),
         ),
       ),
       body: Center(
