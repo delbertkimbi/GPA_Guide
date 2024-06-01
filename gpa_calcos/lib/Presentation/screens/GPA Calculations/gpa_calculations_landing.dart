@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/custom_plan.dart';
+import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
 
 @RoutePage()
 class GpaCalculationsLanding extends StatefulWidget {
@@ -16,6 +17,7 @@ class _GpaCalculationsLandingState extends State<GpaCalculationsLanding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: MainColors.color4,
       appBar: AppBar(
         leading: IconButton(
             onPressed: () => Navigator.of(context).pop(),
@@ -33,32 +35,53 @@ class _GpaCalculationsLandingState extends State<GpaCalculationsLanding> {
               fontWeight: FontWeight.w600,
               fontSize: 20.sp),
         ),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          GestureDetector(
-            child: const OptionBox(
-              optiontext: 'GPA Calculation',
-              optionICon: Icons.group,
-              iconColor: Colors.yellow,
-              index: '1',
+        actions: [
+          IconButton(
+            onPressed: () => AutoRouter.of(context).push(const GradingSystem()),
+            icon: Icon(
+              Icons.settings,
+              color: MainColors.color4,
             ),
           ),
           SizedBox(
-            height: 20.h,
-          ),
-          GestureDetector(
-            child: const OptionBox(
-              optiontext: 'CGPA Calculation',
-              optionICon: Icons.group,
-              iconColor: Colors.yellow,
-              index: '2',
-            ),
-          ),
-          Image.asset('assets/gpa.png'),
+            width: 5.w,
+          )
         ],
+      ),
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 50.h,
+            ),
+            GestureDetector(
+              onTap: () => AutoRouter.of(context).push(const GetSubjectInfo()),
+              child: const OptionBox(
+                optiontext: 'GPA Calculation',
+                optionICon: Icons.group,
+                iconColor: Colors.yellow,
+                index: '1',
+              ),
+            ),
+            SizedBox(
+              height: 20.h,
+            ),
+            GestureDetector(
+              onTap: () => AutoRouter.of(context).push(const CgpaInfo()),
+              child: const OptionBox(
+                optiontext: 'CGPA Calculation',
+                optionICon: Icons.group,
+                iconColor: Colors.yellow,
+                index: '2',
+              ),
+            ),
+            SizedBox(
+              height: 30.h,
+            ),
+            Image.asset('assets/bob5.png'),
+          ],
+        ),
       ),
     );
   }

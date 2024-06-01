@@ -80,7 +80,7 @@ class _HomePageState extends State<HomePage> {
           leading: IconButton(
             icon: Icon(
               Icons.menu,
-              size: 25.r,
+              size: 27.r,
             ),
             color: MainColors.color1,
             onPressed: () {
@@ -118,19 +118,19 @@ class _HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         customBox(
-                          color: Colors.white,
-                          icon: Icons.calculate,
-                          text: 'GPA  ',
-                          page: const GetSubjectInfo(),
+                          color: Colors.red,
+                          icon: Icons.drive_file_rename_outline_rounded,
+                          text: 'GPA \nGoals',
+                          page: const GpaGoals(),
                         ),
                         SizedBox(
                           width: 30.h,
                         ),
                         customBox(
-                          color: MainColors.color1,
+                          color: Colors.white,
                           icon: Icons.calculate_rounded,
-                          text: 'CGPA',
-                          page: const CgpaInfo(),
+                          text: 'GPA Calculations',
+                          page: const GpaCalculationsLanding(),
                         ),
                       ],
                     ),
@@ -142,8 +142,8 @@ class _HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         customBox(
-                          color: const Color(0xffE15555),
-                          icon: Icons.drive_file_rename_outline_rounded,
+                          color: MainColors.color1,
+                          icon: Icons.menu_book_sharp,
                           text: 'Study planner',
                           page: const PlannerLandingPage(),
                         ),
@@ -266,8 +266,8 @@ class _HomePageState extends State<HomePage> {
               text,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 18.sp,
-                fontWeight: FontWeight.w500,
+                fontSize: 17.sp,
+                fontWeight: FontWeight.w600,
                 color: Colors.white,
               ),
             ),

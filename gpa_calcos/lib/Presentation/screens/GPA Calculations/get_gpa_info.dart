@@ -121,7 +121,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                         margin: EdgeInsets.symmetric(
                             horizontal: 10.w, vertical: 5.h),
                         alignment: Alignment.center,
-                        height: 65.h,
+                        height: 60.h,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.r),
                           color: Colors.white,
@@ -159,7 +159,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                                   style: TextStyle(
                                     color: MainColors.color1,
                                     fontSize: 16.sp,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w600,
                                   ),
                                 ),
                               ],
@@ -184,9 +184,83 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                                 color: Colors.red,
                               ),
                               onPressed: () {
-                                setState(() {
-                                  subjects.remove(subject);
-                                });
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return Dialog(
+                                      child: Container(
+                                        height: 100.h,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(10.r),
+                                        ),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'Are you sure?',
+                                              style: TextStyle(
+                                                color: MainColors.color1,
+                                                fontSize: 20.sp,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 20.w,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                GestureDetector(
+                                                  onTap: () =>
+                                                      Navigator.of(context)
+                                                          .pop(),
+                                                  child: Text(
+                                                    'No',
+                                                    style: TextStyle(
+                                                      color: MainColors.color1,
+                                                      fontSize: 20.sp,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 40.w,
+                                                ),
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    setState(() {
+                                                      subjects.remove(subject);
+                                                    });
+                                                    Navigator.of(context).pop();
+                                                  },
+                                                  child: Text(
+                                                    'Yes',
+                                                    style: TextStyle(
+                                                      color: Colors.red,
+                                                      fontSize: 20.sp,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                    ),
+                                                  ),
+                                                )
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
                               },
                             ),
                           ),
@@ -348,74 +422,102 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
             SizedBox(
               height: 15.h,
             ),
-            GestureDetector(
-              onTap: () {
-                String subjectName = subjectNameController.text.trim();
-                String grade = gradeController.text.trim();
-                String creditValueString =
-                    creditValueNameController.text.trim();
-                // Check for empty fields before validation
-                if (subjectName.isEmpty ||
-                    grade.isEmpty ||
-                    creditValueString.isEmpty) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      duration: const Duration(seconds: 1),
-                      content: Text(
-                        "Please fill in all fields (Subject Name, Grade, Credit Value).",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 15.sp,
-                          color: Colors.white,
-                          fontWeight: FontWeight.normal,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    String subjectName = subjectNameController.text.trim();
+                    String grade = gradeController.text.trim();
+                    String creditValueString =
+                        creditValueNameController.text.trim();
+                    // Check for empty fields before validation
+                    if (subjectName.isEmpty ||
+                        grade.isEmpty ||
+                        creditValueString.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          duration: const Duration(seconds: 1),
+                          content: Text(
+                            "Please fill in all fields (Subject Name, Grade, Credit Value).",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 15.sp,
+                              color: Colors.white,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                          backgroundColor: Colors.red,
                         ),
-                      ),
-                      backgroundColor: Colors.red,
-                    ),
-                  );
-                  return; // Exit the tap handler if any field is empty
-                }
-                if (!creditValueError && !gradeError) {
-                  // Check for both credit value and grade error
-                  Navigator.of(context).pop();
-                  BlocProvider.of<GpaCubit>(context).addSubject(
-                      subjectNameController.text.trim(),
-                      gradeController.text.trim().toUpperCase(),
-                      double.parse(creditValueNameController.text.trim()));
-                  // Clear text fields after successful addition
-                  subjectNameController.clear();
-                  gradeController.clear();
-                  creditValueNameController.clear();
-                } else {
-                  // Show message if there's an error
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      duration: const Duration(seconds: 1),
-                      content: Text(
-                        creditValueError
-                            ? "Invalid credit value"
-                            : "Invalid grade format",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 15.sp,
-                          color: Colors.white,
-                          fontWeight: FontWeight.normal,
+                      );
+                      return; // Exit the tap handler if any field is empty
+                    }
+                    if (!creditValueError && !gradeError) {
+                      // Check for both credit value and grade error
+                      Navigator.of(context).pop();
+                      BlocProvider.of<GpaCubit>(context).addSubject(
+                          subjectNameController.text.trim(),
+                          gradeController.text.trim().toUpperCase(),
+                          double.parse(creditValueNameController.text.trim()));
+                      // Clear text fields after successful addition
+                      subjectNameController.clear();
+                      gradeController.clear();
+                      creditValueNameController.clear();
+                    } else {
+                      // Show message if there's an error
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          duration: const Duration(seconds: 1),
+                          content: Text(
+                            creditValueError
+                                ? "Invalid credit value"
+                                : "Invalid grade format",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 15.sp,
+                              color: Colors.white,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                          backgroundColor: Colors.red,
                         ),
-                      ),
-                      backgroundColor: Colors.red,
+                      );
+                    }
+                    customShowDialog(context, subjectNameController,
+                        gradeController, creditValueNameController, mainColors);
+                  },
+                  child: SizedBox(
+                    width: 100.w,
+                    child: RegisterButton(
+                      textSize: 18.sp,
+                      text: 'Add',
+                      color: creditValueError || gradeError
+                          ? Colors.grey
+                          : MainColors
+                              .color1, // Disable button or change color on error
+                      fontWeight: FontWeight.w500,
                     ),
-                  );
-                }
-              },
-              child: RegisterButton(
-                textSize: 18.sp,
-                text: 'Add',
-                color: creditValueError || gradeError
-                    ? Colors.grey
-                    : MainColors
-                        .color1, // Disable button or change color on error
-                fontWeight: FontWeight.w600,
-              ),
+                  ),
+                ),
+                SizedBox(
+                  width: 10.w,
+                ),
+                GestureDetector(
+                  onTap: () => Navigator.of(context).pop(),
+                  child: SizedBox(
+                    width: 100.w,
+                    child: RegisterButton(
+                      textSize: 18.sp,
+                      text: 'close',
+                      color: creditValueError || gradeError
+                          ? Colors.grey
+                          : Colors.red,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ],
             ),
             SizedBox(
               height: 15.h,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/custom_plan.dart';
+import 'package:gpa_calcos/Presentation/screens/GPA%20goals/individual_goals.dart';
 
 @RoutePage()
 class GpaGoals extends StatefulWidget {
@@ -34,30 +35,41 @@ class _GpaGoalsState extends State<GpaGoals> {
               fontSize: 20.sp),
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          GestureDetector(
-            child: const OptionBox(
-              optiontext: 'Group Goals',
-              optionICon: Icons.group,
-              iconColor: Colors.yellow,
-              index: '1',
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 50.h,
             ),
-          ),
-          SizedBox(
-            height: 20.h,
-          ),
-          GestureDetector(
-            child: const OptionBox(
-              optiontext: 'Individual Goals',
-              optionICon: Icons.group,
-              iconColor: Colors.yellow,
-              index: '2',
+            GestureDetector(
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const IndividaulGoals(),
+              )),
+              child: const OptionBox(
+                optiontext: 'Individual Goals',
+                optionICon: Icons.person,
+                iconColor: Colors.yellow,
+                index: '1',
+              ),
             ),
-          ),
-        ],
+            SizedBox(
+              height: 20.h,
+            ),
+            GestureDetector(
+              child: const OptionBox(
+                optiontext: 'Group Goals',
+                optionICon: Icons.group,
+                iconColor: Colors.yellow,
+                index: '2',
+              ),
+            ),
+            SizedBox(
+              height: 30.h,
+            ),
+            Image.asset('assets/bob6.png'),
+          ],
+        ),
       ),
     );
   }

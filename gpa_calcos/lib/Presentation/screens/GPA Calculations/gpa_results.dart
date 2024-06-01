@@ -99,7 +99,7 @@ class _ResultPageState extends State<ResultPage> {
                     style: TextStyle(
                       fontSize: 17.sp,
                       color: Colors.white,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                   SizedBox(
@@ -111,18 +111,18 @@ class _ResultPageState extends State<ResultPage> {
                     style: TextStyle(
                       fontSize: 17.sp,
                       color: Colors.white,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                   SizedBox(
                     height: 2.r,
                   ),
                   Text(
-                    'Grade Point Average: ${widget.gpa.toStringAsFixed(2)}',
+                    'G P A : ${widget.gpa.toStringAsFixed(2)}',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 20.sp,
-                      color: Colors.white,
+                      color: Colors.yellow,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -194,7 +194,7 @@ class _ResultPageState extends State<ResultPage> {
           ),
           Icon(
             icon,
-            color: MainColors.color4,
+            color: Colors.yellow,
             size: 20.r,
           )
         ],

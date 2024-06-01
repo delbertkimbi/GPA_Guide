@@ -85,7 +85,7 @@ class _CgpaReultsPageState extends State<CgpaReultsPage> {
                       style: TextStyle(
                         fontSize: 25.h,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Colors.yellow,
                       ),
                     ),
                     Padding(
@@ -121,8 +121,8 @@ class _CgpaReultsPageState extends State<CgpaReultsPage> {
   }
 
   final TextStyle _textStyle = TextStyle(
-    fontSize: 20.sp,
-    fontWeight: FontWeight.normal,
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w500,
     color: Colors.white,
   );
   Widget? _cgpaStatus() {
@@ -134,7 +134,7 @@ class _CgpaReultsPageState extends State<CgpaReultsPage> {
       );
     } else if (widget.cgpa < 2.0 && widget.cgpa >= 0.0) {
       return Text(
-        "Opps. You'll need to get a higher cgpa(>2.0). Keep Thriving",
+        "Opps. You'll need to get a higher cgpa(>=2.0)",
         style: _textStyle,
         textAlign: TextAlign.center,
       );
@@ -183,7 +183,7 @@ class _CgpaReultsPageState extends State<CgpaReultsPage> {
           ),
           Icon(
             icon,
-            color: MainColors.color4,
+            color: Colors.yellow,
             size: 20.r,
           )
         ],

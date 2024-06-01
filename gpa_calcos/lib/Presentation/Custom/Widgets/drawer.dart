@@ -27,7 +27,7 @@ class CustomDrawer extends StatelessWidget {
               color: MainColors.color2,
             ),
             accountName: Text(
-              'name',
+              'GPA Guide',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.sp,
@@ -35,7 +35,7 @@ class CustomDrawer extends StatelessWidget {
               ),
             ),
             accountEmail: Text(
-              'email',
+              'Your semester study plug, woth AI.',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 15.sp,
@@ -130,19 +130,18 @@ class CustomDrawer extends StatelessWidget {
                     ),
                   ),
                 ),
-                // GestureDetector(
-                //   onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                //     builder: (context) => Learningpage(),
-                //   )),
-                //   child: CustomListTile(
-                //     title: "Learning Resources",
-                //     icon: Icon(
-                //       Icons.search_rounded,
-                //       color: MainColors.color2,
-                //       size: 30.h,
-                //     ),
-                //   ),
-                // ),
+                GestureDetector(
+                  onTap: () =>
+                      AutoRouter.of(context).push(const Learningpage()),
+                  child: CustomListTile(
+                    title: "Study Resources",
+                    icon: Icon(
+                      Icons.search_rounded,
+                      color: MainColors.color2,
+                      size: 30.r,
+                    ),
+                  ),
+                ),
                 GestureDetector(
                   onTap: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const CustomizedPage(),

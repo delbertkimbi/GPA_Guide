@@ -105,7 +105,7 @@ class _GradingSystemState extends State<GradingSystem> {
                         child: Padding(
                           padding: EdgeInsets.all(8.r),
                           child: Text(
-                            "Grade point/4",
+                            "Point/4",
                             textAlign: TextAlign.center,
                             style: tableText1,
                           ),
@@ -155,7 +155,7 @@ class _GradingSystemState extends State<GradingSystem> {
                 height: 10.h,
               ),
               Text(
-                "This gradind system is based on  University of Buea Cameroon approach to grading students. If it does not suit your school, Click on the button below to view other grading systems systems.",
+                "This grading system is based on  University of Buea Cameroon approach to grading students. If it does not suit your school, Click on the button below to view other grading systems.",
                 style: tableText2,
               ),
               SizedBox(
