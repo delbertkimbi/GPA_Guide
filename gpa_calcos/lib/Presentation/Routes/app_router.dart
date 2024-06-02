@@ -18,6 +18,10 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: CgpaInfo.page),
         AutoRoute(page: GpaCalculationsLanding.page),
         AutoRoute(page: GpaGoals.page),
+        AutoRoute(page: DailySchedules.page),
+        AutoRoute(page: WeeklySchedules.page),
+        AutoRoute(page: MonthlySchedules.page),
+        AutoRoute(page: SemesterSchedules.page),
         AutoRoute(page: NotifactionsPage.page),
         AutoRoute(page: IconLandingPage.page, initial: true),
       ];

@@ -35,7 +35,7 @@ class CustomDrawer extends StatelessWidget {
               ),
             ),
             accountEmail: Text(
-              'Your semester study plug, woth AI.',
+              'Your semester study plug, with AI.',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 15.sp,

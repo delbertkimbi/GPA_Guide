@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Bussiness/calculation/gpa_cubit/gpa_cubit.dart';
 import 'package:gpa_calcos/Data/models/subjects.dart';
+import 'package:gpa_calcos/Presentation/Custom/files/Toast/showtoast.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/register_button.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/textfield.dart';
@@ -436,21 +437,10 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                     if (subjectName.isEmpty ||
                         grade.isEmpty ||
                         creditValueString.isEmpty) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          duration: const Duration(seconds: 1),
-                          content: Text(
-                            "Please fill in all fields (Subject Name, Grade, Credit Value).",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 15.sp,
-                              color: Colors.white,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          ),
-                          backgroundColor: Colors.red,
-                        ),
-                      );
+                      showToast(
+                          message:
+                              'Please fill in all fields (Subject Name, Grade, Credit Value).');
+
                       return; // Exit the tap handler if any field is empty
                     }
                     if (!creditValueError && !gradeError) {

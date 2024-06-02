@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/custom_plan.dart';
+import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
 
 @RoutePage()
 class PlannerLandingPage extends StatefulWidget {
@@ -91,38 +92,54 @@ class _PlannerLandingPageState extends State<PlannerLandingPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  const OptionBox(
-                    index: '1',
-                    optiontext: 'Daily plan',
-                    optionICon: Icons.leaderboard_sharp,
-                    iconColor: Colors.yellow,
+                  GestureDetector(
+                    onTap: () =>
+                        AutoRouter.of(context).push(const DailySchedules()),
+                    child: const OptionBox(
+                      index: '1',
+                      optiontext: 'Daily plan',
+                      optionICon: Icons.leaderboard_sharp,
+                      iconColor: Colors.yellow,
+                    ),
                   ),
                   SizedBox(
                     height: 20.h,
                   ),
-                  const OptionBox(
-                    index: '2',
-                    optiontext: 'Weekly plan',
-                    optionICon: Icons.leaderboard_sharp,
-                    iconColor: Colors.yellow,
+                  GestureDetector(
+                    onTap: () =>
+                        AutoRouter.of(context).push(const WeeklySchedules()),
+                    child: const OptionBox(
+                      index: '2',
+                      optiontext: 'Weekly plan',
+                      optionICon: Icons.leaderboard_sharp,
+                      iconColor: Colors.yellow,
+                    ),
                   ),
                   SizedBox(
                     height: 20.h,
                   ),
-                  const OptionBox(
-                    index: '3',
-                    optiontext: 'Monthly plan',
-                    optionICon: Icons.leaderboard_sharp,
-                    iconColor: Colors.white,
+                  GestureDetector(
+                    onTap: () =>
+                        AutoRouter.of(context).push(const MonthlySchedules()),
+                    child: const OptionBox(
+                      index: '3',
+                      optiontext: 'Monthly plan',
+                      optionICon: Icons.leaderboard_sharp,
+                      iconColor: Colors.white,
+                    ),
                   ),
                   SizedBox(
                     height: 20.h,
                   ),
-                  const OptionBox(
-                    index: '4',
-                    optiontext: 'Semester plan',
-                    optionICon: Icons.leaderboard_sharp,
-                    iconColor: Colors.red,
+                  GestureDetector(
+                    onTap: () =>
+                        AutoRouter.of(context).push(const SemesterSchedules()),
+                    child: const OptionBox(
+                      index: '4',
+                      optiontext: 'Semester plan',
+                      optionICon: Icons.leaderboard_sharp,
+                      iconColor: Colors.red,
+                    ),
                   ),
                   SizedBox(
                     height: 20.h,

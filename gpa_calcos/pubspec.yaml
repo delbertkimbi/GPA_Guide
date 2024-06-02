@@ -29,6 +29,7 @@ dependencies:
   google_sign_in: ^6.2.1
   cloud_firestore: ^4.17.5
   percent_indicator: ^4.2.3
+  syncfusion_flutter_calendar: ^25.2.6+1
 dev_dependencies: 
   auto_route_generator: ^7.3.2
   flutter_test:
