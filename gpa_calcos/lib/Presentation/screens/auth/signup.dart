@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,7 +16,7 @@ import 'package:gpa_calcos/Presentation/screens/auth/custom/password_textfield.d
 
 @RoutePage()
 class SignUp extends StatefulWidget {
-  SignUp({super.key});
+  const SignUp({super.key});
 
   @override
   State<SignUp> createState() => _SignUpState();
@@ -26,7 +25,6 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   final UserCubit _userCubit = UserCubit();
   final _auth = AuthService();
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
 
   TextEditingController passwordController = TextEditingController();
@@ -167,7 +165,7 @@ class _SignUpState extends State<SignUp> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                AutoRouter.of(context).push(LogIn());
+                                AutoRouter.of(context).push(const LogIn());
                               },
                               child: Text('Sign In',
                                   style: TextStyle(

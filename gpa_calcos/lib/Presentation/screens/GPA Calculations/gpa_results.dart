@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -137,7 +141,7 @@ class _ResultPageState extends State<ResultPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GestureDetector(
-                    onTap: () => _takeScreenShot,
+                    onTap: ()=> _takeScreenShot,
                     child: shareSave(text: 'Share', icon: Icons.share),
                   ),
                   SizedBox(
@@ -211,12 +215,32 @@ class _ResultPageState extends State<ResultPage> {
     );
 
     await Future.delayed(const Duration(milliseconds: 200)); // Wait for 200ms
-    dynamic image;
     final imageFile = await _screenshotController.capture();
-    setState(() {
-      image = imageFile;
-    });
-    Share.shareXFiles([XFile(image.toString())],
-        text: 'My GPA calculated by GPA Calcos');
+
+    if (imageFile != null) {
+      // Request storage permission
+      if (await Permission.storage.request().isGranted) {
+        // Permission granted, proceed with sharing
+        final tempDir = await getTemporaryDirectory();
+        final file = File('${tempDir.path}/screenshot.png');
+        await file.writeAsBytes(imageFile);
+
+        await Share.shareXFiles([XFile(file.path)], // Use path for sharing
+            text: 'My GPA calculated by GPA Calcos');
+      } else {
+        // Handle permission denied scenario (optional)
+        print('Storage permission denied');
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content:
+                Text('Storage permission is required to share the screenshot.'),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
+    } else {
+      // Handle scenario where screenshot capture fails (optional)
+      print('Failed to capture screenshot');
+    }
   }
 }

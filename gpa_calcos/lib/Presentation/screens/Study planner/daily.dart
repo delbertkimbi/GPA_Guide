@@ -36,7 +36,7 @@ class _DailySchedulesState extends State<DailySchedules> {
         ),
       ),
       body: SfCalendar(
-        view: CalendarView.daysss,
+        view: CalendarView.day,
       ),
     );
   }

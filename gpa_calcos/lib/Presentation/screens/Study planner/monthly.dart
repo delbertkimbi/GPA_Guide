@@ -37,7 +37,7 @@ class _MonthlySchedulesState extends State<MonthlySchedules> {
       ),
       body: SfCalendar(
         view: CalendarView.month,
-        monthViewSettings: MonthViewSettings(showAgenda: true),
+        monthViewSettings:const MonthViewSettings(showAgenda: true),
       ),
     );
   }

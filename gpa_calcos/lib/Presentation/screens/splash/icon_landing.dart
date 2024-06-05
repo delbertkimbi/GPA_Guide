@@ -24,7 +24,7 @@ class _IconLandingPageState extends State<IconLandingPage> {
           context.router
               .replace(const HomePage()); // Navigate to HomePage if logged in
         } else {
-          context.router.replace(LogIn()); // Navigate to LogIn if logged out
+          context.router.replace(const LogIn()); // Navigate to LogIn if logged out
         }
       });
     });

@@ -423,91 +423,109 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
             SizedBox(
               height: 15.h,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    String subjectName = subjectNameController.text.trim();
-                    String grade = gradeController.text.trim();
-                    String creditValueString =
-                        creditValueNameController.text.trim();
-                    // Check for empty fields before validation
-                    if (subjectName.isEmpty ||
-                        grade.isEmpty ||
-                        creditValueString.isEmpty) {
-                      showToast(
-                          message:
-                              'Please fill in all fields (Subject Name, Grade, Credit Value).');
+            BlocBuilder<GpaCubit, List<Subject>>(
+              builder: (context, subjects) {
+                String subjectName = subjectNameController.text.trim();
+                bool duplicateFound = subjects.any(
+                    (subject) => subject.name.toUpperCase() == subjectName);
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        String subjectName = subjectNameController.text.trim();
+                        String grade = gradeController.text.trim();
+                        String creditValueString =
+                            creditValueNameController.text.trim();
+                        if (duplicateFound) {
+                          showToast(
+                              message:
+                                  'Subject with this name already exists.');
+                          return; // Exit tap handler if duplicate is found
+                        }
+                        // Check for empty fields before validation
+                        if (subjectName.isEmpty ||
+                            grade.isEmpty ||
+                            creditValueString.isEmpty) {
+                          showToast(
+                              message:
+                                  'Please fill in all fields (Subject Name, Grade, Credit Value).');
 
-                      return; // Exit the tap handler if any field is empty
-                    }
-                    if (!creditValueError && !gradeError) {
-                      // Check for both credit value and grade error
-                      Navigator.of(context).pop();
-                      BlocProvider.of<GpaCubit>(context).addSubject(
-                          subjectNameController.text.trim(),
-                          gradeController.text.trim().toUpperCase(),
-                          double.parse(creditValueNameController.text.trim()));
-                      // Clear text fields after successful addition
-                      subjectNameController.clear();
-                      gradeController.clear();
-                      creditValueNameController.clear();
-                    } else {
-                      // Show message if there's an error
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          duration: const Duration(seconds: 1),
-                          content: Text(
-                            creditValueError
-                                ? "Invalid credit value"
-                                : "Invalid grade format",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 15.sp,
-                              color: Colors.white,
-                              fontWeight: FontWeight.normal,
+                          return; // Exit the tap handler if any field is empty
+                        }
+                        if (!creditValueError && !gradeError) {
+                          // Check for both credit value and grade error
+                          Navigator.of(context).pop();
+                          BlocProvider.of<GpaCubit>(context).addSubject(
+                              subjectNameController.text.trim().toUpperCase(),
+                              gradeController.text.trim().toUpperCase(),
+                              double.parse(
+                                  creditValueNameController.text.trim()));
+                          // Clear text fields after successful addition
+                          subjectNameController.clear();
+                          gradeController.clear();
+                          creditValueNameController.clear();
+                        } else {
+                          // Show message if there's an error
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              duration: const Duration(seconds: 1),
+                              content: Text(
+                                creditValueError
+                                    ? "Invalid credit value"
+                                    : "Invalid grade format",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 15.sp,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                              backgroundColor: Colors.red,
                             ),
-                          ),
-                          backgroundColor: Colors.red,
+                          );
+                        }
+                        customShowDialog(
+                            context,
+                            subjectNameController,
+                            gradeController,
+                            creditValueNameController,
+                            mainColors);
+                      },
+                      child: SizedBox(
+                        width: 90.w,
+                        child: RegisterButton(
+                          textSize: 18.sp,
+                          text: 'Add',
+                          color: creditValueError || gradeError
+                              ? Colors.grey
+                              : MainColors
+                                  .color1, // Disable button or change color on error
+                          fontWeight: FontWeight.w500,
                         ),
-                      );
-                    }
-                    customShowDialog(context, subjectNameController,
-                        gradeController, creditValueNameController, mainColors);
-                  },
-                  child: SizedBox(
-                    width: 90.w,
-                    child: RegisterButton(
-                      textSize: 18.sp,
-                      text: 'Add',
-                      color: creditValueError || gradeError
-                          ? Colors.grey
-                          : MainColors
-                              .color1, // Disable button or change color on error
-                      fontWeight: FontWeight.w500,
+                      ),
                     ),
-                  ),
-                ),
-                SizedBox(
-                  width: 10.w,
-                ),
-                GestureDetector(
-                  onTap: () => Navigator.of(context).pop(),
-                  child: SizedBox(
-                    width: 90.w,
-                    child: RegisterButton(
-                      textSize: 18.sp,
-                      text: 'close',
-                      color: creditValueError || gradeError
-                          ? Colors.grey
-                          : Colors.red,
-                      fontWeight: FontWeight.w500,
+                    SizedBox(
+                      width: 10.w,
                     ),
-                  ),
-                ),
-              ],
+                    GestureDetector(
+                      onTap: () => Navigator.of(context).pop(),
+                      child: SizedBox(
+                        width: 90.w,
+                        child: RegisterButton(
+                          textSize: 18.sp,
+                          text: 'close',
+                          color: creditValueError || gradeError
+                              ? Colors.grey
+                              : Colors.red,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
             SizedBox(
               height: 15.h,
