@@ -1,25 +1,22 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/list_tile.dart';
+import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
+
 import 'package:gpa_calcos/Presentation/screens/about.dart';
+import 'package:gpa_calcos/Presentation/screens/auth/auth_services.dart';
+
 import 'package:gpa_calcos/Presentation/screens/chat.dart';
 import 'package:gpa_calcos/Presentation/screens/customized.dart';
-import 'package:gpa_calcos/Presentation/screens/get_cgpa_info.dart';
-import 'package:gpa_calcos/Presentation/screens/get_gpa_info.dart';
-import 'package:gpa_calcos/Presentation/screens/learning_resources.dart';
 
 class CustomDrawer extends StatelessWidget {
-  final String userName;
-  final String userEmail;
-
-  const CustomDrawer({
+  CustomDrawer({
     super.key,
-    required this.userName,
-    required this.userEmail,
   });
-
+  final _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -29,11 +26,25 @@ class CustomDrawer extends StatelessWidget {
             decoration: BoxDecoration(
               color: MainColors.color2,
             ),
-            accountName: Text(userName),
-            accountEmail: Text(userEmail),
+            accountName: Text(
+              'GPA Guide',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            accountEmail: Text(
+              'Your semester study plug, with AI.',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 15.sp,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
             currentAccountPicture: CircleAvatar(
               radius: 5.h,
-              backgroundColor: Colors.white,
+              backgroundColor: MainColors.color4,
               child: GestureDetector(
                 onTap: () {
                   showDialog(
@@ -43,12 +54,13 @@ class CustomDrawer extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20.0.r),
                       ),
                       child: Container(
-                        height: 200.h,
-                        width: 150.w,
+                        height: 300.h,
+                        width: 300.w,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15.r),
+                          color: MainColors.color4,
+                          borderRadius: BorderRadius.circular(10.r),
                           image: const DecorationImage(
-                            image: AssetImage('assets/logo2.jpg'),
+                            image: AssetImage('assets/GPA Calcos.png'),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -60,107 +72,136 @@ class CustomDrawer extends StatelessWidget {
                   radius: 34.h,
                   backgroundColor: Colors.white,
                   child: ClipOval(
-                    child: Image.asset('assets/try.png'),
+                    child: Image.asset('assets/bg1.png'),
                   ),
                 ),
               ),
             ),
           ),
           Expanded(
-              child: ListView(
-            children: [
-              GestureDetector(
-                onTap: () => Navigator.of(context).pop(),
-                child: CustomListTile(
-                    title: "Home",
+              child: Container(
+            color: MainColors.color4,
+            child: ListView(
+              children: [
+                GestureDetector(
+                  onTap: () => Navigator.of(context).pop(),
+                  child: CustomListTile(
+                      title: "Home",
+                      icon: Icon(
+                        Icons.home,
+                        color: MainColors.color2,
+                        size: 30.r,
+                      )),
+                ),
+                GestureDetector(
+                  onTap: () => AutoRouter.of(context)
+                      .push(const GpaCalculationsLanding()),
+                  child: CustomListTile(
+                      title: "GPA Calculations",
+                      icon: Icon(
+                        Icons.calculate,
+                        color: MainColors.color2,
+                        size: 30.r,
+                      )),
+                ),
+                GestureDetector(
+                  onTap: () => AutoRouter.of(context).push(const GpaGoals()),
+                  child: CustomListTile(
+                      title: "GPA Goals",
+                      icon: Icon(
+                        Icons.calculate_outlined,
+                        color: MainColors.color2,
+                        size: 30.r,
+                      )),
+                ),
+                Divider(
+                  height: 50.r,
+                  color: Colors.black,
+                ),
+                GestureDetector(
+                  onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const ChatAI())),
+                  child: CustomListTile(
+                    title: "Chat with Others/AI",
                     icon: Icon(
-                      Icons.home,
-                      color: MainColors.color1,
+                      Icons.route,
+                      color: MainColors.color2,
                       size: 30.r,
-                    )),
-              ),
-              GestureDetector(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const GetSubjectInfo())),
-                child: CustomListTile(
-                    title: "Calculate Gpa",
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () =>
+                      AutoRouter.of(context).push(const Learningpage()),
+                  child: CustomListTile(
+                    title: "Study Resources",
                     icon: Icon(
-                      Icons.calculate,
-                      color: MainColors.color1,
+                      Icons.search_rounded,
+                      color: MainColors.color2,
                       size: 30.r,
-                    )),
-              ),
-              GestureDetector(
-                onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const CgpaInfo())),
-                child: CustomListTile(
-                    title: "Calculate Cgpa",
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const CustomizedPage(),
+                  )),
+                  child: CustomListTile(
+                    title: "Did you Know?",
                     icon: Icon(
-                      Icons.calculate_outlined,
-                      color: MainColors.color1,
+                      Icons.help,
+                      color: MainColors.color2,
                       size: 30.r,
-                    )),
-              ),
-              Divider(
-                height: 50.r,
-                color: Colors.black,
-              ),
-              GestureDetector(
-                onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const ChatAI())),
-                child: CustomListTile(
-                  title: "Get Help(AI)",
-                  icon: Icon(
-                    Icons.route,
-                    color: MainColors.color1,
-                    size: 30.r,
+                    ),
                   ),
                 ),
-              ),
-              GestureDetector(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const Learningpage(),
-                )),
-                child: CustomListTile(
-                  title: "Learning Resources \n(Get better grades)",
-                  icon: Icon(
-                    Icons.search_rounded,
-                    color: MainColors.color1,
-                    size: 30.h,
+                Divider(
+                  height: 50.r,
+                  color: Colors.black,
+                ),
+                GestureDetector(
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const AboutPage(),
+                  )),
+                  child: CustomListTile(
+                    title: "About App",
+                    icon: Icon(
+                      Icons.adb_rounded,
+                      color: MainColors.color2,
+                      size: 30.r,
+                    ),
                   ),
                 ),
-              ),
-              GestureDetector(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const CustomizedPage(),
-                )),
-                child: CustomListTile(
-                  title: "Did you Know?",
-                  icon: Icon(
-                    Icons.help,
-                    color: MainColors.color1,
-                    size: 30.r,
-                  ),
-                ),
-              ),
-              Divider(
-                height: 50.r,
-                color: Colors.black,
-              ),
-              GestureDetector(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => AboutPage(),
-                )),
-                child: CustomListTile(
-                  title: "About App",
-                  icon: Icon(
-                    Icons.adb_rounded,
-                    color: MainColors.color1,
-                    size: 30.r,
-                  ),
-                ),
-              ),
-            ],
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 20.w,
+                    ),
+                    Text(
+                      'SignOut',
+                      style: TextStyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w400,
+                        color: MainColors.color2,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 30.w,
+                    ),
+                    IconButton(
+                        onPressed: () async {
+                          await _auth.signOut();
+                          context.router.replace(const LogIn());
+                        },
+                        icon: Icon(
+                          Icons.logout,
+                          color: MainColors.color2,
+                          size: 30.r,
+                        )),
+                  ],
+                )
+              ],
+            ),
           )),
         ],
       ),

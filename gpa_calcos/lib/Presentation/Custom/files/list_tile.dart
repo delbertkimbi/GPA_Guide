@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 
 class CustomListTile extends StatelessWidget {
   const CustomListTile(
@@ -9,7 +11,13 @@ class CustomListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(title),
+      title: Text(
+        title,
+        style: TextStyle(
+          color: MainColors.color1,
+          fontSize: 15.sp,
+        ),
+      ),
       leading: icon,
       trailing: trailling,
     );
