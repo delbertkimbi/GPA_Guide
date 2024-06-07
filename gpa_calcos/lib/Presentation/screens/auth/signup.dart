@@ -106,6 +106,7 @@ class _SignUpState extends State<SignUp> {
                           onTap: () async {
                             final user = await _auth.signInWithGoogle();
                             if (user != null) {
+                              const CircularProgressIndicator();
                               context.router.replace(const HomePage());
                             }
                           },

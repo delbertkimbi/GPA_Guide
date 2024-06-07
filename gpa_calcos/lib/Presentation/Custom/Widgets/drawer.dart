@@ -60,7 +60,7 @@ class CustomDrawer extends StatelessWidget {
                           color: MainColors.color4,
                           borderRadius: BorderRadius.circular(10.r),
                           image: const DecorationImage(
-                            image: AssetImage('assets/GPA Calcos.png'),
+                            image: AssetImage('assets/main1.png'),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -72,7 +72,7 @@ class CustomDrawer extends StatelessWidget {
                   radius: 34.h,
                   backgroundColor: Colors.white,
                   child: ClipOval(
-                    child: Image.asset('assets/bg1.png'),
+                    child: Image.asset('assets/try.png'),
                   ),
                 ),
               ),

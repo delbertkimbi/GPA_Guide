@@ -96,9 +96,8 @@ class _LogInState extends State<LogIn> {
                         onTap: () async {
                           final user = await _auth.signInWithGoogle();
                           if (user != null) {
-                            context.router.replace(const HomePage(
-                          
-                            ));
+                           const CircularProgressIndicator();
+                            context.router.replace(const HomePage());
                           }
                         },
                         child: MainButton(
@@ -186,9 +185,7 @@ class _LogInState extends State<LogIn> {
     if (user != null) {
       showToast(message: 'Login successful');
 
-      context.router.replace(const HomePage(
-    
-      ));
+      context.router.replace(const HomePage());
     } else {
       showToast(message: 'An error occurred');
     }

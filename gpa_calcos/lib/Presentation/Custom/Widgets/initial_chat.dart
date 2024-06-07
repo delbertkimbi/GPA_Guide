@@ -14,7 +14,7 @@ class InitialChatScreen extends StatelessWidget {
           Image.asset("assets/wonder.png"), // Replace with your image path
           SizedBox(height: 10.0.h),
           Text(
-            "Welcome to Calcos AI. Ask me anything \nor send a picture to get started.",
+            "Welcome to Guide AI. Ask me anything \nor send a picture to get started.",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 16.0.sp,

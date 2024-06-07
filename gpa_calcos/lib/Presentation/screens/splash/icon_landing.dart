@@ -24,7 +24,8 @@ class _IconLandingPageState extends State<IconLandingPage> {
           context.router
               .replace(const HomePage()); // Navigate to HomePage if logged in
         } else {
-          context.router.replace(const LogIn()); // Navigate to LogIn if logged out
+          context.router
+              .replace(const LogIn()); // Navigate to LogIn if logged out
         }
       });
     });
@@ -53,7 +54,7 @@ class _IconLandingPageState extends State<IconLandingPage> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15.r),
                 image: const DecorationImage(
-                  image: AssetImage('assets/GPA Calcos.png'),
+                  image: AssetImage('assets/main1.png'),
                   fit: BoxFit.cover,
                 ),
               ),

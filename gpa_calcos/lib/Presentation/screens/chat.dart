@@ -187,7 +187,7 @@ class _ChatAIState extends State<ChatAI> {
       ChatMessage chatMessage = ChatMessage(
         user: currentUser,
         createdAt: DateTime.now(),
-        text: "Describe this picture?",
+        text: "PLease describe this picture?",
         medias: [
           ChatMedia(
             url: file.path,
@@ -206,7 +206,7 @@ class _ChatAIState extends State<ChatAI> {
 
     // Basic formatting (replace with your desired formatting rules)
     text = text.replaceAll(r"\b([A-Z][a-z]+)\b",
-        r"**\1**"); // Bolden words starting with uppercase
+        r"\1"); // Bolden words starting with uppercase
 
     return text;
   }
