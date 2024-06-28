@@ -58,126 +58,129 @@ class _SignUpState extends State<SignUp> {
               backgroundColor: Colors.transparent,
               body: Center(
                 child: SingleChildScrollView(
-                  child: Container(
-                    height: 575.r,
-                    width: 285.r,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 30.w,
-                    ),
-                    margin: EdgeInsets.symmetric(
-                      horizontal: 44.w,
-                    ),
-                    decoration: BoxDecoration(
-                      color: MainColors.color4,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Column(
-                      children: [
-                        Container(
-                          height: 90.r,
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 30.w,
+                  child: Flexible(
+                    child: Container(
+                      height: 575.r,
+                      width: 285.r,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 30.w,
+                      ),
+                      margin: EdgeInsets.symmetric(
+                        horizontal: 44.w,
+                      ),
+                      decoration: BoxDecoration(
+                        color: MainColors.color4,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 90.r,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 30.w,
+                            ),
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.white,
+                            ),
+                            child: Icon(
+                              Icons.person,
+                              color: MainColors.color1,
+                              size: 50.r,
+                            ),
                           ),
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white,
+                          SizedBox(
+                            height: 20.h,
                           ),
-                          child: Icon(
-                            Icons.person,
-                            color: MainColors.color1,
-                            size: 50.r,
+                          Text(
+                            text1.header1Text,
+                            style: text1.header1,
                           ),
-                        ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
-                        Text(
-                          text1.header1Text,
-                          style: text1.header1,
-                        ),
-                        Text(
-                          'Sign in with',
-                          style: text1.header2,
-                        ),
-                        SizedBox(
-                          height: 8.h,
-                        ),
-                        GestureDetector(
-                          onTap: () async {
-                            final user = await _auth.signInWithGoogle();
-                            if (user != null) {
-                              const CircularProgressIndicator();
-                              context.router.replace(const HomePage());
-                            }
-                          },
-                          child: MainButton(
-                            imagePath: 'assets/google.png',
-                            textSize: 18,
-                            text: "  Google",
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal,
+                          Text(
+                            'Sign in with',
+                            style: text1.header2,
                           ),
-                        ),
-                        Text(
-                          'OR',
-                          style: text1.header2,
-                        ),
-                        CustomTextField(
-                          onChaged: (value) => _userCubit.updateUserName(value),
-                          text: 'user name',
-                          controller: userNameController,
-                        ),
-                        SizedBox(
-                          height: 8.h,
-                        ),
-                        CustomTextField(
-                          onChaged: (value) =>
-                              _userCubit.updateUserEmail(value),
-                          text: 'email',
-                          controller: emailController,
-                        ),
-                        SizedBox(
-                          height: 8.h,
-                        ),
-                        PasswordFormField(
-                          labelText: 'password',
-                          controller: passwordController,
-                        ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
-                        LoginButton(
-                          text: 'Sign Up',
-                          onPressed: () async => await _handleLogin(context),
-                          isLoading: isLoading,
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Have an account?  ",
-                              style: TextStyle(
-                                color: MainColors.color1,
-                                fontSize: 13.sp,
+                          SizedBox(
+                            height: 8.h,
+                          ),
+                          GestureDetector(
+                            onTap: () async {
+                              final user = await _auth.signInWithGoogle();
+                              if (user != null) {
+                                const CircularProgressIndicator();
+                                context.router.replace(const HomePage());
+                              }
+                            },
+                            child: MainButton(
+                              imagePath: 'assets/google.png',
+                              textSize: 18,
+                              text: "  Google",
+                              color: Colors.white,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                          Text(
+                            'OR',
+                            style: text1.header2,
+                          ),
+                          CustomTextField(
+                            onChaged: (value) =>
+                                _userCubit.updateUserName(value),
+                            text: 'user name',
+                            controller: userNameController,
+                          ),
+                          SizedBox(
+                            height: 8.h,
+                          ),
+                          CustomTextField(
+                            onChaged: (value) =>
+                                _userCubit.updateUserEmail(value),
+                            text: 'email',
+                            controller: emailController,
+                          ),
+                          SizedBox(
+                            height: 8.h,
+                          ),
+                          PasswordFormField(
+                            labelText: 'password',
+                            controller: passwordController,
+                          ),
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                          LoginButton(
+                            text: 'Sign Up',
+                            onPressed: () async => await _handleLogin(context),
+                            isLoading: isLoading,
+                          ),
+                          SizedBox(
+                            height: 5.h,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Have an account?  ",
+                                style: TextStyle(
+                                  color: MainColors.color1,
+                                  fontSize: 13.sp,
+                                ),
                               ),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                AutoRouter.of(context).push(const LogIn());
-                              },
-                              child: Text('Sign In',
-                                  style: TextStyle(
-                                    color: MainColors.color2,
-                                    fontWeight: FontWeight.normal,
-                                    fontSize: 13.sp,
-                                  )),
-                            ),
-                          ],
-                        )
-                      ],
+                              GestureDetector(
+                                onTap: () {
+                                  AutoRouter.of(context).push(const LogIn());
+                                },
+                                child: Text('Sign In',
+                                    style: TextStyle(
+                                      color: MainColors.color2,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 13.sp,
+                                    )),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),

@@ -93,7 +93,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                                 style: TextStyle(
                                   fontSize: 15.sp,
                                   fontWeight: FontWeight.w500,
-                                  color: const Color(0xff415DDB),
+                                  color: MainColors.color1,
                                 ),
                               ),
                             ),
@@ -433,6 +433,23 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     GestureDetector(
+                      onTap: () => Navigator.of(context).pop(),
+                      child: SizedBox(
+                        width: 90.w,
+                        child: RegisterButton(
+                          textSize: 18.sp,
+                          text: 'close',
+                          color: creditValueError || gradeError
+                              ? Colors.grey
+                              : Colors.red,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    GestureDetector(
                       onTap: () {
                         String subjectName = subjectNameController.text.trim();
                         String grade = gradeController.text.trim();
@@ -502,23 +519,6 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                               ? Colors.grey
                               : MainColors
                                   .color1, // Disable button or change color on error
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10.w,
-                    ),
-                    GestureDetector(
-                      onTap: () => Navigator.of(context).pop(),
-                      child: SizedBox(
-                        width: 90.w,
-                        child: RegisterButton(
-                          textSize: 18.sp,
-                          text: 'close',
-                          color: creditValueError || gradeError
-                              ? Colors.grey
-                              : Colors.red,
                           fontWeight: FontWeight.w500,
                         ),
                       ),

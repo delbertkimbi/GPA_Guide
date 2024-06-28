@@ -19,103 +19,101 @@ class CgpaReultsPage extends StatefulWidget {
 class _CgpaReultsPageState extends State<CgpaReultsPage> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          centerTitle: true,
-          backgroundColor: MainColors.color2,
-          leading: IconButton(
-              onPressed: () => Navigator.of(context).pop(),
-              icon: const Icon(
-                Icons.arrow_back_ios_new_rounded,
-                color: Colors.white,
-              )),
-          title: const Text(
-            'CGPA Result',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        centerTitle: true,
+        backgroundColor: MainColors.color2,
+        leading: IconButton(
+            onPressed: () => Navigator.of(context).pop(),
+            icon: const Icon(
+              Icons.arrow_back_ios_new_rounded,
+              color: Colors.white,
+            )),
+        title: const Text(
+          'CGPA Result',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
         ),
-        body: Column(
-          children: [
-            Screenshot(
-              controller: _screenshotController,
-              child: Container(
-                height: 300.h,
-                width: 300.w,
-                margin: EdgeInsets.symmetric(
-                  vertical: 40.r,
-                  horizontal: 30.r,
-                ),
-                decoration: BoxDecoration(
-                    color: MainColors.color2,
-                    borderRadius: BorderRadius.circular(30.r),
-                    boxShadow: [
-                      BoxShadow(
-                        // color: Colors.black.withOpacity(0.3.r),
-                        color: const Color(0xff9191F5),
-                        offset: const Offset(4.0, 4.0),
-                        blurRadius: 25.0.r,
-                        spreadRadius: 1.0.r,
-                      ),
-                      BoxShadow(
-                        // color: Colors.black.withOpacity(0.3.r),
-                        color: MainColors.color4,
-                        offset: const Offset(-4.0, -4.0),
-                        blurRadius: 5.0.r,
-                        spreadRadius: 1.0.r,
-                      ),
-                    ]),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Center(
-                      child: Text(
-                        'Your Results',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 30.sp,
-                          color: MainColors.color1,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+      ),
+      body: Column(
+        children: [
+          Screenshot(
+            controller: _screenshotController,
+            child: Container(
+              height: 300.h,
+              width: 300.w,
+              margin: EdgeInsets.symmetric(
+                vertical: 40.r,
+                horizontal: 30.r,
+              ),
+              decoration: BoxDecoration(
+                  color: MainColors.color2,
+                  borderRadius: BorderRadius.circular(30.r),
+                  boxShadow: [
+                    BoxShadow(
+                      // color: Colors.black.withOpacity(0.3.r),
+                      color: const Color(0xff9191F5),
+                      offset: const Offset(4.0, 4.0),
+                      blurRadius: 25.0.r,
+                      spreadRadius: 1.0.r,
                     ),
-                    Text(
-                      "CGPA: ${widget.cgpa.toStringAsFixed(2)}",
+                    BoxShadow(
+                      // color: Colors.black.withOpacity(0.3.r),
+                      color: MainColors.color4,
+                      offset: const Offset(-4.0, -4.0),
+                      blurRadius: 5.0.r,
+                      spreadRadius: 1.0.r,
+                    ),
+                  ]),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Text(
+                      'Your Results',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 25.h,
+                        fontSize: 30.sp,
+                        color: MainColors.color1,
                         fontWeight: FontWeight.bold,
-                        color: Colors.yellow,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(0.0),
-                      child: _cgpaStatus()!,
+                  ),
+                  Text(
+                    "CGPA: ${widget.cgpa.toStringAsFixed(2)}",
+                    style: TextStyle(
+                      fontSize: 25.h,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.yellow,
                     ),
-                  ],
-                ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(0.0),
+                    child: _cgpaStatus()!,
+                  ),
+                ],
               ),
             ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(10.r, 0, 10.r, 0),
-              child: Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onTap: () => _takeScreenShot,
-                      child: shareSave(text: 'Share', icon: Icons.share),
-                    ),
-                    SizedBox(
-                      width: 20.r,
-                    ),
-                    shareSave(text: 'Save', icon: Icons.save),
-                  ],
-                ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(10.r, 0, 10.r, 0),
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GestureDetector(
+                    onTap: () => _takeScreenShot,
+                    child: shareSave(text: 'Share', icon: Icons.share),
+                  ),
+                  SizedBox(
+                    width: 20.r,
+                  ),
+                  shareSave(text: 'Save', icon: Icons.save),
+                ],
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }
@@ -145,7 +143,7 @@ class _CgpaReultsPageState extends State<CgpaReultsPage> {
   Container shareSave({required String text, required IconData icon}) {
     return Container(
       width: 120.w,
-      height: 50.h,
+      height: 55.h,
       alignment: Alignment.center,
       padding: EdgeInsets.all(15.r),
       decoration: BoxDecoration(

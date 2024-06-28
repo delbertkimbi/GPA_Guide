@@ -60,7 +60,7 @@ class CustomDrawer extends StatelessWidget {
                           color: MainColors.color4,
                           borderRadius: BorderRadius.circular(10.r),
                           image: const DecorationImage(
-                            image: AssetImage('assets/main1.png'),
+                            image: AssetImage('assets/guide.png'),
                             fit: BoxFit.cover,
                           ),
                         ),

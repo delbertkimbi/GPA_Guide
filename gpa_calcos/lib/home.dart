@@ -130,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                         customBox(
                           color: Colors.white,
                           icon: Icons.calculate_rounded,
-                          text: 'GPA \nCalculations',
+                          text: 'GPA \nCalcos',
                           page: const GpaCalculationsLanding(),
                         ),
                       ],

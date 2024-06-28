@@ -12,10 +12,30 @@ class IndividaulGoals extends StatefulWidget {
 }
 
 class _IndividaulGoalsState extends State<IndividaulGoals> {
-  List<String> grades = ['A', 'B+', 'B', 'C+', 'C', 'D+', 'D', 'F'];
+  List<String> grades = ['A', 'B', 'B+', 'C', 'C+', 'D', 'D+', 'F'];
+  bool viewAll = false;
+  bool isGradeTapped = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: MainColors.color2,
+        elevation: 0,
+        centerTitle: true,
+        title: Text(
+          'MY Goals',
+          style: TextStyle(
+              fontSize: 20.sp,
+              fontWeight: FontWeight.w600,
+              color: MainColors.color4),
+        ),
+        leading: IconButton(
+            onPressed: () => Navigator.of(context).pop(),
+            icon: Icon(
+              Icons.arrow_back_ios_new_rounded,
+              color: MainColors.color4,
+            )),
+      ),
       backgroundColor: MainColors.color4,
       body: Padding(
         padding: EdgeInsets.all(10.r),
@@ -105,7 +125,7 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
                   children: [
                     Container(
                         padding: EdgeInsets.all(15.r),
-                        height: 150.h,
+                        height: viewAll ? 100.h : 150.h,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10.h),
@@ -124,11 +144,31 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
-                                Icon(
-                                  Icons.arrow_back_ios_new,
-                                  color: MainColors.color2,
-                                  size: 18.sp,
-                                ),
+                                viewAll
+                                    ? GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            viewAll = !viewAll;
+                                          });
+                                        },
+                                        child: Icon(
+                                          Icons.arrow_back_ios_new,
+                                          color: MainColors.color2,
+                                          size: 18.sp,
+                                        ),
+                                      )
+                                    : GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            viewAll = !viewAll;
+                                          });
+                                        },
+                                        child: Icon(
+                                          Icons.keyboard_arrow_down,
+                                          color: MainColors.color2,
+                                          size: 25.sp,
+                                        ),
+                                      ),
                               ],
                             ),
                             const Divider(),
@@ -143,12 +183,29 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        grades[index],
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 18.sp,
-                                          color: MainColors.color1,
+                                      GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            isGradeTapped = !isGradeTapped;
+                                          });
+                                        },
+                                        child: Container(
+                                          width: 30.r,
+                                          alignment: Alignment.center,
+                                          decoration: BoxDecoration(
+                                            color: isGradeTapped
+                                                ? MainColors.color4
+                                                : Colors.white,
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Text(
+                                            grades[index],
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 18.sp,
+                                              color: MainColors.color1,
+                                            ),
+                                          ),
                                         ),
                                       ),
                                       SizedBox(
@@ -159,23 +216,26 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
                                 },
                               ),
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                _columnTextIcon(
-                                  text: 'Rename',
-                                  icon: Icons.edit,
-                                ),
-                                _columnTextIcon(
-                                  text: 'Delete',
-                                  icon: Icons.delete,
-                                ),
-                                _columnTextIcon(
-                                  text: 'Reset',
-                                  icon: Icons.refresh,
-                                ),
-                              ],
-                            )
+                            viewAll
+                                ? Container()
+                                : Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      _columnTextIcon(
+                                        text: 'Rename',
+                                        icon: Icons.edit,
+                                      ),
+                                      _columnTextIcon(
+                                        text: 'Delete',
+                                        icon: Icons.delete,
+                                      ),
+                                      _columnTextIcon(
+                                        text: 'Reset',
+                                        icon: Icons.refresh,
+                                      ),
+                                    ],
+                                  )
                           ],
                         )),
                     SizedBox(

@@ -54,7 +54,7 @@ class _IconLandingPageState extends State<IconLandingPage> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15.r),
                 image: const DecorationImage(
-                  image: AssetImage('assets/main1.png'),
+                  image: AssetImage('assets/guide.png'),
                   fit: BoxFit.cover,
                 ),
               ),

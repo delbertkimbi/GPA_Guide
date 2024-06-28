@@ -34,7 +34,7 @@ class _GpaGoalsState extends State<GpaGoals> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          'Study Plan',
+          'GPA Goals',
           style: TextStyle(
               fontSize: 22.sp,
               fontWeight: FontWeight.w600,
