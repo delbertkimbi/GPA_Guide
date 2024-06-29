@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp.router(
           routerConfig: appRouter.config(),
           debugShowCheckedModeBanner: false,
-          title: 'GPA Calcos',
+          title: 'GPA Guide',
           theme: ThemeData(
             textTheme: GoogleFonts.baloo2TextTheme(textTheme).copyWith(
               bodyMedium: GoogleFonts.baloo2(textStyle: textTheme.bodyMedium),

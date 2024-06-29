@@ -24,7 +24,7 @@ class _ChatAIState extends State<ChatAI> {
   ChatUser geminiUser = ChatUser(
     id: "1",
     firstName: "Guide",
-    profileImage: "assets/try.png",
+    profileImage: "assets/guide.png",
   );
   @override
   Widget build(BuildContext context) {
@@ -205,8 +205,8 @@ class _ChatAIState extends State<ChatAI> {
     text = text.replaceAll(RegExp(r"[^\w\s\!\?\.]"), "");
 
     // Basic formatting (replace with your desired formatting rules)
-    text = text.replaceAll(r"\b([A-Z][a-z]+)\b",
-        r"\1"); // Bolden words starting with uppercase
+    text = text.replaceAll(
+        r"\b([A-Z][a-z]+)\b", r"\1"); // Bolden words starting with uppercase
 
     return text;
   }

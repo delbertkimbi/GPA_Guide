@@ -67,18 +67,20 @@ class _LogInState extends State<LogIn> {
                       children: [
                         Container(
                           height: 90.r,
+                          width: 100,
                           padding: EdgeInsets.symmetric(
-                            horizontal: 30.w,
+                            horizontal: 12.w,
                           ),
                           decoration: const BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Colors.white,
+                            // color: Colors.white,
                           ),
-                          child: Icon(
-                            Icons.person,
-                            color: MainColors.color1,
-                            size: 50.r,
-                          ),
+                          // child: Icon(
+                          //   Icons.person,
+                          //   color: MainColors.color1,
+                          //   size: 50.r,
+                          // ),
+                          child: Image.asset('assets/try.png'),
                         ),
                         SizedBox(
                           height: 10.h,

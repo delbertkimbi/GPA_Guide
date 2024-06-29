@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
 
 @RoutePage()
@@ -46,18 +47,34 @@ class _IconLandingPageState extends State<IconLandingPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: MainColors.color2,
           body: Center(
-            child: Container(
-              height: 200.h,
-              width: 200.w,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15.r),
-                image: const DecorationImage(
-                  image: AssetImage('assets/guide.png'),
-                  fit: BoxFit.cover,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  height: 300.h,
+                  width: 300.w,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15.r),
+                    color: Colors.white,
+                    image: const DecorationImage(
+                      image: AssetImage('assets/try.png'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
-              ),
+                SizedBox(height: 10.h),
+                Text(
+                  'GPA Guide',
+                  style: TextStyle(
+                    color: MainColors.color1,
+                    fontSize: 30.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
           )),
     );

@@ -150,11 +150,9 @@ abstract class $AppRouter extends _i19.RootStackRouter {
       );
     },
     SignUp.name: (routeData) {
-      final args =
-          routeData.argsAs<SignUpArgs>(orElse: () => const SignUpArgs());
       return _i19.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i17.SignUp(key: args.key),
+        child: const _i17.SignUp(),
       );
     },
     WeeklySchedules.name: (routeData) {
@@ -426,30 +424,16 @@ class SemesterSchedules extends _i19.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i17.SignUp]
-class SignUp extends _i19.PageRouteInfo<SignUpArgs> {
-  SignUp({
-    _i20.Key? key,
-    List<_i19.PageRouteInfo>? children,
-  }) : super(
+class SignUp extends _i19.PageRouteInfo<void> {
+  const SignUp({List<_i19.PageRouteInfo>? children})
+      : super(
           SignUp.name,
-          args: SignUpArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'SignUp';
 
-  static const _i19.PageInfo<SignUpArgs> page = _i19.PageInfo<SignUpArgs>(name);
-}
-
-class SignUpArgs {
-  const SignUpArgs({this.key});
-
-  final _i20.Key? key;
-
-  @override
-  String toString() {
-    return 'SignUpArgs{key: $key}';
-  }
+  static const _i19.PageInfo<void> page = _i19.PageInfo<void>(name);
 }
 
 /// generated route for

@@ -55,7 +55,7 @@ class CustomDrawer extends StatelessWidget {
                       ),
                       child: Container(
                         height: 300.h,
-                        width: 300.w,
+                        width: 400.w,
                         decoration: BoxDecoration(
                           color: MainColors.color4,
                           borderRadius: BorderRadius.circular(10.r),
@@ -191,6 +191,7 @@ class CustomDrawer extends StatelessWidget {
                     IconButton(
                         onPressed: () async {
                           await _auth.signOut();
+                          // ignore: use_build_context_synchronously
                           context.router.replace(const LogIn());
                         },
                         icon: Icon(
