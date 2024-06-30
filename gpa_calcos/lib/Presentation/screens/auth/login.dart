@@ -150,7 +150,7 @@ class _LogInState extends State<LogIn> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                AutoRouter.of(context).push(SignUp());
+                                AutoRouter.of(context).push(const SignUp());
                               },
                               child: Text('Sign up',
                                   style: TextStyle(

@@ -26,7 +26,7 @@ class _IconLandingPageState extends State<IconLandingPage> {
               .replace(const HomePage()); // Navigate to HomePage if logged in
         } else {
           context.router
-              .replace(const LogIn()); // Navigate to LogIn if logged out
+              .replace(const HomePage()); // Navigate to LogIn if logged out
         }
       });
     });
@@ -47,33 +47,37 @@ class _IconLandingPageState extends State<IconLandingPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: MainColors.color2,
+          backgroundColor: MainColors.color4,
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  height: 300.h,
-                  width: 300.w,
+                  height: 250.h,
+                  width: 220.w,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15.r),
-                    color: Colors.white,
                     image: const DecorationImage(
                       image: AssetImage('assets/try.png'),
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
-                SizedBox(height: 10.h),
                 Text(
-                  'GPA Guide',
+                  '    GPA Guide',
                   style: TextStyle(
-                    color: MainColors.color1,
+                    color: MainColors.color2,
                     fontSize: 30.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+                SizedBox(
+                  height: 50.h,
+                ),
+                CircularProgressIndicator(
+                  color: MainColors.color2,
+                )
               ],
             ),
           )),

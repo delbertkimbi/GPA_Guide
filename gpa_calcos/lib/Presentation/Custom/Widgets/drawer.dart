@@ -55,7 +55,7 @@ class CustomDrawer extends StatelessWidget {
                       ),
                       child: Container(
                         height: 300.h,
-                        width: 400.w,
+                        width: 250.w,
                         decoration: BoxDecoration(
                           color: MainColors.color4,
                           borderRadius: BorderRadius.circular(10.r),
@@ -69,8 +69,8 @@ class CustomDrawer extends StatelessWidget {
                   );
                 },
                 child: CircleAvatar(
-                  radius: 34.h,
-                  backgroundColor: Colors.white,
+                  radius: 28.h,
+                  backgroundColor: MainColors.color4,
                   child: ClipOval(
                     child: Image.asset('assets/try.png'),
                   ),

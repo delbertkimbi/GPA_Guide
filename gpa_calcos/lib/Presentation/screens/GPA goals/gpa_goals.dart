@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/custom_plan.dart';
+import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
 import 'package:gpa_calcos/Presentation/screens/GPA%20goals/individual_goals.dart';
 
 @RoutePage()
@@ -88,9 +90,22 @@ class _GpaGoalsState extends State<GpaGoals> {
               height: 50.h,
             ),
             GestureDetector(
-              onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const IndividaulGoals(),
-              )),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const IndividaulGoals(),
+                ));
+
+                FirebaseAuth.instance.authStateChanges().listen((User? user) {
+                  if (user != null) {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const IndividaulGoals(),
+                    ));
+                  } else {
+                    context.router.replace(
+                        const LogIn()); // Navigate to LogIn if logged out
+                  }
+                });
+              },
               child: const OptionBox(
                 optiontext: 'Individual Goals',
                 optionICon: Icons.person,
