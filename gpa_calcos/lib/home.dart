@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/Widgets/drawer.dart';
@@ -63,14 +64,19 @@ class _HomePageState extends State<HomePage> {
                 color: MainColors.color1,
               ),
             ),
-            CircleAvatar(
-              backgroundColor: Colors.white,
-              radius: 14.r,
-              child: Text(
-                'D',
-                style: TextStyle(
-                  fontSize: 18.sp,
-                  color: MainColors.color1,
+            GestureDetector(
+              onTap: () {
+                hasAcount ? null : AutoRouter.of(context).push(const LogIn());
+              },
+              child: CircleAvatar(
+                backgroundColor: Colors.white,
+                radius: 14.r,
+                child: Text(
+                  'D',
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    color: MainColors.color1,
+                  ),
                 ),
               ),
             ),
@@ -276,5 +282,17 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  bool hasAcount = false;
+
+  void hasAccount() {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      if (user != null) {
+        setState(() {
+          hasAcount = true;
+        });
+      }
+    });
   }
 }

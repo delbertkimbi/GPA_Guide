@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,11 +13,18 @@ import 'package:gpa_calcos/Presentation/screens/auth/auth_services.dart';
 import 'package:gpa_calcos/Presentation/screens/chat.dart';
 import 'package:gpa_calcos/Presentation/screens/customized.dart';
 
-class CustomDrawer extends StatelessWidget {
+class CustomDrawer extends StatefulWidget {
   CustomDrawer({
     super.key,
   });
+
+  @override
+  State<CustomDrawer> createState() => _CustomDrawerState();
+}
+
+class _CustomDrawerState extends State<CustomDrawer> {
   final _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -172,40 +180,54 @@ class CustomDrawer extends StatelessWidget {
                     ),
                   ),
                 ),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 20.w,
-                    ),
-                    Text(
-                      'SignOut',
-                      style: TextStyle(
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w400,
-                        color: MainColors.color2,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 30.w,
-                    ),
-                    IconButton(
-                        onPressed: () async {
-                          await _auth.signOut();
-                          // ignore: use_build_context_synchronously
-                          context.router.replace(const LogIn());
-                        },
-                        icon: Icon(
-                          Icons.logout,
-                          color: MainColors.color2,
-                          size: 30.r,
-                        )),
-                  ],
-                )
+                hasAcount
+                    ? Row(
+                        children: [
+                          SizedBox(
+                            width: 20.w,
+                          ),
+                          Text(
+                            'SignOut',
+                            style: TextStyle(
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w400,
+                              color: MainColors.color2,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 30.w,
+                          ),
+                          IconButton(
+                              onPressed: () async {
+                                await _auth.signOut();
+                                // ignore: use_build_context_synchronously
+                                context.router.replace(const LogIn());
+                              },
+                              icon: Icon(
+                                Icons.logout,
+                                color: MainColors.color2,
+                                size: 30.r,
+                              )),
+                        ],
+                      )
+                    : const SizedBox(),
               ],
             ),
           )),
         ],
       ),
     );
+  }
+
+  bool hasAcount = false;
+
+  void hasAccount() {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      if (user != null) {
+        setState(() {
+          hasAcount = true;
+        });
+      }
+    });
   }
 }

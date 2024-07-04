@@ -91,10 +91,9 @@ class _GpaGoalsState extends State<GpaGoals> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const IndividaulGoals(),
-                ));
-
+                CircularProgressIndicator(
+                  color: MainColors.color2,
+                );
                 FirebaseAuth.instance.authStateChanges().listen((User? user) {
                   if (user != null) {
                     Navigator.of(context).push(MaterialPageRoute(

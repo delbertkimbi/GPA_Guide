@@ -102,6 +102,8 @@ class _LogInState extends State<LogIn> {
                             if (user != null) {
                               const CircularProgressIndicator();
                               context.router.replace(const HomePage());
+                            } else {
+                              showToast(message: 'An error occurred');
                             }
                           },
                           child: MainButton(

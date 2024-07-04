@@ -127,7 +127,7 @@ class _CgpaInfoState extends State<CgpaInfo> {
                 height: 20.h,
               ),
               Text(
-                'Enter the number of simesters attented so far, and corresponding GPAs for each sysmester to get your Cumulative grade point average(CGPA) calculated for you.',
+                'Enter the number of semesters attended so far and their corresponding GPAs, and get your Cumulative grade point average(CGPA) calculated for you.',
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 15.sp,
