@@ -78,12 +78,21 @@ class _HomePageState extends State<HomePage> {
                   )
                 : GestureDetector(
                     onTap: () => AutoRouter.of(context).push(const LogIn()),
-                    child: Text(
-                      'SignIn',
-                      style: TextStyle(
-                        color: MainColors.color1,
-                        fontSize: 15.sp,
-                        fontWeight: FontWeight.w400,
+                    child: Container(
+                      width: 55.r,
+                      height: 27.r,
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.all(2.r),
+                      decoration: BoxDecoration(
+                          color: MainColors.color1,
+                          borderRadius: BorderRadius.circular(20.r)),
+                      child: Text(
+                        'LogIn',
+                        style: TextStyle(
+                          color: MainColors.color4,
+                          fontSize: 15.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 
 class OptionBox extends StatelessWidget {
   final String optiontext;
@@ -23,14 +24,14 @@ class OptionBox extends StatelessWidget {
       decoration: BoxDecoration(
         color: const Color(0xff9191F5),
         borderRadius: BorderRadius.circular(20.r),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.3.r),
-            offset: const Offset(0, 10),
-            blurRadius: 10.0.r,
-            spreadRadius: 0.0,
-          ),
-        ],
+        // boxShadow: [
+        //   BoxShadow(
+        //     color: Colors.black.withOpacity(0.3.r),
+        //     offset: const Offset(0, 10),
+        //     blurRadius: 10.0.r,
+        //     spreadRadius: 0.0,
+        //   ),
+        // ],
       ),
       child: ListTile(
           title: Text(
@@ -42,7 +43,14 @@ class OptionBox extends StatelessWidget {
             ),
           ),
           leading: CircleAvatar(
-            child: Text(index),
+            radius: 20.h,
+            child: Text(
+              index,
+              style: TextStyle(
+                color: MainColors.color1,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
           trailing: Icon(
             optionICon,
