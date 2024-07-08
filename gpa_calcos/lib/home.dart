@@ -19,6 +19,17 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  bool _isLoggedIn = false; // Track user's sign-in state
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      setState(() {
+        _isLoggedIn = user != null;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,7 +50,7 @@ class _HomePageState extends State<HomePage> {
       ),
       child: Scaffold(
         key: _scaffoldKey, // Assign GlobalKey
-        drawer: CustomDrawer(),
+        drawer: const CustomDrawer(),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
@@ -64,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                 color: MainColors.color1,
               ),
             ),
-            hasAcount
+            _isLoggedIn
                 ? CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 14.r,
@@ -300,15 +311,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  bool hasAcount = false;
-
-  void hasAccount() {
-    FirebaseAuth.instance.authStateChanges().listen((User? user) {
-      if (user != null) {
-        setState(() {
-          hasAcount = true;
-        });
-      }
-    });
-  }
 }

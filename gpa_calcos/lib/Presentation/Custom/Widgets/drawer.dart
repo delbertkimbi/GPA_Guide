@@ -14,7 +14,7 @@ import 'package:gpa_calcos/Presentation/screens/chat.dart';
 import 'package:gpa_calcos/Presentation/screens/customized.dart';
 
 class CustomDrawer extends StatefulWidget {
-  CustomDrawer({
+  const CustomDrawer({
     super.key,
   });
 
@@ -24,6 +24,16 @@ class CustomDrawer extends StatefulWidget {
 
 class _CustomDrawerState extends State<CustomDrawer> {
   final _auth = AuthService();
+  bool _isLoggedIn = false; // Track user's sign-in state
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      setState(() {
+        _isLoggedIn = user != null;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -180,7 +190,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     ),
                   ),
                 ),
-                hasAcount
+                _isLoggedIn
                     ? Row(
                         children: [
                           SizedBox(
@@ -219,15 +229,5 @@ class _CustomDrawerState extends State<CustomDrawer> {
     );
   }
 
-  bool hasAcount = false;
-
-  void hasAccount() {
-    FirebaseAuth.instance.authStateChanges().listen((User? user) {
-      if (user != null) {
-        setState(() {
-          hasAcount = true;
-        });
-      }
-    });
-  }
+  
 }

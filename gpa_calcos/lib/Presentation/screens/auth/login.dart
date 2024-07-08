@@ -48,123 +48,120 @@ class _LogInState extends State<LogIn> {
         ),
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          body: Center(
-            child: SingleChildScrollView(
-              child: Flexible(
-                child: Container(
-                  height: 500.r,
-                  width: 285.r,
-                  padding: EdgeInsets.symmetric(horizontal: 31.w),
-                  margin:
-                      EdgeInsets.symmetric(horizontal: 44.w, vertical: 123.h),
-                  decoration: BoxDecoration(
-                    color: MainColors.color4,
-                    borderRadius: BorderRadius.circular(20.r),
-                  ),
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      children: [
-                        Container(
-                          height: 90.r,
-                          width: 100,
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 12.w,
-                          ),
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            // color: Colors.white,
-                          ),
-                          // child: Icon(
-                          //   Icons.person,
-                          //   color: MainColors.color1,
-                          //   size: 50.r,
-                          // ),
-                          child: Image.asset('assets/try.png'),
+          body: SingleChildScrollView(
+            child: Center(
+              child: Container(
+                height: 500.r,
+                width: 285.r,
+                padding: EdgeInsets.symmetric(horizontal: 31.w),
+                margin: EdgeInsets.symmetric(horizontal: 44.w, vertical: 123.h),
+                decoration: BoxDecoration(
+                  color: MainColors.color4,
+                  borderRadius: BorderRadius.circular(20.r),
+                ),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 90.r,
+                        width: 100,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 12.w,
                         ),
-                        SizedBox(
-                          height: 10.h,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          // color: Colors.white,
                         ),
-                        Text(
-                          text1.header1Text,
-                          style: text1.header1,
+                        // child: Icon(
+                        //   Icons.person,
+                        //   color: MainColors.color1,
+                        //   size: 50.r,
+                        // ),
+                        child: Image.asset('assets/try.png'),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Text(
+                        text1.header1Text,
+                        style: text1.header1,
+                      ),
+                      Text(
+                        'Sign in with',
+                        style: text1.header2,
+                      ),
+                      SizedBox(
+                        height: 8.h,
+                      ),
+                      GestureDetector(
+                        onTap: () async {
+                          final user = await _auth.signInWithGoogle();
+                          if (user != null) {
+                            const CircularProgressIndicator();
+                            context.router.replace(const HomePage());
+                          } else {
+                            showToast(message: 'An error occurred');
+                          }
+                        },
+                        child: MainButton(
+                          imagePath: 'assets/google.png',
+                          textSize: 18,
+                          text: "Google",
+                          color: Colors.white,
+                          fontWeight: FontWeight.normal,
                         ),
-                        Text(
-                          'Sign in with',
-                          style: text1.header2,
-                        ),
-                        SizedBox(
-                          height: 8.h,
-                        ),
-                        GestureDetector(
-                          onTap: () async {
-                            final user = await _auth.signInWithGoogle();
-                            if (user != null) {
-                              const CircularProgressIndicator();
-                              context.router.replace(const HomePage());
-                            } else {
-                              showToast(message: 'An error occurred');
-                            }
-                          },
-                          child: MainButton(
-                            imagePath: 'assets/google.png',
-                            textSize: 18,
-                            text: "Google",
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal,
-                          ),
-                        ),
-                        Text(
-                          'OR',
-                          style: text1.header2,
-                        ),
-                        CustomTextField(
-                            onChaged: (value) {},
-                            text: 'email',
-                            controller: emailController),
-                        SizedBox(
-                          height: 8.h,
-                        ),
-                        PasswordFormField(
-                          labelText: 'password',
-                          controller: passwordController,
-                        ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
-                        LoginButton(
-                          text: 'Log In',
-                          onPressed: () async => await _handleLogin(context),
-                          isLoading: isLoading,
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Don't have an account?  ",
-                              style: TextStyle(
-                                color: MainColors.color1,
-                                fontSize: 13.sp,
-                              ),
+                      ),
+                      Text(
+                        'OR',
+                        style: text1.header2,
+                      ),
+                      CustomTextField(
+                          onChaged: (value) {},
+                          text: 'email',
+                          controller: emailController),
+                      SizedBox(
+                        height: 8.h,
+                      ),
+                      PasswordFormField(
+                        labelText: 'password',
+                        controller: passwordController,
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      LoginButton(
+                        text: 'Log In',
+                        onPressed: () async => await _handleLogin(context),
+                        isLoading: isLoading,
+                      ),
+                      SizedBox(
+                        height: 5.h,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Don't have an account?  ",
+                            style: TextStyle(
+                              color: MainColors.color1,
+                              fontSize: 13.sp,
                             ),
-                            GestureDetector(
-                              onTap: () {
-                                AutoRouter.of(context).push(const SignUp());
-                              },
-                              child: Text('Sign up',
-                                  style: TextStyle(
-                                    color: MainColors.color2,
-                                    fontWeight: FontWeight.normal,
-                                    fontSize: 13.sp,
-                                  )),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              AutoRouter.of(context).push(const SignUp());
+                            },
+                            child: Text('Sign up',
+                                style: TextStyle(
+                                  color: MainColors.color2,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 13.sp,
+                                )),
+                          ),
+                        ],
+                      )
+                    ],
                   ),
                 ),
               ),
