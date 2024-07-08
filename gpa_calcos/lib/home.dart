@@ -64,22 +64,29 @@ class _HomePageState extends State<HomePage> {
                 color: MainColors.color1,
               ),
             ),
-            GestureDetector(
-              onTap: () {
-                hasAcount ? null : AutoRouter.of(context).push(const LogIn());
-              },
-              child: CircleAvatar(
-                backgroundColor: Colors.white,
-                radius: 14.r,
-                child: Text(
-                  'D',
-                  style: TextStyle(
-                    fontSize: 14.sp,
-                    color: MainColors.color1,
+            hasAcount
+                ? CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 14.r,
+                    child: Text(
+                      'D',
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                        color: MainColors.color1,
+                      ),
+                    ),
+                  )
+                : GestureDetector(
+                    onTap: () => AutoRouter.of(context).push(const LogIn()),
+                    child: Text(
+                      'SignIn',
+                      style: TextStyle(
+                        color: MainColors.color1,
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            ),
             SizedBox(
               width: 10.h,
             ),
