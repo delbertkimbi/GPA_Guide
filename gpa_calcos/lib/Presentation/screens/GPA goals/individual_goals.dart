@@ -597,6 +597,9 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
                             ' ',
                             double.parse(
                                 creditValueNameController.text.toString()));
+                        subjectNameController.clear();
+                        creditValueNameController.clear();
+                        showToast(message: 'Added');
                       },
                       child: SizedBox(
                         width: 90.w,
