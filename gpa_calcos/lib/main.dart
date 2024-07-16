@@ -46,8 +46,8 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'GPA Guide',
           theme: ThemeData(
-            textTheme: GoogleFonts.baloo2TextTheme(textTheme).copyWith(
-              bodyMedium: GoogleFonts.baloo2(textStyle: textTheme.bodyMedium),
+            textTheme: GoogleFonts.robotoTextTheme(textTheme).copyWith(
+              bodyMedium: GoogleFonts.roboto(textStyle: textTheme.bodyMedium),
             ),
             colorScheme: ColorScheme.fromSeed(
               seedColor: const Color(0xffDDDDFF),
