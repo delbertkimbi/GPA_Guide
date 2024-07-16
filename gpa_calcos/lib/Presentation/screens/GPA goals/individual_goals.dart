@@ -115,7 +115,7 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
                                 style: _semester1Style,
                                 gpa: BlocProvider.of<SubjectInfoCubit>(context)
                                     .calculateGPA()
-                                    .toString(),
+                                    .toStringAsFixed(2),
                                 grade:
                                     BlocProvider.of<SubjectInfoCubit>(context)
                                         .totalGpaValueGrade()),
@@ -124,7 +124,7 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
                               style: _semester2Style,
                               gpa: BlocProvider.of<SubjectInfoCubit>(context)
                                   .calculateGPA()
-                                  .toString(),
+                                  .toStringAsFixed(2),
                               grade: BlocProvider.of<SubjectInfoCubit>(context)
                                   .totalGpaValueGrade(),
                             ),
@@ -412,7 +412,7 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
                   ),
                   CustomTextField(
                     onChaged: (value) {},
-                    text: 'Subject Name',
+                    text: 'New Name',
                     controller: subjectNameController,
                   ),
                   SizedBox(
@@ -422,6 +422,7 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
                     onTap: () {
                       setState(() {
                         subject.name = subjectNameController.text;
+                        subjectNameController.clear();
                       });
 
                       Navigator.of(context).pop();
@@ -516,9 +517,9 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
     );
   }
 
+  bool creditValueError = false;
+
   Future<dynamic> getSubjectInfoDialog(BuildContext context) {
-    bool creditValueError = false;
-    bool gradeError = false; //
     return showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
@@ -567,9 +568,7 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
                       child: RegisterButton(
                         textSize: 18.sp,
                         text: 'close',
-                        color: creditValueError || gradeError
-                            ? Colors.grey
-                            : Colors.red,
+                        color: Colors.red,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -585,7 +584,7 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
                       if (subjectName.isEmpty || creditValueString.isEmpty) {
                         showToast(
                             message:
-                                'Please fill in all fields (Subject Name,Credit Value).');
+                                'Please fill in all fields (Subject Name,Credit Value)');
 
                         return; // Exit the tap handler if any field is empty
                       }
@@ -597,6 +596,9 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
                             ' ',
                             double.parse(
                                 creditValueNameController.text.toString()));
+                        showToast(message: 'Added');
+                        subjectNameController.clear();
+                        creditValueNameController.clear();
                       },
                       child: SizedBox(
                         width: 90.w,
