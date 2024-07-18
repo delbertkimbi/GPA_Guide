@@ -321,7 +321,7 @@ class _HomePageState extends State<HomePage> {
         // ),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: color,
+          color: MainColors.color4,
           //color: Colors.grey[300],
           borderRadius: BorderRadius.circular(15.r),
 
