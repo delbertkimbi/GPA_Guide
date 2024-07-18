@@ -8,6 +8,7 @@ import 'package:gpa_calcos/Presentation/Custom/Widgets/drawer.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
 import 'package:gpa_calcos/Presentation/screens/chat.dart';
+import 'package:gpa_calcos/Presentation/screens/user_profile.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -20,12 +21,20 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   bool _isLoggedIn = false; // Track user's sign-in state
+  static String userImageUrl = " ";
+  static String userName = "";
+  static String userEmail = "";
   @override
   void initState() {
     super.initState();
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       setState(() {
         _isLoggedIn = user != null;
+        if (user != null) {
+          userImageUrl = user.photoURL?.toString() ?? "";
+          userName = user.displayName ?? "";
+          userEmail = user.email ?? "";
+        }
       });
     });
   }
@@ -76,15 +85,30 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             _isLoggedIn
-                ? CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 14.r,
-                    child: Text(
-                      'D',
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        color: MainColors.color1,
-                      ),
+                ? GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (BuildContext context) {
+                        return UserProfile(
+                          userImageUrl: userImageUrl,
+                          userName: userName,
+                          userEmail: userEmail,
+                        );
+                      }));
+                    },
+                    child: CircleAvatar(
+                      backgroundColor: Colors.white,
+                      radius: 14.r,
+                      backgroundImage: _isLoggedIn
+                          ? NetworkImage(
+                              userImageUrl) // Use NetworkImage for profile picture
+                          : null,
+                      child: userImageUrl?.isEmpty == true
+                          ? Icon(
+                              Icons.person,
+                              size: 20.r,
+                            )
+                          : null, // Show progress indicator while fetching
                     ),
                   )
                 : GestureDetector(
@@ -152,18 +176,22 @@ class _HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         customBox(
-                          color: Colors.red,
+                          iconColor: MainColors.color2,
+                          textColor: MainColors.color1,
+                          color: MainColors.color4,
                           icon: Icons.drive_file_rename_outline_rounded,
-                          text: 'GPA \nGoals',
+                          text: 'GPA Goals',
                           page: const GpaGoals(),
                         ),
                         SizedBox(
                           width: 30.h,
                         ),
                         customBox(
-                          color: Colors.white,
+                          iconColor: MainColors.color2,
+                          textColor: MainColors.color1,
+                          color: MainColors.color4,
                           icon: Icons.calculate_rounded,
-                          text: 'GPA \nCalcos',
+                          text: 'GPA Calcos',
                           page: const GpaCalculationsLanding(),
                         ),
                       ],
@@ -176,18 +204,22 @@ class _HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         customBox(
-                          color: MainColors.color1,
+                          iconColor: MainColors.color2,
+                          textColor: MainColors.color1,
+                          color: MainColors.color4,
                           icon: Icons.menu_book_sharp,
-                          text: 'Study \nplanner',
+                          text: 'Study plan',
                           page: const PlannerLandingPage(),
                         ),
                         SizedBox(
                           width: 30.h,
                         ),
                         customBox(
-                          color: Colors.yellow,
+                          iconColor: MainColors.color2,
+                          textColor: MainColors.color1,
+                          color: MainColors.color4,
                           icon: Icons.grade_rounded,
-                          text: 'Grading \nSystem',
+                          text: 'Grade System',
                           page: const GradingSystem(),
                         ),
                       ],
@@ -254,7 +286,9 @@ class _HomePageState extends State<HomePage> {
       {required String text,
       required final page,
       required IconData icon,
-      required Color color}) {
+      required Color color,
+      required Color iconColor,
+      required Color textColor}) {
     return GestureDetector(
       onTap: () {
         AutoRouter.of(context).push(page);
@@ -262,47 +296,79 @@ class _HomePageState extends State<HomePage> {
       child: Container(
         height: 130.h,
         width: 130.h,
+        // alignment: Alignment.center,
+        // padding: EdgeInsets.all(10.r),
+        // decoration: BoxDecoration(
+        //   color: const Color(0xff9191F5),
+        //   // color: Colors.grey[300],
+        //   borderRadius: BorderRadius.circular(15.r),
+        //   boxShadow: [
+        //     BoxShadow(
+        //       // color: Colors.black.withOpacity(0.3.r),
+        //       color: const Color(0xff9191F5),
+        //       offset: const Offset(4.0, 4.0),
+        //       blurRadius: 25.0.r,
+        //       spreadRadius: 1.0.r,
+        //     ),
+        //     BoxShadow(
+        //       // color: Colors.black.withOpacity(0.3.r),
+        //       color: MainColors.color4,
+        //       offset: const Offset(-4.0, -4.0),
+        //       blurRadius: 5.0.r,
+        //       spreadRadius: 1.0.r,
+        //     ),
+        //   ],
+        // ),
         alignment: Alignment.center,
-        padding: EdgeInsets.all(10.r),
         decoration: BoxDecoration(
-          color: const Color(0xff9191F5),
-          // color: Colors.grey[300],
+          color: color,
+          //color: Colors.grey[300],
           borderRadius: BorderRadius.circular(15.r),
+
           boxShadow: [
             BoxShadow(
-              // color: Colors.black.withOpacity(0.3.r),
-              color: const Color(0xff9191F5),
-              offset: const Offset(4.0, 4.0),
-              blurRadius: 25.0.r,
-              spreadRadius: 1.0.r,
-            ),
-            BoxShadow(
-              // color: Colors.black.withOpacity(0.3.r),
-              color: MainColors.color4,
-              offset: const Offset(-4.0, -4.0),
-              blurRadius: 5.0.r,
-              spreadRadius: 1.0.r,
-            ),
+              color: Colors.grey.withOpacity(.9),
+              blurRadius: 1.0.r,
+            )
+            // BoxShadow(
+            //   color: Colors.black.withOpacity(0.27.r),
+            //   //color: Colors.grey,
+            //   offset: const Offset(4.0, 4.0),
+            //   blurRadius: 17.0.r,
+            //   spreadRadius: 1.0.r,
+            // ),
+            // BoxShadow(
+            //   //color: Colors.black.withOpacity(0.3.r),
+            //   color: MainColors.color4,
+            //   offset: const Offset(-4.0, -4.0),
+            //   blurRadius: 3.0.r,
+            //   spreadRadius: 1.0.r,
+            // ),
           ],
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              icon,
-              size: 30.r,
-              color: color,
+            CircleAvatar(
+              radius: 25,
+              backgroundColor: iconColor.withOpacity(0.2),
+              child: Icon(
+                icon,
+                size: 27.r,
+                color: iconColor,
+              ),
             ),
             SizedBox(
-              height: 5.h,
+              height: 10.h,
             ),
             Text(
               text,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 19.sp,
+                fontSize: 14.sp,
                 fontWeight: FontWeight.w500,
-                color: Colors.white,
+                //color: Colors.white,
+                color: textColor,
               ),
             ),
           ],

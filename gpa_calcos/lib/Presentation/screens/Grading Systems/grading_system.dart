@@ -163,7 +163,7 @@ class _GradingSystemState extends State<GradingSystem> {
               ),
               ElevatedButton(
                 onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const CustomizedPage(),
+                  builder: (context) => const CustomizedPage(title: "Other Systems",),
                 )),
                 style: ElevatedButton.styleFrom(
                   elevation: 0,

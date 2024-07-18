@@ -21,8 +21,8 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 38.h, // Maintain consistent height
-      width: 222.h,
+      height: 45.h, // Maintain consistent height
+      width: 250.h,
       child: TextFormField(
         enabled: true,
         textAlign: TextAlign.center,
@@ -32,10 +32,23 @@ class CustomTextField extends StatelessWidget {
         },
         decoration: InputDecoration(
           errorText: errorMessage,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            // Border when not focused
+            borderSide: BorderSide(
+                color: MainColors.color1.withOpacity(.3)), // Set border color
+          ),
+          focusedBorder: OutlineInputBorder(
+            // Border when not focused
+            borderRadius: BorderRadius.circular(12),
+            borderSide:
+                BorderSide(color: MainColors.color1), // Set border color
+          ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(14.h),
             borderSide: BorderSide(
-              color: MainColors.color1, // Change border color based on error
+              color: MainColors.color4
+                  .withOpacity(.2), // Change border color based on error
             ),
           ),
           fillColor: Colors.white,
@@ -44,7 +57,7 @@ class CustomTextField extends StatelessWidget {
           hintText: text,
           hintStyle: TextStyle(
             color: MainColors.color3,
-            fontSize: 14.sp,
+            fontSize: 13.sp,
             fontWeight: FontWeight.w300,
           ),
         ),

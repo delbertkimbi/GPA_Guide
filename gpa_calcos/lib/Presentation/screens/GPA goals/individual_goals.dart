@@ -18,7 +18,7 @@ class IndividaulGoals extends StatefulWidget {
 }
 
 class _IndividaulGoalsState extends State<IndividaulGoals> {
-  List<String> grades = ['A', 'B', 'B+', 'C+', 'C', 'D+', 'D', 'F'];
+  List<String> grades = ['A', 'B+', 'B', 'C+', 'C', 'D+', 'D', 'F'];
   bool viewAll = false;
   int tappedIndex = -1;
   bool isGradeTapped = false;
@@ -181,179 +181,179 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
                 ),
                 state.isNotEmpty
                     ? Expanded(
-                      child: ListView.builder(
-                        physics: const AlwaysScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: state.length,
-                        itemBuilder: (context, index) {
-                          final subject = state[index];
-                          return Column(
-                            children: [
-                              Container(
-                                  padding: EdgeInsets.all(15.r),
-                                  height: viewAll ? 110.h : 160.h,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10.h),
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            subject.name,
-                                            style: TextStyle(
-                                              color: MainColors.color2,
-                                              fontSize: 18.sp,
-                                              fontWeight: FontWeight.w400,
+                        child: ListView.builder(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: state.length,
+                          itemBuilder: (context, index) {
+                            final subject = state[index];
+                            return Column(
+                              children: [
+                                Container(
+                                    padding: EdgeInsets.all(15.r),
+                                    height: viewAll ? 110.h : 160.h,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(10.h),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              subject.name,
+                                              style: TextStyle(
+                                                color: MainColors.color2,
+                                                fontSize: 18.sp,
+                                                fontWeight: FontWeight.w400,
+                                              ),
                                             ),
-                                          ),
-                                          viewAll
-                                              ? GestureDetector(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      viewAll = !viewAll;
-                                                    });
-                                                  },
-                                                  child: Icon(
-                                                    Icons.arrow_back_ios_new,
-                                                    color: MainColors.color2,
-                                                    size: 18.sp,
-                                                  ),
-                                                )
-                                              : GestureDetector(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      viewAll = !viewAll;
-                                                    });
-                                                  },
-                                                  child: Icon(
-                                                    Icons.keyboard_arrow_down,
-                                                    color: MainColors.color2,
-                                                    size: 25.sp,
-                                                  ),
-                                                ),
-                                        ],
-                                      ),
-                                      const Divider(),
-                                      Expanded(
-                                        child: ListView.builder(
-                                          shrinkWrap: true,
-                                          scrollDirection: Axis.horizontal,
-                                          itemCount: grades.length,
-                                          itemBuilder: (context, index) {
-                                            return Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                GestureDetector(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      if (subject.grade !=
-                                                          grades[index]) {
-                                                        isGradeTapped = true;
-                                                        tappedIndex = index;
-                                                        subject.grade =
-                                                            grades[index];
-                                                      }
-                                                    });
-                                                  },
-                                                  child: Container(
-                                                    width: 30.r,
-                                                    height: 35.r,
-                                                    alignment:
-                                                        Alignment.center,
-                                                    decoration: BoxDecoration(
-                                                      color: subject.grade ==
-                                                              grades[index]
-                                                          ? MainColors.color2
-                                                          : Colors.white,
-                                                      shape: BoxShape.circle,
+                                            viewAll
+                                                ? GestureDetector(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        viewAll = !viewAll;
+                                                      });
+                                                    },
+                                                    child: Icon(
+                                                      Icons.arrow_back_ios_new,
+                                                      color: MainColors.color2,
+                                                      size: 18.sp,
                                                     ),
-                                                    child: Text(
-                                                      grades[index],
-                                                      style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontSize: 18.sp,
-                                                        color: subject
-                                                                    .grade ==
+                                                  )
+                                                : GestureDetector(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        viewAll = !viewAll;
+                                                      });
+                                                    },
+                                                    child: Icon(
+                                                      Icons.keyboard_arrow_down,
+                                                      color: MainColors.color2,
+                                                      size: 25.sp,
+                                                    ),
+                                                  ),
+                                          ],
+                                        ),
+                                        const Divider(),
+                                        Expanded(
+                                          child: ListView.builder(
+                                            shrinkWrap: true,
+                                            scrollDirection: Axis.horizontal,
+                                            itemCount: grades.length,
+                                            itemBuilder: (context, index) {
+                                              return Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  GestureDetector(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        if (subject.grade !=
+                                                            grades[index]) {
+                                                          isGradeTapped = true;
+                                                          tappedIndex = index;
+                                                          subject.grade =
+                                                              grades[index];
+                                                        }
+                                                      });
+                                                    },
+                                                    child: Container(
+                                                      width: 30.r,
+                                                      height: 35.r,
+                                                      alignment:
+                                                          Alignment.center,
+                                                      decoration: BoxDecoration(
+                                                        color: subject.grade ==
                                                                 grades[index]
-                                                            ? Colors.white
-                                                            : MainColors
-                                                                .color1,
+                                                            ? MainColors.color2
+                                                            : Colors.white,
+                                                        shape: BoxShape.circle,
+                                                      ),
+                                                      child: Text(
+                                                        grades[index],
+                                                        style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          fontSize: 18.sp,
+                                                          color: subject
+                                                                      .grade ==
+                                                                  grades[index]
+                                                              ? Colors.white
+                                                              : MainColors
+                                                                  .color1,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
-                                                ),
-                                                SizedBox(
-                                                  width: 19.w,
-                                                ),
-                                              ],
-                                            );
-                                          },
+                                                  SizedBox(
+                                                    width: 19.w,
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          ),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height: 7.h,
-                                      ),
-                                      viewAll
-                                          ? Container()
-                                          : Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                GestureDetector(
-                                                  onTap: () {
-                                                    updateName(context, state,
-                                                        subject);
-                                                  },
-                                                  child: _columnTextIcon(
-                                                    text: 'Rename',
-                                                    icon: Icons.edit,
+                                        SizedBox(
+                                          height: 7.h,
+                                        ),
+                                        viewAll
+                                            ? Container()
+                                            : Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  GestureDetector(
+                                                    onTap: () {
+                                                      updateName(context, state,
+                                                          subject);
+                                                    },
+                                                    child: _columnTextIcon(
+                                                      text: 'Rename',
+                                                      icon: Icons.edit,
+                                                    ),
                                                   ),
-                                                ),
-                                                GestureDetector(
-                                                  onTap: () {
-                                                    deleteSubject(context,
-                                                        state, subject);
-                                                  },
-                                                  child: _columnTextIcon(
-                                                    text: 'Delete',
-                                                    icon: Icons.delete,
+                                                  GestureDetector(
+                                                    onTap: () {
+                                                      deleteSubject(context,
+                                                          state, subject);
+                                                    },
+                                                    child: _columnTextIcon(
+                                                      text: 'Delete',
+                                                      icon: Icons.delete,
+                                                    ),
                                                   ),
-                                                ),
-                                                GestureDetector(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      state[index].grade =
-                                                          ' ';
-                                                    });
-                                                  },
-                                                  child: _columnTextIcon(
-                                                    text: 'Reset',
-                                                    icon: Icons.refresh,
+                                                  GestureDetector(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        state[index].grade =
+                                                            ' ';
+                                                      });
+                                                    },
+                                                    child: _columnTextIcon(
+                                                      text: 'Reset',
+                                                      icon: Icons.refresh,
+                                                    ),
                                                   ),
-                                                ),
-                                              ],
-                                            )
-                                    ],
-                                  )),
-                              SizedBox(
-                                height: 15.h,
-                              ),
-                            ],
-                          );
-                        },
-                      ),
-                    )
+                                                ],
+                                              )
+                                      ],
+                                    )),
+                                SizedBox(
+                                  height: 15.h,
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                      )
                     : Center(
                         child: Column(
                           children: [
@@ -523,100 +523,148 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
     return showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-        backgroundColor: MainColors.color2,
+        backgroundColor: Colors.white,
         actions: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(
-                height: 25.h,
-              ),
-              CustomTextField(
-                onChaged: (value) {},
-                text: 'Subject Name',
-                controller: subjectNameController,
-              ),
-              SizedBox(
-                height: 7.h,
-              ),
-              CustomTextField(
-                onChaged: (value) {
-                  try {
-                    double.parse(value);
-                    creditValueError = false; // Reset error flag on valid input
-                  } on FormatException {
-                    creditValueError = true;
-                    showToast(message: 'Invalid credit value.');
-                  }
-                },
-                text: 'Credit Value',
-                controller: creditValueNameController,
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    onTap: () => Navigator.of(context).pop(),
-                    child: SizedBox(
-                      width: 90.w,
-                      child: RegisterButton(
-                        textSize: 18.sp,
-                        text: 'close',
-                        color: creditValueError || gradeError
-                            ? Colors.grey
-                            : Colors.red,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+          SizedBox(
+            height: 270.h,
+            width: 300.w,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  height: 30.h,
+                ),
+                Text(
+                  'Add Course Info',
+                  style: TextStyle(
+                    color: MainColors.color1,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 23.sp,
                   ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      String subjectName = subjectNameController.text.trim();
-                      String creditValueString =
-                          creditValueNameController.text.trim();
-                      if (subjectName.isEmpty || creditValueString.isEmpty) {
-                        showToast(
-                            message:
-                                'Please fill in all fields (Subject Name,Credit Value).');
-
-                        return; // Exit the tap handler if any field is empty
-                      }
-                    },
-                    child: GestureDetector(
-                      onTap: () {
-                        BlocProvider.of<SubjectInfoCubit>(context).addSubject(
-                            subjectNameController.text,
-                            ' ',
-                            double.parse(
-                                creditValueNameController.text.toString()));
-                        subjectNameController.clear();
-                        creditValueNameController.clear();
-                        showToast(message: 'Added');
-                      },
+                ),
+                SizedBox(
+                  height: 20.r,
+                ),
+                CustomTextField(
+                  onChaged: (value) {},
+                  text: 'Course Name',
+                  controller: subjectNameController,
+                ),
+                SizedBox(
+                  height: 12.h,
+                ),
+                CustomTextField(
+                  onChaged: (value) {
+                    try {
+                      double.parse(value);
+                      creditValueError =
+                          false; // Reset error flag on valid input
+                    } on FormatException {
+                      creditValueError = true;
+                      showToast(message: 'Invalid credit value.');
+                    }
+                  },
+                  text: 'Credit Value',
+                  controller: creditValueNameController,
+                ),
+                SizedBox(
+                  height: 25.h,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () => Navigator.of(context).pop(),
                       child: SizedBox(
-                        width: 90.w,
-                        child: RegisterButton(
-                          textSize: 18.sp,
-                          text: 'Add',
-                          color: MainColors
-                              .color1, // Disable button or change color on error
-                          fontWeight: FontWeight.w500,
+                        width: 70.w,
+                        height: 45,
+                        child: Container(
+                          height: 38.h,
+                          width: 222.h,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(14.r)),
+                            border: Border.all(
+                              width: .9.r,
+                              color: Colors.black.withOpacity(.7),
+                            ),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Close',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 14.5.sp,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+
+                    // GestureDetector(
+                    //   onTap: () => Navigator.of(context).pop(),
+                    //   child: SizedBox(
+                    //     width: 105.w,
+                    //     child: RegisterButton(
+                    //       textSize: 16.sp,
+                    //       text: 'Close',
+                    //       color: creditValueError || gradeError
+                    //           ? Colors.grey
+                    //           : Colors.red,
+                    //       fontWeight: FontWeight.w400,
+                    //     ),
+                    //   ),
+                    // ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        String subjectName = subjectNameController.text.trim();
+                        String creditValueString =
+                            creditValueNameController.text.trim();
+                        if (subjectName.isEmpty || creditValueString.isEmpty) {
+                          showToast(
+                              message:
+                                  'Please fill in all fields (Subject Name,Credit Value).');
+
+                          return; // Exit the tap handler if any field is empty
+                        }
+                      },
+                      child: GestureDetector(
+                        onTap: () {
+                          BlocProvider.of<SubjectInfoCubit>(context).addSubject(
+                              subjectNameController.text,
+                              ' ',
+                              double.parse(
+                                  creditValueNameController.text.toString()));
+                          subjectNameController.clear();
+                          creditValueNameController.clear();
+                          showToast(message: 'Added');
+                        },
+                        child: SizedBox(
+                          width: 135.w,
+                          height: 45,
+                          child: RegisterButton(
+                            textSize: 14.5.sp,
+                            text: 'Add',
+                            color: MainColors
+                                .color2, // Disable button or change color on error
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           )
         ],
       ),

@@ -6,6 +6,7 @@ import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 
 class RegisterButton extends StatelessWidget {
   final String text;
+
   late Color color;
   FontWeight fontWeight;
   final double textSize;
@@ -25,13 +26,13 @@ class RegisterButton extends StatelessWidget {
       width: 222.h,
       decoration: BoxDecoration(
         color: color,
-        borderRadius: BorderRadius.all(Radius.circular(14.r)),
+        borderRadius: BorderRadius.all(Radius.circular(12.r)),
       ),
       child: Center(
         child: Text(
           text,
           style: TextStyle(
-            color: MainColors.color4,
+            color: Colors.white,
             fontSize: textSize.sp,
             fontWeight: fontWeight,
           ),

@@ -21,9 +21,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   Gemini.init(apiKey: GEMINI_API_KEY);
-  runApp(
-  MultiBlocProvider(providers: [
-    BlocProvider(create: (context)=>SubjectInfoCubit()),
+  runApp(MultiBlocProvider(providers: [
+    BlocProvider(create: (context) => SubjectInfoCubit()),
     BlocProvider<UserCubit>(create: (context) => UserCubit()),
     BlocProvider(create: (context) => GpaCubit()),
   ], child: MyApp()));

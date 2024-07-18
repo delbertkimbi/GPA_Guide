@@ -29,7 +29,7 @@ class _PlannerLandingPageState extends State<PlannerLandingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MainColors.color4,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: MainColors.color2,
         elevation: 0,

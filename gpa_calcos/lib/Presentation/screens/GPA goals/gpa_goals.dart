@@ -6,6 +6,7 @@ import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/custom_plan.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
 import 'package:gpa_calcos/Presentation/screens/GPA%20goals/individual_goals.dart';
+import 'package:gpa_calcos/Presentation/screens/customized.dart';
 
 @RoutePage()
 class GpaGoals extends StatefulWidget {
@@ -31,6 +32,7 @@ class _GpaGoalsState extends State<GpaGoals> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: MainColors.color2,
         elevation: 0,
@@ -106,9 +108,9 @@ class _GpaGoalsState extends State<GpaGoals> {
                 });
               },
               child: const OptionBox(
-                optiontext: 'Individual Goals',
+                optiontext: 'Personal Goals',
                 optionICon: Icons.person,
-                iconColor: Colors.yellow,
+                iconColor: Colors.black,
                 index: '1',
               ),
             ),
@@ -116,10 +118,16 @@ class _GpaGoalsState extends State<GpaGoals> {
               height: 20.h,
             ),
             GestureDetector(
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (BuildContext context) {
+                  return const CustomizedPage(title: 'Group Goals');
+                }));
+              },
               child: const OptionBox(
                 optiontext: 'Group Goals',
                 optionICon: Icons.group,
-                iconColor: Colors.yellow,
+                iconColor: Colors.black,
                 index: '2',
               ),
             ),

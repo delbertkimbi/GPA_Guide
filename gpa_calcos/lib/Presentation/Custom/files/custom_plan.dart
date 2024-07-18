@@ -22,39 +22,42 @@ class OptionBox extends StatelessWidget {
       width: 300.w,
       alignment: Alignment.centerLeft,
       decoration: BoxDecoration(
-        color: const Color(0xff9191F5),
+        color: Colors.white,
+        //color: MainColors.color2,
         borderRadius: BorderRadius.circular(20.r),
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: Colors.black.withOpacity(0.3.r),
-        //     offset: const Offset(0, 10),
-        //     blurRadius: 10.0.r,
-        //     spreadRadius: 0.0,
-        //   ),
-        // ],
+
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(.9),
+            blurRadius: 1.0.r,
+          )
+        ],
       ),
       child: ListTile(
           title: Text(
             optiontext,
             style: TextStyle(
-              color: Colors.white,
-              fontSize: 20.sp,
+              color: MainColors.color1,
+              fontSize: 14.sp,
               fontWeight: FontWeight.w500,
             ),
           ),
           leading: CircleAvatar(
+            backgroundColor: MainColors.color2.withOpacity(.15),
             radius: 20.h,
-            child: Text(
-              index,
-              style: TextStyle(
-                color: MainColors.color1,
-                fontWeight: FontWeight.bold,
-              ),
+            child: Icon(
+              optionICon,
+              color: MainColors.color2,
             ),
           ),
+          // leading: Icon(
+          //   optionICon,
+          //   color: iconColor,
+          // ),
           trailing: Icon(
-            optionICon,
-            color: iconColor,
+            Icons.arrow_forward,
+            size: 24.r,
+            color: MainColors.color2,
           )),
     );
   }

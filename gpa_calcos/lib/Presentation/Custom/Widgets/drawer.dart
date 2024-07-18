@@ -162,7 +162,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ),
                 GestureDetector(
                   onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const CustomizedPage(),
+                    builder: (context) => const CustomizedPage(
+                      title: "Did you know?",
+                    ),
                   )),
                   child: CustomListTile(
                     title: "Did you Know?",
@@ -228,6 +230,4 @@ class _CustomDrawerState extends State<CustomDrawer> {
       ),
     );
   }
-
-  
 }

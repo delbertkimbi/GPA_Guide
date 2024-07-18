@@ -17,7 +17,7 @@ class _GpaCalculationsLandingState extends State<GpaCalculationsLanding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MainColors.color4,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
             onPressed: () => Navigator.of(context).pop(),
