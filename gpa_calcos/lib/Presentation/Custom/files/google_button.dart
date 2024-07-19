@@ -22,11 +22,11 @@ class MainButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 35.h,
-      width: 222.h,
+      height: 43.h,
+      width: 225.h,
       decoration: BoxDecoration(
         color: color,
-        borderRadius: BorderRadius.all(Radius.circular(14.r)),
+        borderRadius: BorderRadius.all(Radius.circular(12.r)),
       ),
       child: Center(
         child: Row(
@@ -40,7 +40,7 @@ class MainButton extends StatelessWidget {
                 fontSize: textSize.sp,
                 fontWeight: fontWeight,
               ),
-            ), 
+            ),
             SizedBox(
               width: 10.w,
             ),

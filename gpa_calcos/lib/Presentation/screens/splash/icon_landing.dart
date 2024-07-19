@@ -19,7 +19,7 @@ class _IconLandingPageState extends State<IconLandingPage> {
   late Timer _timer;
   @override
   void initState() {
-    _timer = Timer(const Duration(seconds: 4), () {
+    _timer = Timer(const Duration(seconds: 3), () {
       FirebaseAuth.instance.authStateChanges().listen((User? user) {
         if (user != null) {
           context.router
@@ -47,7 +47,7 @@ class _IconLandingPageState extends State<IconLandingPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: MainColors.color4,
+          backgroundColor: MainColors.color5,
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

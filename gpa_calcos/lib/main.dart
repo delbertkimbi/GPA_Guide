@@ -50,6 +50,7 @@ class MyApp extends StatelessWidget {
             ),
             colorScheme: ColorScheme.fromSeed(
               seedColor: const Color(0xffDDDDFF),
+              // seedColor: MainColors.color1,
             ),
             useMaterial3: true,
           ),

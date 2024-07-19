@@ -517,9 +517,9 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
     );
   }
 
+  bool creditValueError = false;
+  bool gradeError = false;
   Future<dynamic> getSubjectInfoDialog(BuildContext context) {
-    bool creditValueError = false;
-    bool gradeError = false; //
     return showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
@@ -606,21 +606,6 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
                         ),
                       ),
                     ),
-
-                    // GestureDetector(
-                    //   onTap: () => Navigator.of(context).pop(),
-                    //   child: SizedBox(
-                    //     width: 105.w,
-                    //     child: RegisterButton(
-                    //       textSize: 16.sp,
-                    //       text: 'Close',
-                    //       color: creditValueError || gradeError
-                    //           ? Colors.grey
-                    //           : Colors.red,
-                    //       fontWeight: FontWeight.w400,
-                    //     ),
-                    //   ),
-                    // ),
                     SizedBox(
                       width: 10.w,
                     ),

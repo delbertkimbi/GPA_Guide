@@ -41,7 +41,7 @@ class _GradingSystemState extends State<GradingSystem> {
       fontWeight: FontWeight.w400,
     );
     return Scaffold(
-      backgroundColor: MainColors.color4,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: const PushOrPop(
           screenName: HomePage(),
@@ -163,7 +163,9 @@ class _GradingSystemState extends State<GradingSystem> {
               ),
               ElevatedButton(
                 onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const CustomizedPage(title: "Other Systems",),
+                  builder: (context) => const CustomizedPage(
+                    title: "Other Systems",
+                  ),
                 )),
                 style: ElevatedButton.styleFrom(
                   elevation: 0,
@@ -172,7 +174,7 @@ class _GradingSystemState extends State<GradingSystem> {
                 child: Text(
                   "Other systems",
                   style: TextStyle(
-                    color: MainColors.color4,
+                    color: MainColors.color5,
                     fontWeight: FontWeight.w500,
                     fontSize: 16.sp,
                   ),

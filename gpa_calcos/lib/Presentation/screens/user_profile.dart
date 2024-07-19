@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 
+// ignore: must_be_immutable
 class UserProfile extends StatefulWidget {
   UserProfile(
       {super.key,
@@ -20,9 +21,9 @@ class _UserProfileState extends State<UserProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MainColors.color4,
+      backgroundColor: MainColors.color5,
       appBar: AppBar(
-        backgroundColor: MainColors.color4,
+        backgroundColor: MainColors.color5,
         elevation: 3,
         centerTitle: true,
         title: Text(
@@ -50,24 +51,14 @@ class _UserProfileState extends State<UserProfile> {
             margin: EdgeInsets.symmetric(horizontal: 25.r),
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: MainColors.color4,
+              color: MainColors.color5,
               //color: Colors.grey[300],
               borderRadius: BorderRadius.circular(15.r),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.31.r),
-                  //  color: Colors.grey,
-                  offset: const Offset(4.0, 4.0),
-                  blurRadius: 10.0.r,
-                  spreadRadius: .6.r,
-                ),
-                BoxShadow(
-                  //color: Colors.black.withOpacity(0.3.r),
-                  color: MainColors.color4,
-                  offset: const Offset(-4.0, -4.0),
-                  blurRadius: 10.r,
-                  spreadRadius: 0.0.r,
-                ),
+                  color: Colors.grey.withOpacity(.9),
+                  blurRadius: 1.0.r,
+                )
               ],
             ),
             child: Column(

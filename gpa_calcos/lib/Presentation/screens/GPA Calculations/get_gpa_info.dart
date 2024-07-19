@@ -36,7 +36,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
           label: Text(
             "Add Course",
             style: TextStyle(
-              color: MainColors.color4,
+              color: MainColors.color5,
               fontSize: 16.sp,
               fontWeight: FontWeight.w500,
             ),
@@ -89,7 +89,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                               style: TextStyle(
                                 fontSize: 15.sp,
                                 fontWeight: FontWeight.w500,
-                                color: MainColors.color1,
+                                color: MainColors.color1.withOpacity(.7),
                               ),
                             ),
                           ),
@@ -157,7 +157,7 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                                 style: TextStyle(
                                   color: MainColors.color1,
                                   fontSize: 16.sp,
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ],
@@ -177,9 +177,9 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                             ],
                           ),
                           trailing: IconButton(
-                            icon: const Icon(
+                            icon: Icon(
                               Icons.delete,
-                              color: Colors.red,
+                              color: Colors.red.withOpacity(.9),
                             ),
                             onPressed: () {
                               showDialog(
@@ -292,11 +292,14 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
                                 'Calculated GPA is outside the valid range (0 - 4).');
                       }
                     },
-                    child: RegisterButton(
-                      textSize: 20.r,
-                      text: 'Calculate',
-                      color: MainColors.color1,
-                      fontWeight: FontWeight.w500,
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(20.r, 0, 15.r, 0),
+                      child: RegisterButton(
+                        textSize: 20.r,
+                        text: 'Calculate',
+                        color: MainColors.color1,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 );
@@ -323,148 +326,183 @@ class _GetSubjectInfoState extends State<GetSubjectInfo> {
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        backgroundColor: MainColors.color2,
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 15.h,
-            ),
-            CustomTextField(
-              onChaged: (value) {},
-              text: 'Subject Name',
-              controller: subjectNameController,
-            ),
-            SizedBox(
-              height: 5.h,
-            ),
-            CustomTextField(
-              onChaged: (value) {
-                // Implement grade validation logic here
-                // You can use a regular expression or a predefined list of valid grades
-                value = gradeController.text.toUpperCase();
-                if (isValidGrade(value)) {
-                  gradeError = false;
-                } else {
-                  gradeError = true;
-                  showToast(message: "Invalid grade format");
-                }
-              },
-              text: 'Grade',
-              controller: gradeController,
-            ),
-            SizedBox(
-              height: 5.h,
-            ),
-            CustomTextField(
-              onChaged: (value) {
-                try {
-                  double.parse(value);
-                  creditValueError = false; // Reset error flag on valid input
-                } on FormatException {
-                  creditValueError = true;
+        backgroundColor: MainColors.color5,
+        content: SizedBox(
+          height: 300.h,
+          width: 300.w,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 10.h,
+              ),
+              Text(
+                'Add Course Info',
+                style: TextStyle(
+                  color: MainColors.color1,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 20.sp,
+                ),
+              ),
+              SizedBox(
+                height: 15.h,
+              ),
+              CustomTextField(
+                onChaged: (value) {},
+                text: 'Subject Name',
+                controller: subjectNameController,
+              ),
+              SizedBox(
+                height: 5.h,
+              ),
+              CustomTextField(
+                onChaged: (value) {
+                  // Implement grade validation logic here
+                  // You can use a regular expression or a predefined list of valid grades
+                  value = gradeController.text.toUpperCase();
+                  if (isValidGrade(value)) {
+                    gradeError = false;
+                  } else {
+                    gradeError = true;
+                    showToast(message: "Invalid grade format");
+                  }
+                },
+                text: 'Grade',
+                controller: gradeController,
+              ),
+              SizedBox(
+                height: 5.h,
+              ),
+              CustomTextField(
+                onChaged: (value) {
+                  try {
+                    double.parse(value);
+                    creditValueError = false; // Reset error flag on valid input
+                  } on FormatException {
+                    creditValueError = true;
 
-                  showToast(message: "Invalid credit value");
-                }
-              },
-              text: 'Credit Value',
-              controller: creditValueNameController,
-            ),
-            SizedBox(
-              height: 15.h,
-            ),
-            BlocBuilder<GpaCubit, List<Subject>>(
-              builder: (context, subjects) {
-                String subjectName = subjectNameController.text.trim();
-                bool duplicateFound = subjects.any(
-                    (subject) => subject.name.toUpperCase() == subjectName);
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onTap: () => Navigator.of(context).pop(),
-                      child: SizedBox(
-                        width: 90.w,
-                        child: RegisterButton(
-                          textSize: 18.sp,
-                          text: 'close',
-                          color: Colors.red,
-                          fontWeight: FontWeight.w500,
+                    showToast(message: "Invalid credit value");
+                  }
+                },
+                text: 'Credit Value',
+                controller: creditValueNameController,
+              ),
+              SizedBox(
+                height: 15.h,
+              ),
+              BlocBuilder<GpaCubit, List<Subject>>(
+                builder: (context, subjects) {
+                  String subjectName = subjectNameController.text.trim();
+                  bool duplicateFound = subjects.any(
+                      (subject) => subject.name.toUpperCase() == subjectName);
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: () => Navigator.of(context).pop(),
+                        child: SizedBox(
+                          width: 70.w,
+                          height: 45,
+                          child: Container(
+                            height: 38.h,
+                            width: 222.h,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(14.r)),
+                              border: Border.all(
+                                width: .9.r,
+                                color: Colors.black.withOpacity(.7),
+                              ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Close',
+                                style: TextStyle(
+                                  color: Colors.red,
+                                  fontSize: 14.5.sp,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      width: 10.w,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        String subjectName = subjectNameController.text.trim();
-                        String grade = gradeController.text.trim();
-                        String creditValueString =
-                            creditValueNameController.text.trim();
-                        if (duplicateFound) {
-                          showToast(
-                              message:
-                                  'Subject with this name already exists.');
-                          return; // Exit tap handler if duplicate is found
-                        }
-                        // Check for empty fields before validation
-                        if (subjectName.isEmpty ||
-                            grade.isEmpty ||
-                            creditValueString.isEmpty) {
-                          showToast(
-                              message:
-                                  'Please fill in all fields (Subject Name, Grade, Credit Value).');
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          String subjectName =
+                              subjectNameController.text.trim();
+                          String grade = gradeController.text.trim();
+                          String creditValueString =
+                              creditValueNameController.text.trim();
+                          if (duplicateFound) {
+                            showToast(
+                                message:
+                                    'Subject with this name already exists.');
+                            return; // Exit tap handler if duplicate is found
+                          }
+                          // Check for empty fields before validation
+                          if (subjectName.isEmpty ||
+                              grade.isEmpty ||
+                              creditValueString.isEmpty) {
+                            showToast(
+                                message:
+                                    'Please fill in all fields (Subject Name, Grade, Credit Value).');
 
-                          return; // Exit the tap handler if any field is empty
-                        }
-                        if (!creditValueError && !gradeError) {
-                          // Check for both credit value and grade error
-                          Navigator.of(context).pop();
-                          BlocProvider.of<GpaCubit>(context).addSubject(
-                              subjectNameController.text.trim().toUpperCase(),
-                              gradeController.text.trim().toUpperCase(),
-                              double.parse(
-                                  creditValueNameController.text.trim()));
-                          // Clear text fields after successful addition
-                          subjectNameController.clear();
-                          gradeController.clear();
-                          creditValueNameController.clear();
-                        } else {
-                          // Show message if there's an error
-                          creditValueError
-                              ? showToast(message: "Invalid credit value")
-                              : showToast(message: "Invalid grade format");
-                        }
-                        customShowDialog(
-                            context,
-                            subjectNameController,
-                            gradeController,
-                            creditValueNameController,
-                            mainColors);
-                      },
-                      child: SizedBox(
-                        width: 90.w,
-                        child: RegisterButton(
-                          textSize: 18.sp,
-                          text: 'Add',
-                          color: MainColors
-                              .color1, // Disable button or change color on error
-                          fontWeight: FontWeight.w500,
+                            return; // Exit the tap handler if any field is empty
+                          }
+                          if (!creditValueError && !gradeError) {
+                            // Check for both credit value and grade error
+                            Navigator.of(context).pop();
+                            BlocProvider.of<GpaCubit>(context).addSubject(
+                                subjectNameController.text.trim().toUpperCase(),
+                                gradeController.text.trim().toUpperCase(),
+                                double.parse(
+                                    creditValueNameController.text.trim()));
+                            // Clear text fields after successful addition
+                            subjectNameController.clear();
+                            gradeController.clear();
+                            creditValueNameController.clear();
+                          } else {
+                            // Show message if there's an error
+                            creditValueError
+                                ? showToast(message: "Invalid credit value")
+                                : showToast(message: "Invalid grade format");
+                          }
+                          customShowDialog(
+                              context,
+                              subjectNameController,
+                              gradeController,
+                              creditValueNameController,
+                              mainColors);
+                        },
+                        child: SizedBox(
+                          width: 135.w,
+                          height: 45,
+                          child: RegisterButton(
+                            textSize: 18.sp,
+                            text: 'Add',
+                            color: MainColors
+                                .color2, // Disable button or change color on error
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                );
-              },
-            ),
-            SizedBox(
-              height: 15.h,
-            ),
-          ],
+                    ],
+                  );
+                },
+              ),
+              SizedBox(
+                height: 15.h,
+              ),
+            ],
+          ),
         ),
       ),
     );

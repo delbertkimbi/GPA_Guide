@@ -47,8 +47,10 @@ class _HomePageState extends State<HomePage> {
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Color(0xffF1EFFA),
-            Color(0xffF1EFFA),
+            // Color(0xffF1EFFA),
+            // Color(0xffF1EFFA),
+            Colors.white,
+            Colors.white,
             Color(0xffF1EFFA),
             Color(0xff9191F5),
           ],
@@ -75,6 +77,7 @@ class _HomePageState extends State<HomePage> {
               icon: const Icon(Icons.chat)),
         ),
         appBar: AppBar(
+          backgroundColor: MainColors.color5,
           actions: [
             IconButton(
               onPressed: () =>
@@ -103,7 +106,7 @@ class _HomePageState extends State<HomePage> {
                           ? NetworkImage(
                               userImageUrl) // Use NetworkImage for profile picture
                           : null,
-                      child: userImageUrl?.isEmpty == true
+                      child: userImageUrl.isEmpty == true
                           ? Icon(
                               Icons.person,
                               size: 20.r,
@@ -145,7 +148,6 @@ class _HomePageState extends State<HomePage> {
               _scaffoldKey.currentState?.openDrawer(); // Use GlobalKey
             },
           ),
-          backgroundColor: MainColors.color4,
           elevation: 5,
           centerTitle: true,
           title: Text(
@@ -153,7 +155,7 @@ class _HomePageState extends State<HomePage> {
             style: TextStyle(
               color: MainColors.color1,
               fontWeight: FontWeight.bold,
-              fontSize: 25.sp,
+              fontSize: 22.sp,
             ),
           ),
         ),
@@ -190,9 +192,9 @@ class _HomePageState extends State<HomePage> {
                           iconColor: MainColors.color2,
                           textColor: MainColors.color1,
                           color: MainColors.color4,
-                          icon: Icons.calculate_rounded,
-                          text: 'GPA Calcos',
-                          page: const GpaCalculationsLanding(),
+                          icon: Icons.menu_book_sharp,
+                          text: 'Study plan',
+                          page: const PlannerLandingPage(),
                         ),
                       ],
                     ),
@@ -207,9 +209,9 @@ class _HomePageState extends State<HomePage> {
                           iconColor: MainColors.color2,
                           textColor: MainColors.color1,
                           color: MainColors.color4,
-                          icon: Icons.menu_book_sharp,
-                          text: 'Study plan',
-                          page: const PlannerLandingPage(),
+                          icon: Icons.calculate_rounded,
+                          text: 'GPA Calcos',
+                          page: const GpaCalculationsLanding(),
                         ),
                         SizedBox(
                           width: 30.h,
@@ -296,32 +298,9 @@ class _HomePageState extends State<HomePage> {
       child: Container(
         height: 130.h,
         width: 130.h,
-        // alignment: Alignment.center,
-        // padding: EdgeInsets.all(10.r),
-        // decoration: BoxDecoration(
-        //   color: const Color(0xff9191F5),
-        //   // color: Colors.grey[300],
-        //   borderRadius: BorderRadius.circular(15.r),
-        //   boxShadow: [
-        //     BoxShadow(
-        //       // color: Colors.black.withOpacity(0.3.r),
-        //       color: const Color(0xff9191F5),
-        //       offset: const Offset(4.0, 4.0),
-        //       blurRadius: 25.0.r,
-        //       spreadRadius: 1.0.r,
-        //     ),
-        //     BoxShadow(
-        //       // color: Colors.black.withOpacity(0.3.r),
-        //       color: MainColors.color4,
-        //       offset: const Offset(-4.0, -4.0),
-        //       blurRadius: 5.0.r,
-        //       spreadRadius: 1.0.r,
-        //     ),
-        //   ],
-        // ),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: MainColors.color4,
+          color: Colors.white,
           //color: Colors.grey[300],
           borderRadius: BorderRadius.circular(15.r),
 
@@ -330,20 +309,6 @@ class _HomePageState extends State<HomePage> {
               color: Colors.grey.withOpacity(.9),
               blurRadius: 1.0.r,
             )
-            // BoxShadow(
-            //   color: Colors.black.withOpacity(0.27.r),
-            //   //color: Colors.grey,
-            //   offset: const Offset(4.0, 4.0),
-            //   blurRadius: 17.0.r,
-            //   spreadRadius: 1.0.r,
-            // ),
-            // BoxShadow(
-            //   //color: Colors.black.withOpacity(0.3.r),
-            //   color: MainColors.color4,
-            //   offset: const Offset(-4.0, -4.0),
-            //   blurRadius: 3.0.r,
-            //   spreadRadius: 1.0.r,
-            // ),
           ],
         ),
         child: Column(
@@ -351,7 +316,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             CircleAvatar(
               radius: 25,
-              backgroundColor: iconColor.withOpacity(0.2),
+              backgroundColor: MainColors.color2.withOpacity(0.2),
               child: Icon(
                 icon,
                 size: 27.r,

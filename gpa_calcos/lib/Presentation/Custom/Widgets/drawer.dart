@@ -42,7 +42,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
         children: [
           UserAccountsDrawerHeader(
             decoration: BoxDecoration(
-              color: MainColors.color2,
+              color: MainColors.color2.withOpacity(0.9),
             ),
             accountName: Text(
               'GPA Guide',
@@ -62,7 +62,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
             ),
             currentAccountPicture: CircleAvatar(
               radius: 5.h,
-              backgroundColor: MainColors.color4,
+              backgroundColor: Colors.white,
               child: GestureDetector(
                 onTap: () {
                   showDialog(

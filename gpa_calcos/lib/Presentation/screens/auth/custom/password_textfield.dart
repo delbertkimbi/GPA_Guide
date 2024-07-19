@@ -25,8 +25,8 @@ class _PasswordFormFieldState extends State<PasswordFormField> {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        height: 38.h, // Maintain consistent height
-        width: 222.h,
+        height: 45.h, // Maintain consistent height
+        width: 250.h,
         child: TextFormField(
           controller: widget.controller,
           obscureText: _hideText,
@@ -38,7 +38,7 @@ class _PasswordFormFieldState extends State<PasswordFormField> {
             hintText: widget.labelText,
             hintStyle: TextStyle(
               color: MainColors.color3,
-              fontSize: 14.sp,
+              fontSize: 13.sp,
               fontWeight: FontWeight.w300,
             ),
             border: OutlineInputBorder(

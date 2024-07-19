@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 
 class RegisterButton extends StatelessWidget {
   final String text;
@@ -22,7 +21,7 @@ class RegisterButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 38.h,
+      height: 45.h,
       width: 222.h,
       decoration: BoxDecoration(
         color: color,
