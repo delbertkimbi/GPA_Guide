@@ -35,7 +35,7 @@ class _PlannerLandingPageState extends State<PlannerLandingPage> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          'Study Plan',
+          'Manual Plans',
           style: TextStyle(
               fontSize: 22.sp,
               fontWeight: FontWeight.w600,
@@ -97,7 +97,7 @@ class _PlannerLandingPageState extends State<PlannerLandingPage> {
                         AutoRouter.of(context).push(const DailySchedules()),
                     child: const OptionBox(
                       index: '1',
-                      optiontext: 'Daily plan',
+                      optiontext: 'Daily Schedules',
                       optionICon: Icons.leaderboard_sharp,
                       iconColor: Colors.yellow,
                     ),
@@ -110,7 +110,7 @@ class _PlannerLandingPageState extends State<PlannerLandingPage> {
                         AutoRouter.of(context).push(const WeeklySchedules()),
                     child: const OptionBox(
                       index: '2',
-                      optiontext: 'Weekly plan',
+                      optiontext: 'Weekly Schedules',
                       optionICon: Icons.leaderboard_sharp,
                       iconColor: Colors.yellow,
                     ),
@@ -123,7 +123,7 @@ class _PlannerLandingPageState extends State<PlannerLandingPage> {
                         AutoRouter.of(context).push(const MonthlySchedules()),
                     child: const OptionBox(
                       index: '3',
-                      optiontext: 'Monthly plan',
+                      optiontext: 'Monthly Schedules',
                       optionICon: Icons.leaderboard_sharp,
                       iconColor: Colors.white,
                     ),

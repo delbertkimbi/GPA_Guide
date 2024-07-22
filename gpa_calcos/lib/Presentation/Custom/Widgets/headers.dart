@@ -7,7 +7,6 @@ class Headers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
     TextStyle tableText1 = TextStyle(
       color: Colors.white,
       fontSize: 20.sp,

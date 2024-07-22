@@ -5,18 +5,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/custom_plan.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
-import 'package:gpa_calcos/Presentation/screens/GPA%20goals/individual_goals.dart';
 import 'package:gpa_calcos/Presentation/screens/customized.dart';
 
 @RoutePage()
-class GpaGoals extends StatefulWidget {
-  const GpaGoals({super.key});
+class StudyPlanLandingPage extends StatefulWidget {
+  const StudyPlanLandingPage({super.key});
 
   @override
-  State<GpaGoals> createState() => _GpaGoalsState();
+  State<StudyPlanLandingPage> createState() => _StudyPlanLandingPageState();
 }
 
-class _GpaGoalsState extends State<GpaGoals> {
+class _StudyPlanLandingPageState extends State<StudyPlanLandingPage> {
   void onMenuItemSelected(int item) {
     // Handle menu item selection based on the value
     switch (item) {
@@ -38,7 +37,7 @@ class _GpaGoalsState extends State<GpaGoals> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          'GPA Goals',
+          'Study Plans',
           style: TextStyle(
               fontSize: 20.sp,
               fontWeight: FontWeight.w600,
@@ -56,7 +55,7 @@ class _GpaGoalsState extends State<GpaGoals> {
               PopupMenuItem<int>(
                 value: 1,
                 child: Text(
-                  'Start Plan',
+                  'Get a plan',
                   style: TextStyle(
                     fontSize: 15.sp,
                     color: MainColors.color1,
@@ -98,9 +97,7 @@ class _GpaGoalsState extends State<GpaGoals> {
                 );
                 FirebaseAuth.instance.authStateChanges().listen((User? user) {
                   if (user != null) {
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const IndividaulGoals(),
-                    ));
+                    AutoRouter.of(context).push(const PlannerLandingPage());
                   } else {
                     context.router.replace(
                         const LogIn()); // Navigate to LogIn if logged out
@@ -108,8 +105,8 @@ class _GpaGoalsState extends State<GpaGoals> {
                 });
               },
               child: const OptionBox(
-                optiontext: 'Personal Goals',
-                optionICon: Icons.person,
+                optiontext: 'Manual Plans',
+                optionICon: Icons.pending_actions,
                 iconColor: Colors.black,
                 index: '1',
               ),
@@ -121,12 +118,12 @@ class _GpaGoalsState extends State<GpaGoals> {
               onTap: () {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (BuildContext context) {
-                  return const CustomizedPage(title: 'Group Goals');
+                  return const CustomizedPage(title: 'AI Study Plan');
                 }));
               },
               child: const OptionBox(
-                optiontext: 'Group Goals',
-                optionICon: Icons.group,
+                optiontext: 'AI generated Plan',
+                optionICon: Icons.android,
                 iconColor: Colors.black,
                 index: '2',
               ),
@@ -134,7 +131,7 @@ class _GpaGoalsState extends State<GpaGoals> {
             SizedBox(
               height: 30.h,
             ),
-            Image.asset('assets/bob6.png'),
+            Image.asset('assets/bob4.png'),
           ],
         ),
       ),

@@ -149,10 +149,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () =>
-                      AutoRouter.of(context).push(const Learningpage()),
+                  onTap: () => AutoRouter.of(context)
+                      .push(const LearningRourcesLanding()),
                   child: CustomListTile(
-                    title: "Study Resources",
+                    title: "Learning Resources",
                     icon: Icon(
                       Icons.search_rounded,
                       color: MainColors.color2,

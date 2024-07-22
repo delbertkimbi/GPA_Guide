@@ -194,7 +194,7 @@ class _HomePageState extends State<HomePage> {
                           color: MainColors.color4,
                           icon: Icons.menu_book_sharp,
                           text: 'Study plan',
-                          page: const PlannerLandingPage(),
+                          page: const StudyPlanLandingPage(),
                         ),
                       ],
                     ),
@@ -221,8 +221,8 @@ class _HomePageState extends State<HomePage> {
                           textColor: MainColors.color1,
                           color: MainColors.color4,
                           icon: Icons.grade_rounded,
-                          text: 'Grade System',
-                          page: const GradingSystem(),
+                          text: 'Re-Sources',
+                          page: const Learningpage(),
                         ),
                       ],
                     ),
@@ -238,10 +238,7 @@ class _HomePageState extends State<HomePage> {
                 child: CarouselSlider(
                   items: [
                     // Define each image item here
-                    Image.asset(
-                      'assets/bob2.png',
-                      fit: BoxFit.cover,
-                    ),
+
                     Image.asset(
                       'assets/bob1.png',
                       fit: BoxFit.cover,
@@ -263,7 +260,10 @@ class _HomePageState extends State<HomePage> {
                       'assets/bob6.png',
                       fit: BoxFit.cover,
                     ),
-
+                    Image.asset(
+                      'assets/bob2.png',
+                      fit: BoxFit.cover,
+                    ),
                     // Add more image assets as needed
                   ],
                   options: CarouselOptions(
@@ -332,7 +332,7 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w500,
-                //color: Colors.white,
+                //color: Colors.white, Resources, Materials
                 color: textColor,
               ),
             ),
