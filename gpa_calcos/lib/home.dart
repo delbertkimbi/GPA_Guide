@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -178,7 +177,7 @@ class _HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         customBox(
-                          iconColor: MainColors.color2,
+                          iconColor: Colors.purple,
                           textColor: MainColors.color1,
                           color: MainColors.color4,
                           icon: Icons.drive_file_rename_outline_rounded,
@@ -189,7 +188,7 @@ class _HomePageState extends State<HomePage> {
                           width: 30.h,
                         ),
                         customBox(
-                          iconColor: MainColors.color2,
+                          iconColor: Colors.green,
                           textColor: MainColors.color1,
                           color: MainColors.color4,
                           icon: Icons.menu_book_sharp,
@@ -206,7 +205,7 @@ class _HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         customBox(
-                          iconColor: MainColors.color2,
+                          iconColor: Colors.blue,
                           textColor: MainColors.color1,
                           color: MainColors.color4,
                           icon: Icons.calculate_rounded,
@@ -217,7 +216,7 @@ class _HomePageState extends State<HomePage> {
                           width: 30.h,
                         ),
                         customBox(
-                          iconColor: MainColors.color2,
+                          iconColor: Colors.red,
                           textColor: MainColors.color1,
                           color: MainColors.color4,
                           icon: Icons.grade_rounded,
@@ -226,57 +225,30 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ],
                     ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 15.h,
+                        ),
+                        customBox(
+                          iconColor: MainColors.color1,
+                          textColor: MainColors.color1,
+                          color: MainColors.color4,
+                          icon: Icons.book_rounded,
+                          text: 'Grade System',
+                          page: const GradingSystem(),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
-              // SizedBox(
-              //   height: 10.h,
-              // ),
-              SizedBox(
-                height: 350.r,
-                width: 400.r,
-                child: CarouselSlider(
-                  items: [
-                    // Define each image item here
 
-                    Image.asset(
-                      'assets/bob1.png',
-                      fit: BoxFit.cover,
-                    ),
-
-                    Image.asset(
-                      'assets/bob3.png',
-                      fit: BoxFit.cover,
-                    ),
-                    Image.asset(
-                      'assets/bob4.png',
-                      fit: BoxFit.cover,
-                    ),
-                    Image.asset(
-                      'assets/bob5.png',
-                      fit: BoxFit.cover,
-                    ),
-                    Image.asset(
-                      'assets/bob6.png',
-                      fit: BoxFit.cover,
-                    ),
-                    Image.asset(
-                      'assets/bob2.png',
-                      fit: BoxFit.cover,
-                    ),
-                    // Add more image assets as needed
-                  ],
-                  options: CarouselOptions(
-                    height: 330.r,
-                    aspectRatio: 16 / 9, // Adjust aspect ratio if needed
-                    viewportFraction:
-                        1.5, // Adjust visible portion of each slide
-                    enableInfiniteScroll: true, // Enable looping through images
-                    autoPlay: true, // Set to true for automatic sliding
-                    autoPlayInterval: const Duration(seconds: 5),
-                  ),
-                ),
-              ),
             ],
           ),
         ),

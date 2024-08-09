@@ -96,6 +96,57 @@ class _UserProfileState extends State<UserProfile> {
             ),
           ),
           SizedBox(height: 20.h),
+          Container(
+            height: 150.h, // Adjust height as needed
+            width: double.infinity,
+            margin: EdgeInsets.symmetric(horizontal: 25.r),
+            decoration: BoxDecoration(
+              color: MainColors.color2, // Assuming blue color from MainColors
+              borderRadius: BorderRadius.circular(15.r),
+            ),
+            child: ListView.separated( // Use ListView.separated for dividers
+              padding: EdgeInsets.zero,
+              itemCount: 4, // Number of items in the list
+              separatorBuilder: (context, index) => Divider(
+                color: Colors.grey[300],
+                thickness: 1.0,
+              ), // Add divider between items
+              itemBuilder: (context, index) {
+                String itemText;
+                IconData itemIcon;
+                switch (index) {
+                  case 0:
+                    itemText = "Notifications";
+                    itemIcon = Icons.notifications;
+                    break;
+                  case 1:
+                    itemText = "Change Language";
+                    itemIcon = Icons.language;
+                    break;
+                  case 2:
+                    itemText = "Switch Mode";
+                    itemIcon = Icons.lightbulb_outline; // Assuming icon for Switch Mode
+                    break;
+                  case 3:
+                    itemText = "Logout";
+                    itemIcon = Icons.logout;
+                    break;
+                  default:
+                    itemText = "";
+                    itemIcon = Icons.error;
+                    break;
+                }
+                return ListTile(
+                  leading: Icon(itemIcon),
+                  title: Text(itemText),
+                  onTap: () {
+                    // Handle item tap here
+                  },
+                );
+              },
+            ),
+          ),
+
         ],
       ),
     );
