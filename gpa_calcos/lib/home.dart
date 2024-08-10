@@ -46,11 +46,11 @@ class _HomePageState extends State<HomePage> {
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            // Color(0xffF1EFFA),
-            // Color(0xffF1EFFA),
+          Colors.white,
             Colors.white,
-            Colors.white,
-            Color(0xffF1EFFA),
+            //Color(0xffF1EFFA),
+            // Color(0xffF1EFFA),
+          Color(0xffF1EFFA),
             Color(0xff9191F5),
           ],
           begin: Alignment.topCenter,
@@ -205,7 +205,7 @@ class _HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         customBox(
-                          iconColor: Colors.blue,
+                          iconColor: Colors.red,
                           textColor: MainColors.color1,
                           color: MainColors.color4,
                           icon: Icons.calculate_rounded,
@@ -216,7 +216,7 @@ class _HomePageState extends State<HomePage> {
                           width: 30.h,
                         ),
                         customBox(
-                          iconColor: Colors.red,
+                          iconColor: Colors.blueAccent,
                           textColor: MainColors.color1,
                           color: MainColors.color4,
                           icon: Icons.grade_rounded,
@@ -232,16 +232,19 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(
-                          width: 15.h,
-                        ),
-                        customBox(
-                          iconColor: MainColors.color1,
-                          textColor: MainColors.color1,
-                          color: MainColors.color4,
-                          icon: Icons.book_rounded,
-                          text: 'Grade System',
-                          page: const GradingSystem(),
+                        // SizedBox(
+                        //   width: MediaQuery.of(context).size.width/18
+                        // ),
+                        Padding(
+                          padding: EdgeInsets.only(left: MediaQuery.of(context).size.width/22),
+                          child: customBox(
+                            iconColor: MainColors.color2,
+                            textColor: MainColors.color1,
+                            color: MainColors.color2,
+                            icon: Icons.book_rounded,
+                            text: 'Grade System',
+                            page: const GradingSystem(),
+                          ),
                         ),
                       ],
                     ),
@@ -288,7 +291,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             CircleAvatar(
               radius: 25,
-              backgroundColor: MainColors.color2.withOpacity(0.2),
+              backgroundColor: iconColor.withOpacity(0.2),
               child: Icon(
                 icon,
                 size: 27.r,

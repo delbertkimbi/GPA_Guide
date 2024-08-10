@@ -53,7 +53,7 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
-
+    def kotlin_versio='1.8.0'
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
@@ -61,6 +61,24 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+}
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = '../build'
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(':app')
+}
+
+tasks.register("myCleanTask", Delete) {
+    delete rootProject.buildDir
 }
 
 flutter {

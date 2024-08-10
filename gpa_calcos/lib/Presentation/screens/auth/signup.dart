@@ -39,24 +39,24 @@ class _SignUpState extends State<SignUp> {
 
     return BlocBuilder<UserCubit, UserState>(
       builder: (context, state) {
-        return SafeArea(
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Color(0xffF1EFFA),
-                  Color(0xffF1EFFA),
-                  Color(0xff9191F5),
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
+        return Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color(0xffF1EFFA),
+                Color(0xffF1EFFA),
+                Color(0xff9191F5),
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
             ),
-            child: Scaffold(
-              backgroundColor: Colors.transparent,
-              body: SingleChildScrollView(
+          ),
+          child: Scaffold(
+            backgroundColor: Colors.transparent,
+            body: SafeArea(
+              child: SingleChildScrollView(
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

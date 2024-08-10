@@ -97,7 +97,7 @@ class _UserProfileState extends State<UserProfile> {
           ),
           SizedBox(height: 20.h),
           Container(
-            height: 150.h, // Adjust height as needed
+            height: 250.h, // Adjust height as needed
             width: double.infinity,
             margin: EdgeInsets.symmetric(horizontal: 25.r),
             decoration: BoxDecoration(
@@ -125,20 +125,21 @@ class _UserProfileState extends State<UserProfile> {
                     break;
                   case 2:
                     itemText = "Switch Mode";
-                    itemIcon = Icons.lightbulb_outline; // Assuming icon for Switch Mode
+                    itemIcon = Icons.toggle_off_outlined;
                     break;
                   case 3:
                     itemText = "Logout";
                     itemIcon = Icons.logout;
                     break;
                   default:
-                    itemText = "";
+                    itemText = " ";
                     itemIcon = Icons.error;
                     break;
                 }
                 return ListTile(
-                  leading: Icon(itemIcon),
-                  title: Text(itemText),
+                  leading: Icon(itemIcon,size: 30, color:MainColors.color1,),
+                  title: Text(itemText, style: TextStyle(color: MainColors.color5,fontSize: 18.sp, fontWeight: FontWeight.w600),),
+
                   onTap: () {
                     // Handle item tap here
                   },
