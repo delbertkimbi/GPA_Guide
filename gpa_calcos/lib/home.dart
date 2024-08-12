@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/Widgets/drawer.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
-import 'package:gpa_calcos/Presentation/screens/chat.dart';
+import 'package:gpa_calcos/Presentation/screens/chat_ai/chat.dart';
 import 'package:gpa_calcos/Presentation/screens/user_profile.dart';
 
 @RoutePage()

@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/Widgets/initial_chat.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 class ChatAI extends StatefulWidget {
   const ChatAI({super.key});
@@ -76,60 +77,13 @@ class _ChatAIState extends State<ChatAI> {
     );
   }
 
-  // void _sendMessage(ChatMessage chatMessage) {
-  //   setState(() {
-  //     messages = [chatMessage, ...messages];
-  //   });
-  //   try {
-  //     String question = chatMessage.text;
-  //     List<Uint8List>? images;
-  //     if (chatMessage.medias?.isNotEmpty ?? false) {
-  //       images = [
-  //         File(chatMessage.medias!.first.url).readAsBytesSync(),
-  //       ];
-  //     }
-  //     gemini
-  //         .streamGenerateContent(
-  //       question,
-  //       images: images,
-  //     )
-  //         .listen((event) {
-  //       ChatMessage? lastMessage = messages.firstOrNull;
-  //       if (lastMessage != null && lastMessage.user == geminiUser) {
-  //         lastMessage = messages.removeAt(0);
-  //         String response = event.content?.parts?.fold(
-  //                 "", (previous, current) => "$previous ${current.text}") ??
-  //             "";
-  //         lastMessage.text += response;
-  //         setState(
-  //           () {
-  //             messages = [lastMessage!, ...messages];
-  //           },
-  //         );
-  //       } else {
-  //         String response = event.content?.parts?.fold(
-  //                 "", (previous, current) => "$previous ${current.text}") ??
-  //             "";
-  //         ChatMessage message = ChatMessage(
-  //           user: geminiUser,
-  //           createdAt: DateTime.now(),
-  //           text: response,
-  //         );
-  //         setState(() {
-  //           messages = [message, ...messages];
-  //         });
-  //       }
-  //     });
-  //   } catch (e) {
-  //     debugPrint(e.toString());
-  //   }
-  // }
   void _sendMessage(ChatMessage chatMessage) {
-    setState(() {
-      messages = [chatMessage, ...messages];
+setState(() {
+         messages = [chatMessage, ...messages];
+
     });
     try {
-      String question = chatMessage.text;
+   String question = chatMessage.text;
       List<Uint8List>? images;
       if (chatMessage.medias?.isNotEmpty ?? false) {
         images = [
