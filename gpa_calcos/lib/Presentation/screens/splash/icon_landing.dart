@@ -53,16 +53,10 @@ class _IconLandingPageState extends State<IconLandingPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  height: 250.h,
-                  width: 220.w,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.r),
-                    image: const DecorationImage(
-                      image: AssetImage('assets/try.png'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                Image.asset(
+                  'assets/try.png',
+                  height: 250.r,
+                  width: 220.r,
                 ),
                 Text(
                   '    GPA Guide',

@@ -7,7 +7,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/Widgets/initial_chat.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:provider/provider.dart';
 
 class ChatAI extends StatefulWidget {
   const ChatAI({super.key});
@@ -78,12 +77,11 @@ class _ChatAIState extends State<ChatAI> {
   }
 
   void _sendMessage(ChatMessage chatMessage) {
-setState(() {
-         messages = [chatMessage, ...messages];
-
+    setState(() {
+      messages = [chatMessage, ...messages];
     });
     try {
-   String question = chatMessage.text;
+      String question = chatMessage.text;
       List<Uint8List>? images;
       if (chatMessage.medias?.isNotEmpty ?? false) {
         images = [
