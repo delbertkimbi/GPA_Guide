@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/Widgets/drawer.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
+import 'package:gpa_calcos/Presentation/screens/GPA%20Squad/gpa_squad.dart';
 import 'package:gpa_calcos/Presentation/screens/chat_ai/chat.dart';
 import 'package:gpa_calcos/Presentation/screens/user_profile.dart';
 
@@ -46,11 +47,9 @@ class _HomePageState extends State<HomePage> {
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [
-          Colors.white,
             Colors.white,
-            //Color(0xffF1EFFA),
-            // Color(0xffF1EFFA),
-          Color(0xffF1EFFA),
+            Colors.white,
+            Color(0xffF1EFFA),
             Color(0xff9191F5),
           ],
           begin: Alignment.topCenter,
@@ -61,19 +60,27 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         key: _scaffoldKey, // Assign GlobalKey
         drawer: const CustomDrawer(),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => const ChatAI(),
-            ));
-          },
-          child: IconButton(
+        floatingActionButton: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            FloatingActionButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const ChatAI(),
                 ));
               },
-              icon: const Icon(Icons.chat)),
+              child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const ChatAI(),
+                    ));
+                  },
+                  icon: const Icon(
+                    Icons.message,
+                  )),
+            ),
+          ],
         ),
         appBar: AppBar(
           backgroundColor: MainColors.color5,
@@ -229,29 +236,70 @@ class _HomePageState extends State<HomePage> {
                       height: 20.h,
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        // SizedBox(
-                        //   width: MediaQuery.of(context).size.width/18
-                        // ),
-                        Padding(
-                          padding: EdgeInsets.only(left: MediaQuery.of(context).size.width/22),
-                          child: customBox(
-                            iconColor: MainColors.color2,
-                            textColor: MainColors.color1,
-                            color: MainColors.color2,
-                            icon: Icons.book_rounded,
-                            text: 'Grade System',
-                            page: const GradingSystem(),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => GPASquad(),
+                            ));
+                          },
+                          child: Container(
+                            height: 130.h,
+                            width: 130.h,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              //color: Colors.grey[300],
+                              borderRadius: BorderRadius.circular(15.r),
+
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(.9),
+                                  blurRadius: 1.0.r,
+                                )
+                              ],
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CircleAvatar(
+                                  radius: 25,
+                                  backgroundColor:
+                                      MainColors.color2.withOpacity(0.2),
+                                  child: Icon(
+                                    Icons.people,
+                                    size: 27.r,
+                                    color: MainColors.color2,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10.h,
+                                ),
+                                Text(
+                                  'Study Squad',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w500,
+                                    //color: Colors.white, Resources, Materials
+                                    color: MainColors.color1,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
+                        SizedBox(
+                          height: 130.h,
+                          width: 160.h,
+                        )
                       ],
                     ),
                   ],
                 ),
               ),
-
             ],
           ),
         ),

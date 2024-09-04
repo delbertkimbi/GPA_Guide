@@ -37,11 +37,10 @@ class _StringSliderState extends State<StringSlider> {
         transitionBuilder: (child, animation) =>
             ScaleTransition(scale: animation, child: child),
         child: AnimatedContainer(
-          duration: const Duration(seconds: 2),
+          duration: const Duration(seconds: 4),
           curve: Curves.easeInOut,
           height: 160.h,
           width: double.infinity,
-          margin: EdgeInsets.all(0.r),
           padding: EdgeInsets.all(20.r),
           alignment: Alignment.center,
           decoration: BoxDecoration(
@@ -62,7 +61,7 @@ class _StringSliderState extends State<StringSlider> {
               color:
                   Colors.white, // Or adjust text color based on container color
               fontSize: 16.sp,
-              fontWeight: FontWeight.w400,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),

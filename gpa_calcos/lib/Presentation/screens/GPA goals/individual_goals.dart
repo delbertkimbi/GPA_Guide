@@ -65,9 +65,14 @@ class _IndividaulGoalsState extends State<IndividaulGoals> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      _rowTextIcon(
-                        icon: Icons.notification_important_rounded,
-                        text: 'Normal',
+                      GestureDetector(
+                        onTap: () {
+                          showToast(message: 'Option2 coming soon');
+                        },
+                        child: _rowTextIcon(
+                          icon: Icons.notification_important_rounded,
+                          text: 'Normal',
+                        ),
                       ),
                       GestureDetector(
                         onTap: () {

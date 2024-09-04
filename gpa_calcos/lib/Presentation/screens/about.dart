@@ -120,10 +120,9 @@ class _AboutPageState extends State<AboutPage> {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 800),
       curve: Curves.easeInOut,
-      height: 90.h,
+     height: 90.h,
       width: double.infinity,
-      margin: EdgeInsets.all(0.r),
-      padding: EdgeInsets.all(20.r),
+      padding: EdgeInsets.symmetric(horizontal:  20.r, vertical: 0),
       alignment: Alignment.center,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15.r),
@@ -131,21 +130,23 @@ class _AboutPageState extends State<AboutPage> {
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.3),
-            offset: const Offset(0, 10),
-            blurRadius: 10.0,
+            offset: const Offset(0, 2),
+            blurRadius: 3.0,
             spreadRadius: 0.0,
           ),
         ],
       ),
-      child: Text(
-        text,
-        style: TextStyle(
-          color: MainColors
-              .color1, // Or adjust text color based on container color
-          fontSize: 14.sp,
-          fontWeight: FontWeight.w400,
-        ),
-      ),
+      child:
+          Text(
+            text,
+            style: TextStyle(
+              color: MainColors
+                  .color1, // Or adjust text color based on container color
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+
     );
   }
 

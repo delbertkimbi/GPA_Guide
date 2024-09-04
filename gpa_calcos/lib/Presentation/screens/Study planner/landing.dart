@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gpa_calcos/Presentation/Custom/files/Toast/showtoast.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/custom_plan.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
@@ -31,7 +32,7 @@ class _StudyPlanLandingPageState extends State<StudyPlanLandingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: MainColors.color5,
       appBar: AppBar(
         backgroundColor: MainColors.color2,
         elevation: 0,
@@ -116,10 +117,11 @@ class _StudyPlanLandingPageState extends State<StudyPlanLandingPage> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (BuildContext context) {
-                  return const CustomizedPage(title: 'AI Study Plan');
-                }));
+                showToast(message: 'Coming soon');
+                // Navigator.of(context)
+                //     .push(MaterialPageRoute(builder: (BuildContext context) {
+                //   return const CustomizedPage(title: 'AI Study Plan');
+                // }));
               },
               child: const OptionBox(
                 optiontext: 'AI generated Plan',

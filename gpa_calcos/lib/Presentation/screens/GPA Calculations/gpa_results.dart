@@ -62,24 +62,15 @@ class _ResultPageState extends State<ResultPage> {
               ),
               padding: EdgeInsets.all(31.r),
               decoration: BoxDecoration(
-                  color: MainColors.color2,
-                  borderRadius: BorderRadius.circular(30.r),
-                  boxShadow: [
-                    BoxShadow(
-                      // color: Colors.black.withOpacity(0.3.r),
-                      color: const Color(0xff9191F5),
-                      offset: const Offset(4.0, 4.0),
-                      blurRadius: 25.0.r,
-                      spreadRadius: 1.0.r,
-                    ),
-                    BoxShadow(
-                      // color: Colors.black.withOpacity(0.3.r),
-                      color: MainColors.color4,
-                      offset: const Offset(-4.0, -4.0),
-                      blurRadius: 5.0.r,
-                      spreadRadius: 1.0.r,
-                    ),
-                  ]),
+                color: MainColors.color5,
+                borderRadius: BorderRadius.circular(15.r),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(.9),
+                    blurRadius: 1.0.r,
+                  )
+                ],
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -89,7 +80,7 @@ class _ResultPageState extends State<ResultPage> {
                       'Your Results!!!',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 30.sp,
+                        fontSize: 25.sp,
                         color: MainColors.color1,
                         fontWeight: FontWeight.bold,
                       ),
@@ -103,8 +94,8 @@ class _ResultPageState extends State<ResultPage> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 17.sp,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
+                      color: MainColors.color1,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                   SizedBox(
@@ -115,8 +106,8 @@ class _ResultPageState extends State<ResultPage> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 17.sp,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
+                      color: MainColors.color1,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                   SizedBox(
@@ -127,7 +118,7 @@ class _ResultPageState extends State<ResultPage> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 20.sp,
-                      color: Colors.yellow,
+                      color: MainColors.color2,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -146,7 +137,7 @@ class _ResultPageState extends State<ResultPage> {
                     child: shareSave(text: 'Share', icon: Icons.share),
                   ),
                   SizedBox(
-                    width: 20.r,
+                    width: 25.r,
                   ),
                   shareSave(text: 'Save', icon: Icons.save),
                 ],
@@ -160,29 +151,12 @@ class _ResultPageState extends State<ResultPage> {
 
   Container shareSave({required String text, required IconData icon}) {
     return Container(
-      width: 120.w,
-      height: 50.h,
       alignment: Alignment.center,
-      padding: EdgeInsets.all(15.r),
+      padding: EdgeInsets.symmetric(horizontal: 20.r, vertical: 7.r),
       decoration: BoxDecoration(
-          color: MainColors.color1,
-          borderRadius: BorderRadius.circular(30.r),
-          boxShadow: [
-            BoxShadow(
-              // color: Colors.black.withOpacity(0.3.r),
-              color: Colors.grey.shade500,
-              offset: const Offset(4.0, 4.0),
-              blurRadius: 25.0.r,
-              spreadRadius: 1.0.r,
-            ),
-            BoxShadow(
-              // color: Colors.black.withOpacity(0.3.r),
-              color: MainColors.color4,
-              offset: const Offset(-4.0, -4.0),
-              blurRadius: 5.0.r,
-              spreadRadius: 1.0.r,
-            ),
-          ]),
+        color: MainColors.color2.withOpacity(1),
+        borderRadius: BorderRadius.circular(30.r),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -190,7 +164,7 @@ class _ResultPageState extends State<ResultPage> {
           Text(
             text,
             style: TextStyle(
-              color: MainColors.color4,
+              color: MainColors.color5,
               fontSize: 18.sp,
             ),
           ),
@@ -199,7 +173,7 @@ class _ResultPageState extends State<ResultPage> {
           ),
           Icon(
             icon,
-            color: Colors.yellow,
+            color: MainColors.color1,
             size: 20.r,
           )
         ],

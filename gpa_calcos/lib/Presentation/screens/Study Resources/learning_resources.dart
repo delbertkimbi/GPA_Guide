@@ -9,70 +9,108 @@ class Learningpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: MainColors.color5,
-        appBar: AppBar(
-          backgroundColor: MainColors.color4,
-          elevation: 0,
-          centerTitle: true,
-          title: Text(
-            'Learning Resources',
-            style: TextStyle(
-                fontSize: 20.sp,
-                fontWeight: FontWeight.w600,
-                color: MainColors.color2),
-          ),
-          leading: IconButton(
-              onPressed: () => Navigator.of(context).pop(),
-              icon: Icon(
-                Icons.arrow_back_ios_new_rounded,
-                color: MainColors.color2,
-              )),
+    return Scaffold(
+      backgroundColor: MainColors.color5,
+      appBar:AppBar(
+        leading: IconButton(
+            onPressed: () => Navigator.of(context).pop(),
+            icon: Icon(
+              Icons.arrow_back_ios_new_rounded,
+              color: MainColors.color4,
+            )),
+        centerTitle: true,
+        backgroundColor: MainColors.color2,
+        elevation: 0,
+        title: Text(
+          "Study Resources",
+          style: TextStyle(
+              color: MainColors.color4,
+              fontWeight: FontWeight.w600,
+              fontSize: 20.sp),
         ),
-        body: Center(
-          child: Container(
-            height: 300.h,
-            width: double.infinity,
-            padding: EdgeInsets.all(20.r),
-            margin: EdgeInsets.symmetric(horizontal: 25.r),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: MainColors.color5,
-              //color: Colors.grey[300],
-              borderRadius: BorderRadius.circular(15.r),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(.9),
-                  blurRadius: 1.0.r,
-                )
-              ],
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  'Coming Soon...',
-                  style: TextStyle(
-                    color: MainColors.color2,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 22.sp,
-                  ),
+      ),
+      body: SafeArea(
+        child: Container(
+          height: 300.h,
+          width: double.infinity,
+          padding: EdgeInsets.all(20.r),
+          margin: EdgeInsets.symmetric(
+            horizontal: 25.r,
+            vertical: 20.h,
+          ),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: MainColors.color5,
+            //color: Colors.grey[300],
+            borderRadius: BorderRadius.circular(15.r),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(.9),
+                blurRadius: 1.0.r,
+              )
+            ],
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
                 ),
-                SizedBox(
-                  height: 5.h,
+                child: const Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12),
+                      child: Icon(Icons.search),
+                    ),
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Search',
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12),
+                      child: Text('Go'),
+                    ),
+                  ],
                 ),
-                Text(
-                  'Learning resources, specific to your field of study and more. ',
-                  style: TextStyle(
-                    fontSize: 15.sp,
-                    color: MainColors.color1,
-                  ),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              Text(
+                'Coming Soon...',
+                style: TextStyle(
+                  color: MainColors.color2,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 15.sp,
                 ),
-                SizedBox(height: 20.h),
-              ],
-            ),
+              ),
+              // SizedBox(
+              //   height: 5.h,
+              // ),
+              Text(
+                'Learning resources, specific to your field of study and more. ',
+                style: TextStyle(
+                  fontSize: 15.sp,
+                  color: MainColors.color1,
+                ),
+              ),
+              SizedBox(height: 20.h),
+            ],
           ),
         ),
       ),

@@ -8,11 +8,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:gpa_calcos/Bussiness/calculation/GetUserInfoCubit/subject_info_cubit_cubit.dart';
 import 'package:gpa_calcos/Bussiness/calculation/gpa_cubit/gpa_cubit.dart';
 import 'package:gpa_calcos/Bussiness/user_cubit/user_cubit.dart';
+import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/key.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.dart';
 import 'package:gpa_calcos/firebase_options.dart';
 
 void main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -45,13 +47,15 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'GPA Guide',
           theme: ThemeData(
+            primaryColor: MainColors.color5,
             textTheme: GoogleFonts.robotoTextTheme(textTheme).copyWith(
               bodyMedium: GoogleFonts.roboto(textStyle: textTheme.bodyMedium),
+
             ),
             colorScheme: ColorScheme.fromSeed(
               seedColor: const Color(0xffDDDDFF),
-              // seedColor: MainColors.color1,
             ),
+
             useMaterial3: true,
           ),
         );

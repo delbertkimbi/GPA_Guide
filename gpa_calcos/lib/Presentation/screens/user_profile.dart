@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
+import 'package:gpa_calcos/Presentation/screens/noitfications.dart';
 
 // ignore: must_be_immutable
 class UserProfile extends StatefulWidget {
@@ -96,57 +97,63 @@ class _UserProfileState extends State<UserProfile> {
             ),
           ),
           SizedBox(height: 20.h),
-          Container(
-            height: 250.h, // Adjust height as needed
-            width: double.infinity,
-            margin: EdgeInsets.symmetric(horizontal: 25.r),
-            decoration: BoxDecoration(
-              color: MainColors.color2, // Assuming blue color from MainColors
-              borderRadius: BorderRadius.circular(15.r),
-            ),
-            child: ListView.separated( // Use ListView.separated for dividers
-              padding: EdgeInsets.zero,
-              itemCount: 4, // Number of items in the list
-              separatorBuilder: (context, index) => Divider(
-                color: Colors.grey[300],
-                thickness: 1.0,
-              ), // Add divider between items
-              itemBuilder: (context, index) {
-                String itemText;
-                IconData itemIcon;
-                switch (index) {
-                  case 0:
-                    itemText = "Notifications";
-                    itemIcon = Icons.notifications;
-                    break;
-                  case 1:
-                    itemText = "Change Language";
-                    itemIcon = Icons.language;
-                    break;
-                  case 2:
-                    itemText = "Switch Mode";
-                    itemIcon = Icons.toggle_off_outlined;
-                    break;
-                  case 3:
-                    itemText = "Logout";
-                    itemIcon = Icons.logout;
-                    break;
-                  default:
-                    itemText = " ";
-                    itemIcon = Icons.error;
-                    break;
-                }
-                return ListTile(
-                  leading: Icon(itemIcon,size: 30, color:MainColors.color1,),
-                  title: Text(itemText, style: TextStyle(color: MainColors.color5,fontSize: 18.sp, fontWeight: FontWeight.w600),),
-
-                  onTap: () {
-                    // Handle item tap here
-                  },
-                );
-              },
-            ),
-          ),
+          // Container(
+          //   height: 250.h, // Adjust height as needed
+          //   width: double.infinity,
+          //   margin: EdgeInsets.symmetric(horizontal: 25.r),
+          //   decoration: BoxDecoration(
+          //     color: MainColors.color2, // Assuming blue color from MainColors
+          //     borderRadius: BorderRadius.circular(15.r),
+          //   ),
+          //   child: ListView.separated( // Use ListView.separated for dividers
+          //     padding: EdgeInsets.zero,
+          //     itemCount: 4, // Number of items in the list
+          //     separatorBuilder: (context, index) => Divider(
+          //       color: Colors.grey[300],
+          //       thickness: 1.0,
+          //     ), // Add divider between items
+          //     itemBuilder: (context, index) {
+          //       String itemText;
+          //       final Function()? callback;
+          //       IconData itemIcon;
+          //       switch (index) {
+          //         case 0:
+          //           itemText = "Notifications";
+          //           itemIcon = Icons.notifications;
+          //           callback=(){
+          //             setState(() {
+          //              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const NotifactionsPage()));
+          //             });
+          //           };
+          //           break;
+          //         case 1:
+          //           itemText = "Change Language";
+          //           itemIcon = Icons.language;
+          //           break;
+          //         case 2:
+          //           itemText = "Switch Mode";
+          //           itemIcon = Icons.toggle_off_outlined;
+          //           break;
+          //         case 3:
+          //           itemText = "Logout";
+          //           itemIcon = Icons.logout;
+          //           break;
+          //         default:
+          //           itemText = " ";
+          //           itemIcon = Icons.error;
+          //           break;
+          //       }
+          //       return ListTile(
+          //         leading: Icon(itemIcon,size: 30, color:MainColors.color1,),
+          //         title: Text(itemText, style: TextStyle(color: MainColors.color5,fontSize: 16.sp, fontWeight: FontWeight.w500),),
+          //
+          //         onTap: () {
+          //           // Handle item tap here
+          //         },
+          //       );
+          //     },
+          //   ),
+          // ),
 
         ],
       ),

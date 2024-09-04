@@ -59,7 +59,7 @@ class _GpaCalculationsLandingState extends State<GpaCalculationsLanding> {
               onTap: () => AutoRouter.of(context).push(const GetSubjectInfo()),
               child: const OptionBox(
                 optiontext: 'GPA Calculation',
-                optionICon: Icons.group,
+                optionICon: Icons.calculate_outlined,
                 iconColor: Colors.yellow,
                 index: '1',
               ),
@@ -71,7 +71,7 @@ class _GpaCalculationsLandingState extends State<GpaCalculationsLanding> {
               onTap: () => AutoRouter.of(context).push(const CgpaInfo()),
               child: const OptionBox(
                 optiontext: 'CGPA Calculation',
-                optionICon: Icons.group,
+                optionICon: Icons.calculate,
                 iconColor: Colors.yellow,
                 index: '2',
               ),

@@ -42,13 +42,14 @@ class _CustomDrawerState extends State<CustomDrawer> {
         children: [
           UserAccountsDrawerHeader(
             decoration: BoxDecoration(
-              color: MainColors.color2.withOpacity(0.9),
+              color: MainColors.color2.withOpacity(0.8),
             ),
             accountName: Text(
               'GPA Guide',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.sp,
+
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -72,34 +73,30 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         borderRadius: BorderRadius.circular(20.0.r),
                       ),
                       child: Container(
-                        height: 300.h,
-                        width: 250.w,
+                      padding:const  EdgeInsets.all(5),
                         decoration: BoxDecoration(
-                          color: MainColors.color4,
+                          color: MainColors.color5,
                           borderRadius: BorderRadius.circular(10.r),
-                          image: const DecorationImage(
-                            image: AssetImage('assets/guide.png'),
-                            fit: BoxFit.cover,
-                          ),
                         ),
+                        child: Image.asset('assets/guide.png'),
                       ),
                     ),
                   );
                 },
                 child: CircleAvatar(
-                  radius: 28.h,
-                  backgroundColor: MainColors.color4,
-                  child: ClipOval(
-                    child: Image.asset('assets/try.png'),
-                  ),
+                  radius: 26.h,
+                  backgroundColor: MainColors.color5,
+                  child: Image.asset('assets/try.png', fit: BoxFit.fill,),
                 ),
               ),
             ),
           ),
           Expanded(
               child: Container(
+                margin: const EdgeInsets.symmetric(vertical: 0),
             color: MainColors.color4,
             child: ListView(
+              shrinkWrap: true,
               children: [
                 GestureDetector(
                   onTap: () => Navigator.of(context).pop(),
@@ -134,13 +131,13 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ),
                 Divider(
                   height: 50.r,
-                  color: Colors.black,
+                  color: MainColors.color1,
                 ),
                 GestureDetector(
                   onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => const ChatAI())),
                   child: CustomListTile(
-                    title: "Chat with Others/AI",
+                    title: "Chat with AI",
                     icon: Icon(
                       Icons.route,
                       color: MainColors.color2,
@@ -150,7 +147,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ),
                 GestureDetector(
                   onTap: () => AutoRouter.of(context)
-                      .push(const LearningRourcesLanding()),
+                      .push(const Learningpage()),
                   child: CustomListTile(
                     title: "Learning Resources",
                     icon: Icon(
@@ -161,13 +158,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const CustomizedPage(
-                      title: "Did you know?",
-                    ),
-                  )),
+                  onTap: () =>AutoRouter.of(context)
+                      .push(const GradingSystem()),
                   child: CustomListTile(
-                    title: "Did you Know?",
+                    title: "Grading System",
                     icon: Icon(
                       Icons.help,
                       color: MainColors.color2,
@@ -177,7 +171,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ),
                 Divider(
                   height: 50.r,
-                  color: Colors.black,
+                  color: MainColors.color1,
                 ),
                 GestureDetector(
                   onTap: () => Navigator.of(context).push(MaterialPageRoute(

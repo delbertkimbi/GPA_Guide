@@ -73,11 +73,6 @@ class _LogInState extends State<LogIn> {
                           shape: BoxShape.circle,
                           // color: Colors.white,
                         ),
-                        // child: Icon(
-                        //   Icons.person,
-                        //   color: MainColors.color1,
-                        //   size: 50.r,
-                        // ),
                         child: Image.asset('assets/try.png'),
                       ),
                       SizedBox(
@@ -98,12 +93,9 @@ class _LogInState extends State<LogIn> {
                         onTap: () async {
                           final user = await _auth.signInWithGoogle();
                           if (user != null) {
-                            setState(() {
-                              const CircularProgressIndicator();
-                            });
                             context.router.replace(const HomePage());
                           } else {
-                            showToast(message: 'An error occurred');
+                            showToast(message: 'An error occurred,Try Again');
                           }
                         },
                         child: MainButton(

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gpa_calcos/Presentation/Custom/files/Toast/showtoast.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/custom_plan.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
@@ -119,10 +120,11 @@ class _GpaGoalsState extends State<GpaGoals> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (BuildContext context) {
-                  return const CustomizedPage(title: 'Group Goals');
-                }));
+                showToast(message: 'Coming soon');
+                // Navigator.of(context)
+                //     .push(MaterialPageRoute(builder: (BuildContext context) {
+                //   return const CustomizedPage(title: 'Group Goals');
+                // }));
               },
               child: const OptionBox(
                 optiontext: 'Group Goals',

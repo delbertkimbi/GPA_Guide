@@ -127,7 +127,7 @@ class _CgpaReultsPageState extends State<CgpaReultsPage> {
     if (widget.cgpa >= 2.0) {
       return Text(
         textAlign: TextAlign.center,
-        "Congetulations!!! ",
+        "Congratulations!!! ",
         style: _textStyle,
       );
     } else if (widget.cgpa < 2.0 && widget.cgpa >= 0.0) {

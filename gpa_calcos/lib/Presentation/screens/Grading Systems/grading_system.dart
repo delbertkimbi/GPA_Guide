@@ -2,9 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/Widgets/push_pop.dart';
+import 'package:gpa_calcos/Presentation/Custom/files/Toast/showtoast.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
-import 'package:gpa_calcos/Presentation/screens/customized.dart';
 
 @RoutePage()
 class GradingSystem extends StatefulWidget {
@@ -79,7 +79,6 @@ class _GradingSystemState extends State<GradingSystem> {
                   TableRow(
                     decoration: BoxDecoration(
                       color: MainColors.color2,
-                      borderRadius: BorderRadius.circular(10.r),
                     ),
                     children: [
                       TableCell(
@@ -161,25 +160,26 @@ class _GradingSystemState extends State<GradingSystem> {
               SizedBox(
                 height: 10.h,
               ),
-              ElevatedButton(
-                onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const CustomizedPage(
-                    title: "Other Systems",
+              GestureDetector(
+                onTap: () => showToast(message: 'Coming soon'),
+                child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 5.w),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 20.r, vertical: 10.h),
+                  decoration: BoxDecoration(
+                    color: MainColors.color2,
+                    borderRadius: BorderRadius.circular(20.r),
                   ),
-                )),
-                style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  backgroundColor: MainColors.color2,
-                ),
-                child: Text(
-                  "Other systems",
-                  style: TextStyle(
-                    color: MainColors.color5,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16.sp,
+                  child: Text(
+                    'Other Systems',
+                    style: TextStyle(
+                      color: MainColors.color5,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16.sp,
+                    ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
