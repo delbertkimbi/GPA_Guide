@@ -11,10 +11,15 @@ import 'package:gpa_calcos/Bussiness/user_cubit/user_cubit.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/key.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.dart';
+import 'package:gpa_calcos/Presentation/screens/chat_ai/providers/chat_provider.dart';
+import 'package:gpa_calcos/Presentation/screens/chat_ai/providers/settings_provider.dart';
 import 'package:gpa_calcos/firebase_options.dart';
-
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:calendar_view/calendar_view.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 void main() async {
-
+  await Hive.initFlutter();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -23,16 +28,43 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   Gemini.init(apiKey: GEMINI_API_KEY);
-  runApp(MultiBlocProvider(providers: [
-    BlocProvider(create: (context) => SubjectInfoCubit()),
-    BlocProvider<UserCubit>(create: (context) => UserCubit()),
-    BlocProvider(create: (context) => GpaCubit()),
-  ], child: MyApp()));
+    await dotenv.load(fileName: ".env");
+
+  await ChatProvider.initHive();
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ChatProvider()),
+        ChangeNotifierProvider(create: (context) => SettingsProvider()),
+      ],
+      child: MultiBlocProvider(providers: [
+        BlocProvider(create: (context) => SubjectInfoCubit()),
+        BlocProvider<UserCubit>(create: (context) => UserCubit()),
+        BlocProvider(create: (context) => GpaCubit()),
+      ], child: const MyApp()),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  MyApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   final AppRouter appRouter = AppRouter();
+  @override
+  void initState() {
+    setTheme();
+    super.initState();
+  }
+
+  void setTheme() {
+    final settingsProvider = context.read<SettingsProvider>();
+    settingsProvider.getSavedSettings();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,21 +74,22 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp.router(
-          routerConfig: appRouter.config(),
-          debugShowCheckedModeBanner: false,
-          title: 'GPA Guide',
-          theme: ThemeData(
-            primaryColor: MainColors.color5,
-            textTheme: GoogleFonts.robotoTextTheme(textTheme).copyWith(
-              bodyMedium: GoogleFonts.roboto(textStyle: textTheme.bodyMedium),
-
+        return CalendarControllerProvider(
+          controller: EventController(),
+          child: MaterialApp.router(
+            routerConfig: appRouter.config(),
+            debugShowCheckedModeBanner: false,
+            title: 'GPA Guide',
+            theme: ThemeData(
+              primaryColor: MainColors.color5,
+              textTheme: GoogleFonts.robotoTextTheme(textTheme).copyWith(
+                bodyMedium: GoogleFonts.roboto(textStyle: textTheme.bodyMedium),
+              ),
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: const Color(0xffDDDDFF),
+              ),
+              useMaterial3: true,
             ),
-            colorScheme: ColorScheme.fromSeed(
-              seedColor: const Color(0xffDDDDFF),
-            ),
-
-            useMaterial3: true,
           ),
         );
       },

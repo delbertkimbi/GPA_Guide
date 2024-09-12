@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
-import 'package:gpa_calcos/Presentation/screens/noitfications.dart';
 
 // ignore: must_be_immutable
 class UserProfile extends StatefulWidget {

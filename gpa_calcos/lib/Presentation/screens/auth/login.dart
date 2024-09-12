@@ -95,7 +95,7 @@ class _LogInState extends State<LogIn> {
                           if (user != null) {
                             context.router.replace(const HomePage());
                           } else {
-                            showToast(message: 'An error occurred,Try Again');
+                            //showToast(message: 'An error occurred,Try Again');
                           }
                         },
                         child: MainButton(
@@ -113,7 +113,10 @@ class _LogInState extends State<LogIn> {
                       CustomTextField(
                           onChaged: (value) {},
                           text: 'email',
-                          controller: emailController),
+                          controller: emailController,
+
+                      ),
+
                       SizedBox(
                         height: 8.h,
                       ),

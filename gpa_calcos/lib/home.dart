@@ -7,7 +7,7 @@ import 'package:gpa_calcos/Presentation/Custom/Widgets/drawer.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
 import 'package:gpa_calcos/Presentation/screens/GPA%20Squad/gpa_squad.dart';
-import 'package:gpa_calcos/Presentation/screens/chat_ai/chat.dart';
+import 'package:gpa_calcos/Presentation/screens/chat_ai/screens/chat_history_screen.dart';
 import 'package:gpa_calcos/Presentation/screens/user_profile.dart';
 
 @RoutePage()
@@ -67,18 +67,12 @@ class _HomePageState extends State<HomePage> {
             FloatingActionButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const ChatAI(),
+                  builder: (context) => const ChatHistoryScreen(),
                 ));
               },
-              child: IconButton(
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const ChatAI(),
-                    ));
-                  },
-                  icon: const Icon(
-                    Icons.message,
-                  )),
+              child: const Icon(
+                Icons.message,
+              ),
             ),
           ],
         ),
@@ -242,7 +236,7 @@ class _HomePageState extends State<HomePage> {
                         GestureDetector(
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => GPASquad(),
+                              builder: (context) => const GPASquad(),
                             ));
                           },
                           child: Container(

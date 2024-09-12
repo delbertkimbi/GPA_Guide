@@ -114,6 +114,9 @@ class _SignUpState extends State<SignUp> {
                                   const CircularProgressIndicator();
                                   context.router.replace(const HomePage());
                                 }
+                                else{
+                                //  showToast(message: 'An error Occured');
+                                }
                               },
                               child: MainButton(
                                 imagePath: 'assets/google.png',

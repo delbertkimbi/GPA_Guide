@@ -11,7 +11,6 @@ import 'package:gpa_calcos/Presentation/screens/about.dart';
 import 'package:gpa_calcos/Presentation/screens/auth/auth_services.dart';
 
 import 'package:gpa_calcos/Presentation/screens/chat_ai/chat.dart';
-import 'package:gpa_calcos/Presentation/screens/customized.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({

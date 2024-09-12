@@ -7,7 +7,6 @@ import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/custom_plan.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
 import 'package:gpa_calcos/Presentation/screens/GPA%20goals/individual_goals.dart';
-import 'package:gpa_calcos/Presentation/screens/customized.dart';
 
 @RoutePage()
 class GpaGoals extends StatefulWidget {

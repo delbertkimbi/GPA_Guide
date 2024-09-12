@@ -6,7 +6,7 @@ import 'package:gpa_calcos/Presentation/Custom/files/Toast/showtoast.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/custom_plan.dart';
 import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
-import 'package:gpa_calcos/Presentation/screens/customized.dart';
+import 'package:gpa_calcos/Presentation/screens/Study%20planner/screens/calendar_screen.dart';
 
 @RoutePage()
 class StudyPlanLandingPage extends StatefulWidget {
@@ -98,7 +98,9 @@ class _StudyPlanLandingPageState extends State<StudyPlanLandingPage> {
                 );
                 FirebaseAuth.instance.authStateChanges().listen((User? user) {
                   if (user != null) {
-                    AutoRouter.of(context).push(const PlannerLandingPage());
+                    // AutoRouter.of(context).push(const PlannerLandingPage());
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const CalendarScreen()));
                   } else {
                     context.router.replace(
                         const LogIn()); // Navigate to LogIn if logged out
@@ -118,10 +120,6 @@ class _StudyPlanLandingPageState extends State<StudyPlanLandingPage> {
             GestureDetector(
               onTap: () {
                 showToast(message: 'Coming soon');
-                // Navigator.of(context)
-                //     .push(MaterialPageRoute(builder: (BuildContext context) {
-                //   return const CustomizedPage(title: 'AI Study Plan');
-                // }));
               },
               child: const OptionBox(
                 optiontext: 'AI generated Plan',

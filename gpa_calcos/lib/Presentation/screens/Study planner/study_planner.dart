@@ -94,45 +94,6 @@ class _PlannerLandingPageState extends State<PlannerLandingPage> {
                 children: <Widget>[
                   GestureDetector(
                     onTap: () =>
-                        AutoRouter.of(context).push(const DailySchedules()),
-                    child: const OptionBox(
-                      index: '1',
-                      optiontext: 'Daily Schedules',
-                      optionICon: Icons.leaderboard_sharp,
-                      iconColor: Colors.yellow,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  GestureDetector(
-                    onTap: () =>
-                        AutoRouter.of(context).push(const WeeklySchedules()),
-                    child: const OptionBox(
-                      index: '2',
-                      optiontext: 'Weekly Schedules',
-                      optionICon: Icons.leaderboard_sharp,
-                      iconColor: Colors.yellow,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  GestureDetector(
-                    onTap: () =>
-                        AutoRouter.of(context).push(const MonthlySchedules()),
-                    child: const OptionBox(
-                      index: '3',
-                      optiontext: 'Monthly Schedules',
-                      optionICon: Icons.leaderboard_sharp,
-                      iconColor: Colors.white,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  GestureDetector(
-                    onTap: () =>
                         AutoRouter.of(context).push(const SemesterSchedules()),
                     child: const OptionBox(
                       index: '4',
