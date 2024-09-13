@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gpa_calcos/Presentation/screens/chat_ai/colors.dart';
 import 'package:gpa_calcos/Presentation/screens/chat_ai/providers/chat_provider.dart';
-import 'package:gpa_calcos/Presentation/screens/chat_ai/screens/chat_history_screen.dart';
 import 'package:gpa_calcos/Presentation/screens/chat_ai/screens/profile_screen.dart';
 import 'package:gpa_calcos/Presentation/screens/chat_ai/utility/utilites.dart';
 import 'package:gpa_calcos/Presentation/screens/chat_ai/widgets/bottom_chat_field.dart';
@@ -67,7 +66,7 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
             leading: IconButton(
                 onPressed: () async {
-                             Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const ChatHistoryScreen()));
+                  Navigator.of(context).pop();
                 },
                 icon: const Icon(
                   Icons.arrow_back_ios,
