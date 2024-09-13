@@ -5,7 +5,6 @@ import 'package:gpa_calcos/Presentation/screens/chat_ai/colors.dart';
 import 'package:gpa_calcos/Presentation/screens/chat_ai/hive/boxes.dart';
 import 'package:gpa_calcos/Presentation/screens/chat_ai/hive/settings.dart';
 import 'package:gpa_calcos/Presentation/screens/chat_ai/providers/settings_provider.dart';
-import 'package:gpa_calcos/Presentation/screens/chat_ai/widgets/build_diaplay_image.dart';
 import 'package:gpa_calcos/Presentation/screens/chat_ai/widgets/settings_tile.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:image_picker/image_picker.dart';
@@ -80,7 +79,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: Colors.white,
               )),
           title: Text(
-            'Profile',
+            'AI Settings',
             style: TextStyle(
               color: AppColors.color5,
             ),
@@ -107,20 +106,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Center(
-                  child: BuildDisplayImage(
-                      file: file,
-                      userImage: userImage,
-                      onPressed: () {
-                        // open camera or gallery
-                        pickImage();
-                      }),
-                ),
+                // Center(
+                //   child: BuildDisplayImage(
+                //       file: file,
+                //       userImage: userImage,
+                //       onPressed: () {
+                //         // open camera or gallery
+                //         pickImage();
+                //       }),
+                // ),
 
-                const SizedBox(height: 20.0),
+                // const SizedBox(height: 20.0),
 
-                // user name
-                Text(userName, style: Theme.of(context).textTheme.titleLarge),
+                // // user name
+                // Text(userName, style: Theme.of(context).textTheme.titleLarge),
 
                 const SizedBox(height: 40.0),
 

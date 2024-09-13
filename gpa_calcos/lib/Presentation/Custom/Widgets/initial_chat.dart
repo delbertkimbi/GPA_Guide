@@ -7,7 +7,6 @@ class InitialChatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -15,7 +14,7 @@ class InitialChatScreen extends StatelessWidget {
           Image.asset("assets/wonder.png"), // Replace with your image path
           SizedBox(height: 10.0.h),
           Text(
-            "Welcome to Guide AI. Ask me anything \nor send a picture to get started.",
+            "Guide AI, your best study companion.\nClick on new chat to get started.",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 16.0.sp,

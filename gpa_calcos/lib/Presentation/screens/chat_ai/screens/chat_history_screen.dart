@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gpa_calcos/Presentation/Custom/Widgets/initial_chat.dart';
 import 'package:gpa_calcos/Presentation/screens/chat_ai/colors.dart';
 import 'package:gpa_calcos/Presentation/screens/chat_ai/hive/boxes.dart';
 import 'package:gpa_calcos/Presentation/screens/chat_ai/providers/chat_provider.dart';
+import 'package:gpa_calcos/Presentation/screens/chat_ai/screens/chat_screen.dart';
 import 'package:gpa_calcos/Presentation/screens/chat_ai/widgets/chat_history_widget.dart';
 import 'package:gpa_calcos/Presentation/screens/chat_ai/widgets/empty_history_widget.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -81,8 +83,9 @@ class _ChatHistoryScreenState extends State<ChatHistoryScreen> {
                 isNewChat: true,
                 chatID: '',
               );
-              chatProvider.setCurrentIndex(newIndex: 1);
-              chatProvider.pageController.jumpToPage(1);
+
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const ChatScreen()));
             },
             label: const Text(
               'New Chat',
@@ -98,7 +101,7 @@ class _ChatHistoryScreenState extends State<ChatHistoryScreen> {
               final chatHistory =
                   box.values.toList().cast<ChatHistory>().reversed.toList();
               return chatHistory.isEmpty
-                  ? const EmptyHistoryWidget()
+                  ? const InitialChatScreen()
                   : Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(

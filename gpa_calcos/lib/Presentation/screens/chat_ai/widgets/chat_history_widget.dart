@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gpa_calcos/Presentation/screens/chat_ai/colors.dart';
 import 'package:gpa_calcos/Presentation/screens/chat_ai/hive/chat_history.dart';
 import 'package:gpa_calcos/Presentation/screens/chat_ai/providers/chat_provider.dart';
+import 'package:gpa_calcos/Presentation/screens/chat_ai/screens/chat_screen.dart';
 import 'package:gpa_calcos/Presentation/screens/chat_ai/utility/utilites.dart';
 import 'package:provider/provider.dart';
 
@@ -59,8 +60,8 @@ class ChatHistoryWidget extends StatelessWidget {
               isNewChat: false,
               chatID: chat.chatId,
             );
-            chatProvider.setCurrentIndex(newIndex: 1);
-            chatProvider.pageController.jumpToPage(1);
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const ChatScreen()));
           },
           onLongPress: () {
             // show my animated dialog to delete the chat
