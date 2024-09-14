@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/Toast/showtoast.dart';
 import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
-import 'package:gpa_calcos/home.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 class JoinSquadPage extends StatefulWidget {

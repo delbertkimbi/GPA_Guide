@@ -4,8 +4,6 @@ import 'package:gpa_calcos/Presentation/Custom/files/colors.dart';
 import 'package:gpa_calcos/Presentation/screens/Study%20planner/screens/add_study_plan.dart';
 import '../controllers/calendar_controller.dart';
 import '../models/study_plan_event.dart';
-import 'view_study_plan.dart';
-
 class WeeklyCalendarView extends StatelessWidget {
   const WeeklyCalendarView({super.key});
 

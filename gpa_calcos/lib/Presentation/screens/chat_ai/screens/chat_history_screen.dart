@@ -5,7 +5,6 @@ import 'package:gpa_calcos/Presentation/screens/chat_ai/hive/boxes.dart';
 import 'package:gpa_calcos/Presentation/screens/chat_ai/providers/chat_provider.dart';
 import 'package:gpa_calcos/Presentation/screens/chat_ai/screens/chat_screen.dart';
 import 'package:gpa_calcos/Presentation/screens/chat_ai/widgets/chat_history_widget.dart';
-import 'package:gpa_calcos/Presentation/screens/chat_ai/widgets/empty_history_widget.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
