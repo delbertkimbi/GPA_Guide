@@ -36,7 +36,7 @@ class ChatHistoryWidget extends StatelessWidget {
             style: TextStyle(
               color: AppColors.color1,
               fontSize: 16,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w600,
             ),
           ),
           subtitle: Text(

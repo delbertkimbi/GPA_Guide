@@ -313,14 +313,12 @@ class _HomePageState extends State<HomePage> {
         AutoRouter.of(context).push(page);
       },
       child: Container(
-        height: 130.h,
-        width: 130.h,
+        height: 130.r,
+        width: 130.r,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: Colors.white,
-          //color: Colors.grey[300],
           borderRadius: BorderRadius.circular(15.r),
-
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(.9),
@@ -330,9 +328,10 @@ class _HomePageState extends State<HomePage> {
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CircleAvatar(
-              radius: 25,
+              radius: 25.r,
               backgroundColor: iconColor.withOpacity(0.2),
               child: Icon(
                 icon,
@@ -349,7 +348,6 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w500,
-                //color: Colors.white, Resources, Materials
                 color: textColor,
               ),
             ),

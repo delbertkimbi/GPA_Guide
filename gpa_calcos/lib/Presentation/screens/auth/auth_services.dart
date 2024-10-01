@@ -59,41 +59,24 @@ class AuthService {
         final userCredential = await _auth.signInWithCredential(credential);
         return userCredential;
       }
-     }
-  //catch (e) {
-  //   print('Error during Google Sign-In: ${e.toString()}');
-  //   showToast(message: 'An error occurred during sign-in. Please try again.');
-  // }
-  //   return null;
-  // }
-  catch (e) {
+    }
+  
+    catch (e) {
+      if (e is PlatformException) {
+        if (e.code == 'sign_in_failed') {
+          // Handle specific sign-in failure
 
-    print('Error during Google Sign-In: ${e.toString()}');
+          showToast(message: 'Sign-in failed. Please try again.');
+        } else if (e.code == 'sign_in_cancelled') {
+          // Handle sign-in cancellation
 
-    if (e is PlatformException) {
-
-      if (e.code == 'sign_in_failed') {
-
-        // Handle specific sign-in failure
-
-        showToast(message: 'Sign-in failed. Please try again.');
-
-      } else if (e.code == 'sign_in_cancelled') {
-
-        // Handle sign-in cancellation
-
-        showToast(message: 'Sign-in cancelled.');
-
+          showToast(message: 'Sign-in cancelled.');
+        }
       }
-
     }
 
+    return null;
   }
-
-  return null;
-
-}
-
 
   void showLoginErrorSnackbar(BuildContext context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(

@@ -9,8 +9,7 @@ import 'package:gpa_calcos/Presentation/Routes/app_router.gr.dart';
 
 import 'package:gpa_calcos/Presentation/screens/about.dart';
 import 'package:gpa_calcos/Presentation/screens/auth/auth_services.dart';
-
-import 'package:gpa_calcos/Presentation/screens/chat_ai/chat.dart';
+import 'package:gpa_calcos/Presentation/screens/chat_ai/screens/chat_history_screen.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({
@@ -134,7 +133,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ),
                 GestureDetector(
                   onTap: () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const ChatAI())),
+                      MaterialPageRoute(builder: (context) => const ChatHistoryScreen())),
                   child: CustomListTile(
                     title: "Chat with AI",
                     icon: Icon(
